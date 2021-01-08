@@ -6,12 +6,11 @@
 
 ### Features
 
-- Typescript
-- Next.js
-- Chakra UI + Framer Motion
-- Jest
+- Next.js + MDX
+- TypeScript
 - ESLint + Prettier
-- MDX
+- Chakra UI + Framer Motion
+- Jest Testing Framework
 
 ### Setup
 
