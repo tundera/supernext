@@ -32,7 +32,7 @@
     "@emotion/styled": "^11.0.0",
     "a11y-react-emoji": "^1.1.2",
     "dotenv": "^8.2.0",
-    "framer-motion": "^3.1.4",
+    "framer-motion": "^3.2.0",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
     "next": "^10.0.5",
