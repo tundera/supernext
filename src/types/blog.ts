@@ -10,7 +10,7 @@ export type FrontMatter = {
 }
 
 export type BlogPost = {
-  id: number
   slug: string
+  content: string
   frontMatter: FrontMatter
 }

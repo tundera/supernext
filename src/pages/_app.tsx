@@ -1,14 +1,15 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
-import { ChakraProvider } from '@chakra-ui/react'
-
-import theme from '@styles/theme'
+import ReactQueryProvider from '@providers/ReactQueryProvider'
+import ChakraProvider from '@providers/ChakraProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <ReactQueryProvider state={pageProps.dehydratedState}>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </ReactQueryProvider>
   )
 }
 
