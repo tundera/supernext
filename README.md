@@ -6,11 +6,13 @@
 
 ### Features
 
-- Next.js + MDX
-- TypeScript
-- ESLint + Prettier
-- Chakra UI + Framer Motion
-- Jest Testing Framework
+- Isomorphic React with Next.js 🏆
+- TypeScript (**strongly** typed 💪)
+- Chakra UI + Framer Motion 🚅
+- React Query v3 (GraphQL)
+- ESLint + Prettier 🎀
+- Jest Testing Framework 👑
+- Debugging (VSCode) 🔧
 
 ### Setup
 
