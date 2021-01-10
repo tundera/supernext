@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { Box, Heading, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdBookmark } from 'react-icons/md'
-import { BlogPost } from 'src/types/blog'
+import { BlogPost } from 'types/blog'
 import NextLink from 'next/link'
 
 type Props = {

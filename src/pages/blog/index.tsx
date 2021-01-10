@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next'
-import type { BlogPost } from 'src/types/blog'
+import type { BlogPost } from 'types/blog'
 
 import { Heading, Stack } from '@chakra-ui/react'
 

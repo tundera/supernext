@@ -1,4 +1,4 @@
-import type { BlogPost, FrontMatter } from 'src/types/blog'
+import type { BlogPost, FrontMatter } from 'types/blog'
 
 import fs from 'fs'
 import path from 'path'

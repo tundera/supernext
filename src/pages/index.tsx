@@ -1,13 +1,40 @@
 import Head from 'next/head'
 import NextLink from 'next/link'
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
+
+import { Box, Flex, Heading, Stack, List, ListItem, ListIcon } from '@chakra-ui/react'
+import { FaRocket } from 'react-icons/fa'
+import { request, gql } from 'graphql-request'
+import { NexusGenObjects } from 'types/generated/nexus-typegen'
+import { NextPage } from 'next'
+
+type Props = {
+  frameworks: NexusGenObjects['Framework'][]
+}
+export async function getServerSideProps() {
+  const query = gql`
+    {
+      frameworks {
+        id
+        name
+      }
+    }
+  `
+
+  const data = await request('http://localhost:3000/api/graphql', query)
+  const { frameworks } = data
+  return {
+    props: {
+      frameworks,
+    },
+  }
+}
 
 const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
   ssr: true,
 })
 
-export default function IndexPage() {
+const IndexPage: NextPage<Props> = ({ frameworks }) => {
   return (
     <Flex bg="gray.50" minHeight="100vh" alignItems="center" justifyContent="center">
       <Head>
@@ -23,7 +50,17 @@ export default function IndexPage() {
         <Box p={4} textAlign="center">
           <NextLink href="/blog">Blog</NextLink>
         </Box>
+        <List spacing={3}>
+          {frameworks.map((framework) => (
+            <ListItem key={framework.id}>
+              <ListIcon as={FaRocket} color="green.400" />
+              {framework.name}
+            </ListItem>
+          ))}
+        </List>
       </Stack>
     </Flex>
   )
 }
+
+export default IndexPage
