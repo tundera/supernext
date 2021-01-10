@@ -3,11 +3,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist",
-    "noEmit": false,
-    "baseUrl": ".",
-    "paths": {
-      "db/*": ["db/*"]
-    }
+    "noEmit": false
   },
   "include": ["scripts"]
 }
