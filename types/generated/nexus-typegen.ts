@@ -3,11 +3,31 @@
  * Do not make changes to this file directly
  */
 
+import { Context } from './../../src/lib/graphql/context'
+
+declare global {
+  interface NexusGenCustomOutputProperties<TypeName extends string> {
+    crud: NexusPrisma<TypeName, 'crud'>
+    model: NexusPrisma<TypeName, 'model'>
+  }
+}
+
 declare global {
   interface NexusGen extends NexusGenTypes {}
 }
 
-export interface NexusGenInputs {}
+export interface NexusGenInputs {
+  CoachWhereUniqueInput: {
+    // input type
+    handle?: string | null // String
+    id?: number | null // Int
+  }
+  PlayerWhereUniqueInput: {
+    // input type
+    handle?: string | null // String
+    id?: number | null // Int
+  }
+}
 
 export interface NexusGenEnums {}
 
@@ -17,15 +37,58 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  DateTime: any
 }
 
 export interface NexusGenObjects {
+  Coach: {
+    // root type
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    handle?: string | null // String
+    id: number // Int!
+    isAssistant?: string | null // String
+    name?: string | null // String
+    teamId?: number | null // Int
+    type?: string | null // String
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+  }
   Framework: {
     // root type
     id?: string | null // ID
     name?: string | null // String
   }
+  Player: {
+    // root type
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    handle?: string | null // String
+    height?: string | null // String
+    id: number // Int!
+    name?: string | null // String
+    number?: string | null // String
+    position?: string | null // String
+    slug?: string | null // String
+    teamId?: number | null // Int
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+    weight?: string | null // String
+  }
   Query: {}
+  Team: {
+    // root type
+    abbreviation?: string | null // String
+    city?: string | null // String
+    conference?: string | null // String
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    division?: string | null // String
+    established?: string | null // String
+    handle?: string | null // String
+    id: number // Int!
+    losses?: number | null // Int
+    name?: string | null // String
+    slug?: string | null // String
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+    winPercentage?: number | null // Float
+    wins?: number | null // Int
+  }
 }
 
 export interface NexusGenInterfaces {}
@@ -37,30 +100,145 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Coach: {
+    // field return type
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    handle: string | null // String
+    id: number // Int!
+    isAssistant: string | null // String
+    name: string | null // String
+    team: NexusGenRootTypes['Team'] | null // Team
+    teamId: number | null // Int
+    type: string | null // String
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+  }
   Framework: {
     // field return type
     id: string | null // ID
     name: string | null // String
   }
+  Player: {
+    // field return type
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    handle: string | null // String
+    height: string | null // String
+    id: number // Int!
+    name: string | null // String
+    number: string | null // String
+    position: string | null // String
+    slug: string | null // String
+    team: NexusGenRootTypes['Team'] | null // Team
+    teamId: number | null // Int
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+    weight: string | null // String
+  }
   Query: {
     // field return type
+    allCoaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
+    allPlayers: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
+    allTeams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
     frameworks: Array<NexusGenRootTypes['Framework'] | null> | null // [Framework]
+  }
+  Team: {
+    // field return type
+    abbreviation: string | null // String
+    city: string | null // String
+    coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
+    conference: string | null // String
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    division: string | null // String
+    established: string | null // String
+    handle: string | null // String
+    id: number // Int!
+    losses: number | null // Int
+    name: string | null // String
+    players: NexusGenRootTypes['Player'][] // [Player!]!
+    slug: string | null // String
+    updatedAt: NexusGenScalars['DateTime'] // DateTime!
+    winPercentage: number | null // Float
+    wins: number | null // Int
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Coach: {
+    // field return type name
+    createdAt: 'DateTime'
+    handle: 'String'
+    id: 'Int'
+    isAssistant: 'String'
+    name: 'String'
+    team: 'Team'
+    teamId: 'Int'
+    type: 'String'
+    updatedAt: 'DateTime'
+  }
   Framework: {
     // field return type name
     id: 'ID'
     name: 'String'
   }
+  Player: {
+    // field return type name
+    createdAt: 'DateTime'
+    handle: 'String'
+    height: 'String'
+    id: 'Int'
+    name: 'String'
+    number: 'String'
+    position: 'String'
+    slug: 'String'
+    team: 'Team'
+    teamId: 'Int'
+    updatedAt: 'DateTime'
+    weight: 'String'
+  }
   Query: {
     // field return type name
+    allCoaches: 'Coach'
+    allPlayers: 'Player'
+    allTeams: 'Team'
     frameworks: 'Framework'
+  }
+  Team: {
+    // field return type name
+    abbreviation: 'String'
+    city: 'String'
+    coaches: 'Coach'
+    conference: 'String'
+    createdAt: 'DateTime'
+    division: 'String'
+    established: 'String'
+    handle: 'String'
+    id: 'Int'
+    losses: 'Int'
+    name: 'String'
+    players: 'Player'
+    slug: 'String'
+    updatedAt: 'DateTime'
+    winPercentage: 'Float'
+    wins: 'Int'
   }
 }
 
-export interface NexusGenArgTypes {}
+export interface NexusGenArgTypes {
+  Team: {
+    coaches: {
+      // args
+      after?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      before?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
+    }
+    players: {
+      // args
+      after?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      before?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
+    }
+  }
+}
 
 export interface NexusGenAbstractTypeMembers {}
 
@@ -68,7 +246,7 @@ export interface NexusGenTypeInterfaces {}
 
 export type NexusGenObjectNames = keyof NexusGenObjects
 
-export type NexusGenInputNames = never
+export type NexusGenInputNames = keyof NexusGenInputs
 
 export type NexusGenEnumNames = never
 
@@ -91,7 +269,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any
+  context: Context
   inputTypes: NexusGenInputs
   rootTypes: NexusGenRootTypes
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars

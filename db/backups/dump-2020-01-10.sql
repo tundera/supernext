@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.0
--- Dumped by pg_dump version 13.0
+-- Dumped from database version 13.1
+-- Dumped by pg_dump version 13.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -104,48 +104,6 @@ ALTER SEQUENCE public."Player_id_seq" OWNED BY public."Player".id;
 
 
 --
--- Name: Session; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."Session" (
-    id integer NOT NULL,
-    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "updatedAt" timestamp(3) without time zone NOT NULL,
-    "expiresAt" timestamp(3) without time zone,
-    handle text NOT NULL,
-    "userId" integer,
-    "hashedSessionToken" text,
-    "antiCSRFToken" text,
-    "publicData" text,
-    "privateData" text
-);
-
-
-ALTER TABLE public."Session" OWNER TO postgres;
-
---
--- Name: Session_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."Session_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public."Session_id_seq" OWNER TO postgres;
-
---
--- Name: Session_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."Session_id_seq" OWNED BY public."Session".id;
-
-
---
 -- Name: Team; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -192,45 +150,6 @@ ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
--- Name: User; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."User" (
-    id integer NOT NULL,
-    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "updatedAt" timestamp(3) without time zone NOT NULL,
-    name text,
-    email text NOT NULL,
-    "hashedPassword" text,
-    role text DEFAULT 'user'::text NOT NULL
-);
-
-
-ALTER TABLE public."User" OWNER TO postgres;
-
---
--- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."User_id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public."User_id_seq" OWNER TO postgres;
-
---
--- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
-
-
---
 -- Name: _Migration; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -274,6 +193,24 @@ ALTER SEQUENCE public."_Migration_revision_seq" OWNED BY public."_Migration".rev
 
 
 --
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public._prisma_migrations (
+    id character varying(36) NOT NULL,
+    checksum character varying(64) NOT NULL,
+    finished_at timestamp with time zone,
+    migration_name character varying(255) NOT NULL,
+    logs text,
+    rolled_back_at timestamp with time zone,
+    started_at timestamp with time zone DEFAULT now() NOT NULL,
+    applied_steps_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public._prisma_migrations OWNER TO postgres;
+
+--
 -- Name: Coach id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -288,24 +225,10 @@ ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Pl
 
 
 --
--- Name: Session id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Session" ALTER COLUMN id SET DEFAULT nextval('public."Session_id_seq"'::regclass);
-
-
---
 -- Name: Team id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
-
-
---
--- Name: User id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
 
 
 --
@@ -1073,14 +996,6 @@ COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId"
 
 
 --
--- Data for Name: Session; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."Session" (id, "createdAt", "updatedAt", "expiresAt", handle, "userId", "hashedSessionToken", "antiCSRFToken", "publicData", "privateData") FROM stdin;
-\.
-
-
---
 -- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1119,19 +1034,20 @@ COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbr
 
 
 --
--- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."User" (id, "createdAt", "updatedAt", name, email, "hashedPassword", role) FROM stdin;
-\.
-
-
---
 -- Data for Name: _Migration; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public."_Migration" (revision, name, datamodel, status, applied, rolled_back, datamodel_steps, database_migration, errors, started_at, finished_at) FROM stdin;
 1	20201103190612	datasource db {\n  provider = "postgres"\n  url      = "***"\n}\n\nmodel User {\n  id             Int       @id @default(autoincrement())\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n  name           String?\n  email          String    @unique\n  hashedPassword String?\n  role           String    @default("user")\n  sessions       Session[]\n}\n\nmodel Session {\n  id                 Int       @id @default(autoincrement())\n  createdAt          DateTime  @default(now())\n  updatedAt          DateTime  @updatedAt\n  expiresAt          DateTime?\n  handle             String    @unique\n  user               User?     @relation(fields: [userId], references: [id])\n  userId             Int?\n  hashedSessionToken String?\n  antiCSRFToken      String?\n  publicData         String?\n  privateData        String?\n}\n\nmodel Team {\n  id            Int      @id @default(autoincrement())\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n  handle        String?  @unique\n  name          String?\n  slug          String?\n  city          String?\n  abbreviation  String?\n  wins          Int?\n  losses        Int?\n  winPercentage Float?\n  conference    String?\n  division      String?\n  established   String?\n  coaches       Coach[]\n  players       Player[]\n}\n\nmodel Player {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  handle    String?  @unique\n  name      String?\n  slug      String?\n  team      Team?    @relation(fields: [teamId], references: [id])\n  teamId    Int?\n  height    String?\n  weight    String?\n  number    String?\n  position  String?\n}\n\nmodel Coach {\n  id          Int      @id @default(autoincrement())\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  handle      String?  @unique\n  name        String?\n  team        Team?    @relation(fields: [teamId], references: [id])\n  teamId      Int?\n  type        String?\n  isAssistant String?\n}\n	MigrationSuccess	13	0	[{"tag":"CreateSource","source":"db"},{"tag":"CreateArgument","location":{"tag":"Source","source":"db"},"argument":"provider","value":"\\"postgres\\""},{"tag":"CreateArgument","location":{"tag":"Source","source":"db"},"argument":"url","value":"\\"***\\""},{"tag":"CreateModel","model":"User"},{"tag":"CreateField","model":"User","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"User","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"User","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"User","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"User","field":"email","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"email"},"directive":"unique"}},{"tag":"CreateField","model":"User","field":"hashedPassword","type":"String","arity":"Optional"},{"tag":"CreateField","model":"User","field":"role","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"role"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"role"},"directive":"default"},"argument":"","value":"\\"user\\""},{"tag":"CreateField","model":"User","field":"sessions","type":"Session","arity":"List"},{"tag":"CreateModel","model":"Session"},{"tag":"CreateField","model":"Session","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Session","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Session","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Session","field":"expiresAt","type":"DateTime","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"handle","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Session","field":"user","type":"User","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"},"argument":"fields","value":"[userId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Session","field":"userId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"hashedSessionToken","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"antiCSRFToken","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"publicData","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"privateData","type":"String","arity":"Optional"},{"tag":"CreateModel","model":"Team"},{"tag":"CreateField","model":"Team","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Team","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Team","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Team","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Team","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Team","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Team","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"slug","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"city","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"abbreviation","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"wins","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"losses","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"winPercentage","type":"Float","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"conference","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"division","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"established","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"coaches","type":"Coach","arity":"List"},{"tag":"CreateField","model":"Team","field":"players","type":"Player","arity":"List"},{"tag":"CreateModel","model":"Player"},{"tag":"CreateField","model":"Player","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Player","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Player","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Player","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Player","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"slug","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"team","type":"Team","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"},"argument":"fields","value":"[teamId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Player","field":"teamId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"height","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"weight","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"number","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"position","type":"String","arity":"Optional"},{"tag":"CreateModel","model":"Coach"},{"tag":"CreateField","model":"Coach","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Coach","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Coach","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Coach","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Coach","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"team","type":"Team","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"},"argument":"fields","value":"[teamId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Coach","field":"teamId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"type","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"isAssistant","type":"String","arity":"Optional"}]	{"before":{"tables":[{"name":"_Migration","columns":[{"name":"revision","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":{"SEQUENCE":"nextval('\\"_Migration_revision_seq\\"'::regclass)"},"autoIncrement":true},{"name":"name","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"datamodel","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"status","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"applied","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":null,"autoIncrement":false},{"name":"rolled_back","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":null,"autoIncrement":false},{"name":"datamodel_steps","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"database_migration","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"errors","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"started_at","tpe":{"dataType":"timestamp without time zone","fullDataType":"timestamp","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":{"Timestamp":3}},"default":null,"autoIncrement":false},{"name":"finished_at","tpe":{"dataType":"timestamp without time zone","fullDataType":"timestamp","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":{"Timestamp":3}},"default":null,"autoIncrement":false}],"indices":[],"primaryKey":{"columns":["revision"],"sequence":{"name":"_Migration_revision_seq","initialValue":1,"allocationSize":1},"constraintName":"_Migration_pkey"},"foreignKeys":[]}],"enums":[],"sequences":[{"name":"_Migration_revision_seq","initialValue":1,"allocationSize":1}]},"after":{"tables":[{"name":"User","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"email","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedPassword","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"role","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":{"VALUE":"user"},"autoIncrement":false}],"indices":[{"name":"User.email_unique","columns":["email"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]},{"name":"Session","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"expiresAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"userId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedSessionToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"antiCSRFToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"publicData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"privateData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]},{"name":"Team","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"city","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"abbreviation","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"wins","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"losses","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"winPercentage","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"float","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"conference","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"division","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"established","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]},{"name":"Player","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"height","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"weight","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"number","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"position","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]},{"name":"Coach","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"type","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"isAssistant","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}],"enums":[],"sequences":[]},"steps":[{"CreateTable":{"table":{"name":"User","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"email","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedPassword","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"role","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":{"VALUE":"user"},"autoIncrement":false}],"indices":[{"name":"User.email_unique","columns":["email"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]}}},{"CreateTable":{"table":{"name":"Session","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"expiresAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"userId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedSessionToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"antiCSRFToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"publicData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"privateData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateTable":{"table":{"name":"Team","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"city","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"abbreviation","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"wins","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"losses","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"winPercentage","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"float","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"conference","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"division","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"established","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]}}},{"CreateTable":{"table":{"name":"Player","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"height","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"weight","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"number","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"position","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateTable":{"table":{"name":"Coach","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"type","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"isAssistant","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateIndex":{"table":"User","index":{"name":"User.email_unique","columns":["email"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":false}},{"CreateIndex":{"table":"Session","index":{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":false}},{"CreateIndex":{"table":"Team","index":{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"CreateIndex":{"table":"Player","index":{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"CreateIndex":{"table":"Coach","index":{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"AddForeignKey":{"table":"Session","foreign_key":{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}},{"AddForeignKey":{"table":"Player","foreign_key":{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}},{"AddForeignKey":{"table":"Coach","foreign_key":{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}}]}	[]	2020-11-03 19:15:58.437	2020-11-03 19:15:58.495
+\.
+
+
+--
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
+fdbcb702-585c-4229-9b41-3b6159f0fb12	14ec4a1e5ded5c70ddfb1e9ccd7397bb86988b3f453dad5feb9607976b674e5	2021-01-10 14:39:12.199556-07	20210110213906_rename_coach_player_team_fields	\N	\N	2021-01-10 14:39:12.149674-07	1
 \.
 
 
@@ -1150,24 +1066,10 @@ SELECT pg_catalog.setval('public."Player_id_seq"', 510, true);
 
 
 --
--- Name: Session_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."Session_id_seq"', 1, false);
-
-
---
 -- Name: Team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
-
-
---
--- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."User_id_seq"', 1, false);
 
 
 --
@@ -1194,14 +1096,6 @@ ALTER TABLE ONLY public."Player"
 
 
 --
--- Name: Session Session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Session"
-    ADD CONSTRAINT "Session_pkey" PRIMARY KEY (id);
-
-
---
 -- Name: Team Team_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1210,19 +1104,19 @@ ALTER TABLE ONLY public."Team"
 
 
 --
--- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."User"
-    ADD CONSTRAINT "User_pkey" PRIMARY KEY (id);
-
-
---
 -- Name: _Migration _Migration_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."_Migration"
     ADD CONSTRAINT "_Migration_pkey" PRIMARY KEY (revision);
+
+
+--
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public._prisma_migrations
+    ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
 
 
 --
@@ -1240,24 +1134,10 @@ CREATE UNIQUE INDEX "Player.handle_unique" ON public."Player" USING btree (handl
 
 
 --
--- Name: Session.handle_unique; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX "Session.handle_unique" ON public."Session" USING btree (handle);
-
-
---
 -- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX "Team.handle_unique" ON public."Team" USING btree (handle);
-
-
---
--- Name: User.email_unique; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE UNIQUE INDEX "User.email_unique" ON public."User" USING btree (email);
 
 
 --
@@ -1274,14 +1154,6 @@ ALTER TABLE ONLY public."Coach"
 
 ALTER TABLE ONLY public."Player"
     ADD CONSTRAINT "Player_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES public."Team"(id) ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: Session Session_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Session"
-    ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES public."User"(id) ON UPDATE CASCADE ON DELETE SET NULL;
 
 
 --

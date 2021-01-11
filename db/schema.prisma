@@ -16,7 +16,7 @@ model Coach {
   teamId      Int?
   type        String?
   isAssistant String?
-  Team        Team?    @relation(fields: [teamId], references: [id])
+  team        Team?    @relation(fields: [teamId], references: [id])
 }
 
 model Player {
@@ -31,7 +31,7 @@ model Player {
   weight    String?
   number    String?
   position  String?
-  Team      Team?    @relation(fields: [teamId], references: [id])
+  team      Team?    @relation(fields: [teamId], references: [id])
 }
 
 model Team {
@@ -49,6 +49,6 @@ model Team {
   conference    String?
   division      String?
   established   String?
-  Coach         Coach[]
-  Player        Player[]
+  coaches       Coach[]
+  players       Player[]
 }

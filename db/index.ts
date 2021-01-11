@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from '@prisma/client'
 
-export * from "@prisma/client"
+export * from '@prisma/client'
 
 const getPrismaClient = () => {
   let prisma: PrismaClient
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     prisma = new PrismaClient()
   } else {
     // Ensure the prisma instance is re-used during hot-reloading
