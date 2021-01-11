@@ -12,6 +12,7 @@ import { NextPage } from 'next'
 type Props = {
   teams: NexusGenObjects['Team'][]
 }
+
 export async function getServerSideProps() {
   const query = gql`
     {
