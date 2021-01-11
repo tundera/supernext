@@ -21,7 +21,7 @@ export async function getServerSideProps() {
     }
   `
 
-  const data = await request('http://localhost:3000/api/graphql', query)
+  const data = await request(`${process.env.NEXT_PUBLIC_SITE_URL}/api/graphql`, query)
   const { frameworks } = data
   return {
     props: {
