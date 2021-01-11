@@ -9,12 +9,12 @@ import { NexusGenObjects } from 'types/generated/nexus-typegen'
 import { NextPage } from 'next'
 
 type Props = {
-  frameworks: NexusGenObjects['Framework'][]
+  teams: NexusGenObjects['Team'][]
 }
 export async function getServerSideProps() {
   const query = gql`
     {
-      frameworks {
+      allTeams {
         id
         name
       }
@@ -22,10 +22,10 @@ export async function getServerSideProps() {
   `
 
   const data = await request(`${process.env.NEXT_PUBLIC_SITE_URL}/api/graphql`, query)
-  const { frameworks } = data
+  const { allTeams } = data
   return {
     props: {
-      frameworks,
+      teams: allTeams,
     },
   }
 }
@@ -34,7 +34,7 @@ const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
   ssr: true,
 })
 
-const IndexPage: NextPage<Props> = ({ frameworks }) => {
+const IndexPage: NextPage<Props> = ({ teams }) => {
   return (
     <Flex bg="gray.50" minHeight="100vh" alignItems="center" justifyContent="center">
       <Head>
@@ -51,10 +51,10 @@ const IndexPage: NextPage<Props> = ({ frameworks }) => {
           <NextLink href="/blog">Blog</NextLink>
         </Box>
         <List spacing={3}>
-          {frameworks.map((framework) => (
-            <ListItem key={framework.id}>
+          {teams.map((team) => (
+            <ListItem key={team.id}>
               <ListIcon as={FaRocket} color="green.400" />
-              {framework.name}
+              {team.name}
             </ListItem>
           ))}
         </List>
