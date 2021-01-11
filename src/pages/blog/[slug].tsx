@@ -16,7 +16,7 @@ import Emoji from 'a11y-react-emoji'
 import BlogLayout from '@layouts/BlogLayout'
 import NextMdxLink from '@components/NextMdxLink'
 
-import { FrontMatter } from 'src/types/blog'
+import { FrontMatter } from 'types/blog'
 
 type Props = {
   mdxSource: MdxRemote.Source

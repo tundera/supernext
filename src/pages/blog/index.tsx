@@ -1,18 +1,18 @@
 import type { GetStaticProps, NextPage } from 'next'
-import type { BlogPost } from 'src/types/blog'
+import type { BlogPost } from 'types/blog'
 
 import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import PostsList from '@components/PostsList'
-import { fetchBlogPosts } from '@lib/local/fetchBlogPosts'
+import { getBlogPosts } from '@lib/local/getBlogPosts'
 
 type Props = {
   posts: BlogPost[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await fetchBlogPosts()
+  const posts = await getBlogPosts()
 
   return {
     props: {
