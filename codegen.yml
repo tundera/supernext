@@ -8,4 +8,3 @@ generates:
       - typescript-react-query
     config:
       fetcher: graphql-request
-      gqlImport: graphql-tag#gql
