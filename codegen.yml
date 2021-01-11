@@ -1,0 +1,11 @@
+schema: MY_SCHEMA_PATH
+documents: './src/lib/graphql/**/*.graphql'
+generates:
+  ./generates.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: graphql-request
+      gqlImport: graphql-tag#gql

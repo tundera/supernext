@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic'
 
 import { Box, Flex, Heading, Stack, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { FaRocket } from 'react-icons/fa'
-import { request, gql } from 'graphql-request'
+import { request } from 'graphql-request'
+import gql from 'graphql-tag'
 import { NexusGenObjects } from 'types/generated/nexus-typegen'
 import { NextPage } from 'next'
 

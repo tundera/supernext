@@ -28,5 +28,15 @@
     "plugins": [{ "name": "nexus/typescript-language-service" }]
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.mdx", ".", "types.d.ts"]
+  "include": [
+    "next-env.d.ts",
+    "graphql.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    ".",
+    "types.d.ts"
+  ]
 }
