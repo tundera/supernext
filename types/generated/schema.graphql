@@ -20,11 +20,6 @@ input CoachWhereUniqueInput {
 
 scalar DateTime
 
-type Framework {
-  id: ID
-  name: String
-}
-
 type Player {
   createdAt: DateTime!
   handle: String
@@ -49,7 +44,12 @@ type Query {
   allCoaches: [Coach]
   allPlayers: [Player]
   allTeams: [Team]
-  frameworks: [Framework]
+  coach(where: CoachWhereUniqueInput!): Coach
+  coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
+  player(where: PlayerWhereUniqueInput!): Player
+  players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  team(where: TeamWhereUniqueInput!): Team
+  teams(after: TeamWhereUniqueInput, before: TeamWhereUniqueInput, first: Int, last: Int): [Team!]!
 }
 
 type Team {
@@ -69,4 +69,9 @@ type Team {
   updatedAt: DateTime!
   winPercentage: Float
   wins: Int
+}
+
+input TeamWhereUniqueInput {
+  handle: String
+  id: Int
 }

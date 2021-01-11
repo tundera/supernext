@@ -1,13 +1,5 @@
 import { objectType, queryType } from 'nexus'
 
-export const Framework = objectType({
-  name: 'Framework',
-  definition(t) {
-    t.id('id')
-    t.string('name')
-  },
-})
-
 export const Player = objectType({
   name: 'Player',
   definition(t) {
@@ -65,46 +57,34 @@ export const Team = objectType({
 
 export const Query = queryType({
   definition(t) {
-    t.list.field('frameworks', {
-      type: 'Framework',
-      resolve: () => {
-        return [
-          {
-            id: '1',
-            name: 'React',
-          },
-          {
-            id: '2',
-            name: 'Vue',
-          },
-          {
-            id: '3',
-            name: 'Angular',
-          },
-          {
-            id: '4',
-            name: 'Svelte',
-          },
-        ]
-      },
-    })
     t.list.field('allCoaches', {
       type: 'Coach',
       resolve(_parent, _args, ctx) {
         return ctx.prisma.coach.findMany({})
       },
     })
+
     t.list.field('allPlayers', {
       type: 'Player',
       resolve(_parent, _args, ctx) {
         return ctx.prisma.player.findMany({})
       },
     })
+
     t.list.field('allTeams', {
       type: 'Team',
       resolve(_parent, _args, ctx) {
         return ctx.prisma.team.findMany({})
       },
     })
+
+    t.crud.coach()
+    t.crud.coaches()
+
+    t.crud.player()
+    t.crud.players()
+
+    t.crud.team()
+    t.crud.teams()
   },
 })

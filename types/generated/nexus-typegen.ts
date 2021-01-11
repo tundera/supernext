@@ -27,6 +27,11 @@ export interface NexusGenInputs {
     handle?: string | null // String
     id?: number | null // Int
   }
+  TeamWhereUniqueInput: {
+    // input type
+    handle?: string | null // String
+    id?: number | null // Int
+  }
 }
 
 export interface NexusGenEnums {}
@@ -51,11 +56,6 @@ export interface NexusGenObjects {
     teamId?: number | null // Int
     type?: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
-  }
-  Framework: {
-    // root type
-    id?: string | null // ID
-    name?: string | null // String
   }
   Player: {
     // root type
@@ -112,11 +112,6 @@ export interface NexusGenFieldTypes {
     type: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
   }
-  Framework: {
-    // field return type
-    id: string | null // ID
-    name: string | null // String
-  }
   Player: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -137,7 +132,12 @@ export interface NexusGenFieldTypes {
     allCoaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
     allPlayers: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
     allTeams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
-    frameworks: Array<NexusGenRootTypes['Framework'] | null> | null // [Framework]
+    coach: NexusGenRootTypes['Coach'] | null // Coach
+    coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
+    player: NexusGenRootTypes['Player'] | null // Player
+    players: NexusGenRootTypes['Player'][] // [Player!]!
+    team: NexusGenRootTypes['Team'] | null // Team
+    teams: NexusGenRootTypes['Team'][] // [Team!]!
   }
   Team: {
     // field return type
@@ -173,11 +173,6 @@ export interface NexusGenFieldTypeNames {
     type: 'String'
     updatedAt: 'DateTime'
   }
-  Framework: {
-    // field return type name
-    id: 'ID'
-    name: 'String'
-  }
   Player: {
     // field return type name
     createdAt: 'DateTime'
@@ -198,7 +193,12 @@ export interface NexusGenFieldTypeNames {
     allCoaches: 'Coach'
     allPlayers: 'Player'
     allTeams: 'Team'
-    frameworks: 'Framework'
+    coach: 'Coach'
+    coaches: 'Coach'
+    player: 'Player'
+    players: 'Player'
+    team: 'Team'
+    teams: 'Team'
   }
   Team: {
     // field return type name
@@ -222,6 +222,41 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    coach: {
+      // args
+      where: NexusGenInputs['CoachWhereUniqueInput'] // CoachWhereUniqueInput!
+    }
+    coaches: {
+      // args
+      after?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      before?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
+    }
+    player: {
+      // args
+      where: NexusGenInputs['PlayerWhereUniqueInput'] // PlayerWhereUniqueInput!
+    }
+    players: {
+      // args
+      after?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      before?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
+    }
+    team: {
+      // args
+      where: NexusGenInputs['TeamWhereUniqueInput'] // TeamWhereUniqueInput!
+    }
+    teams: {
+      // args
+      after?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
+      before?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
+    }
+  }
   Team: {
     coaches: {
       // args
