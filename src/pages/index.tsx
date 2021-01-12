@@ -1,3 +1,5 @@
+import type { NextPage, GetServerSideProps } from 'next'
+
 import Head from 'next/head'
 import NextLink from 'next/link'
 import dynamic from 'next/dynamic'
@@ -6,14 +8,13 @@ import { Box, Flex, Heading, Stack, List, ListItem, ListIcon } from '@chakra-ui/
 import { FaRocket } from 'react-icons/fa'
 import { request } from 'graphql-request'
 import gql from 'graphql-tag'
-import { NexusGenObjects } from 'types/generated/nexus-typegen'
-import { NextPage } from 'next'
+import { NexusGenObjects } from '@lib/graphql/generated/nexus-typegen'
 
 type Props = {
   teams: NexusGenObjects['Team'][]
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const query = gql`
     {
       allTeams {
@@ -41,7 +42,7 @@ const IndexPage: NextPage<Props> = ({ teams }) => {
     <Flex bg="gray.50" minHeight="100vh" alignItems="center" justifyContent="center">
       <Head>
         <meta charSet="utf-8" />
-        <title>{process.env.NEXT_PUBLIC_SITE_NAME ?? 'Chakra Base'}</title>
+        <title>{`${process.env.NEXT_PUBLIC_SITE_NAME} | Home` ?? 'Next Goat | Home'}</title>
       </Head>
 
       <Stack>

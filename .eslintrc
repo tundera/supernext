@@ -21,6 +21,7 @@
     "react/prop-types": "off",
     "import/no-cycle": "off",
     "no-multi-assign": "off",
+    "no-nested-ternary": "off",
     "import/imports-first": ["error", "absolute-first"],
     "react/jsx-filename-extension": [
       1,
