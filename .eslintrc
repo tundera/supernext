@@ -16,11 +16,13 @@
     "jest": true
   },
   "rules": {
+    "@typescript-eslint/naming-convention": "off",
     "global-require": "off",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "import/no-cycle": "off",
     "no-multi-assign": "off",
+    "no-underscore-dangle": "off",
     "no-nested-ternary": "off",
     "import/imports-first": ["error", "absolute-first"],
     "react/jsx-filename-extension": [

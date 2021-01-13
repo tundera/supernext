@@ -2132,11 +2132,6 @@
     is-promise "4.0.0"
     tslib "~2.0.1"
 
-"@graphql-typed-document-node/core@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"
-  integrity sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==
-
 "@hapi/accept@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.1.tgz#068553e867f0f63225a506ed74e899441af53e10"
@@ -3207,14 +3202,6 @@
   dependencies:
     "@typescript-eslint/types" "4.8.2"
     eslint-visitor-keys "^2.0.0"
-
-"@urql/core@^1.16.0":
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/@urql/core/-/core-1.16.1.tgz#a41487dd4436cbdc92fce714c6c1fc04315761d3"
-  integrity sha512-lcEMCS/rB+ug7jKSRDVZIsqNhZxRooTNa1kHfvSjJT2k4SXDyPmjNSfXBUJF2pDJmvv9EIKl9Tk0AF1CvG3Q/g==
-  dependencies:
-    "@graphql-typed-document-node/core" "^3.1.0"
-    wonka "^4.0.14"
 
 "@vue/compiler-core@3.0.5":
   version "3.0.5"
@@ -5390,7 +5377,7 @@ deep-is@^0.1.3, deep-is@~0.1.3:
 
 deepmerge@^4.2.2:
   version "4.2.2"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  resolved "https://registry.npmjs.org/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
   integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 defer-to-connect@^1.0.1:
@@ -9350,13 +9337,6 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-urql@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/next-urql/-/next-urql-2.1.1.tgz#df266ce3b3442611d152e3eab3b1c7dac553e8f6"
-  integrity sha512-+MFnU7XJG7CTuVPQ4u5aOgmkDT3rUEU4JnR15qhrRC2MZ772arbT5WlIYEJv7BXH/YI0BTGFBd8/jdGvjW6XEA==
-  dependencies:
-    react-ssr-prepass "^1.2.1"
-
 next@^10.0.5:
   version "10.0.5"
   resolved "https://registry.npmjs.org/next/-/next-10.0.5.tgz#8071e0aa1883266c91943aa7c6b73deadb064793"
@@ -9628,14 +9608,6 @@ object-inspect@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.8.0.tgz#df807e5ecf53a609cc6bfe93eac3cc7be5b3a9d0"
   integrity sha512-jLdtEOB112fORuypAyl/50VRVIBIdVQOSUUGQHzJ4xBSbit81zRarz7GThkEFZy1RceYrWYcPcBFPQwHyAc1gA==
-
-object-is@^1.1.2:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/object-is/-/object-is-1.1.4.tgz#63d6c83c00a43f4cbc9434eb9757c8a5b8565068"
-  integrity sha512-1ZvAZ4wlF7IyPVOcE1Omikt7UpaFlOQq0HlSti+ZvDH3UiD2brwGMwDbyV43jao2bKJ+4+WdPJHSd7kgzKYVqg==
-  dependencies:
-    call-bind "^1.0.0"
-    define-properties "^1.1.3"
 
 object-keys@^1.0.12, object-keys@^1.1.1:
   version "1.1.1"
@@ -10561,14 +10533,14 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-react-dom@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
-  integrity sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==
+react-dom@^0.0.0-experimental-27659559e:
+  version "0.0.0-experimental-27659559e"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-experimental-27659559e.tgz#e7718b5656b66525a399d156d17666e215d6e388"
+  integrity sha512-eDuCfcWojPkptbmjgRYfjxGvLFUTOUFXyX6Gs8Gu8pNWaCa9wI9ptin1nv5iKIb3w4Z2zbdSgnk2Fk1f2/B1GA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    scheduler "^0.20.1"
+    scheduler "0.0.0-experimental-27659559e"
 
 react-fast-compare@3.2.0:
   version "3.2.0"
@@ -10634,13 +10606,6 @@ react-remove-scroll@2.4.0:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
-react-ssr-prepass@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/react-ssr-prepass/-/react-ssr-prepass-1.2.1.tgz#ba867bbe60714f42977dbe1ef9b8ff469b950602"
-  integrity sha512-8hMhx9zXyEZ+t4oI0chPInxm/HpjrmvNuZxI5TmIXbORYmIV2CnK4WVPTdm/7Iq+3/6RAiNxTNZSQyUu5irX4Q==
-  dependencies:
-    object-is "^1.1.2"
-
 react-style-singleton@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.1.1.tgz#ce7f90b67618be2b6b94902a30aaea152ce52e66"
@@ -10650,10 +10615,10 @@ react-style-singleton@^2.1.0:
     invariant "^2.2.4"
     tslib "^1.0.0"
 
-react@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
-  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
+react@^0.0.0-experimental-27659559e:
+  version "0.0.0-experimental-27659559e"
+  resolved "https://registry.npmjs.org/react/-/react-0.0.0-experimental-27659559e.tgz#d882070dab7bd5ccb71fcabcdabb1f668060911e"
+  integrity sha512-HlKnbtDDSz1ywwI1VQVp5aAmivglqHyOOaLDW5ZijF6bLf3gUsLyhAL2zHG6SF83ZWAqUnSjROsmMOXn7chyTw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -11313,10 +11278,10 @@ saxes@^5.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
-  integrity sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==
+scheduler@0.0.0-experimental-27659559e:
+  version "0.0.0-experimental-27659559e"
+  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.0.0-experimental-27659559e.tgz#c9a5f661ac482a610c2455a56931afa2e77261d3"
+  integrity sha512-8ulxFiPri7L/9tjUGGG844nA1NeydNsVa/TvbEdZ585jc1P9MdBxBr94fkQHQHbzYBmlaFpnBGHtXcQJwTlPfg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -12771,14 +12736,6 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-urql@^1.11.5:
-  version "1.11.5"
-  resolved "https://registry.npmjs.org/urql/-/urql-1.11.5.tgz#facd1420a95354d9889721f2423b3a2577fcabf8"
-  integrity sha512-2/Gpu6zV9H5U4/QHc1kxnFXtVNcdSp8JftRIkRdXoVkIB6whBCRgKV+dxJyb3t3e+urCPExsSGCfIz0MIvJd1g==
-  dependencies:
-    "@urql/core" "^1.16.0"
-    wonka "^4.0.14"
-
 use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
@@ -12961,10 +12918,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
@@ -13091,11 +13046,6 @@ wide-align@^1.1.0:
   integrity sha512-QGkOQc8XL6Bt5PwnsExKBPuMKBxnGxWWW3fU55Xt4feHozMUhdUMaBCk290qpm/wG5u/RSKzwdAC4i51YigihA==
   dependencies:
     string-width "^1.0.2 || 2"
-
-wonka@^4.0.14:
-  version "4.0.15"
-  resolved "https://registry.npmjs.org/wonka/-/wonka-4.0.15.tgz#9aa42046efa424565ab8f8f451fcca955bf80b89"
-  integrity sha512-U0IUQHKXXn6PFo9nqsHphVCE5m3IntqZNB9Jjn7EB1lrR7YTDY3YWgFvEvwniTzXSvOH/XMzAZaIfJF/LvHYXg==
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"

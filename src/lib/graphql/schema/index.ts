@@ -4,7 +4,7 @@ import { nexusPrisma } from 'nexus-plugin-prisma'
 import path from 'path'
 import * as QueryTypes from './Query'
 
-const schema = makeSchema({
+export const schema = makeSchema({
   types: [QueryTypes],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
@@ -20,5 +20,3 @@ const schema = makeSchema({
     ],
   },
 })
-
-export default schema
