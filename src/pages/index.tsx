@@ -46,7 +46,7 @@ const IndexPage: NextPage<Props> = ({ teams }) => {
       </Head>
 
       <Stack>
-        <BouncingEmoji label="Bouncing goat emoji" symbol="🐐" />
+        <BouncingEmoji label="Bouncing basketball emoji" symbol="🏀" />
         <Heading as="h1" size="xl" p={2}>
           Next Goat
         </Heading>
