@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { Box, Heading, List, Text, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdBookmark } from 'react-icons/md'
 
-import usePlayers from '@hooks/queries/usePlayers'
+import { usePlayers } from '@hooks/queries/usePlayers'
 
 type Props = {
   title: string

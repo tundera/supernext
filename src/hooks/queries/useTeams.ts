@@ -1,30 +1,22 @@
 import type { NexusGenObjects } from '@lib/graphql/generated/nexus-typegen'
 
-import { useQuery } from 'react-query'
+import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
-import gql from 'graphql-tag'
+
+import GetAllTeams from '@lib/graphql/operations/queries/GetAllTeams'
 
 type Team = NexusGenObjects['Team']
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
-function useTeams() {
-  return useQuery<Team[], Error>('teams', async () => {
-    const { allTeams: data } = await request(
-      endpoint,
-      gql`
-        query {
-          allTeams {
-            id
-            name
-            city
-          }
-        }
-      `,
-    )
+export async function getAllTeams(): Promise<Team[]> {
+  const { allTeams: data } = await request(endpoint, GetAllTeams)
 
-    return data
-  })
+  return data
 }
 
-export default useTeams
+export function useTeams(options?: UseQueryOptions<Team[], Error>) {
+  const queryOptions = { ...options }
+
+  return useQuery<Team[], Error>('teams', getAllTeams, queryOptions)
+}
