@@ -6,11 +6,11 @@
 
 ### Features
 
-- Isomorphic React with Next.js 🏆
+- Isomorphic React via Next.js 🏆
 - TypeScript (**strongly** typed 💪)
 - Chakra UI + Framer Motion 🚅
-- React Query v3 + GraphQL Codegen
-- Prisma v2 + Nexus Schema (GraphQL)
+- React Query v3 + Suspense
+- Prisma v2 + Nexus GraphQL
 - ESLint + Prettier 🎀
 - Jest Testing Framework 👑
 - Debugging (VSCode) 🔧
