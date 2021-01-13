@@ -1,6 +1,0 @@
-query AllTeamsQuery {
-  allTeams {
-    id
-    name
-  }
-}

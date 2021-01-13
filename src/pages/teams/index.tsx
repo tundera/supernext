@@ -6,7 +6,6 @@ import { request } from 'graphql-request'
 import gql from 'graphql-tag'
 
 import PageLayout from '@layouts/PageLayout'
-// import AllTeamsQuery from '@lib/graphql/operations/queries/AllTeamsQuery.graphql'
 
 type Props = {
   teams: NexusGenObjects['Team'][]
