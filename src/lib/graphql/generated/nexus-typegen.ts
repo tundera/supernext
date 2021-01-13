@@ -84,6 +84,8 @@ export interface NexusGenObjects {
     id: number // Int!
     losses?: number | null // Int
     name?: string | null // String
+    primaryColor?: string | null // String
+    secondaryColor?: string | null // String
     slug?: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage?: number | null // Float
@@ -153,6 +155,8 @@ export interface NexusGenFieldTypes {
     losses: number | null // Int
     name: string | null // String
     players: NexusGenRootTypes['Player'][] // [Player!]!
+    primaryColor: string | null // String
+    secondaryColor: string | null // String
     slug: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage: number | null // Float
@@ -214,6 +218,8 @@ export interface NexusGenFieldTypeNames {
     losses: 'Int'
     name: 'String'
     players: 'Player'
+    primaryColor: 'String'
+    secondaryColor: 'String'
     slug: 'String'
     updatedAt: 'DateTime'
     winPercentage: 'Float'

@@ -44,6 +44,8 @@ export const Team = objectType({
     t.model.slug()
     t.model.city()
     t.model.abbreviation()
+    t.model.primaryColor()
+    t.model.secondaryColor()
     t.model.wins()
     t.model.losses()
     t.model.winPercentage()

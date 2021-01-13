@@ -65,6 +65,8 @@ type Team {
   losses: Int
   name: String
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  primaryColor: String
+  secondaryColor: String
   slug: String
   updatedAt: DateTime!
   winPercentage: Float
