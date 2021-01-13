@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import { FC } from 'react'
 
+import NextLink from 'next/link'
 import { useColorMode, Button, Flex, Box, IconButton, Text } from '@chakra-ui/react'
-import Emoji from 'a11y-react-emoji'
 import { BsMoon } from 'react-icons/bs'
 import { BiSun } from 'react-icons/bi'
 import styled from '@emotion/styled'
@@ -16,11 +16,10 @@ const StickyNav = styled(Flex)`
   transition: background-color 0.1 ease-in-out;
 `
 
-const Navbar = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
-  const bgColor = { light: 'rgb(76, 110, 245, 0.8)', dark: 'rgb(26, 32, 44, 0.5)' }
+  const bgColor = { light: 'rgb(201, 8, 42, 0.8)', dark: 'rgb(26, 32, 44, 0.5)' }
   const color = { light: 'white', dark: 'gray.800' }
 
   return (
@@ -36,7 +35,7 @@ const Navbar = () => {
         maxWidth="1150px"
       >
         <Box>
-          <Link href="/" passHref>
+          <NextLink href="/" passHref>
             <Button
               fontWeight={['normal', 'medium', 'medium']}
               fontSize={['xs', 'sm', 'lg', 'xl']}
@@ -46,18 +45,15 @@ const Navbar = () => {
               p={[1, 4]}
               color="white"
             >
-              <Text fontSize={['xl', '2xl', '2xl', '2xl']} mr={2}>
-                <Emoji label="astronaut emoji" symbol="🐐" />
-              </Text>
-              Next Goat
+              <Text fontSize={['xl', '2xl', '2xl', '2xl']}>Home</Text>
             </Button>
-          </Link>
+          </NextLink>
         </Box>
 
         <Box>
-          <NavLink LinkComponent={Link} href="/about" text="About" />
-          <NavLink LinkComponent={Link} href="/blog" text="Blog" />
-          <NavLink LinkComponent={Link} href="/guides" text="Guides" />
+          <NavLink LinkComponent={NextLink} href="/about" text="About" />
+          <NavLink LinkComponent={NextLink} href="/blog" text="Blog" />
+          <NavLink LinkComponent={NextLink} href="/teams" text="Teams" />
           <IconButton
             fontWeight={['normal', 'medium', 'bold']}
             fontSize={['xs', 'sm', 'lg', 'xl']}

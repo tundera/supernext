@@ -13,6 +13,7 @@ import path from 'path'
 import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
 
+import PageLayout from '@layouts/PageLayout'
 import BlogLayout from '@layouts/BlogLayout'
 import NextMdxLink from '@components/NextMdxLink'
 
@@ -38,22 +39,24 @@ const PostPage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
   const content = hydrate(mdxSource, { components })
 
   return (
-    <BlogLayout title={`${process.env.NEXT_PUBLIC_SITE_NAME} | ${frontMatter.title}`}>
-      <Heading>
-        <nav>
-          <NextLink href="/">
-            <a>
-              <Emoji label="Home link emoji" symbol="👈" /> Go back home
-            </a>
-          </NextLink>
-        </nav>
-      </Heading>
-      <Box mb={2}>
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
-      </Box>
-      {content}
-    </BlogLayout>
+    <PageLayout title={`${process.env.NEXT_PUBLIC_SITE_NAME} | ${frontMatter.title}`}>
+      <BlogLayout>
+        <Heading>
+          <nav>
+            <NextLink href="/">
+              <a>
+                <Emoji label="Home link emoji" symbol="👈" /> Go back home
+              </a>
+            </NextLink>
+          </nav>
+        </Heading>
+        <Box mb={2}>
+          <h1>{frontMatter.title}</h1>
+          {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
+        </Box>
+        {content}
+      </BlogLayout>
+    </PageLayout>
   )
 }
 
