@@ -1856,6 +1856,16 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
+"@graphql-codegen/typescript-graphql-request@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@graphql-codegen/typescript-graphql-request/-/typescript-graphql-request-3.0.0.tgz#4db40327919986d82034c24ac96dd848eb960655"
+  integrity sha512-W2GF0SAPJAd7t8yQWKBgIp9XaKad56YcThvpe2qxaMGrM0L9Y7dK91csad0SFxhm5kmkPcDnAodIVr2VplSKNw==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
+    auto-bind "~4.0.0"
+    tslib "~2.0.1"
+
 "@graphql-codegen/typescript-operations@^1.17.13":
   version "1.17.13"
   resolved "https://registry.npmjs.org/@graphql-codegen/typescript-operations/-/typescript-operations-1.17.13.tgz#a5b08c1573b9507ca5a9e66e795aecc40ddc5305"
@@ -1865,18 +1875,6 @@
     "@graphql-codegen/typescript" "^1.18.1"
     "@graphql-codegen/visitor-plugin-common" "^1.17.22"
     auto-bind "~4.0.0"
-    tslib "~2.0.1"
-
-"@graphql-codegen/typescript-react-query@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@graphql-codegen/typescript-react-query/-/typescript-react-query-1.0.0.tgz#246ec12d6de40f03370210520d7ed921f7b38a0b"
-  integrity sha512-xmfR5/PShZVKzP6y2GLOOhtgV8tjyXrqvLVYssvuqKXqTpqkNCEDv4BYzUmX9S0Fgd+2jXBfL6IW4fZ1gzqJ1Q==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "^1.18.2"
-    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
-    auto-bind "~4.0.0"
-    camel-case "^4.1.2"
-    pascal-case "^3.1.1"
     tslib "~2.0.1"
 
 "@graphql-codegen/typescript@^1.18.1", "@graphql-codegen/typescript@^1.20.0":

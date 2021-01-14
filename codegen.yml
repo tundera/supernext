@@ -1,0 +1,13 @@
+schema: http://localhost:3000/api/graphql
+documents: src/lib/graphql/operations/**/*.ts
+generates:
+  src/lib/graphql/generated/graphql-codegen.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      fetcher: graphql-request
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
