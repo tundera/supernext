@@ -9,6 +9,7 @@ module.exports = {
           '@components': './src/components',
           '@hooks': './src/hooks',
           '@providers': './src/providers',
+          '@suspense': './src/suspense',
           '@layouts': './src/layouts',
           '@pages': './src/pages',
           '@styles': './src/styles',

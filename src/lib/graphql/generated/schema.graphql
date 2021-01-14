@@ -3,10 +3,10 @@
 
 type Coach {
   createdAt: DateTime!
-  handle: String
+  handle: String!
   id: Int!
   isAssistant: String
-  name: String
+  name: String!
   team: Team
   teamId: Int
   type: String
@@ -22,17 +22,17 @@ scalar DateTime
 
 type Player {
   createdAt: DateTime!
-  handle: String
-  height: String
+  handle: String!
+  height: String!
   id: Int!
-  name: String
+  name: String!
   number: String
   position: String
-  slug: String
+  slug: String!
   team: Team
   teamId: Int
   updatedAt: DateTime!
-  weight: String
+  weight: String!
 }
 
 input PlayerWhereUniqueInput {
@@ -53,21 +53,21 @@ type Query {
 }
 
 type Team {
-  abbreviation: String
-  city: String
+  abbreviation: String!
+  city: String!
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
-  conference: String
+  conference: String!
   createdAt: DateTime!
-  division: String
-  established: String
-  handle: String
+  division: String!
+  established: String!
+  handle: String!
   id: Int!
   losses: Int
-  name: String
+  name: String!
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
-  primaryColor: String
-  secondaryColor: String
-  slug: String
+  primaryColor: String!
+  secondaryColor: String!
+  slug: String!
   updatedAt: DateTime!
   winPercentage: Float
   wins: Int

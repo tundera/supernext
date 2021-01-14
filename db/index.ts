@@ -1,3 +1,5 @@
+// Temporary module for replacing experimental next-plugin-prisma until stable
+
 import { PrismaClient } from '@prisma/client'
 
 export * from '@prisma/client'

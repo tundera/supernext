@@ -49,10 +49,10 @@ export interface NexusGenObjects {
   Coach: {
     // root type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    handle?: string | null // String
+    handle: string // String!
     id: number // Int!
     isAssistant?: string | null // String
-    name?: string | null // String
+    name: string // String!
     teamId?: number | null // Int
     type?: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
@@ -60,33 +60,33 @@ export interface NexusGenObjects {
   Player: {
     // root type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    handle?: string | null // String
-    height?: string | null // String
+    handle: string // String!
+    height: string // String!
     id: number // Int!
-    name?: string | null // String
+    name: string // String!
     number?: string | null // String
     position?: string | null // String
-    slug?: string | null // String
+    slug: string // String!
     teamId?: number | null // Int
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
-    weight?: string | null // String
+    weight: string // String!
   }
   Query: {}
   Team: {
     // root type
-    abbreviation?: string | null // String
-    city?: string | null // String
-    conference?: string | null // String
+    abbreviation: string // String!
+    city: string // String!
+    conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    division?: string | null // String
-    established?: string | null // String
-    handle?: string | null // String
+    division: string // String!
+    established: string // String!
+    handle: string // String!
     id: number // Int!
     losses?: number | null // Int
-    name?: string | null // String
-    primaryColor?: string | null // String
-    secondaryColor?: string | null // String
-    slug?: string | null // String
+    name: string // String!
+    primaryColor: string // String!
+    secondaryColor: string // String!
+    slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage?: number | null // Float
     wins?: number | null // Int
@@ -105,10 +105,10 @@ export interface NexusGenFieldTypes {
   Coach: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    handle: string | null // String
+    handle: string // String!
     id: number // Int!
     isAssistant: string | null // String
-    name: string | null // String
+    name: string // String!
     team: NexusGenRootTypes['Team'] | null // Team
     teamId: number | null // Int
     type: string | null // String
@@ -117,17 +117,17 @@ export interface NexusGenFieldTypes {
   Player: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    handle: string | null // String
-    height: string | null // String
+    handle: string // String!
+    height: string // String!
     id: number // Int!
-    name: string | null // String
+    name: string // String!
     number: string | null // String
     position: string | null // String
-    slug: string | null // String
+    slug: string // String!
     team: NexusGenRootTypes['Team'] | null // Team
     teamId: number | null // Int
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
-    weight: string | null // String
+    weight: string // String!
   }
   Query: {
     // field return type
@@ -143,21 +143,21 @@ export interface NexusGenFieldTypes {
   }
   Team: {
     // field return type
-    abbreviation: string | null // String
-    city: string | null // String
+    abbreviation: string // String!
+    city: string // String!
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
-    conference: string | null // String
+    conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
-    division: string | null // String
-    established: string | null // String
-    handle: string | null // String
+    division: string // String!
+    established: string // String!
+    handle: string // String!
     id: number // Int!
     losses: number | null // Int
-    name: string | null // String
+    name: string // String!
     players: NexusGenRootTypes['Player'][] // [Player!]!
-    primaryColor: string | null // String
-    secondaryColor: string | null // String
-    slug: string | null // String
+    primaryColor: string // String!
+    secondaryColor: string // String!
+    slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage: number | null // Float
     wins: number | null // Int

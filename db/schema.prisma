@@ -11,8 +11,8 @@ model Coach {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime
-  handle      String?  @unique
-  name        String?
+  handle      String   @unique
+  name        String
   teamId      Int?
   type        String?
   isAssistant String?
@@ -23,12 +23,12 @@ model Player {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime
-  handle    String?  @unique
-  name      String?
-  slug      String?
+  handle    String   @unique
+  name      String
+  slug      String
   teamId    Int?
-  height    String?
-  weight    String?
+  height    String
+  weight    String
   number    String?
   position  String?
   team      Team?    @relation(fields: [teamId], references: [id])
@@ -38,19 +38,19 @@ model Team {
   id             Int      @id @default(autoincrement())
   createdAt      DateTime @default(now())
   updatedAt      DateTime
-  handle         String?  @unique
-  name           String?
-  slug           String?
-  city           String?
-  abbreviation   String?
+  handle         String   @unique
+  name           String
+  slug           String
+  city           String
+  abbreviation   String
   wins           Int?
   losses         Int?
   winPercentage  Float?
-  conference     String?
-  division       String?
-  established    String?
-  primaryColor   String?
-  secondaryColor String?
+  conference     String
+  division       String
+  established    String
+  primaryColor   String
+  secondaryColor String
   coaches        Coach[]
   players        Player[]
 }

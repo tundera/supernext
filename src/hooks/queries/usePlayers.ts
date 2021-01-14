@@ -1,11 +1,9 @@
-import type { NexusGenObjects } from '@lib/graphql/generated/nexus-typegen'
+import type { Player } from 'types/graphql'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
 import GetAllPlayers from '@lib/graphql/operations/queries/GetAllPlayers'
-
-type Player = NexusGenObjects['Player']
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

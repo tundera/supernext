@@ -1,11 +1,9 @@
-import type { NexusGenObjects } from '@lib/graphql/generated/nexus-typegen'
+import type { Coach } from 'types/graphql'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
 import GetAllCoaches from '@lib/graphql/operations/queries/GetAllCoaches'
-
-type Coach = NexusGenObjects['Coach']
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
