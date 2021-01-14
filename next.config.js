@@ -2,6 +2,9 @@ module.exports = {
   experimental: {
     reactMode: 'concurrent',
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
