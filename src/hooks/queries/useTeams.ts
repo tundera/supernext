@@ -3,12 +3,12 @@ import type { Team } from 'types/graphql'
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
-import GetAllTeams from '@lib/graphql/operations/queries/GetAllTeams'
+import TeamsQuery from '@lib/graphql/operations/queries/Teams'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
 export async function getAllTeams(): Promise<Team[]> {
-  const { allTeams: data } = await request(endpoint, GetAllTeams)
+  const { allTeams: data } = await request(endpoint, TeamsQuery)
 
   return data
 }

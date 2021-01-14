@@ -1,13 +1,10 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query {
-    allCoaches {
+  query CoachesByTeamQuery($id: Int) {
+    playersByTeam(id: $id) {
       id
       name
-      team {
-        name
-      }
     }
   }
 `

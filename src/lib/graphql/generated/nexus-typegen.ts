@@ -136,8 +136,10 @@ export interface NexusGenFieldTypes {
     allTeams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
     coach: NexusGenRootTypes['Coach'] | null // Coach
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
+    coachesByTeam: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
     player: NexusGenRootTypes['Player'] | null // Player
     players: NexusGenRootTypes['Player'][] // [Player!]!
+    playersByTeam: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
     team: NexusGenRootTypes['Team'] | null // Team
     teams: NexusGenRootTypes['Team'][] // [Team!]!
   }
@@ -199,8 +201,10 @@ export interface NexusGenFieldTypeNames {
     allTeams: 'Team'
     coach: 'Coach'
     coaches: 'Coach'
+    coachesByTeam: 'Coach'
     player: 'Player'
     players: 'Player'
+    playersByTeam: 'Player'
     team: 'Team'
     teams: 'Team'
   }
@@ -240,6 +244,10 @@ export interface NexusGenArgTypes {
       first?: number | null // Int
       last?: number | null // Int
     }
+    coachesByTeam: {
+      // args
+      id?: number | null // Int
+    }
     player: {
       // args
       where: NexusGenInputs['PlayerWhereUniqueInput'] // PlayerWhereUniqueInput!
@@ -250,6 +258,10 @@ export interface NexusGenArgTypes {
       before?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
       first?: number | null // Int
       last?: number | null // Int
+    }
+    playersByTeam: {
+      // args
+      id?: number | null // Int
     }
     team: {
       // args

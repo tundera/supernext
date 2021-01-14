@@ -3,12 +3,12 @@ import type { Player } from 'types/graphql'
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
-import GetAllPlayers from '@lib/graphql/operations/queries/GetAllPlayers'
+import PlayersQuery from '@lib/graphql/operations/queries/Players'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
 export async function getAllPlayers(): Promise<Player[]> {
-  const { allPlayers: data } = await request(endpoint, GetAllPlayers)
+  const { allPlayers: data } = await request(endpoint, PlayersQuery)
 
   return data
 }

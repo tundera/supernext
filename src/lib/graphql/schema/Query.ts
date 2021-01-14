@@ -1,4 +1,4 @@
-import { objectType, queryType } from 'nexus'
+import { objectType, queryType, list, intArg } from 'nexus'
 
 export const Player = objectType({
   name: 'Player',
@@ -59,24 +59,44 @@ export const Team = objectType({
 
 export const Query = queryType({
   definition(t) {
-    t.list.field('allCoaches', {
-      type: 'Coach',
+    t.field('allCoaches', {
+      type: list('Coach'),
       resolve(_parent, _args, ctx) {
         return ctx.prisma.coach.findMany({})
       },
     })
 
-    t.list.field('allPlayers', {
-      type: 'Player',
+    t.field('allPlayers', {
+      type: list('Player'),
       resolve(_parent, _args, ctx) {
         return ctx.prisma.player.findMany({})
       },
     })
 
-    t.list.field('allTeams', {
-      type: 'Team',
+    t.field('allTeams', {
+      type: list('Team'),
       resolve(_parent, _args, ctx) {
         return ctx.prisma.team.findMany({})
+      },
+    })
+
+    t.field('coachesByTeam', {
+      type: list('Coach'),
+      args: {
+        id: intArg(),
+      },
+      resolve: (_parent, args, ctx) => {
+        return ctx.prisma.coach.findMany({ where: { teamId: args.id } })
+      },
+    })
+
+    t.field('playersByTeam', {
+      type: list('Player'),
+      args: {
+        id: intArg(),
+      },
+      resolve: (_parent, args, ctx) => {
+        return ctx.prisma.player.findMany({ where: { teamId: args.id } })
       },
     })
 

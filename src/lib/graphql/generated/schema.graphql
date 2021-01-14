@@ -46,8 +46,10 @@ type Query {
   allTeams: [Team]
   coach(where: CoachWhereUniqueInput!): Coach
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
+  coachesByTeam(id: Int): [Coach]
   player(where: PlayerWhereUniqueInput!): Player
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  playersByTeam(id: Int): [Player]
   team(where: TeamWhereUniqueInput!): Team
   teams(after: TeamWhereUniqueInput, before: TeamWhereUniqueInput, first: Int, last: Int): [Team!]!
 }
