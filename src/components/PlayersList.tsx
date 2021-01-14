@@ -1,40 +1,33 @@
-import type { FC } from 'react'
+import { FC } from 'react'
 
-import { Box, Heading, List, Text, ListItem, ListIcon } from '@chakra-ui/react'
-import { MdBookmark } from 'react-icons/md'
+import { Box, Heading } from '@chakra-ui/react'
 
 import { usePlayers } from '@hooks/queries/usePlayers'
+import Suspense from '@suspense/ReactQuerySuspense'
+import LoadingSpinner from '@components/LoadingSpinner'
 
 type Props = {
   title: string
 }
 
-// TODO: Convert this render to Suspense
+// TODO: Convert this use SuspenseList once stable
 const PlayersList: FC<Props> = ({ title }) => {
-  const { status, data, error, isFetching } = usePlayers()
+  const { data: players } = usePlayers()
 
   return (
     <Box bg="purple.100" p={2} borderRadius={8} alignItems="center" justifyContent="center">
       <Heading p={2} my={1}>
         {title}
       </Heading>
-      <List spacing={3}>
-        {status === 'loading' ? (
-          'Loading...'
-        ) : status === 'error' ? (
-          <span>Error: {error?.message}</span>
-        ) : (
-          <>
-            {data?.map((player) => (
-              <ListItem key={player.slug}>
-                <ListIcon as={MdBookmark} />
-                {player.name}
-              </ListItem>
-            ))}
-            <Text>{isFetching ? 'Background Updating...' : ' '}</Text>
-          </>
-        )}
-      </List>
+      {players?.map((player) => (
+        <Suspense fallback={<LoadingSpinner />}>
+          <Box p={5} bg="gray.200" shadow="md" borderRadius={4} height="80px">
+            <Heading fontSize="lg" textAlign="center">
+              {player.name}
+            </Heading>
+          </Box>
+        </Suspense>
+      ))}
     </Box>
   )
 }
