@@ -12,16 +12,16 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const newsletters = await getNewsletters()
+  const posts = await getNewsletters()
 
   return {
     props: {
-      newsletters,
+      posts,
     },
   }
 }
 
-const NewslettersPage: NextPage<Props> = ({ newsletters }) => {
+const BlogPage: NextPage<Props> = ({ newsletters }) => {
   return (
     <PageLayout title="Newsletters">
       <Stack spacing={8}>
@@ -34,4 +34,4 @@ const NewslettersPage: NextPage<Props> = ({ newsletters }) => {
   )
 }
 
-export default NewslettersPage
+export default BlogPage
