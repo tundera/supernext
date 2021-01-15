@@ -1,28 +1,27 @@
 import type { GetStaticProps, NextPage } from 'next'
+import type { Newsletter } from 'types/content'
 
-import { QueryClient } from 'react-query'
-import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import NewslettersList from '@components/NewslettersList'
-import { getNewsletters, useNewsletters } from '@hooks/queries/useNewsletters'
+import { getNewsletters } from '@lib/local/getNewsletters'
+
+type Props = {
+  newsletters: Newsletter[]
+}
 
 export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery('newsletters', getNewsletters)
+  const posts = await getNewsletters()
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      posts,
     },
   }
 }
 
-const NewslettersPage: NextPage = () => {
-  const { data: newsletters } = useNewsletters()
-
+const NewslettersPage: NextPage<Props> = ({ newsletters }) => {
   return (
     <PageLayout title="Newsletters">
       <Stack spacing={8}>

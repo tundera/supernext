@@ -3,7 +3,6 @@ import type { Newsletter, FrontMatter } from 'types/content'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { useQuery } from 'react-query'
 
 const root = process.cwd()
 
@@ -20,8 +19,4 @@ export async function getNewsletters(): Promise<Newsletter[]> {
   })
 
   return newsletters
-}
-
-export function useNewsletters() {
-  return useQuery<Newsletter[], Error>('newsletters', getNewsletters)
 }
