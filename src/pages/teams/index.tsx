@@ -5,7 +5,7 @@ import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
-import { getAllTeams, useTeams } from '@hooks/queries/useTeams'
+import { getAllTeams, useTeams } from '@hooks/react-query/useTeams'
 import TeamCard from '@components/TeamCard'
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -13,6 +13,7 @@ module.exports = {
           '@layouts': './src/layouts',
           '@pages': './src/pages',
           '@styles': './src/styles',
+          '@graphql': './src/graphql',
           '@utils': './src/utils',
           '@lib': './src/lib',
         },

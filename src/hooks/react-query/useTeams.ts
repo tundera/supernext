@@ -1,9 +1,9 @@
-import type { Team } from 'types/graphql'
+import type { Team } from 'types/nexus'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
-import TeamsQuery from '@lib/graphql/operations/queries/Teams'
+import TeamsQuery from '@graphql/nexus/queries/Teams'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

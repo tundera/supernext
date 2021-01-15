@@ -8,15 +8,15 @@ export const schema = makeSchema({
   types: [QueryTypes],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
-    typegen: path.join(process.cwd(), 'src/lib/graphql/generated/nexus-typegen.ts'),
-    schema: path.join(process.cwd(), 'src/lib/graphql/generated/schema.graphql'),
+    typegen: path.join(process.cwd(), 'services/nexus/generated/nexus-typegen.ts'),
+    schema: path.join(process.cwd(), 'services/nexus/generated/schema.graphql'),
   },
   prettierConfig: path.join(process.cwd(), 'prettier.config.js'),
-  contextType: { module: path.join(process.cwd(), 'src/lib/graphql', 'context.ts'), export: 'Context' },
+  contextType: { module: path.join(process.cwd(), 'services/nexus', 'context.ts'), export: 'Context' },
   sourceTypes: {
     modules: [
       { module: '@prisma/client', alias: 'prisma' },
-      { module: path.join(process.cwd(), 'src/lib/graphql', 'context.ts'), alias: 'Context' },
+      { module: path.join(process.cwd(), 'services/nexus', 'context.ts'), alias: 'Context' },
     ],
   },
 })

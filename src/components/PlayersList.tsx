@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Box, Heading } from '@chakra-ui/react'
 
-import { usePlayers } from '@hooks/queries/usePlayers'
+import { usePlayers } from '@hooks/react-query/usePlayers'
 import Suspense from '@suspense/ReactQuerySuspense'
 import LoadingSpinner from '@components/LoadingSpinner'
 

@@ -1,9 +1,9 @@
-import type { Coach } from 'types/graphql'
+import type { Coach } from 'types/nexus'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
-import CoachesQuery from '@lib/graphql/operations/queries/Coaches'
+import CoachesQuery from '@graphql/nexus/queries/Coaches'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

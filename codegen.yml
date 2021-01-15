@@ -1,7 +1,7 @@
 schema: http://localhost:3000/api/graphql
-documents: src/lib/graphql/operations/**/*.ts
+documents: src/graphql/nexus/**/*.ts
 generates:
-  src/lib/graphql/generated/graphql-codegen.ts:
+  services/nexus/generated/graphql-codegen.ts:
     plugins:
       - typescript
       - typescript-operations

@@ -23,7 +23,7 @@
     "postinstall": "prisma generate",
     "dev": "NODE_OPTIONS='--inspect' next",
     "generate": "graphql-codegen",
-    "build:nexus-typegen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only src/lib/graphql/schema",
+    "build:nexus-typegen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only services/nexus/schema",
     "build:next": "next build",
     "build": "yarn build:nexus-typegen && yarn build:next",
     "db:introspect": "prisma introspect --schema='db/schema.prisma' --print",

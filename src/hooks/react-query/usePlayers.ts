@@ -1,9 +1,9 @@
-import type { Player } from 'types/graphql'
+import type { Player } from 'types/nexus'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 import { request } from 'graphql-request'
 
-import PlayersQuery from '@lib/graphql/operations/queries/Players'
+import PlayersQuery from '@graphql/nexus/queries/Players'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

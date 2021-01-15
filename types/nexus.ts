@@ -1,4 +1,4 @@
-import type { NexusGenObjects } from '@lib/graphql/generated/nexus-typegen'
+import type { NexusGenObjects } from 'services/nexus/generated/nexus-typegen'
 
 export type Coach = NexusGenObjects['Coach']
 export type Player = NexusGenObjects['Player']
