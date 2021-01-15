@@ -14,9 +14,9 @@ type Props = {
   post: BlogPost
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
   const slug = params?.slug as string
-  const post = await getSingleBlogPost(slug)
+  const post = await getSingleBlogPost(slug, preview)
 
   return {
     props: {
