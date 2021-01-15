@@ -23,10 +23,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const NewslettersPage: NextPage<Props> = ({ newsletters }) => {
   return (
-    <PageLayout title="Newsletters">
+    <PageLayout>
       <Stack spacing={8}>
         <Heading as="h1" size="xl">
-          Chakra Base
+          Next Goat News
         </Heading>
         <NewslettersList title="Recent Newsletters" newsletters={newsletters} />
       </Stack>

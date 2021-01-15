@@ -24,7 +24,7 @@ const BlogPage: NextPage = () => {
   const { data: posts } = useBlogPosts()
 
   return (
-    <PageLayout title="Blog">
+    <PageLayout>
       <Stack spacing={8}>
         <Heading as="h1" size="xl">
           Blog

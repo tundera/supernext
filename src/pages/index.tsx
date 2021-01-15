@@ -11,7 +11,7 @@ const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
 
 const IndexPage: NextPage = () => {
   return (
-    <PageLayout title="Home">
+    <PageLayout>
       <Stack>
         <Heading as="h1" size="xl" py={8} textAlign="center">
           Next Goat

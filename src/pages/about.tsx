@@ -7,7 +7,7 @@ import PageLayout from '@layouts/PageLayout'
 
 const AboutPage: NextPage = () => {
   return (
-    <PageLayout title="About">
+    <PageLayout>
       <Stack>
         <Heading as="h1" size="xl" p={2}>
           About

@@ -4,7 +4,7 @@ import PageSeoQuery from '@graphql/datocms/queries/PageSeo'
 
 export async function getPageSeo(): Promise<any> {
   const options = { query: PageSeoQuery }
-  const { site, blogPost } = await request({ ...options })
+  const data = await request({ ...options })
 
-  return { site, blogPost }
+  return data
 }

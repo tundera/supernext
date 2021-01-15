@@ -39,7 +39,7 @@ const NewsletterPage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
   const content = hydrate(mdxSource, { components })
 
   return (
-    <PageLayout title={`${process.env.NEXT_PUBLIC_SITE_NAME} | ${frontMatter.title}`}>
+    <PageLayout>
       <NewsletterLayout>
         <Heading>
           <nav>

@@ -26,7 +26,7 @@ const TeamsPage: NextPage = () => {
   const { data: teams } = useTeams()
 
   return (
-    <PageLayout title="Home">
+    <PageLayout>
       <Stack>
         <Heading as="h1" size="xl" py={8} textAlign="center">
           Teams

@@ -42,7 +42,7 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
   }
 
   return (
-    <PageLayout title={`${process.env.NEXT_PUBLIC_SITE_NAME} Blog | ${post?.title}`}>
+    <PageLayout>
       <BlogPostLayout>
         <Box mb={2}>
           <Heading>{post?.title}</Heading>
