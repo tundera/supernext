@@ -65,6 +65,7 @@
     "nexus": "^1.0.0",
     "nexus-plugin-prisma": "^0.28.0",
     "react": "^0.0.0-experimental-27659559e",
+    "react-datocms": "^1.4.7",
     "react-dom": "^0.0.0-experimental-27659559e",
     "react-error-boundary": "^3.1.0",
     "react-icons": "^4.1.0",
