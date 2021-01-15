@@ -5,12 +5,13 @@ import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
-import { getBlogPosts, useBlogPosts } from '@hooks/react-query/useBlogPosts'
+import { getAllBlogPosts } from '@lib/datocms/blog'
+import { useBlogPosts } from '@hooks/react-query/useBlogPosts'
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery('blog-posts', getBlogPosts)
+  await queryClient.prefetchQuery('blog-posts', getAllBlogPosts)
 
   return {
     props: {

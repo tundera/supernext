@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import Head from 'next/head'
+import { renderMetaTags } from 'react-datocms'
 
 import Navbar from '@components/Navbar'
 import Container from '@layouts/Container'
@@ -14,8 +15,8 @@ const PageLayout: FC<Props> = ({ title, children }) => {
   return (
     <>
       <Head>
-        <meta charSet="utf-8" />
         <title>{`${process.env.NEXT_PUBLIC_SITE_NAME} | ${title}`}</title>
+        <meta charSet="utf-8" />
       </Head>
       <Navbar />
       <Container>{children}</Container>

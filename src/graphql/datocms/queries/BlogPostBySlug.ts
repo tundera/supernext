@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query BlogPostsQuery($limit: IntType) {
-    allBlogPosts(first: $limit) {
+  query BlogPostBySlugQuery($slug: String) {
+    blogPost(filter: { slug: { eq: $slug } }) {
       id
       title
       author
       publishedDate
-      content
       slug
+      content
       coverImage {
         responsiveImage(imgixParams: { fit: crop, w: 500, h: 300, auto: format }) {
           srcSet

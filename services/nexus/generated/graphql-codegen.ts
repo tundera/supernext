@@ -171,7 +171,7 @@ export type CoachesByTeamQueryQueryVariables = Exact<{
 }>
 
 export type CoachesByTeamQueryQuery = { __typename?: 'Query' } & {
-  playersByTeam?: Maybe<Array<Maybe<{ __typename?: 'Player' } & Pick<Player, 'id' | 'name'>>>>
+  coachesByTeam?: Maybe<Array<Maybe<{ __typename?: 'Coach' } & Pick<Coach, 'id' | 'name'>>>>
 }
 
 export type PlayersQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -215,7 +215,7 @@ export const CoachesQueryDocument = gql`
 `
 export const CoachesByTeamQueryDocument = gql`
   query CoachesByTeamQuery($id: Int) {
-    playersByTeam(id: $id) {
+    coachesByTeam(id: $id) {
       id
       name
     }
