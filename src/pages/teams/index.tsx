@@ -39,9 +39,7 @@ const TeamsPage: NextPage<Props> = ({ metaTags }) => {
 
   return (
     <div>
-      <Head>
-        <Head>{renderMetaTags(metaTags)}</Head>
-      </Head>
+      <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack>
           <Heading as="h1" size="xl" py={8} textAlign="center">

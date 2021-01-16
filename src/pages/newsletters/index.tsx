@@ -34,9 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const NewslettersPage: NextPage<Props> = ({ newsletters, metaTags }) => {
   return (
     <div>
-      <Head>
-        <Head>{renderMetaTags(metaTags)}</Head>
-      </Head>
+      <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack spacing={8}>
           <Heading as="h1" size="xl">

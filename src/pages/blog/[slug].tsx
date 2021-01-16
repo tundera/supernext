@@ -51,9 +51,7 @@ const BlogPostPage: NextPage<Props> = ({ post /* , metaTags */ }) => {
 
   return (
     <div>
-      {/* <Head>
-        <Head>{renderMetaTags(metaTags)}</Head>
-      </Head> */}
+      {/* <Head>{renderMetaTags(metaTags)}</Head> */}
       <PageLayout>
         <BlogPostLayout>
           <Box mb={2}>

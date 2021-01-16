@@ -29,9 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const AboutPage: NextPage<Props> = ({ metaTags }) => {
   return (
     <div>
-      <Head>
-        <Head>{renderMetaTags(metaTags)}</Head>
-      </Head>
+      <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack>
           <Heading as="h1" size="xl" p={2}>

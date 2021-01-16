@@ -32,9 +32,7 @@ const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
 const HomePage: NextPage<Props> = ({ metaTags }) => {
   return (
     <div>
-      <Head>
-        <Head>{renderMetaTags(metaTags)}</Head>
-      </Head>
+      <Head>{renderMetaTags(metaTags)}</Head>
       <Code
         background="#f5f5f5"
         borderRadius="3px"
