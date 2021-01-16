@@ -1,3 +1,5 @@
+import { ResponsiveImageType, ToMetaTagsType } from 'react-datocms'
+
 export type ResponsiveImage = {
   srcSet: string
   webpSrcSet: string
@@ -11,16 +13,48 @@ export type ResponsiveImage = {
   base64: string
 }
 
-export type CoverImage = {
-  responsiveImage: ResponsiveImage
-}
-
 export type BlogPost = {
   id: string
   title: string
-  author: string
-  publishedDate: string
+  author: {
+    name: string
+    picture: ResponsiveImageType
+  }
+  date: string
   slug: string
+  excerpt: string
   content: string
-  coverImage: CoverImage
+  coverImage: {
+    responsiveImage: ResponsiveImageType
+  }
+}
+
+export type PageSeoType = {
+  site: {
+    favicon: ToMetaTagsType
+  }
+  page: {
+    seo: ToMetaTagsType
+  }
+}
+
+export type BlogPostSeoType = {
+  site: {
+    favicon: ToMetaTagsType
+  }
+  blogPost: {
+    seo: ToMetaTagsType
+  }
+}
+
+export type BlogPostsVariables = {
+  limit: number
+}
+
+export type PageSeoVariables = {
+  title: string
+}
+
+export type BlogPostSeoVariables = {
+  slug: string
 }

@@ -3,7 +3,7 @@ import type { Newsletter } from 'types/content'
 
 import Head from 'next/head'
 import { Heading, Stack } from '@chakra-ui/react'
-import { renderMetaTags } from 'react-datocms'
+import { renderMetaTags, SeoMetaTagType } from 'react-datocms'
 
 import PageLayout from '@layouts/PageLayout'
 import NewslettersList from '@components/NewslettersList'
@@ -12,7 +12,7 @@ import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
   newsletters: Newsletter[]
-  metaTags?: any
+  metaTags: SeoMetaTagType[]
 }
 
 const title = 'Newsletters'

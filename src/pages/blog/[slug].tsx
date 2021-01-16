@@ -4,7 +4,7 @@ import type { BlogPost } from 'types/datocms'
 // import Head from 'next/head'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import { Image /* , renderMetaTags */ } from 'react-datocms'
+import { Image /* , renderMetaTags */, SeoMetaTagType } from 'react-datocms'
 import { Box, Heading, Text } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
@@ -14,7 +14,7 @@ import { getBlogPostSeo } from '@lib/datocms/seo'
 
 type Props = {
   post: BlogPost
-  metaTags?: any
+  metaTags: SeoMetaTagType[]
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
@@ -57,7 +57,7 @@ const BlogPostPage: NextPage<Props> = ({ post /* , metaTags */ }) => {
           <Box mb={2}>
             <Heading>{post?.title}</Heading>
             {post?.coverImage && <Image data={post?.coverImage?.responsiveImage} />}
-            {post?.publishedDate && <Text opacity="0.6">{post?.publishedDate}</Text>}
+            {post?.date && <Text opacity="0.6">{post?.date}</Text>}
           </Box>
           <Text>{post?.content}</Text>
         </BlogPostLayout>

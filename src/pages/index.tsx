@@ -2,14 +2,14 @@ import type { NextPage, GetStaticProps } from 'next'
 
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { renderMetaTags, renderMetaTagsToString } from 'react-datocms'
+import { renderMetaTags, renderMetaTagsToString, SeoMetaTagType } from 'react-datocms'
 import { Code, Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
-  metaTags?: any
+  metaTags: SeoMetaTagType[]
 }
 
 const title = 'Home'

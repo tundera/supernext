@@ -3,7 +3,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
-import { renderMetaTags } from 'react-datocms'
+import { renderMetaTags, SeoMetaTagType } from 'react-datocms'
 import { Heading, Stack, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
@@ -13,7 +13,7 @@ import { getAllTeams } from '@lib/nexus/teams'
 import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
-  metaTags?: any
+  metaTags: SeoMetaTagType[]
 }
 
 const title = 'Teams'

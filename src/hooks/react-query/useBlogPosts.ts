@@ -1,9 +1,11 @@
+import type { BlogPost } from 'types/datocms'
+
 import { useQuery, UseQueryOptions } from 'react-query'
 
 import { getAllBlogPosts } from '@lib/datocms/blog'
 
-export function useBlogPosts(options?: UseQueryOptions<any, Error>) {
+export function useBlogPosts(options?: UseQueryOptions<BlogPost[], Error>) {
   const queryOptions = { ...options }
 
-  return useQuery<any, Error>('blog-posts', getAllBlogPosts, queryOptions)
+  return useQuery<BlogPost[], Error>('blog-posts', getAllBlogPosts, queryOptions)
 }

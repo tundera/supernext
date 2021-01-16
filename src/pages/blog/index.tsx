@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack } from '@chakra-ui/react'
-import { renderMetaTags } from 'react-datocms'
+import { renderMetaTags, SeoMetaTagType } from 'react-datocms'
 
 import PageLayout from '@layouts/PageLayout'
 import { useBlogPosts } from '@hooks/react-query/useBlogPosts'
@@ -12,7 +12,7 @@ import { getAllBlogPosts } from '@lib/datocms/blog'
 import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
-  metaTags?: any
+  metaTags: SeoMetaTagType[]
 }
 
 const title = 'Blog'
