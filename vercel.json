@@ -2,13 +2,13 @@
   "version": 2,
   "env": {
     "DATABASE_URL": "@next_goat_database_url",
-    "DATOCMS_API_TOKEN": "@next_goat_datocms_api_token",
-    "DATOCMS_PREVIEW_SECRET": "@next_goat_datocms_preview_secret"
+    "NEXT_DATOCMS_API_TOKEN": "@next_goat_datocms_api_token",
+    "NEXT_DATOCMS_PREVIEW_SECRET": "@next_goat_datocms_preview_secret"
   },
   "build": {
     "env": {
       "DATABASE_URL": "@next_goat_database_url",
-      "DATOCMS_API_TOKEN": "@next_goat_datocms_api_token"
+      "NEXT_DATOCMS_API_TOKEN": "@next_goat_datocms_api_token"
     }
   }
 }
