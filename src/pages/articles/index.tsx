@@ -1,50 +1,50 @@
 import type { GetStaticProps, NextPage } from 'next'
-import type { Newsletter } from 'types/content'
+import type { Article } from 'types/content'
 
 import Head from 'next/head'
 import { Heading, Stack } from '@chakra-ui/react'
 import { renderMetaTags, SeoMetaTagType } from 'react-datocms'
 
 import PageLayout from '@layouts/PageLayout'
-import NewslettersList from '@components/NewslettersList'
-import { getNewsletters } from '@lib/local/getNewsletters'
+import ArticlesList from '@components/ArticlesList'
+import { getArticles } from '@lib/local/getArticles'
 import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
-  newsletters: Newsletter[]
+  articles: Article[]
   metaTags: SeoMetaTagType[]
 }
 
-const title = 'Newsletters'
+const title = 'Articles'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const newsletters = await getNewsletters()
+  const articles = await getArticles()
 
   const data = await getPageSeo(title)
   const metaTags = data.page.seo.concat(data.site.favicon)
 
   return {
     props: {
-      newsletters,
+      articles,
       metaTags,
     },
   }
 }
 
-const NewslettersPage: NextPage<Props> = ({ newsletters, metaTags }) => {
+const ArticlesPage: NextPage<Props> = ({ articles, metaTags }) => {
   return (
     <div>
       <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack spacing={8}>
           <Heading as="h1" size="xl">
-            Next Goat News
+            Articles
           </Heading>
-          <NewslettersList title="Recent Newsletters" newsletters={newsletters} />
+          <ArticlesList title="Recent Articles" articles={articles} />
         </Stack>
       </PageLayout>
     </div>
   )
 }
 
-export default NewslettersPage
+export default ArticlesPage

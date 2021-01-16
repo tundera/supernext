@@ -9,7 +9,7 @@ export type FrontMatter = {
   demoLink?: string
 }
 
-export type Newsletter = {
+export type Article = {
   slug: string
   content: string
   frontMatter: FrontMatter

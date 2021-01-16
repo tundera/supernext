@@ -14,7 +14,7 @@ import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
 
 import PageLayout from '@layouts/PageLayout'
-import NewsletterLayout from '@layouts/NewsletterLayout'
+import ArticleLayout from '@layouts/ArticleLayout'
 import NextMdxLink from '@components/NextMdxLink'
 
 import { FrontMatter } from 'types/content'
@@ -35,12 +35,12 @@ const components = {
   Head,
 }
 
-const NewsletterPage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
+const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
   const content = hydrate(mdxSource, { components })
 
   return (
     <PageLayout>
-      <NewsletterLayout>
+      <ArticleLayout>
         <Heading>
           <nav>
             <NextLink href="/">
@@ -55,15 +55,15 @@ const NewsletterPage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
           {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
         </Box>
         {content}
-      </NewsletterLayout>
+      </ArticleLayout>
     </PageLayout>
   )
 }
 
-export default NewsletterPage
+export default ArticlePage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const source = fs.readFileSync(path.join(root, 'content', 'newsletters', `${params?.slug}.mdx`), 'utf8')
+  const source = fs.readFileSync(path.join(root, 'content', 'articles', `${params?.slug}.mdx`), 'utf8')
   const { data, content } = matter(source)
 
   const mdxSource = await renderToString(content, {
@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     fallback: false,
-    paths: fs.readdirSync(path.join(root, 'content', 'newsletters')).map((p) => ({
+    paths: fs.readdirSync(path.join(root, 'content', 'articles')).map((p) => ({
       params: {
         slug: p.replace(/\.mdx?/, ''),
       },

@@ -1,10 +1,10 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { BlogPost } from 'types/datocms'
 
-// import Head from 'next/head'
+import Head from 'next/head'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import { Image /* , renderMetaTags */, SeoMetaTagType } from 'react-datocms'
+import { Image, renderMetaTags, SeoMetaTagType } from 'react-datocms'
 import { Box, Heading, Text } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
@@ -23,13 +23,13 @@ export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
 
   const data = await getBlogPostSeo(slug)
   const metaTags = data.blogPost.seo.concat(data.site.favicon)
-  // console.dir(metaTags, { colors: true, depth: 2 })
 
   return {
     props: {
       post,
       metaTags,
     },
+    revalidate: 1,
   }
 }
 
@@ -42,8 +42,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ post /* , metaTags */ }) => {
+const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
   const router = useRouter()
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -51,7 +55,7 @@ const BlogPostPage: NextPage<Props> = ({ post /* , metaTags */ }) => {
 
   return (
     <div>
-      {/* <Head>{renderMetaTags(metaTags)}</Head> */}
+      {router.isReady && <Head>{renderMetaTags(metaTags)}</Head>}
       <PageLayout>
         <BlogPostLayout>
           <Box mb={2}>
