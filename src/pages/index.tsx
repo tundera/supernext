@@ -2,25 +2,27 @@ import type { NextPage, GetStaticProps } from 'next'
 
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { renderMetaTags, renderMetaTagsToString, SeoMetaTagType } from 'react-datocms'
-import { Code, Heading, Stack } from '@chakra-ui/react'
+import { renderMetaTags, SeoMetaTagType } from 'react-datocms'
+import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
   metaTags: SeoMetaTagType[]
+  preview: boolean
 }
 
 const title = 'Home'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const data = await getPageSeo(title)
   const metaTags = data.page.seo.concat(data.site.favicon)
 
   return {
     props: {
       metaTags,
+      preview,
     },
   }
 }
@@ -29,25 +31,11 @@ const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
   ssr: true,
 })
 
-const HomePage: NextPage<Props> = ({ metaTags }) => {
+const HomePage: NextPage<Props> = ({ metaTags, preview }) => {
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Code
-        background="#f5f5f5"
-        borderRadius="3px"
-        padding="25px"
-        overflow="auto"
-        fontSize="11px"
-        mb="8em"
-        fontFamily="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace"
-      >
-        Look at all these juicy meta tags! ↴
-        <br />
-        <br />
-        {renderMetaTagsToString(metaTags)}
-      </Code>
-      <PageLayout>
+      <PageLayout preview={preview}>
         <Stack>
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Next Goat

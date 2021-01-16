@@ -23,6 +23,7 @@ import NextMdxLink from '@components/NextMdxLink'
 type Props = {
   mdxSource: MdxRemote.Source
   frontMatter: FrontMatter
+  preview: boolean
 }
 
 const root = process.cwd()
@@ -36,7 +37,46 @@ const components = {
   Head,
 }
 
-const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+  const source = fs.readFileSync(path.join(root, 'content', 'articles', `${params?.slug}.mdx`), 'utf8')
+  const { data, content } = matter(source)
+
+  const mdxSource = await renderToString(content, {
+    components,
+    mdxOptions: {
+      remarkPlugins: [
+        require('remark-slug'),
+        require('remark-code-titles'),
+        require('remark-toc'),
+        require('remark-external-links'),
+      ],
+      rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
+      compilers: [],
+    },
+    scope: {},
+  })
+
+  return {
+    props: {
+      mdxSource,
+      frontMatter: data,
+      preview,
+    },
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    fallback: false,
+    paths: fs.readdirSync(path.join(root, 'content', 'articles')).map((p) => ({
+      params: {
+        slug: p.replace(/\.mdx?/, ''),
+      },
+    })),
+  }
+}
+
+const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter, preview }) => {
   const content = hydrate(mdxSource, { components })
 
   const router = useRouter()
@@ -65,7 +105,7 @@ const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
           ],
         }}
       />
-      <PageLayout>
+      <PageLayout preview={preview}>
         <ArticleLayout>
           <Heading>
             <nav>
@@ -88,41 +128,3 @@ const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
 }
 
 export default ArticlePage
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const source = fs.readFileSync(path.join(root, 'content', 'articles', `${params?.slug}.mdx`), 'utf8')
-  const { data, content } = matter(source)
-
-  const mdxSource = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [
-        require('remark-slug'),
-        require('remark-code-titles'),
-        require('remark-toc'),
-        require('remark-external-links'),
-      ],
-      rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
-      compilers: [],
-    },
-    scope: {},
-  })
-
-  return {
-    props: {
-      mdxSource,
-      frontMatter: data,
-    },
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    fallback: false,
-    paths: fs.readdirSync(path.join(root, 'content', 'articles')).map((p) => ({
-      params: {
-        slug: p.replace(/\.mdx?/, ''),
-      },
-    })),
-  }
-}

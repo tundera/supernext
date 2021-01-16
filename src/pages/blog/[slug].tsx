@@ -15,9 +15,10 @@ import { getBlogPostSeo } from '@lib/datocms/seo'
 type Props = {
   post: BlogPost
   metaTags: SeoMetaTagType[]
+  preview: boolean
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const slug = params?.slug as string
   const post = await getSingleBlogPost(slug, preview)
 
@@ -42,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
+const BlogPostPage: NextPage<Props> = ({ post, metaTags, preview }) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -60,7 +61,7 @@ const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
   return (
     <>
       {router.isReady && <Head>{renderMetaTags(metaTags)}</Head>}
-      <PageLayout>
+      <PageLayout preview={preview}>
         <BlogPostLayout>
           <Box mb={2}>
             <Heading>{post?.title}</Heading>

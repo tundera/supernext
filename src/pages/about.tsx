@@ -11,26 +11,28 @@ import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
   metaTags: SeoMetaTagType[]
+  preview: boolean
 }
 
 const title = 'About'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const data = await getPageSeo(title)
   const metaTags = data.page.seo.concat(data.site.favicon)
 
   return {
     props: {
       metaTags,
+      preview,
     },
   }
 }
 
-const AboutPage: NextPage<Props> = ({ metaTags }) => {
+const AboutPage: NextPage<Props> = ({ metaTags, preview }) => {
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <PageLayout>
+      <PageLayout preview={preview}>
         <Stack>
           <Heading as="h1" size="xl" p={2}>
             About

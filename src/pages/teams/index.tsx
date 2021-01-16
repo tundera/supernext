@@ -14,11 +14,12 @@ import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
   metaTags: SeoMetaTagType[]
+  preview: boolean
 }
 
 const title = 'Teams'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('teams', getAllTeams)
@@ -30,17 +31,18 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       dehydratedState: dehydrate(queryClient),
       metaTags,
+      preview,
     },
   }
 }
 
-const TeamsPage: NextPage<Props> = ({ metaTags }) => {
+const TeamsPage: NextPage<Props> = ({ metaTags, preview }) => {
   const { data: teams } = useTeams()
 
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <PageLayout>
+      <PageLayout preview={preview}>
         <Stack>
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Teams

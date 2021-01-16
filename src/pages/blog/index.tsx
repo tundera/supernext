@@ -13,11 +13,12 @@ import { getPageSeo } from '@lib/datocms/seo'
 
 type Props = {
   metaTags: SeoMetaTagType[]
+  preview: boolean
 }
 
 const title = 'Blog'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('blog-posts', getAllBlogPosts)
@@ -29,17 +30,18 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       dehydratedState: dehydrate(queryClient),
       metaTags,
+      preview,
     },
   }
 }
 
-const BlogPage: NextPage<Props> = ({ metaTags }) => {
+const BlogPage: NextPage<Props> = ({ metaTags, preview }) => {
   const { data: posts } = useBlogPosts()
 
   return (
     <>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <PageLayout>
+      <PageLayout preview={preview}>
         <Stack spacing={8}>
           <Heading as="h1" size="xl">
             Blog
