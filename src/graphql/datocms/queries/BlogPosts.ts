@@ -1,27 +1,23 @@
 import gql from 'graphql-tag'
 
+import ResponsiveImage from '@graphql/datocms/fragments/ResponsiveImage'
+
 export default gql`
   query BlogPostsQuery($limit: IntType) {
     allBlogPosts(first: $limit) {
       id
       title
-      author
-      publishedDate
+      author {
+        name
+        picture {
+          ${ResponsiveImage}
+        }
+      }
+      date
       content
       slug
       coverImage {
-        responsiveImage(imgixParams: { fit: crop, w: 500, h: 300, auto: format }) {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          base64
-        }
+        ${ResponsiveImage}
       }
     }
   }

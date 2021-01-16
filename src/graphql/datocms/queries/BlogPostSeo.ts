@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query PageSeoQuery($title: String) {
+  query BlogPostSeoQuery($slug: String) {
     site: _site {
       favicon: faviconMetaTags {
         attributes
@@ -9,7 +9,7 @@ export default gql`
         tag
       }
     }
-    page(filter: { title: { eq: $title } }) {
+    blogPost(filter: { slug: { eq: $slug } }) {
       seo: _seoMetaTags {
         attributes
         content
