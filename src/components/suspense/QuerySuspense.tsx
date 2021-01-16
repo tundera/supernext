@@ -7,7 +7,7 @@ type Props = {
   fallback: NonNullable<React.ReactNode> | null
 }
 
-const ReactQuerySuspense: React.FC<Props> = ({ fallback, children }) => {
+const QuerySuspense: React.FC<Props> = ({ fallback, children }) => {
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
@@ -27,4 +27,4 @@ const ReactQuerySuspense: React.FC<Props> = ({ fallback, children }) => {
   )
 }
 
-export default ReactQuerySuspense
+export default QuerySuspense

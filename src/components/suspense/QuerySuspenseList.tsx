@@ -3,7 +3,7 @@ import { QueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Box, Button } from '@chakra-ui/react'
 
-const ReactQuerySuspenseList: React.FC<DirectionalSuspenseListProps> = ({ revealOrder, tail, children }) => {
+const QuerySuspenseList: React.FC<DirectionalSuspenseListProps> = ({ revealOrder, tail, children }) => {
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
@@ -25,4 +25,4 @@ const ReactQuerySuspenseList: React.FC<DirectionalSuspenseListProps> = ({ reveal
   )
 }
 
-export default ReactQuerySuspenseList
+export default QuerySuspenseList
