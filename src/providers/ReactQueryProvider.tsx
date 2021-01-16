@@ -14,7 +14,7 @@ const ReactQueryProvider: FC<Props> = ({ state: dehydratedState, children }) => 
   <QueryClientProvider client={queryClient}>
     <Hydrate state={dehydratedState}>
       {children}
-      <ReactQueryDevtools initialIsOpen />
+      <ReactQueryDevtools initialIsOpen={false} />
     </Hydrate>
   </QueryClientProvider>
 )
