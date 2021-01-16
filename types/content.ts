@@ -1,10 +1,11 @@
 export type FrontMatter = {
-  coverImage?: string
-  category: string
-  date: string
-  description: string
-  tags: string[]
   title: string
+  description: string
+  author: string[]
+  date: string
+  category: string
+  tags: string[]
+  coverImage: string
   githubLink?: string
   demoLink?: string
 }

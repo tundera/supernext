@@ -6,11 +6,11 @@ import Container from '@layouts/Container'
 
 const PageLayout: FC = ({ children }) => {
   return (
-    <>
+    <div>
       <Navbar />
       <Container>{children}</Container>
       <Footer />
-    </>
+    </div>
   )
 }
 

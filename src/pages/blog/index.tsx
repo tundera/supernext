@@ -37,7 +37,7 @@ const BlogPage: NextPage<Props> = ({ metaTags }) => {
   const { data: posts } = useBlogPosts()
 
   return (
-    <div>
+    <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack spacing={8}>
@@ -50,7 +50,7 @@ const BlogPage: NextPage<Props> = ({ metaTags }) => {
         </Stack>
       </PageLayout>
       /
-    </div>
+    </>
   )
 }
 

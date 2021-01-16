@@ -31,7 +31,7 @@ const BouncingEmoji = dynamic(() => import('@components/BouncingEmoji'), {
 
 const HomePage: NextPage<Props> = ({ metaTags }) => {
   return (
-    <div>
+    <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Code
         background="#f5f5f5"
@@ -55,7 +55,7 @@ const HomePage: NextPage<Props> = ({ metaTags }) => {
           <BouncingEmoji label="Bouncing goat emoji" symbol="🐐" />
         </Stack>
       </PageLayout>
-    </div>
+    </>
   )
 }
 

@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const AboutPage: NextPage<Props> = ({ metaTags }) => {
   return (
-    <div>
+    <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack>
@@ -41,7 +41,7 @@ const AboutPage: NextPage<Props> = ({ metaTags }) => {
           <PlayersList title="NBA Players" />
         </Stack>
       </PageLayout>
-    </div>
+    </>
   )
 }
 

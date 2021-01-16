@@ -38,7 +38,7 @@ const TeamsPage: NextPage<Props> = ({ metaTags }) => {
   const { data: teams } = useTeams()
 
   return (
-    <div>
+    <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack>
@@ -57,7 +57,7 @@ const TeamsPage: NextPage<Props> = ({ metaTags }) => {
           </SimpleGrid>
         </Stack>
       </PageLayout>
-    </div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { MdxRemote } from 'next-mdx-remote/types'
+import type { FrontMatter } from 'types/content'
 
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -9,6 +10,8 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 import path from 'path'
 import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
@@ -16,8 +19,6 @@ import Emoji from 'a11y-react-emoji'
 import PageLayout from '@layouts/PageLayout'
 import ArticleLayout from '@layouts/ArticleLayout'
 import NextMdxLink from '@components/NextMdxLink'
-
-import { FrontMatter } from 'types/content'
 
 type Props = {
   mdxSource: MdxRemote.Source
@@ -38,25 +39,51 @@ const components = {
 const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter }) => {
   const content = hydrate(mdxSource, { components })
 
+  const router = useRouter()
+  const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${router.pathname}`
+
   return (
-    <PageLayout>
-      <ArticleLayout>
-        <Heading>
-          <nav>
-            <NextLink href="/">
-              <a>
-                <Emoji label="Home link emoji" symbol="👈" /> Go back home
-              </a>
-            </NextLink>
-          </nav>
-        </Heading>
-        <Box mb={2}>
-          <h1>{frontMatter.title}</h1>
-          {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
-        </Box>
-        {content}
-      </ArticleLayout>
-    </PageLayout>
+    <>
+      <NextSeo
+        openGraph={{
+          title: `Next Goat | ${frontMatter.title}`,
+          description: frontMatter.description,
+          url: articleUrl,
+          type: 'article',
+          article: {
+            publishedTime: frontMatter.date,
+            authors: [...frontMatter.author],
+            tags: frontMatter.tags,
+          },
+          images: [
+            {
+              url: frontMatter.coverImage,
+              width: 500,
+              height: 300,
+              alt: `${frontMatter.title} article cover image`,
+            },
+          ],
+        }}
+      />
+      <PageLayout>
+        <ArticleLayout>
+          <Heading>
+            <nav>
+              <NextLink href="/">
+                <a>
+                  <Emoji label="Home link emoji" symbol="👈" /> Go back home
+                </a>
+              </NextLink>
+            </nav>
+          </Heading>
+          <Box mb={2}>
+            <Heading>{frontMatter.title}</Heading>
+            {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
+          </Box>
+          {content}
+        </ArticleLayout>
+      </PageLayout>
+    </>
   )
 }
 

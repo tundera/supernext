@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const ArticlesPage: NextPage<Props> = ({ articles, metaTags }) => {
   return (
-    <div>
+    <>
       <Head>{renderMetaTags(metaTags)}</Head>
       <PageLayout>
         <Stack spacing={8}>
@@ -43,7 +43,7 @@ const ArticlesPage: NextPage<Props> = ({ articles, metaTags }) => {
           <ArticlesList title="Recent Articles" articles={articles} />
         </Stack>
       </PageLayout>
-    </div>
+    </>
   )
 }
 

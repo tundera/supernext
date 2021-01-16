@@ -46,7 +46,11 @@ const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return (
+      <>
+        <p>Loading...</p>
+      </>
+    )
   }
 
   if (!router.isFallback && !post?.slug) {
@@ -54,7 +58,7 @@ const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
   }
 
   return (
-    <div>
+    <>
       {router.isReady && <Head>{renderMetaTags(metaTags)}</Head>}
       <PageLayout>
         <BlogPostLayout>
@@ -66,7 +70,7 @@ const BlogPostPage: NextPage<Props> = ({ post, metaTags }) => {
           <Text>{post?.content}</Text>
         </BlogPostLayout>
       </PageLayout>
-    </div>
+    </>
   )
 }
 
