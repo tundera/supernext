@@ -1,11 +1,11 @@
-import type { PageSeoVariables, BlogPostSeoVariables, BlogPostsVariables } from 'types/datocms'
+import type { PageSeoVariables, BlogPostSeoVariables, BlogPostsVariables, BlogPostBySlugVariables } from 'types/datocms'
 
 import { DocumentNode } from 'graphql'
 import { GraphQLClient } from 'graphql-request'
 
 type RequestOptions = {
   query: string | DocumentNode
-  variables?: BlogPostsVariables | PageSeoVariables | BlogPostSeoVariables
+  variables?: BlogPostsVariables | BlogPostBySlugVariables | PageSeoVariables | BlogPostSeoVariables
   preview?: boolean
 }
 

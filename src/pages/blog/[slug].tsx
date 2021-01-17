@@ -23,28 +23,31 @@ type Props = {
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const slug = params?.slug as string
-  // const post = await getSingleBlogPost(slug, preview)
+  const post = await getSingleBlogPost(slug, preview)
 
   const graphqlRequest = {
     query: BlogPostBySlugQuery,
+    variables: { slug },
     preview,
   }
+
+  const subscription = preview
+    ? {
+        ...graphqlRequest,
+        initialData: post,
+        token: process.env.NEXT_DATOCMS_API_TOKEN,
+      }
+    : {
+        enabled: false,
+        initialData: post,
+      }
 
   const data = await getBlogPostSeo(slug)
   const metaTags = data.blogPost.seo.concat(data.site.favicon)
 
   return {
     props: {
-      subscription: preview
-        ? {
-            ...graphqlRequest,
-            initialData: await getSingleBlogPost(slug, preview),
-            token: process.env.NEXT_DATOCMS_API_TOKEN,
-          }
-        : {
-            enabled: false,
-            initialData: await getSingleBlogPost(slug, preview),
-          },
+      subscription,
       metaTags,
       preview,
     },

@@ -51,7 +51,6 @@ const BlogPage: NextPage<Props> = ({ metaTags, preview }) => {
           </pre>
         </Stack>
       </PageLayout>
-      /
     </>
   )
 }

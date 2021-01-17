@@ -51,6 +51,10 @@ export type BlogPostsVariables = {
   limit: number
 }
 
+export type BlogPostBySlugVariables = {
+  slug: string
+}
+
 export type PageSeoVariables = {
   title: string
 }
