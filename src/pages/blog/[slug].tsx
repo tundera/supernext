@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     props: {
       post,
       metaTags,
+      preview,
     },
     revalidate: 1,
   }
