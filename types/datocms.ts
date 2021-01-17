@@ -58,3 +58,14 @@ export type PageSeoVariables = {
 export type BlogPostSeoVariables = {
   slug: string
 }
+
+export type QuerySubscriptionStatus = {
+  status: 'connecting' | 'connected' | 'closed'
+}
+
+export type QuerySubscriptionError = {
+  code: string
+  message: string
+  fatal: boolean
+  response?: any
+}
