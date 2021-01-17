@@ -1,14 +1,14 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
 import ReactQueryProvider from '@providers/ReactQueryProvider'
-import ChakraProvider from '@providers/ChakraProvider'
+import ThemeProvider from '@providers/ThemeProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ReactQueryProvider state={pageProps.dehydratedState}>
-      <ChakraProvider>
+      <ThemeProvider>
         <Component {...pageProps} />
-      </ChakraProvider>
+      </ThemeProvider>
     </ReactQueryProvider>
   )
 }

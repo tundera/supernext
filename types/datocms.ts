@@ -59,9 +59,7 @@ export type BlogPostSeoVariables = {
   slug: string
 }
 
-export type QuerySubscriptionStatus = {
-  status: 'connecting' | 'connected' | 'closed'
-}
+export type QuerySubscriptionStatus = 'connecting' | 'connected' | 'closed'
 
 export type QuerySubscriptionError = {
   code: string
