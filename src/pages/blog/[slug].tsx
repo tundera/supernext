@@ -1,15 +1,15 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-// import type { BlogPost } from 'types/datocms'
 
 import Head from 'next/head'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import { Image, renderMetaTags, SeoMetaTagType, useQuerySubscription } from 'react-datocms'
 import { Box, Code, Heading, Text } from '@chakra-ui/react'
+import ReactMarkdown from 'react-markdown'
 
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { getSingleBlogPost, getAllBlogPosts } from '@lib/datocms/blog'
+import { getBlogPostBySlug, getAllBlogPosts } from '@lib/datocms/blog'
 import { getBlogPostSeo } from '@lib/datocms/seo'
 import ConnectionStatus from '@components/live/ConnectionStatus'
 import ConnectionError from '@components/live/ConnectionError'
@@ -22,8 +22,9 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const slug = params?.slug as string
-  const post = await getSingleBlogPost(slug, preview)
+  const slug = params?.string as string
+
+  const post = await getBlogPostBySlug(slug, preview)
 
   const graphqlRequest = {
     query: BlogPostBySlugQuery,
@@ -57,14 +58,15 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allBlogPosts = await getAllBlogPosts()
+  const slugs = allBlogPosts?.map((post) => `/blog/${post?.slug}`) || []
 
   return {
-    paths: allBlogPosts.map((post) => `/blog/${post?.slug}`) || [],
+    paths: slugs,
     fallback: true,
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ subscription, metaTags, preview }) => {
+const BlogPostPage: NextPage<Props> = ({ subscription = {}, metaTags, preview }) => {
   const { data, error, status } = useQuerySubscription(subscription)
   const router = useRouter()
 
@@ -76,7 +78,7 @@ const BlogPostPage: NextPage<Props> = ({ subscription, metaTags, preview }) => {
     )
   }
 
-  if (!router.isFallback && !subscription?.slug) {
+  if (!router.isFallback && !data?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -95,7 +97,7 @@ const BlogPostPage: NextPage<Props> = ({ subscription, metaTags, preview }) => {
               {data?.date && <Text opacity="0.6">{data?.date}</Text>}
             </Box>
           )}
-          <Text>{data?.content}</Text>
+          <ReactMarkdown>{data?.content}</ReactMarkdown>
         </BlogPostLayout>
       </PageLayout>
     </>

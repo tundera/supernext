@@ -14,7 +14,7 @@ export default gql`
         }
       }
       date
-      content
+      content(markdown: true)
       slug
       coverImage {
         ${ResponsiveImage}

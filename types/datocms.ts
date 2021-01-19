@@ -18,7 +18,9 @@ export type BlogPost = {
   title: string
   author: {
     name: string
-    picture: ResponsiveImageType
+    picture: {
+      responsiveImage: ResponsiveImageType
+    }
   }
   date: string
   slug: string
