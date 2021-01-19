@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query AllTeamsQuery {
+  query AllTeams {
     allTeams {
       id
       name

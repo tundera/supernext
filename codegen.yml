@@ -1,17 +1,18 @@
 generates:
-  # types/generated/graphql-codegen.ts:
-  #   schema:
-  #     - http://localhost:3000/api/graphql
-  #   documents:
-  #     - src/graphql/nexus/**/*.ts
-  #   plugins:
-  #     - typescript
-  #     - typescript-operations
-  #     - typescript-graphql-request
-  #   config:
-  #     fetcher: graphql-request
+  generated/nexus.ts:
+    schema:
+      - http://localhost:3000/api/graphql
+    documents:
+      - src/graphql/nexus/**/*.ts
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      fetcher: graphql-request
+      useTypeImports: true
 
-  types/generated/sanity.ts:
+  generated/sanity.ts:
     schema:
       - https://56u545lj.api.sanity.io/v1/graphql/production/default
     documents:
@@ -20,7 +21,8 @@ generates:
       - typescript
       - typescript-operations
       - typescript-graphql-request
-
+    config:
+      useTypeImports: true
 hooks:
   afterAllFileWrite:
     - eslint --fix

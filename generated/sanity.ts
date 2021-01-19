@@ -1,4 +1,4 @@
-import { GraphQLClient } from 'graphql-request'
+import type { GraphQLClient } from 'graphql-request'
 import { print } from 'graphql'
 import gql from 'graphql-tag'
 
@@ -710,21 +710,37 @@ export type FileSorting = {
   _type?: Maybe<SortOrder>
 }
 
-export type AllPagesQueryQueryVariables = Exact<{ [key: string]: never }>
+export type AllPagesQueryVariables = Exact<{ [key: string]: never }>
 
-export type AllPagesQueryQuery = { __typename?: 'RootQuery' } & {
+export type AllPagesQuery = { __typename?: 'RootQuery' } & {
   allPage: Array<
     { __typename?: 'Page' } & Pick<Page, 'title'> & { slug?: Maybe<{ __typename?: 'Slug' } & Pick<Slug, 'current'>> }
   >
 }
 
-export const AllPagesQueryDocument = gql`
-  query AllPagesQuery {
+export type PageBySlugQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type PageBySlugQuery = { __typename?: 'RootQuery' } & {
+  allPage: Array<{ __typename?: 'Page' } & Pick<Page, 'title' | 'content'>>
+}
+
+export const AllPagesDocument = gql`
+  query AllPages {
     allPage {
       title
       slug {
         current
       }
+    }
+  }
+`
+export const PageBySlugDocument = gql`
+  query PageBySlug($slug: String!) {
+    allPage(where: { slug: { current: { eq: $slug } } }) {
+      title
+      content
     }
   }
 `
@@ -734,10 +750,11 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>
 const defaultWrapper: SdkFunctionWrapper = (sdkFunction) => sdkFunction()
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    AllPagesQuery(variables?: AllPagesQueryQueryVariables, requestHeaders?: Headers): Promise<AllPagesQueryQuery> {
-      return withWrapper(() =>
-        client.request<AllPagesQueryQuery>(print(AllPagesQueryDocument), variables, requestHeaders),
-      )
+    AllPages(variables?: AllPagesQueryVariables, requestHeaders?: Headers): Promise<AllPagesQuery> {
+      return withWrapper(() => client.request<AllPagesQuery>(print(AllPagesDocument), variables, requestHeaders))
+    },
+    PageBySlug(variables: PageBySlugQueryVariables, requestHeaders?: Headers): Promise<PageBySlugQuery> {
+      return withWrapper(() => client.request<PageBySlugQuery>(print(PageBySlugDocument), variables, requestHeaders))
     },
   }
 }

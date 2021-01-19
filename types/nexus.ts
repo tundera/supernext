@@ -1,4 +1,4 @@
-import type { NexusGenObjects } from 'types/generated/nexus'
+import type { NexusGenObjects } from 'generated/nexus'
 
 export type Coach = NexusGenObjects['Coach']
 export type Player = NexusGenObjects['Player']

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query CoachesByTeamQuery($id: Int) {
+  query CoachesByTeam($id: Int) {
     coachesByTeam(id: $id) {
       id
       name
