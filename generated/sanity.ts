@@ -21,17 +21,17 @@ export type Scalars = {
 
 export type RootQuery = {
   __typename?: 'RootQuery'
-  Page?: Maybe<Page>
+  Post?: Maybe<Post>
   SanityImageAsset?: Maybe<SanityImageAsset>
   SanityFileAsset?: Maybe<SanityFileAsset>
   Document?: Maybe<Document>
-  allPage: Array<Page>
+  allPost: Array<Post>
   allSanityImageAsset: Array<SanityImageAsset>
   allSanityFileAsset: Array<SanityFileAsset>
   allDocument: Array<Document>
 }
 
-export type RootQueryPageArgs = {
+export type RootQueryPostArgs = {
   id: Scalars['ID']
 }
 
@@ -47,9 +47,9 @@ export type RootQueryDocumentArgs = {
   id: Scalars['ID']
 }
 
-export type RootQueryAllPageArgs = {
-  where?: Maybe<PageFilter>
-  sort?: Maybe<Array<PageSorting>>
+export type RootQueryAllPostArgs = {
+  where?: Maybe<PostFilter>
+  sort?: Maybe<Array<PostSorting>>
   limit?: Maybe<Scalars['Int']>
   offset?: Maybe<Scalars['Int']>
 }
@@ -75,8 +75,8 @@ export type RootQueryAllDocumentArgs = {
   offset?: Maybe<Scalars['Int']>
 }
 
-export type Page = Document & {
-  __typename?: 'Page'
+export type Post = Document & {
+  __typename?: 'Post'
   /** Document ID */
   _id?: Maybe<Scalars['ID']>
   /** Document type */
@@ -234,7 +234,7 @@ export type SanityFileAsset = Document & {
   source?: Maybe<SanityAssetSourceData>
 }
 
-export type PageFilter = {
+export type PostFilter = {
   /** Apply filters on document level */
   _?: Maybe<Sanity_DocumentFilter>
   _id?: Maybe<IdFilter>
@@ -298,7 +298,7 @@ export type SlugFilter = {
   current?: Maybe<StringFilter>
 }
 
-export type PageSorting = {
+export type PostSorting = {
   _id?: Maybe<SortOrder>
   _type?: Maybe<SortOrder>
   _createdAt?: Maybe<SortOrder>
@@ -710,25 +710,25 @@ export type FileSorting = {
   _type?: Maybe<SortOrder>
 }
 
-export type AllPagesQueryVariables = Exact<{ [key: string]: never }>
+export type AllPostsQueryVariables = Exact<{ [key: string]: never }>
 
-export type AllPagesQuery = { __typename?: 'RootQuery' } & {
-  allPage: Array<
-    { __typename?: 'Page' } & Pick<Page, 'title'> & { slug?: Maybe<{ __typename?: 'Slug' } & Pick<Slug, 'current'>> }
+export type AllPostsQuery = { __typename?: 'RootQuery' } & {
+  allPost: Array<
+    { __typename?: 'Post' } & Pick<Post, 'title'> & { slug?: Maybe<{ __typename?: 'Slug' } & Pick<Slug, 'current'>> }
   >
 }
 
-export type PageBySlugQueryVariables = Exact<{
+export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String']
 }>
 
-export type PageBySlugQuery = { __typename?: 'RootQuery' } & {
-  allPage: Array<{ __typename?: 'Page' } & Pick<Page, 'title' | 'content'>>
+export type PostBySlugQuery = { __typename?: 'RootQuery' } & {
+  allPost: Array<{ __typename?: 'Post' } & Pick<Post, 'title' | 'content'>>
 }
 
-export const AllPagesDocument = gql`
-  query AllPages {
-    allPage {
+export const AllPostsDocument = gql`
+  query AllPosts {
+    allPost {
       title
       slug {
         current
@@ -736,9 +736,9 @@ export const AllPagesDocument = gql`
     }
   }
 `
-export const PageBySlugDocument = gql`
-  query PageBySlug($slug: String!) {
-    allPage(where: { slug: { current: { eq: $slug } } }) {
+export const PostBySlugDocument = gql`
+  query PostBySlug($slug: String!) {
+    allPost(where: { slug: { current: { eq: $slug } } }) {
       title
       content
     }
@@ -750,11 +750,11 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>
 const defaultWrapper: SdkFunctionWrapper = (sdkFunction) => sdkFunction()
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    AllPages(variables?: AllPagesQueryVariables, requestHeaders?: Headers): Promise<AllPagesQuery> {
-      return withWrapper(() => client.request<AllPagesQuery>(print(AllPagesDocument), variables, requestHeaders))
+    AllPosts(variables?: AllPostsQueryVariables, requestHeaders?: Headers): Promise<AllPostsQuery> {
+      return withWrapper(() => client.request<AllPostsQuery>(print(AllPostsDocument), variables, requestHeaders))
     },
-    PageBySlug(variables: PageBySlugQueryVariables, requestHeaders?: Headers): Promise<PageBySlugQuery> {
-      return withWrapper(() => client.request<PageBySlugQuery>(print(PageBySlugDocument), variables, requestHeaders))
+    PostBySlug(variables: PostBySlugQueryVariables, requestHeaders?: Headers): Promise<PostBySlugQuery> {
+      return withWrapper(() => client.request<PostBySlugQuery>(print(PostBySlugDocument), variables, requestHeaders))
     },
   }
 }

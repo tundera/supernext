@@ -5,7 +5,7 @@ export type SanityContentOptions = {
   variables?: any
 }
 
-export type SanityPage = {
+export type BlogPost = {
   title: string
   slug: {
     current: string

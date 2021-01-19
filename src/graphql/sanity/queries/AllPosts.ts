@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query AllPages {
-    allPage {
+  query AllPosts {
+    allPost {
       title
       slug {
         current

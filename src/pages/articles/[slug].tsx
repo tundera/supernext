@@ -21,7 +21,7 @@ import ArticleLayout from '@layouts/ArticleLayout'
 import NextMdxLink from '@components/NextMdxLink'
 
 type Props = {
-  mdxSource: MdxRemote.Source
+  content: MdxRemote.Source
   frontMatter: FrontMatter
   preview: boolean
 }
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
   const source = fs.readFileSync(path.join(root, 'content', 'articles', `${params?.slug}.mdx`), 'utf8')
   const { data, content } = matter(source)
 
-  const mdxSource = await renderToString(content, {
+  const markup = await renderToString(content, {
     components,
     mdxOptions: {
       remarkPlugins: [
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
   return {
     props: {
-      mdxSource,
+      content: markup,
       frontMatter: data,
       preview,
     },
@@ -76,8 +76,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter, preview }) => {
-  const content = hydrate(mdxSource, { components })
+const ArticlePage: NextPage<Props> = ({ content, frontMatter, preview }) => {
+  const renderedContent = hydrate(content, { components })
 
   const router = useRouter()
   const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${router.pathname}`
@@ -120,7 +120,7 @@ const ArticlePage: NextPage<Props> = ({ mdxSource, frontMatter, preview }) => {
             <Heading>{frontMatter.title}</Heading>
             {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
           </Box>
-          {content}
+          {renderedContent}
         </ArticleLayout>
       </PageLayout>
     </>
