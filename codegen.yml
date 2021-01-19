@@ -19,6 +19,8 @@ generates:
     plugins:
       - typescript
       - typescript-operations
+      - typescript-graphql-request
+
 hooks:
   afterAllFileWrite:
     - eslint --fix

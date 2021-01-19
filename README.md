@@ -40,6 +40,10 @@ Please check out the following projects that served as a base for this one:
 - [nirmalyaghosh.com](https://github.com/ghoshnirmalya/nirmalyaghosh.com)
 - [chakraui-react-next.js-typescript-eslint-jest-starter](https://github.com/abhishekbhardwaj/chakraui-react-next.js-typescript-eslint-jest-starter)
 
+Some notable open-source libraries used in this template:
+
+- [chakra-templates](https://github.com/hauptrolle/chakra-templates)
+
 ### Media Sources
 
 - [Banner image](https://basketballforever.com/2019/03/07/the-key-points-of-difference-in-the-michael-jordan-lebron-james-goat-debate)

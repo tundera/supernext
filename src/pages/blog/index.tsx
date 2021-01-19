@@ -13,8 +13,6 @@ type Props = { pages: SanityPage[] }
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getAllPages()
 
-  console.dir(data, { colors: true, depth: null })
-
   const pages = data?.map((page) => ({
     title: page.title,
     slug: page.slug.current,
