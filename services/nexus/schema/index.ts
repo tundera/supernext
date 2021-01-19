@@ -8,7 +8,7 @@ export const schema = makeSchema({
   types: [QueryTypes],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
-    typegen: path.join(process.cwd(), 'services/nexus/generated/nexus-typegen.ts'),
+    typegen: path.join(process.cwd(), 'types/generated/nexus.ts'),
     schema: path.join(process.cwd(), 'services/nexus/generated/schema.graphql'),
   },
   prettierConfig: path.join(process.cwd(), 'prettier.config.js'),

@@ -4,11 +4,17 @@
     "NEXT_PUBLIC_SITE_NAME": "Next Goat",
     "NEXT_PUBLIC_SITE_URL": "https://next-goat.vercel.app",
     "NEXT_PUBLIC_GRAPHQL_ENDPOINT": "https://next-goat.vercel.app/api/graphql",
+    "NEXT_PUBLIC_SANITY_GRAPHQL_ENDPOINT": "https://56u545lj.api.sanity.io/v1/graphql/production/default",
 
     "NEXT_DATABASE_URL": "@next_goat_database_url"
   },
   "build": {
     "env": {
+      "NEXT_PUBLIC_SITE_NAME": "Next Goat",
+      "NEXT_PUBLIC_SITE_URL": "https://next-goat.vercel.app",
+      "NEXT_PUBLIC_GRAPHQL_ENDPOINT": "https://next-goat.vercel.app/api/graphql",
+      "NEXT_PUBLIC_SANITY_GRAPHQL_ENDPOINT": "https://56u545lj.api.sanity.io/v1/graphql/production/default",
+
       "NEXT_POSTGRES_USER": "@next_goat_postgres_user",
       "NEXT_POSTGRES_DB": "@next_goat_postgres_db",
       "NEXT_POSTGRES_PASSWORD": "@next_goat_postgres_password",

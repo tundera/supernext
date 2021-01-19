@@ -6,7 +6,7 @@ import matter from 'gray-matter'
 
 const root = process.cwd()
 
-export async function getArticles(): Promise<Article[]> {
+export async function getAllArticles(): Promise<Article[]> {
   const articlesRoot = path.join(root, 'content', 'articles')
   const articles = fs.readdirSync(articlesRoot).map((p) => {
     const content = fs.readFileSync(path.join(articlesRoot, p), 'utf8')

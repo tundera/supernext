@@ -5,7 +5,7 @@ import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import ArticlesList from '@components/ArticlesList'
-import { getArticles } from '@lib/local/getArticles'
+import { getAllArticles } from '@lib/local/articles'
 
 type Props = {
   articles: Article[]
@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const articles = await getArticles()
+  const articles = await getAllArticles()
 
   return {
     props: {
