@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import { Post } from 'generated/sanity'
+import { Post, PostBySlugDocument } from 'generated/sanity'
 import type { MdxRemote } from 'next-mdx-remote/types'
 
 // import fs from 'fs'
@@ -11,21 +11,48 @@ import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts, getPostBySlug } from '@lib/sanity/posts'
 import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
+import { groq } from 'next-sanity'
+import { print } from 'graphql'
 
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { usePreviewSubscription } from '@utils/sanity/preview'
+import { usePreviewSubscription, sanityClient, previewClient } from '@utils/sanity/client'
 
 type Props = {
   post: Post
   markup: MdxRemote.Source
   preview: boolean
+  config: {
+    params?: Record<string, unknown>
+    initialData?: any
+  }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+// const postQuery = groq`
+//   *[_type == "post" && slug.current == $slug][0] {
+//     _id,
+//     title,
+//     body,
+//     coverImage,
+//     author->{
+//       _id,
+//       name
+//       avatar
+//     },
+//     "slug": slug.current
+//   }
+// `
+
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const slug = `${params?.slug}`
   const [post] = await getPostBySlug(slug)
+
+  const config = {
+    params: { slug: post ? post.slug?.current : '' },
+    initialData: post,
+    enabled: preview,
+  }
 
   const markup = await renderToString(post?.content ?? '', {
     components: { Callout },
@@ -34,7 +61,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post,
+      config,
       markup,
+      preview,
     },
   }
 }
@@ -48,8 +77,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ post, markup, preview = false }) => {
-  const router = useRouter()
+const BlogPostPage: NextPage<Props> = ({ post, config, markup, preview }) => {
+  // const options = {
+  //   params: { slug: post ? post.slug?.current : '' },
+  //   initialData: post,
+  //   enabled: preview,
+  // }
 
   // const { data } = usePreviewSubscription(
   //   `
@@ -74,12 +107,12 @@ const BlogPostPage: NextPage<Props> = ({ post, markup, preview = false }) => {
   //       }
   //     }
   //   `,
-  //   {
-  //     params: { slug: post.slug?.current ?? '' },
-  //     initialData: post,
-  //     enabled: preview,
-  //   },
+  //   { ...config, enabled: preview },
   // )
+
+  const { data } = usePreviewSubscription(print(PostBySlugDocument), { ...config, enabled: preview })
+
+  const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -100,12 +133,12 @@ const BlogPostPage: NextPage<Props> = ({ post, markup, preview = false }) => {
   return (
     <PageLayout>
       <Stack>
-        <Heading>{post.title}</Heading>
+        <Heading>{data.title}</Heading>
         <Flex flexDir="column" w="500" h="300" alignItems="center">
-          <Image src={post.coverImage?.asset?.url || ''} width={500} height={300} />
+          <Image src={data.coverImage?.asset?.url || ''} width={500} height={300} />
         </Flex>
-        <Text>{post.author?.name}</Text>
-        <Text>{post.date}</Text>
+        <Text>{data.author?.name}</Text>
+        <Text>{data.date}</Text>
       </Stack>
       <BlogPostLayout>{renderedContent}</BlogPostLayout>
     </PageLayout>
