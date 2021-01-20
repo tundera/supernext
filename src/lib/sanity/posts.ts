@@ -1,6 +1,7 @@
+import { groq } from 'next-sanity'
+
 import { PostsDocument, PostBySlugDocument, Post } from 'generated/sanity'
 import request from '@utils/sanity/request'
-// import { sanityClient, previewClient } from '@lib/sanity/index'
 
 export async function getPosts(limit?: number) {
   const data = await request({
@@ -17,13 +18,18 @@ export async function getPostBySlug(slug: string) {
   return data.allPost as Post[]
 }
 
-// export async function getPreviewPostBySlug(slug: string) {
-//   const data = await getClient(true).fetch(
-//     `*[_type == "post" && slug.current == $slug] | order(dpublishedAtate desc){
-//       ${postFields}
-//       body
-//     }`,
-//     { slug },
-//   )
-//   return data[0]
-// }
+const postGroqQuery = groq`
+  *[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    content,
+    date
+    coverImage,
+    author->{
+      _id,
+      name
+      avatar
+    },
+    "slug": slug.current
+  }
+`

@@ -37,5 +37,5 @@ yarn-error.log*
 .vercel
 
 # sanity
-/sanity/node_modules
-/sanity/dist
+/studio/node_modules
+/studio/dist

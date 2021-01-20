@@ -11,60 +11,41 @@ import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts, getPostBySlug } from '@lib/sanity/posts'
 import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
-import { groq } from 'next-sanity'
 import { print } from 'graphql'
 
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { usePreviewSubscription, sanityClient, previewClient } from '@utils/sanity/client'
+import { usePreviewSubscription } from '@utils/sanity/client'
+import LoadingSpinner from '@components/LoadingSpinner'
 
 type Props = {
   post: Post
   markup: MdxRemote.Source
   preview: boolean
-  config: {
-    params?: Record<string, unknown>
-    initialData?: any
-  }
 }
-
-// const postQuery = groq`
-//   *[_type == "post" && slug.current == $slug][0] {
-//     _id,
-//     title,
-//     body,
-//     coverImage,
-//     author->{
-//       _id,
-//       name
-//       avatar
-//     },
-//     "slug": slug.current
-//   }
-// `
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const slug = `${params?.slug}`
   const [post] = await getPostBySlug(slug)
 
-  const config = {
-    params: { slug: post ? post.slug?.current : '' },
-    initialData: post,
-    enabled: preview,
-  }
-
   const markup = await renderToString(post?.content ?? '', {
     components: { Callout },
   })
 
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       post,
-      config,
       markup,
       preview,
     },
+    revalidate: 1,
   }
 }
 
@@ -77,71 +58,47 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ post, config, markup, preview }) => {
-  // const options = {
-  //   params: { slug: post ? post.slug?.current : '' },
-  //   initialData: post,
-  //   enabled: preview,
-  // }
+const BlogPostPage: NextPage<Props> = ({ post, markup, preview }) => {
+  const { data } = usePreviewSubscription(print(PostBySlugDocument), {
+    params: { slug: post ? post.slug?.current : '' },
+    initialData: post,
+    enabled: preview,
+  })
 
-  // const { data } = usePreviewSubscription(
-  //   `
-  //     query PostBySlug($slug: String!) {
-  //       allPost(where: { slug: { current: { eq: $slug } } }) {
-  //         title
-  //         author {
-  //           name
-  //           avatar {
-  //             asset {
-  //               url
-  //             }
-  //           }
-  //         }
-  //         date
-  //         coverImage {
-  //           asset {
-  //             url
-  //           }
-  //         }
-  //         content
-  //       }
-  //     }
-  //   `,
-  //   { ...config, enabled: preview },
-  // )
-
-  const { data } = usePreviewSubscription(print(PostBySlugDocument), { ...config, enabled: preview })
-
-  const router = useRouter()
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <Text>Loading...</Text>
-  }
-
-  if (!router.isFallback && !post.slug?.current) {
-    return <ErrorPage statusCode={404} />
-  }
-
-  const renderedContent = hydrate(markup, {
+  const renderedContent = hydrate(markup ?? '', {
     components: {
       Callout,
     },
   })
 
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <LoadingSpinner />
+  }
+
+  // if (!router.isFallback && !post.slug) {
+  //   return <ErrorPage statusCode={404} />
+  // }
+
   return (
-    <PageLayout>
-      <Stack>
-        <Heading>{data.title}</Heading>
-        <Flex flexDir="column" w="500" h="300" alignItems="center">
-          <Image src={data.coverImage?.asset?.url || ''} width={500} height={300} />
-        </Flex>
-        <Text>{data.author?.name}</Text>
-        <Text>{data.date}</Text>
-      </Stack>
-      <BlogPostLayout>{renderedContent}</BlogPostLayout>
-    </PageLayout>
+    <>
+      <PageLayout preview={preview}>
+        {data && (
+          <>
+            <Stack>
+              <Heading>{data.title}</Heading>
+              <Flex flexDir="column" w="500" h="300" alignItems="center">
+                <Image src={data.coverImage?.asset?.url || ''} width={500} height={300} />
+              </Flex>
+              <Text>{data.author?.name}</Text>
+              <Text>{data.date}</Text>
+            </Stack>
+            <BlogPostLayout>{renderedContent}</BlogPostLayout>
+          </>
+        )}
+      </PageLayout>
+    </>
   )
 }
 
