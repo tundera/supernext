@@ -3,10 +3,10 @@ import request from '@lib/sanity/request'
 
 // import { sanityClient, previewClient } from '@lib/sanity/index'
 
-export async function getPosts(limit: number) {
+export async function getPosts(limit?: number) {
   const data = await request({
     query: PostsDocument,
-    variables: { limit },
+    variables: { limit: limit ?? null },
   })
 
   return data.allPost as Post[]

@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC, Fragment } from 'react'
 import type { Post } from 'generated/sanity'
 
 import { Stack, Box, Avatar, Divider, Badge } from '@chakra-ui/react'
@@ -11,7 +11,7 @@ const PostsList: FC<Props> = ({ posts }) => {
   return (
     <Stack spacing={8} bgColor="gray.100" alignItems="center" py="6">
       {posts.map((post) => (
-        <>
+        <Fragment key={post.slug?.current}>
           <Box
             maxW="sm"
             borderWidth="1px"
@@ -47,7 +47,7 @@ const PostsList: FC<Props> = ({ posts }) => {
             </Box>
           </Box>
           <Divider />
-        </>
+        </Fragment>
       ))}
     </Stack>
   )

@@ -2,7 +2,6 @@
 import type { NextPage, GetStaticProps } from 'next'
 import type { Post } from 'generated/sanity'
 
-import NextLink from 'next/link'
 import { Box, Heading, Text } from '@chakra-ui/react'
 
 import { getPosts } from '@lib/sanity/posts'
@@ -14,13 +13,7 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPosts(POSTS_PER_PAGE)
-
-  const posts = data?.map((post) => ({
-    title: post.title,
-    author: post.author,
-    slug: post.slug,
-  }))
+  const posts = await getPosts(POSTS_PER_PAGE)
 
   return {
     props: { posts },

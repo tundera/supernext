@@ -2,6 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import type { Author, Image as ImageType } from 'generated/sanity'
 // import fs from 'fs'
 // import matter from 'gray-matter'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
@@ -11,8 +12,6 @@ import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { GENERATED_POSTS_LIMIT } from 'constants/sanity'
-import Image from 'next/image'
 
 type Props = {
   title: string
@@ -45,8 +44,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts(GENERATED_POSTS_LIMIT)
-  console.dir(posts, { colors: true, depth: null })
+  const posts = await getPosts()
+
   return {
     paths: posts.map((post) => `/blog/${post.slug?.current}`),
     fallback: true,
