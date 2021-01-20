@@ -19,7 +19,7 @@ const PostsList: FC<Props> = ({ posts }) => {
             overflow="hidden"
             bgColor="gray.300"
             as="a"
-            href={`/blog/${post.slug}`}
+            href={`/blog/${post.slug?.current}`}
           >
             <Box p="6">
               <Box d="flex" alignItems="baseline">

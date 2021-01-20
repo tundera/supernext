@@ -781,7 +781,7 @@ export type PostBySlugQueryVariables = Exact<{
 
 export type PostBySlugQuery = { __typename?: 'RootQuery' } & {
   allPost: Array<
-    { __typename?: 'Post' } & Pick<Post, 'title' | 'content'> & {
+    { __typename?: 'Post' } & Pick<Post, 'title' | 'date' | 'content'> & {
         author?: Maybe<
           { __typename?: 'Author' } & Pick<Author, 'name'> & {
               avatar?: Maybe<
@@ -838,6 +838,7 @@ export const PostBySlugDocument = gql`
           }
         }
       }
+      date
       coverImage {
         asset {
           url

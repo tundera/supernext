@@ -3,11 +3,11 @@ import type { NextPage, GetStaticProps } from 'next'
 import type { Post } from 'generated/sanity'
 
 import NextLink from 'next/link'
-import { Box, Heading, Text, List, ListItem, ListIcon } from '@chakra-ui/react'
-import { MdCheckCircle } from 'react-icons/md'
+import { Box, Heading, Text } from '@chakra-ui/react'
 
 import { getPosts } from '@lib/sanity/posts'
 import { POSTS_PER_PAGE } from 'constants/sanity'
+import PostsList from '@components/PostsList'
 
 type Props = {
   posts: Post[]
@@ -32,16 +32,7 @@ const BlogPage: NextPage<Props> = ({ posts }) => {
     <Box>
       <Heading>This Site Loads MDX From Sanity.io</Heading>
       <Text>View any of these pages to see it in action:</Text>
-      <List spacing={3}>
-        {posts?.map(({ title, slug }) => (
-          <ListItem key={title}>
-            <ListIcon as={MdCheckCircle} color="green.500" />
-            <NextLink href={`/blog/${slug}`}>
-              <a>{title}</a>
-            </NextLink>
-          </ListItem>
-        ))}
-      </List>
+      <PostsList posts={posts} />
     </Box>
   )
 }

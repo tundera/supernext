@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts, getPostBySlug } from '@lib/sanity/posts'
-import { Heading, Stack, Text } from '@chakra-ui/react'
+import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
 
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
@@ -15,8 +15,8 @@ import { GENERATED_POSTS_LIMIT } from 'constants/sanity'
 import Image from 'next/image'
 
 type Props = {
-  title: string | null | undefined
-  date: any
+  title: string
+  date: string
   author: Author
   slug: string
   excerpt: string
@@ -26,18 +26,19 @@ type Props = {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = `${params?.slug}`
-  const [{ title, author, date, coverImage, content }] = await getPostBySlug(slug)
+  const [post] = await getPostBySlug(slug)
 
-  const markup = await renderToString(content ?? '', {
+  const content = `${post.content}`
+  const markup = await renderToString(content, {
     components: { Callout },
   })
 
   return {
     props: {
-      title,
-      author,
-      date: date ?? '',
-      coverImage,
+      title: post.title,
+      author: post.author,
+      date: post.date,
+      coverImage: post.coverImage,
       content: markup,
     },
   }
@@ -45,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts(GENERATED_POSTS_LIMIT)
-
+  console.dir(posts, { colors: true, depth: null })
   return {
     paths: posts.map((post) => `/blog/${post.slug?.current}`),
     fallback: true,
@@ -71,7 +72,9 @@ const BlogPostPage: NextPage<Props> = ({ title, author, date, coverImage, conten
     <PageLayout>
       <Stack>
         <Heading>{title}</Heading>
-        <Image src={coverImage.asset?.url || ''} width={500} height={300} />
+        <Flex flexDir="column" w="500" h="300" alignItems="center">
+          <Image src={coverImage.asset?.url || ''} width={500} height={300} />
+        </Flex>
         <Text>{author.name}</Text>
         <Text>{date}</Text>
       </Stack>

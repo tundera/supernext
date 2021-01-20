@@ -12,6 +12,7 @@ export default gql`
           }
         }
       }
+      date
       coverImage {
         asset {
           url
