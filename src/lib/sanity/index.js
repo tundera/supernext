@@ -1,11 +1,9 @@
 // lib/sanity.js
 import {
-  groq,
   createClient,
   createImageUrlBuilder,
   createPortableTextComponent,
   createPreviewSubscriptionHook,
-  createCurrentUserHook,
 } from 'next-sanity'
 
 const config = {

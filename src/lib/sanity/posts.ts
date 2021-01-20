@@ -1,6 +1,5 @@
 import { PostsDocument, PostBySlugDocument, Post } from 'generated/sanity'
-import request from '@lib/sanity/request'
-
+import request from '@utils/sanity/request'
 // import { sanityClient, previewClient } from '@lib/sanity/index'
 
 export async function getPosts(limit?: number) {

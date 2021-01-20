@@ -1,7 +1,10 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import type { Author, Image as ImageType } from 'generated/sanity'
+import { Post } from 'generated/sanity'
+import type { MdxRemote } from 'next-mdx-remote/types'
+
 // import fs from 'fs'
 // import matter from 'gray-matter'
+import ErrorPage from 'next/error'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import hydrate from 'next-mdx-remote/hydrate'
@@ -12,33 +15,26 @@ import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
+import { usePreviewSubscription } from '@utils/sanity/preview'
 
 type Props = {
-  title: string
-  date: string
-  author: Author
-  slug: string
-  excerpt: string
-  coverImage: ImageType
-  content: string
+  post: Post
+  markup: MdxRemote.Source
+  preview: boolean
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = `${params?.slug}`
   const [post] = await getPostBySlug(slug)
 
-  const content = `${post.content}`
-  const markup = await renderToString(content, {
+  const markup = await renderToString(post?.content ?? '', {
     components: { Callout },
   })
 
   return {
     props: {
-      title: post.title,
-      author: post.author,
-      date: post.date,
-      coverImage: post.coverImage,
-      content: markup,
+      post,
+      markup,
     },
   }
 }
@@ -52,8 +48,38 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ title, author, date, coverImage, content }) => {
+const BlogPostPage: NextPage<Props> = ({ post, markup, preview = false }) => {
   const router = useRouter()
+
+  // const { data } = usePreviewSubscription(
+  //   `
+  //     query PostBySlug($slug: String!) {
+  //       allPost(where: { slug: { current: { eq: $slug } } }) {
+  //         title
+  //         author {
+  //           name
+  //           avatar {
+  //             asset {
+  //               url
+  //             }
+  //           }
+  //         }
+  //         date
+  //         coverImage {
+  //           asset {
+  //             url
+  //           }
+  //         }
+  //         content
+  //       }
+  //     }
+  //   `,
+  //   {
+  //     params: { slug: post.slug?.current ?? '' },
+  //     initialData: post,
+  //     enabled: preview,
+  //   },
+  // )
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -61,7 +87,11 @@ const BlogPostPage: NextPage<Props> = ({ title, author, date, coverImage, conten
     return <Text>Loading...</Text>
   }
 
-  const renderedContent = hydrate(content, {
+  if (!router.isFallback && !post.slug?.current) {
+    return <ErrorPage statusCode={404} />
+  }
+
+  const renderedContent = hydrate(markup, {
     components: {
       Callout,
     },
@@ -70,12 +100,12 @@ const BlogPostPage: NextPage<Props> = ({ title, author, date, coverImage, conten
   return (
     <PageLayout>
       <Stack>
-        <Heading>{title}</Heading>
+        <Heading>{post.title}</Heading>
         <Flex flexDir="column" w="500" h="300" alignItems="center">
-          <Image src={coverImage.asset?.url || ''} width={500} height={300} />
+          <Image src={post.coverImage?.asset?.url || ''} width={500} height={300} />
         </Flex>
-        <Text>{author.name}</Text>
-        <Text>{date}</Text>
+        <Text>{post.author?.name}</Text>
+        <Text>{post.date}</Text>
       </Stack>
       <BlogPostLayout>{renderedContent}</BlogPostLayout>
     </PageLayout>
