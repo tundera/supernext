@@ -10,6 +10,19 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{ type: 'author' }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'slug',
       title: 'Post Slug',
       type: 'slug',
@@ -20,9 +33,20 @@ export default {
       },
     },
     {
+      name: 'coverImage',
+      title: 'Cover Image',
+      type: 'image',
+    },
+    {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'string',
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'markdown',
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

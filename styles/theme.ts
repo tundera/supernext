@@ -19,8 +19,8 @@ export default extendTheme({
     },
   },
   fonts: {
-    body: "'Dank Mono', 'Menlo', sans-serif",
-    heading: "'Dank Mono', 'Menlo', sans-serif",
+    body: "'Inter', 'Menlo', sans-serif",
+    heading: "'Inter', 'Menlo', sans-serif",
     mono: "'Dank Mono', 'Menlo', monospace",
   },
 })

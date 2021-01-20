@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Button } from '@chakra-ui/react'
+import { useColorMode, Button } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 type Props = {
@@ -10,6 +10,10 @@ type Props = {
 }
 
 const NavLink: FC<Props> = ({ LinkComponent, text, href }) => {
+  const { colorMode } = useColorMode()
+
+  const color = { light: 'white', dark: 'gray.800' }
+
   return (
     <LinkComponent href={href} passHref>
       <Button
@@ -19,7 +23,7 @@ const NavLink: FC<Props> = ({ LinkComponent, text, href }) => {
         variant="ghost"
         _hover={{ bg: 'rgba(0,0,0,.2)' }}
         p={[1, 4]}
-        color="white"
+        color={color[colorMode]}
       >
         {text}
       </Button>

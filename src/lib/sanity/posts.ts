@@ -1,18 +1,30 @@
-import type { BlogPost } from 'types/sanity'
-import { AllPostsDocument, PostBySlugDocument } from 'generated/sanity'
+import { PostsDocument, PostBySlugDocument, Post } from 'generated/sanity'
+import request from '@lib/sanity/request'
 
-import { getSanityContent } from '@utils/sanity'
+// import { sanityClient, previewClient } from '@lib/sanity/index'
 
-export async function getAllPosts() {
-  const data = await getSanityContent({
-    query: AllPostsDocument,
+export async function getPosts(limit: number) {
+  const data = await request({
+    query: PostsDocument,
+    variables: { limit },
   })
 
-  return data.allPost
+  return data.allPost as Post[]
 }
 
 export async function getPostBySlug(slug: string) {
-  const data = await getSanityContent({ query: PostBySlugDocument, variables: { slug } })
+  const data = await request({ query: PostBySlugDocument, variables: { slug } })
 
-  return data.allPost
+  return data.allPost as Post[]
 }
+
+// export async function getPreviewPostBySlug(slug: string) {
+//   const data = await getClient(true).fetch(
+//     `*[_type == "post" && slug.current == $slug] | order(dpublishedAtate desc){
+//       ${postFields}
+//       body
+//     }`,
+//     { slug },
+//   )
+//   return data[0]
+// }

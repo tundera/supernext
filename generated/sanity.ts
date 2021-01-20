@@ -21,14 +21,20 @@ export type Scalars = {
 
 export type RootQuery = {
   __typename?: 'RootQuery'
+  Author?: Maybe<Author>
   Post?: Maybe<Post>
   SanityImageAsset?: Maybe<SanityImageAsset>
   SanityFileAsset?: Maybe<SanityFileAsset>
   Document?: Maybe<Document>
+  allAuthor: Array<Author>
   allPost: Array<Post>
   allSanityImageAsset: Array<SanityImageAsset>
   allSanityFileAsset: Array<SanityFileAsset>
   allDocument: Array<Document>
+}
+
+export type RootQueryAuthorArgs = {
+  id: Scalars['ID']
 }
 
 export type RootQueryPostArgs = {
@@ -45,6 +51,13 @@ export type RootQuerySanityFileAssetArgs = {
 
 export type RootQueryDocumentArgs = {
   id: Scalars['ID']
+}
+
+export type RootQueryAllAuthorArgs = {
+  where?: Maybe<AuthorFilter>
+  sort?: Maybe<Array<AuthorSorting>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
 }
 
 export type RootQueryAllPostArgs = {
@@ -75,8 +88,8 @@ export type RootQueryAllDocumentArgs = {
   offset?: Maybe<Scalars['Int']>
 }
 
-export type Post = Document & {
-  __typename?: 'Post'
+export type Author = Document & {
+  __typename?: 'Author'
   /** Document ID */
   _id?: Maybe<Scalars['ID']>
   /** Document type */
@@ -88,9 +101,8 @@ export type Post = Document & {
   /** Current document revision */
   _rev?: Maybe<Scalars['String']>
   _key?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
-  slug?: Maybe<Slug>
-  content?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  avatar?: Maybe<Image>
 }
 
 /** A Sanity document */
@@ -107,11 +119,13 @@ export type Document = {
   _rev?: Maybe<Scalars['String']>
 }
 
-export type Slug = {
-  __typename?: 'Slug'
+export type Image = {
+  __typename?: 'Image'
   _key?: Maybe<Scalars['String']>
   _type?: Maybe<Scalars['String']>
-  current?: Maybe<Scalars['String']>
+  asset?: Maybe<SanityImageAsset>
+  hotspot?: Maybe<SanityImageHotspot>
+  crop?: Maybe<SanityImageCrop>
 }
 
 export type SanityImageAsset = Document & {
@@ -207,6 +221,55 @@ export type SanityAssetSourceData = {
   url?: Maybe<Scalars['String']>
 }
 
+export type SanityImageHotspot = {
+  __typename?: 'SanityImageHotspot'
+  _key?: Maybe<Scalars['String']>
+  _type?: Maybe<Scalars['String']>
+  x?: Maybe<Scalars['Float']>
+  y?: Maybe<Scalars['Float']>
+  height?: Maybe<Scalars['Float']>
+  width?: Maybe<Scalars['Float']>
+}
+
+export type SanityImageCrop = {
+  __typename?: 'SanityImageCrop'
+  _key?: Maybe<Scalars['String']>
+  _type?: Maybe<Scalars['String']>
+  top?: Maybe<Scalars['Float']>
+  bottom?: Maybe<Scalars['Float']>
+  left?: Maybe<Scalars['Float']>
+  right?: Maybe<Scalars['Float']>
+}
+
+export type Post = Document & {
+  __typename?: 'Post'
+  /** Document ID */
+  _id?: Maybe<Scalars['ID']>
+  /** Document type */
+  _type?: Maybe<Scalars['String']>
+  /** Date the document was created */
+  _createdAt?: Maybe<Scalars['DateTime']>
+  /** Date the document was last modified */
+  _updatedAt?: Maybe<Scalars['DateTime']>
+  /** Current document revision */
+  _rev?: Maybe<Scalars['String']>
+  _key?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  author?: Maybe<Author>
+  date?: Maybe<Scalars['DateTime']>
+  slug?: Maybe<Slug>
+  coverImage?: Maybe<Image>
+  excerpt?: Maybe<Scalars['String']>
+  content?: Maybe<Scalars['String']>
+}
+
+export type Slug = {
+  __typename?: 'Slug'
+  _key?: Maybe<Scalars['String']>
+  _type?: Maybe<Scalars['String']>
+  current?: Maybe<Scalars['String']>
+}
+
 export type SanityFileAsset = Document & {
   __typename?: 'SanityFileAsset'
   /** Document ID */
@@ -234,7 +297,7 @@ export type SanityFileAsset = Document & {
   source?: Maybe<SanityAssetSourceData>
 }
 
-export type PostFilter = {
+export type AuthorFilter = {
   /** Apply filters on document level */
   _?: Maybe<Sanity_DocumentFilter>
   _id?: Maybe<IdFilter>
@@ -243,9 +306,8 @@ export type PostFilter = {
   _updatedAt?: Maybe<DatetimeFilter>
   _rev?: Maybe<StringFilter>
   _key?: Maybe<StringFilter>
-  title?: Maybe<StringFilter>
-  slug?: Maybe<SlugFilter>
-  content?: Maybe<StringFilter>
+  name?: Maybe<StringFilter>
+  avatar?: Maybe<ImageFilter>
 }
 
 export type Sanity_DocumentFilter = {
@@ -292,35 +354,12 @@ export type DatetimeFilter = {
   lte?: Maybe<Scalars['DateTime']>
 }
 
-export type SlugFilter = {
+export type ImageFilter = {
   _key?: Maybe<StringFilter>
   _type?: Maybe<StringFilter>
-  current?: Maybe<StringFilter>
-}
-
-export type PostSorting = {
-  _id?: Maybe<SortOrder>
-  _type?: Maybe<SortOrder>
-  _createdAt?: Maybe<SortOrder>
-  _updatedAt?: Maybe<SortOrder>
-  _rev?: Maybe<SortOrder>
-  _key?: Maybe<SortOrder>
-  title?: Maybe<SortOrder>
-  slug?: Maybe<SlugSorting>
-  content?: Maybe<SortOrder>
-}
-
-export enum SortOrder {
-  /** Sorts on the value in ascending order. */
-  Asc = 'ASC',
-  /** Sorts on the value in descending order. */
-  Desc = 'DESC',
-}
-
-export type SlugSorting = {
-  _key?: Maybe<SortOrder>
-  _type?: Maybe<SortOrder>
-  current?: Maybe<SortOrder>
+  asset?: Maybe<SanityImageAssetFilter>
+  hotspot?: Maybe<SanityImageHotspotFilter>
+  crop?: Maybe<SanityImageCropFilter>
 }
 
 export type SanityImageAssetFilter = {
@@ -423,6 +462,112 @@ export type SanityAssetSourceDataFilter = {
   name?: Maybe<StringFilter>
   id?: Maybe<StringFilter>
   url?: Maybe<StringFilter>
+}
+
+export type SanityImageHotspotFilter = {
+  _key?: Maybe<StringFilter>
+  _type?: Maybe<StringFilter>
+  x?: Maybe<FloatFilter>
+  y?: Maybe<FloatFilter>
+  height?: Maybe<FloatFilter>
+  width?: Maybe<FloatFilter>
+}
+
+export type SanityImageCropFilter = {
+  _key?: Maybe<StringFilter>
+  _type?: Maybe<StringFilter>
+  top?: Maybe<FloatFilter>
+  bottom?: Maybe<FloatFilter>
+  left?: Maybe<FloatFilter>
+  right?: Maybe<FloatFilter>
+}
+
+export type AuthorSorting = {
+  _id?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  _createdAt?: Maybe<SortOrder>
+  _updatedAt?: Maybe<SortOrder>
+  _rev?: Maybe<SortOrder>
+  _key?: Maybe<SortOrder>
+  name?: Maybe<SortOrder>
+  avatar?: Maybe<ImageSorting>
+}
+
+export enum SortOrder {
+  /** Sorts on the value in ascending order. */
+  Asc = 'ASC',
+  /** Sorts on the value in descending order. */
+  Desc = 'DESC',
+}
+
+export type ImageSorting = {
+  _key?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  hotspot?: Maybe<SanityImageHotspotSorting>
+  crop?: Maybe<SanityImageCropSorting>
+}
+
+export type SanityImageHotspotSorting = {
+  _key?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  x?: Maybe<SortOrder>
+  y?: Maybe<SortOrder>
+  height?: Maybe<SortOrder>
+  width?: Maybe<SortOrder>
+}
+
+export type SanityImageCropSorting = {
+  _key?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  top?: Maybe<SortOrder>
+  bottom?: Maybe<SortOrder>
+  left?: Maybe<SortOrder>
+  right?: Maybe<SortOrder>
+}
+
+export type PostFilter = {
+  /** Apply filters on document level */
+  _?: Maybe<Sanity_DocumentFilter>
+  _id?: Maybe<IdFilter>
+  _type?: Maybe<StringFilter>
+  _createdAt?: Maybe<DatetimeFilter>
+  _updatedAt?: Maybe<DatetimeFilter>
+  _rev?: Maybe<StringFilter>
+  _key?: Maybe<StringFilter>
+  title?: Maybe<StringFilter>
+  author?: Maybe<AuthorFilter>
+  date?: Maybe<DatetimeFilter>
+  slug?: Maybe<SlugFilter>
+  coverImage?: Maybe<ImageFilter>
+  excerpt?: Maybe<StringFilter>
+  content?: Maybe<StringFilter>
+}
+
+export type SlugFilter = {
+  _key?: Maybe<StringFilter>
+  _type?: Maybe<StringFilter>
+  current?: Maybe<StringFilter>
+}
+
+export type PostSorting = {
+  _id?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  _createdAt?: Maybe<SortOrder>
+  _updatedAt?: Maybe<SortOrder>
+  _rev?: Maybe<SortOrder>
+  _key?: Maybe<SortOrder>
+  title?: Maybe<SortOrder>
+  date?: Maybe<SortOrder>
+  slug?: Maybe<SlugSorting>
+  coverImage?: Maybe<ImageSorting>
+  excerpt?: Maybe<SortOrder>
+  content?: Maybe<SortOrder>
+}
+
+export type SlugSorting = {
+  _key?: Maybe<SortOrder>
+  _type?: Maybe<SortOrder>
+  current?: Maybe<SortOrder>
 }
 
 export type SanityImageAssetSorting = {
@@ -565,35 +710,6 @@ export type DocumentSorting = {
   _rev?: Maybe<SortOrder>
 }
 
-export type Image = {
-  __typename?: 'Image'
-  _key?: Maybe<Scalars['String']>
-  _type?: Maybe<Scalars['String']>
-  asset?: Maybe<SanityImageAsset>
-  hotspot?: Maybe<SanityImageHotspot>
-  crop?: Maybe<SanityImageCrop>
-}
-
-export type SanityImageHotspot = {
-  __typename?: 'SanityImageHotspot'
-  _key?: Maybe<Scalars['String']>
-  _type?: Maybe<Scalars['String']>
-  x?: Maybe<Scalars['Float']>
-  y?: Maybe<Scalars['Float']>
-  height?: Maybe<Scalars['Float']>
-  width?: Maybe<Scalars['Float']>
-}
-
-export type SanityImageCrop = {
-  __typename?: 'SanityImageCrop'
-  _key?: Maybe<Scalars['String']>
-  _type?: Maybe<Scalars['String']>
-  top?: Maybe<Scalars['Float']>
-  bottom?: Maybe<Scalars['Float']>
-  left?: Maybe<Scalars['Float']>
-  right?: Maybe<Scalars['Float']>
-}
-
 export type File = {
   __typename?: 'File'
   _key?: Maybe<Scalars['String']>
@@ -648,61 +764,10 @@ export type DateFilter = {
   lte?: Maybe<Scalars['Date']>
 }
 
-export type ImageFilter = {
-  _key?: Maybe<StringFilter>
-  _type?: Maybe<StringFilter>
-  asset?: Maybe<SanityImageAssetFilter>
-  hotspot?: Maybe<SanityImageHotspotFilter>
-  crop?: Maybe<SanityImageCropFilter>
-}
-
-export type SanityImageHotspotFilter = {
-  _key?: Maybe<StringFilter>
-  _type?: Maybe<StringFilter>
-  x?: Maybe<FloatFilter>
-  y?: Maybe<FloatFilter>
-  height?: Maybe<FloatFilter>
-  width?: Maybe<FloatFilter>
-}
-
-export type SanityImageCropFilter = {
-  _key?: Maybe<StringFilter>
-  _type?: Maybe<StringFilter>
-  top?: Maybe<FloatFilter>
-  bottom?: Maybe<FloatFilter>
-  left?: Maybe<FloatFilter>
-  right?: Maybe<FloatFilter>
-}
-
 export type FileFilter = {
   _key?: Maybe<StringFilter>
   _type?: Maybe<StringFilter>
   asset?: Maybe<SanityFileAssetFilter>
-}
-
-export type ImageSorting = {
-  _key?: Maybe<SortOrder>
-  _type?: Maybe<SortOrder>
-  hotspot?: Maybe<SanityImageHotspotSorting>
-  crop?: Maybe<SanityImageCropSorting>
-}
-
-export type SanityImageHotspotSorting = {
-  _key?: Maybe<SortOrder>
-  _type?: Maybe<SortOrder>
-  x?: Maybe<SortOrder>
-  y?: Maybe<SortOrder>
-  height?: Maybe<SortOrder>
-  width?: Maybe<SortOrder>
-}
-
-export type SanityImageCropSorting = {
-  _key?: Maybe<SortOrder>
-  _type?: Maybe<SortOrder>
-  top?: Maybe<SortOrder>
-  bottom?: Maybe<SortOrder>
-  left?: Maybe<SortOrder>
-  right?: Maybe<SortOrder>
 }
 
 export type FileSorting = {
@@ -710,37 +775,99 @@ export type FileSorting = {
   _type?: Maybe<SortOrder>
 }
 
-export type AllPostsQueryVariables = Exact<{ [key: string]: never }>
-
-export type AllPostsQuery = { __typename?: 'RootQuery' } & {
-  allPost: Array<
-    { __typename?: 'Post' } & Pick<Post, 'title'> & { slug?: Maybe<{ __typename?: 'Slug' } & Pick<Slug, 'current'>> }
-  >
-}
-
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String']
 }>
 
 export type PostBySlugQuery = { __typename?: 'RootQuery' } & {
-  allPost: Array<{ __typename?: 'Post' } & Pick<Post, 'title' | 'content'>>
+  allPost: Array<
+    { __typename?: 'Post' } & Pick<Post, 'title' | 'content'> & {
+        author?: Maybe<
+          { __typename?: 'Author' } & Pick<Author, 'name'> & {
+              avatar?: Maybe<
+                { __typename?: 'Image' } & {
+                  asset?: Maybe<{ __typename?: 'SanityImageAsset' } & Pick<SanityImageAsset, 'url'>>
+                }
+              >
+            }
+        >
+        coverImage?: Maybe<
+          { __typename?: 'Image' } & {
+            asset?: Maybe<{ __typename?: 'SanityImageAsset' } & Pick<SanityImageAsset, 'url'>>
+          }
+        >
+      }
+  >
 }
 
-export const AllPostsDocument = gql`
-  query AllPosts {
-    allPost {
-      title
-      slug {
-        current
+export type PostsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>
+}>
+
+export type PostsQuery = { __typename?: 'RootQuery' } & {
+  allPost: Array<
+    { __typename?: 'Post' } & Pick<Post, 'title' | 'excerpt'> & {
+        author?: Maybe<
+          { __typename?: 'Author' } & Pick<Author, 'name'> & {
+              avatar?: Maybe<
+                { __typename?: 'Image' } & {
+                  asset?: Maybe<{ __typename?: 'SanityImageAsset' } & Pick<SanityImageAsset, 'url'>>
+                }
+              >
+            }
+        >
+        coverImage?: Maybe<
+          { __typename?: 'Image' } & {
+            asset?: Maybe<{ __typename?: 'SanityImageAsset' } & Pick<SanityImageAsset, 'url'>>
+          }
+        >
+        slug?: Maybe<{ __typename?: 'Slug' } & Pick<Slug, 'current'>>
       }
-    }
-  }
-`
+  >
+}
+
 export const PostBySlugDocument = gql`
   query PostBySlug($slug: String!) {
     allPost(where: { slug: { current: { eq: $slug } } }) {
       title
+      author {
+        name
+        avatar {
+          asset {
+            url
+          }
+        }
+      }
+      coverImage {
+        asset {
+          url
+        }
+      }
       content
+    }
+  }
+`
+export const PostsDocument = gql`
+  query Posts($limit: Int) {
+    allPost(limit: $limit) {
+      title
+      author {
+        name
+        avatar {
+          asset {
+            url
+          }
+        }
+      }
+      excerpt
+      coverImage {
+        asset {
+          url
+        }
+      }
+      slug {
+        current
+      }
     }
   }
 `
@@ -750,11 +877,11 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>
 const defaultWrapper: SdkFunctionWrapper = (sdkFunction) => sdkFunction()
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    AllPosts(variables?: AllPostsQueryVariables, requestHeaders?: Headers): Promise<AllPostsQuery> {
-      return withWrapper(() => client.request<AllPostsQuery>(print(AllPostsDocument), variables, requestHeaders))
-    },
     PostBySlug(variables: PostBySlugQueryVariables, requestHeaders?: Headers): Promise<PostBySlugQuery> {
       return withWrapper(() => client.request<PostBySlugQuery>(print(PostBySlugDocument), variables, requestHeaders))
+    },
+    Posts(variables?: PostsQueryVariables, requestHeaders?: Headers): Promise<PostsQuery> {
+      return withWrapper(() => client.request<PostsQuery>(print(PostsDocument), variables, requestHeaders))
     },
   }
 }

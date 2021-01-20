@@ -19,7 +19,7 @@ const StickyNav = styled(Flex)`
 const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
-  const bgColor = { light: 'rgb(201, 8, 42, 0.8)', dark: 'rgb(26, 32, 44, 0.5)' }
+  const bgColor = { light: 'gray.700', dark: 'gray.200' }
   const color = { light: 'white', dark: 'gray.800' }
 
   return (
@@ -43,7 +43,7 @@ const Navbar: FC = () => {
               variant="ghost"
               _hover={{ bg: 'rgba(0,0,0,.2)' }}
               p={[1, 4]}
-              color="white"
+              color={color[colorMode]}
             >
               <Text fontSize={['xl', '2xl', '2xl', '2xl']}>Home</Text>
             </Button>
@@ -62,7 +62,7 @@ const Navbar: FC = () => {
             aria-label="Toggle dark mode"
             icon={colorMode === 'dark' ? <BiSun /> : <BsMoon />}
             onClick={toggleColorMode}
-            color="white"
+            color={colorMode === 'dark' ? 'black' : 'white'}
             _focus={{ boxShadow: 'none' }}
           />
         </Box>

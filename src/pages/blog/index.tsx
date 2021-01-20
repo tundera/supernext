@@ -1,28 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { NextPage, GetStaticProps } from 'next'
-import type { BlogPost } from 'types/sanity'
+import type { Post } from 'generated/sanity'
 
 import NextLink from 'next/link'
 import { Box, Heading, Text, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdCheckCircle } from 'react-icons/md'
 
-import { getAllPosts } from '@lib/sanity/posts'
-
-type Post = {
-  title: string
-  slug: string
-}
+import { getPosts } from '@lib/sanity/posts'
+import { POSTS_PER_PAGE } from 'constants/sanity'
 
 type Props = {
   posts: Post[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data: BlogPost[] = await getAllPosts()
+  const data = await getPosts(POSTS_PER_PAGE)
 
   const posts = data?.map((post) => ({
     title: post.title,
-    slug: post.slug.current,
+    author: post.author,
+    slug: post.slug,
   }))
 
   return {

@@ -1,49 +1,58 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-
+import type { Author, Image as ImageType } from 'generated/sanity'
 // import fs from 'fs'
 // import matter from 'gray-matter'
 import { useRouter } from 'next/router'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
-import { getAllPosts, getPostBySlug } from '@lib/sanity/posts'
-import { Heading, Text } from '@chakra-ui/react'
+import { getPosts, getPostBySlug } from '@lib/sanity/posts'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { BlogPost } from 'types/sanity'
+import { GENERATED_POSTS_LIMIT } from 'constants/sanity'
+import Image from 'next/image'
 
 type Props = {
+  title: string | null | undefined
+  date: any
+  author: Author
+  slug: string
+  excerpt: string
+  coverImage: ImageType
   content: string
-  title: string
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = `${params?.slug}`
-  const [{ content, title }] = await getPostBySlug(slug)
+  const [{ title, author, date, coverImage, content }] = await getPostBySlug(slug)
 
-  const markup = await renderToString(content, {
+  const markup = await renderToString(content ?? '', {
     components: { Callout },
   })
 
   return {
     props: {
       title,
+      author,
+      date: date ?? '',
+      coverImage,
       content: markup,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts: BlogPost[] = await getAllPosts()
+  const posts = await getPosts(GENERATED_POSTS_LIMIT)
 
   return {
-    paths: posts.map((post) => `/blog/${post.slug.current}`),
+    paths: posts.map((post) => `/blog/${post.slug?.current}`),
     fallback: true,
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ content, title }) => {
+const BlogPostPage: NextPage<Props> = ({ title, author, date, coverImage, content }) => {
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -60,7 +69,12 @@ const BlogPostPage: NextPage<Props> = ({ content, title }) => {
 
   return (
     <PageLayout>
-      <Heading>{title}</Heading>
+      <Stack>
+        <Heading>{title}</Heading>
+        <Image src={coverImage.asset?.url || ''} width={500} height={300} />
+        <Text>{author.name}</Text>
+        <Text>{date}</Text>
+      </Stack>
       <BlogPostLayout>{renderedContent}</BlogPostLayout>
     </PageLayout>
   )

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query PostBySlug($slug: String!) {
-    allPost(where: { slug: { current: { eq: $slug } } }) {
+  query Posts($limit: Int) {
+    allPost(limit: $limit) {
       title
       author {
         name
@@ -12,12 +12,15 @@ export default gql`
           }
         }
       }
+      excerpt
       coverImage {
         asset {
           url
         }
       }
-      content
+      slug {
+        current
+      }
     }
   }
 `
