@@ -12,9 +12,7 @@ const getPrismaClient = () => {
   } else {
     // Ensure the prisma instance is re-used during hot-reloading
     // Otherwise, a new client will be created on every reload
-    // @ts-expect-error
     globalThis.prisma = globalThis.prisma || new PrismaClient()
-    // @ts-expect-error
     prisma = globalThis.prisma
   }
 
