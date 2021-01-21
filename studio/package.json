@@ -1,5 +1,5 @@
 {
-  "name": "nextgoat",
+  "name": "studio",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -8,7 +8,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build",
+    "deploy": "sanity deploy -y && sanity graphql deploy -y"
   },
   "keywords": [
     "sanity"

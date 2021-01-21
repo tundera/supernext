@@ -16,6 +16,11 @@
     "node": ">=12",
     "yarn": ">=1.15"
   },
+  "workspaces": {
+    "packages": [
+      "studio"
+    ]
+  },
   "prisma": {
     "schema": "db/schema.prisma"
   },
@@ -34,6 +39,8 @@
     "db:migrate:reset": "prisma migrate reset --schema='db/schema.prisma' --preview-feature",
     "db:migrate:deploy": "prisma migrate deploy --schema='db/schema.prisma' --preview-feature",
     "db:migrate:status": "prisma migrate status --schema='db/schema.prisma' --preview-feature",
+    "studio:start": "yarn workspace studio start",
+    "studio:deploy": "yarn workspace studio deploy",
     "start": "next start",
     "test": "jest",
     "test:ci": "jest --runInBand",

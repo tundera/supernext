@@ -7,7 +7,7 @@
 ### Features
 
 - Isomorphic React via Next.js 🏆
-- TypeScript (**strongly** typed 💪)
+- TypeScript ✅
 - Chakra UI + Framer Motion 🚅
 - React Query v3 + Suspense
 - Prisma v2 + Nexus GraphQL
