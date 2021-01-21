@@ -40,10 +40,11 @@ Please check out the following projects that served as a base for this one:
 - [nirmalyaghosh.com](https://github.com/ghoshnirmalya/nirmalyaghosh.com)
 - [chakraui-react-next.js-typescript-eslint-jest-starter](https://github.com/abhishekbhardwaj/chakraui-react-next.js-typescript-eslint-jest-starter)
 
-Some notable open-source libraries used in this template:
+Some notable open-source libraries and developer blog tutorials were were a big aid in creating this template. Check them out:
 
 - [chakra-templates](https://github.com/hauptrolle/chakra-templates)
 
 ### Media Sources
 
 - [Banner image](https://basketballforever.com/2019/03/07/the-key-points-of-difference-in-the-michael-jordan-lebron-james-goat-debate)
+- [Confetti Button](https://raptis.wtf/blog/gatsby-mdx-copy-code-button-with-confetti/)

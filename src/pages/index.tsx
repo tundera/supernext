@@ -21,7 +21,7 @@ const HomePage: NextPage<Props> = ({ preview = false }) => {
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Next Goat
           </Heading>
-          <BouncingEmoji label="Bouncing goat emoji" symbol="🐐" />
+          <BouncingEmoji label="Bouncing basketball emoji" symbol="🏀" />
         </Stack>
       </PageLayout>
     </>

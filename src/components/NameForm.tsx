@@ -1,9 +1,13 @@
+import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import React from 'react'
 import { FormErrorMessage, FormLabel, FormControl, Input, Button } from '@chakra-ui/react'
 
-export default function HookForm() {
-  const { handleSubmit, errors, register, formState } = useForm()
+type Inputs = {
+  name: string
+}
+
+export const NameForm: FC = () => {
+  const { handleSubmit, errors, register, formState } = useForm<Inputs>()
 
   function validateName(value) {
     if (!value) {
@@ -15,7 +19,7 @@ export default function HookForm() {
     return true
   }
 
-  function onSubmit(values) {
+  const onSubmit = (values) => {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         // eslint-disable-next-line no-alert
@@ -27,9 +31,9 @@ export default function HookForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl isInvalid={errors.name}>
+      <FormControl isInvalid={!!errors.name}>
         <FormLabel htmlFor="name">First name</FormLabel>
-        <Input name="name" placeholder="name" ref={register({ validate: validateName })} />
+        <Input name="name" defaultValue="Example Name" placeholder="name" ref={register({ validate: validateName })} />
         <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
       </FormControl>
       <Button mt={4} colorScheme="teal" isLoading={formState.isSubmitting} type="submit">
@@ -38,3 +42,5 @@ export default function HookForm() {
     </form>
   )
 }
+
+export default NameForm

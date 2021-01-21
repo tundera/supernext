@@ -5,13 +5,13 @@ import { Flex, useColorMode } from '@chakra-ui/react'
 const Container: FC = ({ children }) => {
   const { colorMode } = useColorMode()
 
-  const bgColor = {
-    light: 'white',
-    dark: 'gray.900',
+  const color = {
+    light: '#110d5b',
+    dark: '#a3f6e7',
   }
-  const primaryTextColor = {
-    light: 'black',
-    dark: 'white',
+  const bgColor = {
+    light: 'gray.200',
+    dark: 'gray.700',
   }
 
   return (
@@ -20,8 +20,9 @@ const Container: FC = ({ children }) => {
       justifyContent="center"
       flexDirection="column"
       bg={bgColor[colorMode]}
-      color={primaryTextColor[colorMode]}
+      color={color[colorMode]}
       px={8}
+      minHeight="95vh"
     >
       {children}
     </Flex>

@@ -19,11 +19,11 @@ const StickyNav = styled(Flex)`
 const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
-  const bgColor = { light: 'gray.700', dark: 'gray.200' }
-  const color = { light: 'white', dark: 'gray.800' }
+  const bgColor = { light: '#110d5b', dark: '#a3f6e7' }
+  const color = { light: '#a3f6e7', dark: '#110d5b' }
 
   return (
-    <StickyNav bg={bgColor[colorMode]} color={color[colorMode]}>
+    <StickyNav minHeight="5vh" bg={bgColor[colorMode]} color={color[colorMode]}>
       <Flex
         flexDirection="row"
         justifyContent="space-between"
@@ -45,7 +45,7 @@ const Navbar: FC = () => {
               p={[1, 4]}
               color={color[colorMode]}
             >
-              <Text fontSize={['xl', '2xl', '2xl', '2xl']}>Home</Text>
+              <Text fontSize={['xl', 'lg', 'lg', 'xl']}>Home</Text>
             </Button>
           </NextLink>
         </Box>

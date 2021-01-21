@@ -18,7 +18,7 @@ const NavLink: FC<Props> = ({ LinkComponent, text, href }) => {
     <LinkComponent href={href} passHref>
       <Button
         fontWeight="500"
-        fontSize={['xs', 'sm', 'lg', 'xl']}
+        fontSize={['xs', 'sm', 'md', 'md']}
         as="a"
         variant="ghost"
         _hover={{ bg: 'rgba(0,0,0,.2)' }}
