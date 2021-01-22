@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Post Title',
       type: 'string',
+      codegen: { required: true },
       validation: (Rule) => Rule.required(),
     },
     {
@@ -14,18 +15,21 @@ export default {
       title: 'Author',
       type: 'reference',
       to: [{ type: 'author' }],
+      codegen: { required: true },
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'date',
       title: 'Date',
       type: 'datetime',
+      codegen: { required: true },
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'slug',
       title: 'Post Slug',
       type: 'slug',
+      codegen: { required: true },
       validation: (Rule) => Rule.required(),
       options: {
         source: 'title',
@@ -46,6 +50,7 @@ export default {
       name: 'content',
       title: 'Content',
       type: 'markdown',
+      codegen: { required: true },
       validation: (Rule) => Rule.required(),
     },
   ],

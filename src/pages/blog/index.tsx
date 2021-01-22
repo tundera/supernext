@@ -1,28 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import type { NextPage, GetStaticProps } from 'next'
-import type { Post } from 'generated/sanity'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
 
 import { Stack, Heading, Text } from '@chakra-ui/react'
 
-import { getPosts } from '@lib/sanity/posts'
 import PageLayout from '@layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'constants/sanity'
 import PostsList from '@components/PostsList'
-
-type Props = {
-  posts: Post[]
-  preview: boolean
-}
+import { usePreviewSubscription } from '@lib/sanity'
+import sanity from '@lib/sanity/client'
+import { getPosts } from 'services/sanity/posts'
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const posts = await getPosts(POSTS_PER_PAGE)
+  sanity.setPreviewMode(preview)
+
+  const posts = await sanity.getAll('post')
 
   return {
-    props: { posts, preview },
+    props: { data: posts, preview },
+    revalidate: 1,
   }
 }
 
-const BlogPage: NextPage<Props> = ({ posts, preview }) => {
+const BlogPage: NextPage = ({ data, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data: posts } = usePreviewSubscription(getPosts, {
+    params: { count: POSTS_PER_PAGE },
+    initialData: data,
+    enabled: preview,
+  })
+
   return (
     <>
       <PageLayout preview={preview}>

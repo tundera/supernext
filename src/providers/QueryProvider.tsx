@@ -10,7 +10,7 @@ type Props = {
   state: unknown
 }
 
-const ReactQueryProvider: FC<Props> = ({ state: dehydratedState, children }) => (
+const QueryProvider: FC<Props> = ({ state: dehydratedState, children }) => (
   <QueryClientProvider client={queryClient}>
     <Hydrate state={dehydratedState}>
       {children}
@@ -19,4 +19,4 @@ const ReactQueryProvider: FC<Props> = ({ state: dehydratedState, children }) => 
   </QueryClientProvider>
 )
 
-export default ReactQueryProvider
+export default QueryProvider

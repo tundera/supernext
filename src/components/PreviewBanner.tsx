@@ -4,6 +4,7 @@ import { useColorMode, Button, ButtonGroup, IconButton, Flex, Text } from '@chak
 import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import { BsCircleFill } from 'react-icons/bs'
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router'
 
 type Props = {
   preview: boolean
@@ -47,7 +48,7 @@ const PreviewBanner: FC<Props> = ({ preview }) => {
           <ButtonGroup variant="outline" spacing="6">
             <Button
               as="a"
-              href="/api/preview"
+              href={`/api/preview?secret=${process.env.NEXT_SANITY_PREVIEW_SECRET}`}
               iconSpacing={4}
               rightIcon={<BsCircleFill size="12px" color="orange" />}
               w="175px"

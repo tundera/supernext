@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import type { Post } from 'generated/sanity'
+import type { Post } from 'generated/sanity-graphql'
 
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
 

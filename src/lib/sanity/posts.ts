@@ -1,4 +1,4 @@
-import { PostsDocument, PostBySlugDocument, Post } from 'generated/sanity'
+import { PostsDocument, PostBySlugDocument, Post } from 'generated/sanity-graphql'
 import { getSanityContent } from '@lib/sanity'
 
 export async function getPosts(limit?: number) {

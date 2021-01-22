@@ -19,5 +19,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },
     ],
+    'next-data-hooks/babel',
   ],
 }

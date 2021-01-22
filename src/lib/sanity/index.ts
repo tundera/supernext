@@ -1,11 +1,6 @@
 import type { SanityContentOptions } from 'types/sanity'
 
-import {
-  createClient,
-  createImageUrlBuilder,
-  createPortableTextComponent,
-  createPreviewSubscriptionHook,
-} from 'next-sanity'
+import { createClient, createPortableTextComponent, createPreviewSubscriptionHook } from 'next-sanity'
 
 import { request } from 'graphql-request'
 

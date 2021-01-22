@@ -1,15 +1,19 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
-import ReactQueryProvider from '@providers/ReactQueryProvider'
+import QueryProvider from '@providers/QueryProvider'
 import ThemeProvider from '@providers/ThemeProvider'
+import DataProvider from '@providers/DataProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { dehydratedState, children, ...rest } = pageProps
   return (
-    <ReactQueryProvider state={pageProps.dehydratedState}>
+    <QueryProvider state={dehydratedState}>
       <ThemeProvider>
-        <Component {...pageProps} />
+        <DataProvider {...rest}>
+          <Component {...rest} />
+        </DataProvider>
       </ThemeProvider>
-    </ReactQueryProvider>
+    </QueryProvider>
   )
 }
 

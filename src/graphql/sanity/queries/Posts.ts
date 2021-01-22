@@ -1,10 +1,8 @@
 import gql from 'graphql-tag'
 
-import { DEFAULT_POSTS_LIMIT } from 'constants/sanity'
-
 export default gql`
-  query Posts($limit: Int) {
-    allPost(limit: $limit = ${DEFAULT_POSTS_LIMIT}) {
+  query Posts($limit: Int = 10) {
+    allPost(limit: $limit) {
       title
       author {
         name

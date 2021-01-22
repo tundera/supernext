@@ -14,7 +14,10 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "markdown",
-    "asset-source-cloudinary"
+    "asset-source-cloudinary",
+    "graph-view",
+    "content-calendar",
+    "asset-source-unsplash"
   ],
   "env": {
     "development": {

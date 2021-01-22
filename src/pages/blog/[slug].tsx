@@ -1,6 +1,4 @@
-import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import { Post } from 'generated/sanity'
-import type { MdxRemote } from 'next-mdx-remote/types'
+import type { NextPage, GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next'
 
 // import fs from 'fs'
 // import matter from 'gray-matter'
@@ -15,16 +13,11 @@ import { Flex, Heading, Text } from '@chakra-ui/react'
 import Callout from '@components/Callout'
 import PageLayout from '@layouts/PageLayout'
 import BlogPostLayout from '@layouts/BlogPostLayout'
-import { usePreviewSubscription, getClient } from '@lib/sanity'
+import { usePreviewSubscription } from '@lib/sanity'
+import sanity from '@lib/sanity/client'
 import { createImageUrl } from '@utils/sanity'
 import LoadingSpinner from '@components/LoadingSpinner'
 import { Suspense } from 'react'
-
-type Props = {
-  post: Post
-  markup: MdxRemote.Source
-  preview: boolean
-}
 
 const getPostBySlug = groq`
   *[_type == "post" && slug.current == $slug][0] {
@@ -42,13 +35,11 @@ const getPostBySlug = groq`
 }
 `
 
-const getPosts = groq`*[_type == "post" && defined(slug.current)][].slug.current`
-
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const slug = `${params?.slug}`
-  const post = await getClient(preview).fetch(getPostBySlug, {
-    slug,
-  })
+  sanity.setPreviewMode(preview)
+
+  const slug = (params?.slug as string) || ''
+  const [post] = await sanity.getAll('post', `_type == "post" && slug.current == "${slug ?? ''}"`)
 
   const markup = await renderToString(post?.content ?? '', {
     components: { Callout },
@@ -62,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
   return {
     props: {
-      post,
+      data: post,
       markup,
       preview,
     },
@@ -71,25 +62,18 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs: string[] = await getClient().fetch(getPosts)
-
+  const posts = await sanity.getAll('post')
   return {
-    paths: slugs.map((slug) => `/blog/${slug}`),
+    paths: posts.map((post) => `/blog/${post.slug.current}`),
     fallback: true,
   }
 }
 
-const BlogPostPage: NextPage<Props> = ({ post, markup, preview }) => {
-  const { data } = usePreviewSubscription(getPostBySlug, {
-    params: { slug: post ? post.slug : '' },
-    initialData: post,
+const BlogPostPage: NextPage = ({ data, markup, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data: post } = usePreviewSubscription(getPostBySlug, {
+    params: { slug: data?.slug.current ?? '' },
+    initialData: data,
     enabled: preview,
-  })
-
-  const renderedContent = hydrate(markup ?? '', {
-    components: {
-      Callout,
-    },
   })
 
   const router = useRouter()
@@ -98,6 +82,12 @@ const BlogPostPage: NextPage<Props> = ({ post, markup, preview }) => {
     return <LoadingSpinner />
   }
 
+  const renderedContent = hydrate(markup ?? '', {
+    components: {
+      Callout,
+    },
+  })
+
   // if (!router.isFallback && !post.slug) {
   //   return <ErrorPage statusCode={404} />
   // }
@@ -105,17 +95,21 @@ const BlogPostPage: NextPage<Props> = ({ post, markup, preview }) => {
   return (
     <>
       <PageLayout preview={preview}>
-        {data && (
+        {post && (
           <>
             <BlogPostLayout>
-              <Heading>{data.title}</Heading>
+              <Heading>{post.title}</Heading>
               <Flex flexDir="column" w="500" h="300" alignItems="center">
                 <Suspense fallback={<LoadingSpinner />}>
-                  <Image src={createImageUrl(data.coverImage?.asset as string).url() || ''} width={500} height={300} />
+                  <Image
+                    src={createImageUrl(post.coverImage?.asset._ref as string).url() || ''}
+                    width={500}
+                    height={300}
+                  />
                 </Suspense>
               </Flex>
-              <Text>{data.author?.name}</Text>
-              <Text>{data.date}</Text>
+              <Text>{post.author.name}</Text>
+              <Text>{post.date}</Text>
               {renderedContent}
             </BlogPostLayout>
           </>

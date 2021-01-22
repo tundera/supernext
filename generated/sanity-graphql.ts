@@ -849,7 +849,7 @@ export const PostBySlugDocument = gql`
   }
 `
 export const PostsDocument = gql`
-  query Posts($limit: Int) {
+  query Posts($limit: Int = 10) {
     allPost(limit: $limit) {
       title
       author {
