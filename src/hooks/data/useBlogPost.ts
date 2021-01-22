@@ -1,6 +1,6 @@
 import renderToString from 'next-mdx-remote/render-to-string'
 import { createDataHook } from 'next-data-hooks'
-import { parse } from 'date-fns'
+// import { parse } from 'date-fns'
 
 import sanity from '@lib/sanity/client'
 import Callout from '@components/Callout'
