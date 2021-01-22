@@ -1,4 +1,6 @@
 import { FC } from 'react'
+
+// FIX THIS TYPE TO USE GROQ
 import type { Post } from 'services/sanity/generated/graphql'
 
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
@@ -25,7 +27,7 @@ const PostsList: FC<Props> = ({ posts }) => {
           overflow="hidden"
           bgColor="gray.300"
           as="a"
-          href={`/blog/${post.slug?.current}`}
+          href={`/blog/${post.slug}`}
         >
           <Box p="6">
             <Box d="flex" alignItems="baseline">

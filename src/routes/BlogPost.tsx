@@ -18,7 +18,7 @@ const BlogPost = () => {
   const { post, preview } = useBlogPost()
 
   const { data } = usePreviewSubscription(getPostBySlug, {
-    params: { slug: post.slug.current ?? '' },
+    params: { slug: post?.slug.current ?? '' },
     initialData: post,
     enabled: preview,
   })
