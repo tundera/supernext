@@ -1,7 +1,9 @@
+import renderToString from 'next-mdx-remote/render-to-string'
 import { createDataHook } from 'next-data-hooks'
 import { parse } from 'date-fns'
 
 import sanity from '@lib/sanity/client'
+import Callout from '@components/Callout'
 
 const useBlogPost = createDataHook('BlogPost', async ({ params, preview = false }) => {
   const pageSlug = params?.slug as string
@@ -15,13 +17,18 @@ const useBlogPost = createDataHook('BlogPost', async ({ params, preview = false 
 
   // Get additional data for author, date, and images
   const expandedAuthor = await sanity.expand(author)
-  const formattedDate = parse(date, 'MM-dd-yyyy', new Date())
+  // const formattedDate = parse(date, 'MM-dd-yyyy', new Date())
+
+  // Render MDX content to markup
+  const markup = await renderToString(content ?? '', {
+    components: { Callout },
+  })
 
   const data = {
     ...rest,
     author: expandedAuthor,
-    date: formattedDate,
-    content,
+    date,
+    content: markup,
   }
 
   return {

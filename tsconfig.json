@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@routes/*": ["src/routes/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@providers/*": ["src/providers/*"],

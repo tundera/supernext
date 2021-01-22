@@ -5,12 +5,19 @@ module.exports = {
   images: {
     domains: ['res.cloudinary.com', 'cdn.sanity.io'],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+      }
+    }
+
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
       loader: 'graphql-tag/loader',
     })
+
     return config
   },
   webpackDevMiddleware: (config) => {
