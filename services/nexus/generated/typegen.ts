@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import { Context } from './../services/nexus/context'
+import { Context } from './../context'
 
 declare global {
   interface NexusGenCustomOutputProperties<TypeName extends string> {

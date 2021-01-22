@@ -1,4 +1,4 @@
-import type { SanityContentOptions } from 'types/sanity'
+import type { SanityContentOptions } from 'services/sanity/types'
 
 import { createClient, createPortableTextComponent, createPreviewSubscriptionHook } from 'next-sanity'
 

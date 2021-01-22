@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from 'next'
-import type { Article } from 'types/content'
+import type { Article } from 'services/content/types'
 
 import { Heading, Stack } from '@chakra-ui/react'
 
 import PageLayout from '@layouts/PageLayout'
 import ArticlesList from '@components/ArticlesList'
-import { getAllArticles } from '@lib/local/articles'
+import { getAllArticles } from '@lib/content/articles'
 
 type Props = {
   articles: Article[]

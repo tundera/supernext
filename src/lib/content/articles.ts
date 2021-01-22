@@ -1,4 +1,4 @@
-import type { Article, FrontMatter } from 'types/content'
+import type { Article, FrontMatter } from 'services/content/types'
 
 import fs from 'fs'
 import path from 'path'
@@ -7,7 +7,7 @@ import matter from 'gray-matter'
 const root = process.cwd()
 
 export async function getAllArticles(): Promise<Article[]> {
-  const articlesRoot = path.join(root, 'content', 'articles')
+  const articlesRoot = path.join(root, 'services/content', 'articles')
   const articles = fs.readdirSync(articlesRoot).map((p) => {
     const content = fs.readFileSync(path.join(articlesRoot, p), 'utf8')
 

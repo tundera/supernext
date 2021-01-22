@@ -1,4 +1,4 @@
-import type { Player } from 'types/nexus'
+import type { Player } from 'services/nexus/types'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 
