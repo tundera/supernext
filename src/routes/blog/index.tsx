@@ -1,14 +1,14 @@
 import { Stack, Heading, Text } from '@chakra-ui/react'
 
-import PageLayout from 'src/components/layouts/PageLayout'
+import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/constants'
-import PostsList from 'src/components/ui/compound/PostsList'
-import useBlogPosts from '@routes/blog/hooks/useBlogPosts'
+import PostsList from '@components/ui/compound/PostsList'
+import { useBlogPostsData } from '@hooks/useBlogPostsData'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPosts } from 'src/services/sanity/posts'
 
-const BlogHome = () => {
-  const { posts, preview } = useBlogPosts()
+const BlogIndex = () => {
+  const { posts, preview } = useBlogPostsData()
 
   const { data } = usePreviewSubscription(getPosts, {
     params: { count: POSTS_PER_PAGE },
@@ -29,6 +29,6 @@ const BlogHome = () => {
   )
 }
 
-BlogHome.dataHooks = [useBlogPosts]
+BlogIndex.dataHooks = [useBlogPostsData]
 
-export default BlogHome
+export default BlogIndex

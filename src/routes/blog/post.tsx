@@ -5,17 +5,17 @@ import { useRouter } from 'next/router'
 import { Suspense } from 'react'
 import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
 
-import PageLayout from 'src/components/layouts/PageLayout'
-import LoadingSpinner from 'src/components/utility/LoadingSpinner'
-import useBlogPost from '@routes/blog/hooks/useBlogPost'
+import PageLayout from '@components/layouts/PageLayout'
+import LoadingSpinner from '@components/utility/LoadingSpinner'
+import { useBlogPostData } from '@hooks/useBlogPostData'
 import { createImageUrl } from '@utils/sanity'
-import Callout from 'src/components/sections/Callout'
+import Callout from '@components/sections/Callout'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPostBySlug } from 'src/services/sanity/posts'
 
 const BlogPost = () => {
   const router = useRouter()
-  const { post, preview } = useBlogPost()
+  const { post, preview } = useBlogPostData()
 
   const { data } = usePreviewSubscription(getPostBySlug, {
     params: { slug: post?.slug.current ?? '' },
@@ -60,6 +60,6 @@ const BlogPost = () => {
   )
 }
 
-BlogPost.dataHooks = [useBlogPost]
+BlogPost.dataHooks = [useBlogPostData]
 
 export default BlogPost

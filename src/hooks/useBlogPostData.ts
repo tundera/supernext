@@ -3,9 +3,9 @@ import { createDataHook } from 'next-data-hooks'
 // import { parse } from 'date-fns'
 
 import sanity from '@lib/sanity/client'
-import Callout from 'src/components/sections/Callout'
+import Callout from '@components/sections/Callout'
 
-const useBlogPost = createDataHook('BlogPost', async ({ params, preview = false }) => {
+export const useBlogPostData = createDataHook('BlogPost', async ({ params, preview = false }) => {
   const pageSlug = params?.slug as string
 
   sanity.setPreviewMode(preview)
@@ -32,5 +32,3 @@ const useBlogPost = createDataHook('BlogPost', async ({ params, preview = false 
     preview,
   }
 })
-
-export default useBlogPost

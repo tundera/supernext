@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { Flex, useColorMode, Text, Box } from '@chakra-ui/react'
 import { FaTwitter, FaGithub, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import Emoji from 'a11y-react-emoji'
-import MediaIconLink from 'src/components/MediaIconLink'
+import MediaIconLink from '@components/MediaIconLink'
 
 const Footer: FC = () => {
   const { colorMode } = useColorMode()

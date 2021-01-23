@@ -2,12 +2,12 @@ import type { GetStaticProps } from 'next'
 
 import { getDataHooksProps } from 'next-data-hooks'
 
-import BlogHome from '@routes/blog/components/BlogIndex'
+import BlogIndex from '@routes/blog'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const dataHooksProps = await getDataHooksProps({
     context,
-    dataHooks: BlogHome.dataHooks,
+    dataHooks: BlogIndex.dataHooks,
   })
 
   return {
@@ -18,4 +18,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default BlogHome
+export default BlogIndex

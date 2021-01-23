@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 
 import { Heading, Flex } from '@chakra-ui/react'
 
-import Features from 'src/components/sections/Features'
-import PageLayout from 'src/components/layouts/PageLayout'
+import Features from '@components/sections/Features'
+import PageLayout from '@components/layouts/PageLayout'
 
 type Props = {
   preview: boolean

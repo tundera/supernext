@@ -3,7 +3,7 @@ import type { GetStaticProps, GetStaticPaths } from 'next'
 // import ErrorPage from 'next/error'
 import { getDataHooksProps } from 'next-data-hooks'
 
-import BlogPost from '@routes/blog/components/BlogPost'
+import BlogPost from '@routes/blog/post'
 import sanity from '@lib/sanity/client'
 
 export const getStaticProps: GetStaticProps = async (context) => {

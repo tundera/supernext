@@ -6,7 +6,7 @@ import { BsMoon } from 'react-icons/bs'
 import { BiSun } from 'react-icons/bi'
 import styled from '@emotion/styled'
 
-import NavLink from 'src/components/NavLink'
+import NavLink from '@components/NavLink'
 
 const StickyNav = styled(Flex)`
   position: sticky;

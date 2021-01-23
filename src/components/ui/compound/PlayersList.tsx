@@ -2,9 +2,9 @@ import { FC } from 'react'
 
 import { Box, Heading } from '@chakra-ui/react'
 
-import { usePlayers } from '@hooks/usePlayers'
-import Suspense from 'src/components/utility/QuerySuspense'
-import LoadingSpinner from 'src/components/utility/LoadingSpinner'
+import { usePlayersQuery } from '@hooks/usePlayersQuery'
+import Suspense from '@components/utility/QuerySuspense'
+import LoadingSpinner from '@components/utility/LoadingSpinner'
 
 type Props = {
   title: string
@@ -12,7 +12,7 @@ type Props = {
 
 // TODO: Convert this use SuspenseList once stable
 const PlayersList: FC<Props> = ({ title }) => {
-  const { data: players } = usePlayers()
+  const { data: players } = usePlayersQuery()
 
   return (
     <Box bg="purple.100" p={2} borderRadius={8} alignItems="center" justifyContent="center">

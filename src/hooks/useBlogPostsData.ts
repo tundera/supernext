@@ -3,7 +3,7 @@ import { createDataHook } from 'next-data-hooks'
 
 import sanity from '@lib/sanity/client'
 
-const useBlogPosts = createDataHook('BlogPosts', async ({ preview = false }) => {
+export const useBlogPostsData = createDataHook('BlogPosts', async ({ preview = false }) => {
   sanity.setPreviewMode(preview)
 
   const posts = await sanity.getAll('post')
@@ -31,5 +31,3 @@ const useBlogPosts = createDataHook('BlogPosts', async ({ preview = false }) => 
     preview,
   }
 })
-
-export default useBlogPosts

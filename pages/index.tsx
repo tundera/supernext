@@ -3,13 +3,13 @@ import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import { Heading, Stack } from '@chakra-ui/react'
 
-import PageLayout from 'src/components/layouts/PageLayout'
+import PageLayout from '@components/layouts/PageLayout'
 
 type Props = {
   preview: boolean
 }
 
-const BouncingEmoji = dynamic(() => import('src/components/ui/BouncingEmoji'), {
+const BouncingEmoji = dynamic(() => import('@components/ui/BouncingEmoji'), {
   ssr: true,
 })
 
