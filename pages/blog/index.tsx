@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next'
 
 import { getDataHooksProps } from 'next-data-hooks'
 
-import BlogHome from '@routes/blog/components/Home'
+import BlogHome from '@routes/blog/components/BlogIndex'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const dataHooksProps = await getDataHooksProps({

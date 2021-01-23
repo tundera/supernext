@@ -1,8 +1,8 @@
 import { Stack, Heading, Text } from '@chakra-ui/react'
 
-import PageLayout from '@common/components/layouts/PageLayout'
+import PageLayout from 'src/components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/constants'
-import PostsList from '@common/components/ui/compound/PostsList'
+import PostsList from 'src/components/ui/compound/PostsList'
 import useBlogPosts from '@routes/blog/hooks/useBlogPosts'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPosts } from 'services/sanity/posts'

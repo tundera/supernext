@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { HStack, Box } from '@chakra-ui/react'
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
-import SocialButton from '@common/components/SocialButton'
+import SocialButton from 'src/components/SocialButton'
 
 const SampleButtons: FC = () => {
   return (

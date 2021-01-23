@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import Head from 'next/head'
 import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue } from '@chakra-ui/react'
 
-import Arrow from '@common/components/ui/ArrowIcon'
+import Arrow from 'src/components/ui/ArrowIcon'
 
 const CallToActionWithAnnotation: FC = () => {
   return (

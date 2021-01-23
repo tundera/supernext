@@ -7,7 +7,8 @@ module.exports = {
         root: ['./'],
         alias: {
           '@routes': './src/routes',
-          '@common': './src/common',
+          '@components': './src/components',
+          '@hooks': './src/hooks',
           '@providers': './src/providers',
           '@utils': './src/utils',
           '@lib': './src/lib',

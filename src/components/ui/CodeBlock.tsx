@@ -6,7 +6,7 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import synthwave84 from 'prism-react-renderer/themes/synthwave84'
 
-import CopyButton from '@common/components/ui/buttons/CopyButton'
+import CopyButton from 'src/components/ui/buttons/CopyButton'
 import { copyToClipboard } from '@utils/copyToClipboard'
 import confetti from 'src/styles/animations/confetti'
 

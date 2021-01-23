@@ -1,5 +1,5 @@
 import { preToCodeBlock } from 'mdx-utils'
-import CodeBlock from '@common/components/ui/CodeBlock'
+import CodeBlock from 'src/components/ui/CodeBlock'
 import { MDXProvider } from '@mdx-js/react'
 
 const components = {

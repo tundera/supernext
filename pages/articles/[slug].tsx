@@ -16,10 +16,10 @@ import path from 'path'
 import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
 
-import LoadingSpinner from '@common/components/utility/LoadingSpinner'
-import PageLayout from '@common/components/layouts/PageLayout'
-import ArticleLayout from '@common/components/layouts/ArticleLayout'
-import NextMdxLink from '@common/components/NextMdxLink'
+import LoadingSpinner from 'src/components/utility/LoadingSpinner'
+import PageLayout from 'src/components/layouts/PageLayout'
+import ArticleLayout from 'src/components/layouts/ArticleLayout'
+import NextMdxLink from 'src/components/NextMdxLink'
 
 type Props = {
   content: MdxRemote.Source
@@ -31,7 +31,7 @@ const root = process.cwd()
 
 const components = {
   a: NextMdxLink,
-  SampleButtons: dynamic(() => import('@common/components/ui/buttons/SampleButtons')),
+  SampleButtons: dynamic(() => import('src/components/ui/buttons/SampleButtons')),
   Flex,
   Box,
   Container,
