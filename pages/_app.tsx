@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { dehydratedState, ...rest } = pageProps
   return (
     <DataProvider {...rest}>
-      <QueryProvider state={dehydratedState}>
+      <QueryProvider>
         <ThemeProvider>
           <Component {...rest} />
         </ThemeProvider>

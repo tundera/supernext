@@ -1,33 +1,31 @@
 import type { NextPage, GetStaticProps } from 'next'
+import type { Team } from 'src/services/nexus/types'
 
-import { QueryClient } from 'react-query'
-import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from 'src/components/layouts/PageLayout'
 import TeamCard from 'src/components/TeamCard'
-import { useTeams } from '@hooks/useTeams'
+import { useTeamsQuery } from '@hooks/useTeamsQuery'
 import { getAllTeams } from '@lib/nexus/teams'
 
 type Props = {
+  teams: Team[]
   preview: boolean
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery('teams', getAllTeams)
+  const teams = await getAllTeams()
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      teams,
       preview,
     },
   }
 }
 
-const TeamsPage: NextPage<Props> = ({ preview }) => {
-  const { data: teams } = useTeams()
+const TeamsPage: NextPage<Props> = ({ teams, preview }) => {
+  const { data } = useTeamsQuery({ initialData: teams })
 
   return (
     <>
@@ -37,7 +35,7 @@ const TeamsPage: NextPage<Props> = ({ preview }) => {
             Teams
           </Heading>
           <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-            {teams?.map((team) => (
+            {data?.map((team) => (
               <TeamCard
                 key={team.name}
                 name={team.name}
