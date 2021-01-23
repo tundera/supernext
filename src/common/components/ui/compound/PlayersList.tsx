@@ -2,9 +2,9 @@ import { FC } from 'react'
 
 import { Box, Heading } from '@chakra-ui/react'
 
-import { usePlayers } from '@hooks/client/usePlayers'
-import Suspense from '@components/utility/QuerySuspense'
-import LoadingSpinner from '@components/LoadingSpinner'
+import { usePlayers } from '@common/hooks/usePlayers'
+import Suspense from '@common/components/utility/QuerySuspense'
+import LoadingSpinner from '@common/components/utility/LoadingSpinner'
 
 type Props = {
   title: string

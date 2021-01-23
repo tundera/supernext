@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 
-import Navbar from '@components/Navbar'
-import Footer from '@components/Footer'
-import Container from '@components/sections/Container'
-import PreviewBanner from '@components/sections/PreviewBanner'
+import Navbar from '@common/components/sections/Navbar'
+import Footer from '@common/components/sections/Footer'
+import Container from '@common/components/sections/Container'
+import PreviewBanner from '@common/components/sections/PreviewBanner'
 
 type Props = {
   preview?: boolean

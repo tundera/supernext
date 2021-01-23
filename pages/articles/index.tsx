@@ -3,8 +3,8 @@ import type { Article } from 'services/content/types'
 
 import { Heading, Stack } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
-import ArticlesList from '@components/ui/lists/ArticlesList'
+import PageLayout from '@common/components/layouts/PageLayout'
+import ArticlesList from '@common/components/ui/compound/ArticlesList'
 import { getAllArticles } from '@lib/content/articles'
 
 type Props = {

@@ -3,7 +3,7 @@ import { createDataHook } from 'next-data-hooks'
 // import { parse } from 'date-fns'
 
 import sanity from '@lib/sanity/client'
-import Callout from '@components/sections/Callout'
+import Callout from '@common/components/sections/Callout'
 
 const useBlogPost = createDataHook('BlogPost', async ({ params, preview = false }) => {
   const pageSlug = params?.slug as string
