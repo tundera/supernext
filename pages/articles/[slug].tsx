@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { MdxRemote } from 'next-mdx-remote/types'
-import type { FrontMatter } from 'services/content/types'
+import type { FrontMatter } from 'src/services/content/types'
 
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -39,7 +39,7 @@ const components = {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const source = fs.readFileSync(path.join(root, 'services/content', 'articles', `${params?.slug}.mdx`), 'utf8')
+  const source = fs.readFileSync(path.join(root, 'src/services/content/articles', `${params?.slug}.mdx`), 'utf8')
   const { data, content } = matter(source)
 
   const markup = await renderToString(content, {
@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: fs.readdirSync(path.join(root, 'services/content', 'articles')).map((p) => ({
+    paths: fs.readdirSync(path.join(root, 'src/services/content/articles')).map((p) => ({
       params: {
         slug: p.replace(/\.mdx?/, ''),
       },

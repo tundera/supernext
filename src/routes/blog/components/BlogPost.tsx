@@ -11,7 +11,7 @@ import useBlogPost from '@routes/blog/hooks/useBlogPost'
 import { createImageUrl } from '@utils/sanity'
 import Callout from 'src/components/sections/Callout'
 import { usePreviewSubscription } from '@lib/sanity'
-import { getPostBySlug } from 'services/sanity/posts'
+import { getPostBySlug } from 'src/services/sanity/posts'
 
 const BlogPost = () => {
   const router = useRouter()

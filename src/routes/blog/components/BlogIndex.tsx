@@ -5,7 +5,7 @@ import { POSTS_PER_PAGE } from 'src/constants'
 import PostsList from 'src/components/ui/compound/PostsList'
 import useBlogPosts from '@routes/blog/hooks/useBlogPosts'
 import { usePreviewSubscription } from '@lib/sanity'
-import { getPosts } from 'services/sanity/posts'
+import { getPosts } from 'src/services/sanity/posts'
 
 const BlogHome = () => {
   const { posts, preview } = useBlogPosts()

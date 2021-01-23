@@ -1,6 +1,6 @@
 // client.ts
 import { createClient } from 'sanity-codegen'
-import { Documents } from 'services/sanity/generated/groq'
+import { Documents } from 'src/services/sanity/generated/groq'
 
 import { config } from '@lib/sanity'
 

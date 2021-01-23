@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-micro'
 
-import { schema } from 'services/nexus/schema'
-import { createContext } from 'services/nexus/context'
+import { schema } from 'src/services/nexus/schema'
+import { createContext } from 'src/services/nexus/context'
 
 const server = new ApolloServer({
   context: createContext,

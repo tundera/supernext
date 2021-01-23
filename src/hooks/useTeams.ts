@@ -1,4 +1,4 @@
-import type { Team } from 'services/nexus/types'
+import type { Team } from 'src/services/nexus/types'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 

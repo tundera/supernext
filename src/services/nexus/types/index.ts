@@ -1,4 +1,4 @@
-import type { NexusGenObjects } from 'services/nexus/generated/typegen'
+import type { NexusGenObjects } from 'src/services/nexus/generated/typegen'
 
 export type Coach = NexusGenObjects['Coach']
 export type Player = NexusGenObjects['Player']
