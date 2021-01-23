@@ -8,7 +8,7 @@ import synthwave84 from 'prism-react-renderer/themes/synthwave84'
 
 import CopyButton from '@components/CopyButton'
 import { copyToClipboard } from '@utils/copyToClipboard'
-import confetti from '@styles/animations/confetti'
+import confetti from 'src/shared/styles/animations/confetti'
 
 type Props = {
   codeString: string

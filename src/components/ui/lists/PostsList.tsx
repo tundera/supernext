@@ -1,15 +1,8 @@
-import { FC } from 'react'
-
-// FIX THIS TYPE TO USE GROQ
-import type { Post } from 'services/sanity/generated/graphql'
-
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
 
-type Props = {
-  posts: Post[]
-}
+import { createImageUrl } from '@utils/sanity'
 
-const PostsList: FC<Props> = ({ posts }) => {
+const PostsList = ({ posts }) => {
   return (
     <Flex flexDir="column" maxW="1440px" w="100%" mx="auto" paddingX={{ sm: '10', lg: '24' }} boxSizing="border-box">
       {posts.length === 0 && (
@@ -18,7 +11,7 @@ const PostsList: FC<Props> = ({ posts }) => {
         </Text>
       )}
 
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <Box
           key={post.slug?.current}
           maxW="sm"
@@ -27,7 +20,7 @@ const PostsList: FC<Props> = ({ posts }) => {
           overflow="hidden"
           bgColor="gray.300"
           as="a"
-          href={`/blog/${post.slug}`}
+          href={`/blog/${post.slug.current}`}
         >
           <Box p="6">
             <Box d="flex" alignItems="baseline">
@@ -50,7 +43,11 @@ const PostsList: FC<Props> = ({ posts }) => {
               {post.title}
             </Box>
             <Box mt="1" as="h6" lineHeight="tight" isTruncated>
-              <Avatar size="2xs" name={post.author?.name || ''} src={post.author?.avatar?.asset?.url || ''} />
+              <Avatar
+                size="2xs"
+                name={post.author?.name || ''}
+                src={createImageUrl(post.author?.asset?._ref as string).url() || ''}
+              />
             </Box>
           </Box>
         </Box>

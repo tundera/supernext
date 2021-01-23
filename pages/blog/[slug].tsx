@@ -3,7 +3,7 @@ import type { GetStaticProps, GetStaticPaths } from 'next'
 // import ErrorPage from 'next/error'
 import { getDataHooksProps } from 'next-data-hooks'
 
-import BlogPost from '@routes/BlogPost'
+import BlogPost from '@routes/blog/components/Post'
 import sanity from '@lib/sanity/client'
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -12,11 +12,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     dataHooks: BlogPost.dataHooks,
   })
 
+  if (!dataHooksProps.nextDataHooks.BlogPost.post) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       ...dataHooksProps,
     },
-    revalidate: 1,
   }
 }
 
@@ -26,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 

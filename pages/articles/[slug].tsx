@@ -16,8 +16,9 @@ import path from 'path'
 import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
 
-import PageLayout from '@layouts/PageLayout'
-import ArticleLayout from '@layouts/ArticleLayout'
+import LoadingSpinner from '@components/LoadingSpinner'
+import PageLayout from '@components/layouts/PageLayout'
+import ArticleLayout from '@components/layouts/ArticleLayout'
 import NextMdxLink from '@components/NextMdxLink'
 
 type Props = {
@@ -30,7 +31,7 @@ const root = process.cwd()
 
 const components = {
   a: NextMdxLink,
-  SampleButtons: dynamic(() => import('@components/SampleButtons')),
+  SampleButtons: dynamic(() => import('@components/ui/buttons/SampleButtons')),
   Flex,
   Box,
   Container,
@@ -56,6 +57,12 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     scope: {},
   })
 
+  if (!data || !markup) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       content: markup,
@@ -67,20 +74,24 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    fallback: false,
     paths: fs.readdirSync(path.join(root, 'services/content', 'articles')).map((p) => ({
       params: {
         slug: p.replace(/\.mdx?/, ''),
       },
     })),
+    fallback: true,
   }
 }
 
 const ArticlePage: NextPage<Props> = ({ content, frontMatter, preview }) => {
-  const renderedContent = hydrate(content, { components })
+  const renderedContent = hydrate(content ?? '', { components })
 
   const router = useRouter()
   const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${router.pathname}`
+
+  if (router.isFallback) {
+    return <LoadingSpinner />
+  }
 
   return (
     <>

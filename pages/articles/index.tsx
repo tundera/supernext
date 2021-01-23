@@ -3,8 +3,8 @@ import type { Article } from 'services/content/types'
 
 import { Heading, Stack } from '@chakra-ui/react'
 
-import PageLayout from '@layouts/PageLayout'
-import ArticlesList from '@components/ArticlesList'
+import PageLayout from '@components/layouts/PageLayout'
+import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getAllArticles } from '@lib/content/articles'
 
 type Props = {
@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       articles,
       preview,
     },
+    revalidate: 1,
   }
 }
 

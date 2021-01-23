@@ -4,9 +4,9 @@ import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Heading, Stack, SimpleGrid } from '@chakra-ui/react'
 
-import PageLayout from '@layouts/PageLayout'
+import PageLayout from '@components/layouts/PageLayout'
 import TeamCard from '@components/TeamCard'
-import { useTeams } from '@hooks/react-query/useTeams'
+import { useTeams } from '@hooks/client/useTeams'
 import { getAllTeams } from '@lib/nexus/teams'
 
 type Props = {

@@ -5,11 +5,11 @@ import { useRouter } from 'next/router'
 import { Suspense } from 'react'
 import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
 
-import PageLayout from '@layouts/PageLayout'
+import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/LoadingSpinner'
-import useBlogPost from '@hooks/data/useBlogPost'
+import useBlogPost from '@hooks/server/useBlogPost'
 import { createImageUrl } from '@utils/sanity'
-import Callout from '@components/Callout'
+import Callout from '@components/sections/Callout'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPostBySlug } from 'services/sanity/posts'
 
@@ -23,15 +23,15 @@ const BlogPost = () => {
     enabled: preview,
   })
 
-  if (router.isFallback) {
-    return <LoadingSpinner />
-  }
-
   const renderedContent = hydrate(data.content ?? '', {
     components: {
       Callout,
     },
   })
+
+  if (router.isFallback) {
+    return <LoadingSpinner />
+  }
 
   return (
     <>

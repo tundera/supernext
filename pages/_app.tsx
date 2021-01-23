@@ -7,13 +7,13 @@ import DataProvider from '@providers/DataProvider'
 function MyApp({ Component, pageProps }: AppProps) {
   const { dehydratedState, ...rest } = pageProps
   return (
-    <QueryProvider state={dehydratedState}>
-      <ThemeProvider>
-        <DataProvider {...rest}>
+    <DataProvider {...rest}>
+      <QueryProvider state={dehydratedState}>
+        <ThemeProvider>
           <Component {...rest} />
-        </DataProvider>
-      </ThemeProvider>
-    </QueryProvider>
+        </ThemeProvider>
+      </QueryProvider>
+    </DataProvider>
   )
 }
 

@@ -1,44 +1,21 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { GetStaticProps } from 'next'
 
-import { Stack, Heading, Text } from '@chakra-ui/react'
+import { getDataHooksProps } from 'next-data-hooks'
 
-import PageLayout from '@layouts/PageLayout'
-import { POSTS_PER_PAGE } from 'constants/sanity'
-import PostsList from '@components/PostsList'
-import { usePreviewSubscription } from '@lib/sanity'
-import sanity from '@lib/sanity/client'
-import { getPosts } from 'services/sanity/posts'
+import BlogHome from '@routes/blog/components/Home'
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  sanity.setPreviewMode(preview)
-
-  const posts = await sanity.getAll('post')
+export const getStaticProps: GetStaticProps = async (context) => {
+  const dataHooksProps = await getDataHooksProps({
+    context,
+    dataHooks: BlogHome.dataHooks,
+  })
 
   return {
-    props: { data: posts, preview },
+    props: {
+      ...dataHooksProps,
+    },
     revalidate: 1,
   }
 }
 
-const BlogPage: NextPage = ({ data, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data: posts } = usePreviewSubscription(getPosts, {
-    params: { count: POSTS_PER_PAGE },
-    initialData: data,
-    enabled: preview,
-  })
-
-  return (
-    <>
-      <PageLayout preview={preview}>
-        <Stack>
-          <Heading>This Site Loads MDX From Sanity.io</Heading>
-          <Text>View any of these pages to see it in action:</Text>
-          <PostsList posts={posts} />
-        </Stack>
-      </PageLayout>
-    </>
-  )
-}
-
-export default BlogPage
+export default BlogHome
