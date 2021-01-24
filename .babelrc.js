@@ -12,6 +12,7 @@ module.exports = {
           '@providers': './src/providers',
           '@utils': './src/utils',
           '@lib': './src/lib',
+          '@styles': './styles',
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },

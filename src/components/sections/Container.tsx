@@ -1,8 +1,9 @@
 import type { FC } from 'react'
 
-import { Flex, useColorMode } from '@chakra-ui/react'
+import { Flex, useColorMode, useTheme } from '@chakra-ui/react'
 
 const Container: FC = ({ children }) => {
+  const theme = useTheme()
   const { colorMode } = useColorMode()
 
   const color = {
@@ -22,6 +23,7 @@ const Container: FC = ({ children }) => {
       bg={bgColor[colorMode]}
       color={color[colorMode]}
       px={8}
+      maxW={theme.sizes.width}
       minHeight="95vh"
     >
       {children}

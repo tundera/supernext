@@ -6,6 +6,7 @@ import DataProvider from '@providers/DataProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { dehydratedState, ...rest } = pageProps
+
   return (
     <DataProvider {...rest}>
       <QueryProvider>

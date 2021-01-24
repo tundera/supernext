@@ -21,7 +21,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@providers/*": ["src/providers/*"],
       "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"]
+      "@lib/*": ["src/lib/*"],
+      "@styles/*": ["styles/*"]
     },
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo",
