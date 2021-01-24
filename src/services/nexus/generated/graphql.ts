@@ -55,6 +55,7 @@ export type Team = {
   slug: Scalars['String']
   city: Scalars['String']
   abbreviation: Scalars['String']
+  logo: Scalars['String']
   primaryColor: Scalars['String']
   secondaryColor: Scalars['String']
   wins?: Maybe<Scalars['Int']>
@@ -140,16 +141,23 @@ export type QueryTeamsArgs = {
 export type CoachWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
 }
 
 export type PlayerWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type TeamWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  abbreviation?: Maybe<Scalars['String']>
+  logo?: Maybe<Scalars['String']>
 }
 
 export type AllCoachesQueryVariables = Exact<{ [key: string]: never }>

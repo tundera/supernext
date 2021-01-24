@@ -21,16 +21,23 @@ export interface NexusGenInputs {
     // input type
     handle?: string | null // String
     id?: number | null // Int
+    name?: string | null // String
   }
   PlayerWhereUniqueInput: {
     // input type
     handle?: string | null // String
     id?: number | null // Int
+    name?: string | null // String
+    slug?: string | null // String
   }
   TeamWhereUniqueInput: {
     // input type
+    abbreviation?: string | null // String
     handle?: string | null // String
     id?: number | null // Int
+    logo?: string | null // String
+    name?: string | null // String
+    slug?: string | null // String
   }
 }
 
@@ -82,6 +89,7 @@ export interface NexusGenObjects {
     established: string // String!
     handle: string // String!
     id: number // Int!
+    logo: string // String!
     losses?: number | null // Int
     name: string // String!
     primaryColor: string // String!
@@ -154,6 +162,7 @@ export interface NexusGenFieldTypes {
     established: string // String!
     handle: string // String!
     id: number // Int!
+    logo: string // String!
     losses: number | null // Int
     name: string // String!
     players: NexusGenRootTypes['Player'][] // [Player!]!
@@ -219,6 +228,7 @@ export interface NexusGenFieldTypeNames {
     established: 'String'
     handle: 'String'
     id: 'Int'
+    logo: 'String'
     losses: 'Int'
     name: 'String'
     players: 'Player'

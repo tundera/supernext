@@ -12,7 +12,7 @@ model Coach {
   createdAt   DateTime @default(now())
   updatedAt   DateTime
   handle      String   @unique
-  name        String
+  name        String   @unique
   teamId      Int?
   type        String?
   isAssistant String?
@@ -24,8 +24,8 @@ model Player {
   createdAt DateTime @default(now())
   updatedAt DateTime
   handle    String   @unique
-  name      String
-  slug      String
+  name      String   @unique
+  slug      String   @unique
   teamId    Int?
   height    String
   weight    String
@@ -39,10 +39,11 @@ model Team {
   createdAt      DateTime @default(now())
   updatedAt      DateTime
   handle         String   @unique
-  name           String
-  slug           String
+  name           String   @unique
+  slug           String   @unique
   city           String
-  abbreviation   String
+  abbreviation   String   @unique
+  logo           String   @unique
   wins           Int?
   losses         Int?
   winPercentage  Float?

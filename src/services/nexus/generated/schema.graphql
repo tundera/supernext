@@ -16,6 +16,7 @@ type Coach {
 input CoachWhereUniqueInput {
   handle: String
   id: Int
+  name: String
 }
 
 scalar DateTime
@@ -38,6 +39,8 @@ type Player {
 input PlayerWhereUniqueInput {
   handle: String
   id: Int
+  name: String
+  slug: String
 }
 
 type Query {
@@ -64,6 +67,7 @@ type Team {
   established: String!
   handle: String!
   id: Int!
+  logo: String!
   losses: Int
   name: String!
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
@@ -76,6 +80,10 @@ type Team {
 }
 
 input TeamWhereUniqueInput {
+  abbreviation: String
   handle: String
   id: Int
+  logo: String
+  name: String
+  slug: String
 }
