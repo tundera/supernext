@@ -1,63 +1,21 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import type { MdxRemote } from 'next-mdx-remote/types'
-import type { FrontMatter } from 'src/services/content/types'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import fs from 'fs'
-import matter from 'gray-matter'
-import hydrate from 'next-mdx-remote/hydrate'
-import renderToString from 'next-mdx-remote/render-to-string'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import NextLink from 'next/link'
-import { useRouter } from 'next/router'
-import { NextSeo } from 'next-seo'
 import path from 'path'
-import { Container, Flex, Box, Heading, Text } from '@chakra-ui/react'
-import Emoji from 'a11y-react-emoji'
 
-import LoadingSpinner from '@components/utility/LoadingSpinner'
-import PageLayout from '@components/layouts/PageLayout'
-import ArticleLayout from '@components/layouts/ArticleLayout'
-import NextMdxLink from '@components/NextMdxLink'
+import { getDataHooksProps } from 'next-data-hooks'
 
-type Props = {
-  content: MdxRemote.Source
-  frontMatter: FrontMatter
-  preview: boolean
-}
+import Article from '@routes/articles/article'
 
 const root = process.cwd()
 
-const components = {
-  a: NextMdxLink,
-  SampleButtons: dynamic(() => import('@components/ui/buttons/SampleButtons')),
-  Flex,
-  Box,
-  Container,
-  Head,
-}
-
-export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const source = fs.readFileSync(path.join(root, 'src/services/content/articles', `${params?.slug}.mdx`), 'utf8')
-  const { data, content } = matter(source)
-
-  const markup = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [
-        require('remark-slug'),
-        require('remark-code-titles'),
-        require('remark-toc'),
-        require('remark-external-links'),
-      ],
-      rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
-      compilers: [],
-    },
-    scope: {},
+export const getStaticProps: GetStaticProps = async (context) => {
+  const dataHooksProps = await getDataHooksProps({
+    context,
+    dataHooks: Article.dataHooks,
   })
 
-  if (!data || !markup) {
+  if (!dataHooksProps.nextDataHooks.Article.article) {
     return {
       notFound: true,
     }
@@ -65,9 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
   return {
     props: {
-      content: markup,
-      frontMatter: data,
-      preview,
+      ...dataHooksProps,
     },
   }
 }
@@ -79,63 +35,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
         slug: p.replace(/\.mdx?/, ''),
       },
     })),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 
-const ArticlePage: NextPage<Props> = ({ content, frontMatter, preview }) => {
-  const renderedContent = hydrate(content ?? '', { components })
-
-  const router = useRouter()
-  const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${router.pathname}`
-
-  if (router.isFallback) {
-    return <LoadingSpinner />
-  }
-
-  return (
-    <>
-      <NextSeo
-        openGraph={{
-          title: `Next Goat | ${frontMatter.title}`,
-          description: frontMatter.description,
-          url: articleUrl,
-          type: 'article',
-          article: {
-            publishedTime: frontMatter.date,
-            authors: [...frontMatter.author],
-            tags: frontMatter.tags,
-          },
-          images: [
-            {
-              url: frontMatter.coverImage,
-              width: 500,
-              height: 300,
-              alt: `${frontMatter.title} article cover image`,
-            },
-          ],
-        }}
-      />
-      <PageLayout preview={preview}>
-        <ArticleLayout>
-          <Heading>
-            <nav>
-              <NextLink href="/">
-                <a>
-                  <Emoji label="Home link emoji" symbol="👈" /> Go back home
-                </a>
-              </NextLink>
-            </nav>
-          </Heading>
-          <Box mb={2}>
-            <Heading>{frontMatter.title}</Heading>
-            {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
-          </Box>
-          {renderedContent}
-        </ArticleLayout>
-      </PageLayout>
-    </>
-  )
-}
-
-export default ArticlePage
+export default Article

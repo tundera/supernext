@@ -1,42 +1,21 @@
-import type { GetStaticProps, NextPage } from 'next'
-import type { Article } from 'src/services/content/types'
+import type { GetStaticProps } from 'next'
 
-import { Heading, Stack } from '@chakra-ui/react'
+import { getDataHooksProps } from 'next-data-hooks'
 
-import PageLayout from '@components/layouts/PageLayout'
-import ArticlesList from '@components/ui/compound/ArticlesList'
-import { getAllArticles } from '@lib/content/articles'
+import ArticlesIndex from '@routes/articles'
 
-type Props = {
-  articles: Article[]
-  preview: boolean
-}
-
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const articles = await getAllArticles()
+export const getStaticProps: GetStaticProps = async (context) => {
+  const dataHooksProps = await getDataHooksProps({
+    context,
+    dataHooks: ArticlesIndex.dataHooks,
+  })
 
   return {
     props: {
-      articles,
-      preview,
+      ...dataHooksProps,
     },
     revalidate: 1,
   }
 }
 
-const ArticlesPage: NextPage<Props> = ({ articles, preview }) => {
-  return (
-    <>
-      <PageLayout preview={preview}>
-        <Stack spacing={8}>
-          <Heading as="h1" size="xl">
-            Articles
-          </Heading>
-          <ArticlesList title="Recent Articles" articles={articles} />
-        </Stack>
-      </PageLayout>
-    </>
-  )
-}
-
-export default ArticlesPage
+export default ArticlesIndex
