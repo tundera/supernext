@@ -1,8 +1,7 @@
-import type { Team } from 'src/services/nexus/types'
-
 import { request } from 'graphql-request'
 
 import AllTeamsQuery from 'src/services/nexus/graphql/queries/AllTeams'
+import { Team } from 'src/services/nexus/types'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

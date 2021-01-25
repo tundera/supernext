@@ -34,35 +34,24 @@ model Player {
   team      Team?    @relation(fields: [teamId], references: [id])
 }
 
-model Colors {
-  primary   String
-  secondary String
-
-  team Team[]
-  @@unique([primary, secondary])
-}
-
 model Team {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime
-  handle          String   @unique
-  name            String   @unique
-  slug            String   @unique
-  city            String
-  abbreviation    String   @unique
-  logo            String   @unique
-  colors          Colors?  @relation(fields: [colorsPrimary, colorsSecondary], references: [primary, secondary])
-  wins            Int?
-  losses          Int?
-  winPercentage   Float?
-  conference      String
-  division        String
-  established     String
-  primaryColor    String
-  secondaryColor  String
-  coaches         Coach[]
-  players         Player[]
-  colorsPrimary   String?
-  colorsSecondary String?
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  handle         String   @unique
+  name           String   @unique
+  slug           String   @unique
+  city           String
+  abbreviation   String   @unique
+  logo           String   @unique
+  wins           Int?
+  losses         Int?
+  winPercentage  Float?
+  conference     String
+  division       String
+  established    String
+  primaryColor   String
+  secondaryColor String
+  coaches        Coach[]
+  players        Player[]
 }

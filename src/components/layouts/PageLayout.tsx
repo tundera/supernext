@@ -16,8 +16,6 @@ const PageLayout: FC<Props> = ({ preview = false, children }) => {
   const theme = useTheme()
   const { colorMode } = useColorMode()
 
-  console.log(colorMode)
-
   return (
     <div>
       <NProgress

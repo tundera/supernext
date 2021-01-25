@@ -19,12 +19,6 @@ input CoachWhereUniqueInput {
   name: String
 }
 
-type Colors {
-  primary: String!
-  secondary: String!
-  team(after: TeamWhereUniqueInput, before: TeamWhereUniqueInput, first: Int, last: Int): [Team!]!
-}
-
 scalar DateTime
 
 type Player {
@@ -67,9 +61,6 @@ type Team {
   abbreviation: String!
   city: String!
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
-  colors: Colors
-  colorsPrimary: String
-  colorsSecondary: String
   conference: String!
   createdAt: DateTime!
   division: String!
@@ -80,6 +71,8 @@ type Team {
   losses: Int
   name: String!
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  primaryColor: String!
+  secondaryColor: String!
   slug: String!
   updatedAt: DateTime!
   winPercentage: Float

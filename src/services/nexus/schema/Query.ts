@@ -33,15 +33,6 @@ export const Coach = objectType({
   },
 })
 
-export const Colors = objectType({
-  name: 'Colors',
-  definition(t) {
-    t.model.primary()
-    t.model.secondary()
-    t.model.team()
-  },
-})
-
 export const Team = objectType({
   name: 'Team',
   definition(t) {
@@ -52,8 +43,9 @@ export const Team = objectType({
     t.model.name()
     t.model.slug()
     t.model.city()
+    t.model.primaryColor()
+    t.model.secondaryColor()
     t.model.abbreviation()
-    t.model.colors()
     t.model.logo()
     t.model.wins()
     t.model.losses()
@@ -63,8 +55,6 @@ export const Team = objectType({
     t.model.established()
     t.model.coaches()
     t.model.players()
-    t.model.colorsPrimary()
-    t.model.colorsSecondary()
   },
 })
 

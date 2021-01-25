@@ -64,11 +64,6 @@ export interface NexusGenObjects {
     type?: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
   }
-  Colors: {
-    // root type
-    primary: string // String!
-    secondary: string // String!
-  }
   Player: {
     // root type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -88,8 +83,6 @@ export interface NexusGenObjects {
     // root type
     abbreviation: string // String!
     city: string // String!
-    colorsPrimary?: string | null // String
-    colorsSecondary?: string | null // String
     conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
     division: string // String!
@@ -99,6 +92,8 @@ export interface NexusGenObjects {
     logo: string // String!
     losses?: number | null // Int
     name: string // String!
+    primaryColor: string // String!
+    secondaryColor: string // String!
     slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage?: number | null // Float
@@ -126,12 +121,6 @@ export interface NexusGenFieldTypes {
     teamId: number | null // Int
     type: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
-  }
-  Colors: {
-    // field return type
-    primary: string // String!
-    secondary: string // String!
-    team: NexusGenRootTypes['Team'][] // [Team!]!
   }
   Player: {
     // field return type
@@ -167,9 +156,6 @@ export interface NexusGenFieldTypes {
     abbreviation: string // String!
     city: string // String!
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
-    colors: NexusGenRootTypes['Colors'] | null // Colors
-    colorsPrimary: string | null // String
-    colorsSecondary: string | null // String
     conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
     division: string // String!
@@ -180,6 +166,8 @@ export interface NexusGenFieldTypes {
     losses: number | null // Int
     name: string // String!
     players: NexusGenRootTypes['Player'][] // [Player!]!
+    primaryColor: string // String!
+    secondaryColor: string // String!
     slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage: number | null // Float
@@ -199,12 +187,6 @@ export interface NexusGenFieldTypeNames {
     teamId: 'Int'
     type: 'String'
     updatedAt: 'DateTime'
-  }
-  Colors: {
-    // field return type name
-    primary: 'String'
-    secondary: 'String'
-    team: 'Team'
   }
   Player: {
     // field return type name
@@ -240,9 +222,6 @@ export interface NexusGenFieldTypeNames {
     abbreviation: 'String'
     city: 'String'
     coaches: 'Coach'
-    colors: 'Colors'
-    colorsPrimary: 'String'
-    colorsSecondary: 'String'
     conference: 'String'
     createdAt: 'DateTime'
     division: 'String'
@@ -253,6 +232,8 @@ export interface NexusGenFieldTypeNames {
     losses: 'Int'
     name: 'String'
     players: 'Player'
+    primaryColor: 'String'
+    secondaryColor: 'String'
     slug: 'String'
     updatedAt: 'DateTime'
     winPercentage: 'Float'
@@ -261,15 +242,6 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
-  Colors: {
-    team: {
-      // args
-      after?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
-      before?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
-      first?: number | null // Int
-      last?: number | null // Int
-    }
-  }
   Query: {
     coach: {
       // args
