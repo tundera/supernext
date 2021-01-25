@@ -1,4 +1,4 @@
-import { objectType, queryType, list, intArg } from 'nexus'
+import { objectType, queryType, list, intArg, nonNull } from 'nexus'
 
 export const Player = objectType({
   name: 'Player',
@@ -33,6 +33,16 @@ export const Coach = objectType({
   },
 })
 
+export const ColorScheme = objectType({
+  name: 'ColorScheme',
+  definition(t) {
+    t.model.id()
+    t.model.primary()
+    t.model.secondary()
+    t.model.team()
+  },
+})
+
 export const Team = objectType({
   name: 'Team',
   definition(t) {
@@ -43,6 +53,7 @@ export const Team = objectType({
     t.model.name()
     t.model.slug()
     t.model.city()
+    t.model.color()
     t.model.primaryColor()
     t.model.secondaryColor()
     t.model.abbreviation()
@@ -81,6 +92,13 @@ export const Query = queryType({
       },
     })
 
+    t.field('allColorSchemes', {
+      type: list('ColorScheme'),
+      resolve(_parent, _args, ctx) {
+        return ctx.prisma.colorScheme.findMany({})
+      },
+    })
+
     t.field('coachesByTeam', {
       type: list('Coach'),
       args: {
@@ -106,6 +124,9 @@ export const Query = queryType({
 
     t.crud.player()
     t.crud.players()
+
+    t.crud.colorScheme()
+    t.crud.colorSchemes()
 
     t.crud.team()
     t.crud.teams()

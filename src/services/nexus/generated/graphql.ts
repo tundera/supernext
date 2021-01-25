@@ -45,6 +45,14 @@ export type Coach = {
   team?: Maybe<Team>
 }
 
+export type ColorScheme = {
+  __typename?: 'ColorScheme'
+  id: Scalars['Int']
+  primary: Scalars['String']
+  secondary: Scalars['String']
+  team?: Maybe<Team>
+}
+
 export type Team = {
   __typename?: 'Team'
   id: Scalars['Int']
@@ -54,6 +62,7 @@ export type Team = {
   name: Scalars['String']
   slug: Scalars['String']
   city: Scalars['String']
+  color?: Maybe<ColorScheme>
   primaryColor: Scalars['String']
   secondaryColor: Scalars['String']
   abbreviation: Scalars['String']
@@ -87,12 +96,15 @@ export type Query = {
   allCoaches?: Maybe<Array<Maybe<Coach>>>
   allPlayers?: Maybe<Array<Maybe<Player>>>
   allTeams?: Maybe<Array<Maybe<Team>>>
+  allColorSchemes?: Maybe<Array<Maybe<ColorScheme>>>
   coachesByTeam?: Maybe<Array<Maybe<Coach>>>
   playersByTeam?: Maybe<Array<Maybe<Player>>>
   coach?: Maybe<Coach>
   coaches: Array<Coach>
   player?: Maybe<Player>
   players: Array<Player>
+  colorScheme?: Maybe<ColorScheme>
+  colorSchemes: Array<ColorScheme>
   team?: Maybe<Team>
   teams: Array<Team>
 }
@@ -127,6 +139,17 @@ export type QueryPlayersArgs = {
   after?: Maybe<PlayerWhereUniqueInput>
 }
 
+export type QueryColorSchemeArgs = {
+  where: ColorSchemeWhereUniqueInput
+}
+
+export type QueryColorSchemesArgs = {
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<ColorSchemeWhereUniqueInput>
+  after?: Maybe<ColorSchemeWhereUniqueInput>
+}
+
 export type QueryTeamArgs = {
   where: TeamWhereUniqueInput
 }
@@ -149,6 +172,11 @@ export type PlayerWhereUniqueInput = {
   handle?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   slug?: Maybe<Scalars['String']>
+}
+
+export type ColorSchemeWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>
+  teamId?: Maybe<Scalars['Int']>
 }
 
 export type TeamWhereUniqueInput = {

@@ -19,6 +19,18 @@ input CoachWhereUniqueInput {
   name: String
 }
 
+type ColorScheme {
+  id: Int!
+  primary: String!
+  secondary: String!
+  team: Team
+}
+
+input ColorSchemeWhereUniqueInput {
+  id: Int
+  teamId: Int
+}
+
 scalar DateTime
 
 type Player {
@@ -45,11 +57,19 @@ input PlayerWhereUniqueInput {
 
 type Query {
   allCoaches: [Coach]
+  allColorSchemes: [ColorScheme]
   allPlayers: [Player]
   allTeams: [Team]
   coach(where: CoachWhereUniqueInput!): Coach
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
   coachesByTeam(id: Int): [Coach]
+  colorScheme(where: ColorSchemeWhereUniqueInput!): ColorScheme
+  colorSchemes(
+    after: ColorSchemeWhereUniqueInput
+    before: ColorSchemeWhereUniqueInput
+    first: Int
+    last: Int
+  ): [ColorScheme!]!
   player(where: PlayerWhereUniqueInput!): Player
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
   playersByTeam(id: Int): [Player]
@@ -61,6 +81,7 @@ type Team {
   abbreviation: String!
   city: String!
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
+  color: ColorScheme
   conference: String!
   createdAt: DateTime!
   division: String!

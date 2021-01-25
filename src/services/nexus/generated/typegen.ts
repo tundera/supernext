@@ -23,6 +23,11 @@ export interface NexusGenInputs {
     id?: number | null // Int
     name?: string | null // String
   }
+  ColorSchemeWhereUniqueInput: {
+    // input type
+    id?: number | null // Int
+    teamId?: number | null // Int
+  }
   PlayerWhereUniqueInput: {
     // input type
     handle?: string | null // String
@@ -63,6 +68,12 @@ export interface NexusGenObjects {
     teamId?: number | null // Int
     type?: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
+  }
+  ColorScheme: {
+    // root type
+    id: number // Int!
+    primary: string // String!
+    secondary: string // String!
   }
   Player: {
     // root type
@@ -122,6 +133,13 @@ export interface NexusGenFieldTypes {
     type: string | null // String
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
   }
+  ColorScheme: {
+    // field return type
+    id: number // Int!
+    primary: string // String!
+    secondary: string // String!
+    team: NexusGenRootTypes['Team'] | null // Team
+  }
   Player: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -140,11 +158,14 @@ export interface NexusGenFieldTypes {
   Query: {
     // field return type
     allCoaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
+    allColorSchemes: Array<NexusGenRootTypes['ColorScheme'] | null> | null // [ColorScheme]
     allPlayers: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
     allTeams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
     coach: NexusGenRootTypes['Coach'] | null // Coach
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
     coachesByTeam: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
+    colorScheme: NexusGenRootTypes['ColorScheme'] | null // ColorScheme
+    colorSchemes: NexusGenRootTypes['ColorScheme'][] // [ColorScheme!]!
     player: NexusGenRootTypes['Player'] | null // Player
     players: NexusGenRootTypes['Player'][] // [Player!]!
     playersByTeam: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
@@ -156,6 +177,7 @@ export interface NexusGenFieldTypes {
     abbreviation: string // String!
     city: string // String!
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
+    color: NexusGenRootTypes['ColorScheme'] | null // ColorScheme
     conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
     division: string // String!
@@ -188,6 +210,13 @@ export interface NexusGenFieldTypeNames {
     type: 'String'
     updatedAt: 'DateTime'
   }
+  ColorScheme: {
+    // field return type name
+    id: 'Int'
+    primary: 'String'
+    secondary: 'String'
+    team: 'Team'
+  }
   Player: {
     // field return type name
     createdAt: 'DateTime'
@@ -206,11 +235,14 @@ export interface NexusGenFieldTypeNames {
   Query: {
     // field return type name
     allCoaches: 'Coach'
+    allColorSchemes: 'ColorScheme'
     allPlayers: 'Player'
     allTeams: 'Team'
     coach: 'Coach'
     coaches: 'Coach'
     coachesByTeam: 'Coach'
+    colorScheme: 'ColorScheme'
+    colorSchemes: 'ColorScheme'
     player: 'Player'
     players: 'Player'
     playersByTeam: 'Player'
@@ -222,6 +254,7 @@ export interface NexusGenFieldTypeNames {
     abbreviation: 'String'
     city: 'String'
     coaches: 'Coach'
+    color: 'ColorScheme'
     conference: 'String'
     createdAt: 'DateTime'
     division: 'String'
@@ -257,6 +290,17 @@ export interface NexusGenArgTypes {
     coachesByTeam: {
       // args
       id?: number | null // Int
+    }
+    colorScheme: {
+      // args
+      where: NexusGenInputs['ColorSchemeWhereUniqueInput'] // ColorSchemeWhereUniqueInput!
+    }
+    colorSchemes: {
+      // args
+      after?: NexusGenInputs['ColorSchemeWhereUniqueInput'] | null // ColorSchemeWhereUniqueInput
+      before?: NexusGenInputs['ColorSchemeWhereUniqueInput'] | null // ColorSchemeWhereUniqueInput
+      first?: number | null // Int
+      last?: number | null // Int
     }
     player: {
       // args
