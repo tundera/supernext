@@ -17,13 +17,13 @@ const TeamCard: FC<Props> = ({ name, logo, primaryColor, secondaryColor }) => {
     <Flex
       p={5}
       flexDir="column"
-      bgColor="black"
+      bgColor="white"
       shadow="md"
       border={`1px solid ${colorMode === 'dark' ? primaryColor : secondaryColor}`}
       borderRadius={4}
       bgImage={logo}
     >
-      <Image src={logo} height="100" width="100" />
+      <Image src={logo} height="100" width="auto" />
       <Heading fontSize="lg" textAlign="center" color={colorMode === 'dark' ? 'white' : 'black'} mt="8">
         {name}
       </Heading>
