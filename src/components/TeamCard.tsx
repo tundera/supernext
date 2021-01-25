@@ -18,7 +18,7 @@ const TeamCard: FC<Props> = ({ name, logo, primaryColor, secondaryColor }) => {
     <Flex
       p={5}
       flexDir="column"
-      bgColor="white"
+      bgColor="black"
       shadow="md"
       border={`1px solid ${secondaryColor}`}
       borderRadius={4}

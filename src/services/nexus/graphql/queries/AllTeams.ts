@@ -6,8 +6,10 @@ export default gql`
       id
       name
       city
-      primaryColor
-      secondaryColor
+      colors {
+        primary
+        secondary
+      }
       logo
     }
   }

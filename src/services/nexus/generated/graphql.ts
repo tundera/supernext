@@ -45,6 +45,20 @@ export type Coach = {
   team?: Maybe<Team>
 }
 
+export type Colors = {
+  __typename?: 'Colors'
+  primary: Scalars['String']
+  secondary: Scalars['String']
+  team: Array<Team>
+}
+
+export type ColorsTeamArgs = {
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<TeamWhereUniqueInput>
+  after?: Maybe<TeamWhereUniqueInput>
+}
+
 export type Team = {
   __typename?: 'Team'
   id: Scalars['Int']
@@ -55,9 +69,8 @@ export type Team = {
   slug: Scalars['String']
   city: Scalars['String']
   abbreviation: Scalars['String']
+  colors?: Maybe<Colors>
   logo: Scalars['String']
-  primaryColor: Scalars['String']
-  secondaryColor: Scalars['String']
   wins?: Maybe<Scalars['Int']>
   losses?: Maybe<Scalars['Int']>
   winPercentage?: Maybe<Scalars['Float']>
@@ -138,6 +151,15 @@ export type QueryTeamsArgs = {
   after?: Maybe<TeamWhereUniqueInput>
 }
 
+export type TeamWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>
+  handle?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  abbreviation?: Maybe<Scalars['String']>
+  logo?: Maybe<Scalars['String']>
+}
+
 export type CoachWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
@@ -149,15 +171,6 @@ export type PlayerWhereUniqueInput = {
   handle?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   slug?: Maybe<Scalars['String']>
-}
-
-export type TeamWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>
-  handle?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
-  abbreviation?: Maybe<Scalars['String']>
-  logo?: Maybe<Scalars['String']>
 }
 
 export type AllCoachesQueryVariables = Exact<{ [key: string]: never }>
@@ -191,7 +204,15 @@ export type AllPlayersQuery = { __typename?: 'Query' } & {
 export type AllTeamsQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllTeamsQuery = { __typename?: 'Query' } & {
-  allTeams?: Maybe<Array<Maybe<{ __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city'>>>>
+  allTeams?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'logo'> & {
+            colors?: Maybe<{ __typename?: 'Colors' } & Pick<Colors, 'primary' | 'secondary'>>
+          }
+      >
+    >
+  >
 }
 
 export type CoachesByTeamQueryVariables = Exact<{
@@ -242,6 +263,11 @@ export const AllTeamsDocument = gql`
       id
       name
       city
+      colors {
+        primary
+        secondary
+      }
+      logo
     }
   }
 `
