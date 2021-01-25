@@ -63,6 +63,8 @@ export const Team = objectType({
     t.model.established()
     t.model.coaches()
     t.model.players()
+    t.model.colorsPrimary()
+    t.model.colorsSecondary()
   },
 })
 

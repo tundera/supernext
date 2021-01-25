@@ -79,6 +79,8 @@ export type Team = {
   established: Scalars['String']
   coaches: Array<Coach>
   players: Array<Player>
+  colorsPrimary?: Maybe<Scalars['String']>
+  colorsSecondary?: Maybe<Scalars['String']>
 }
 
 export type TeamCoachesArgs = {

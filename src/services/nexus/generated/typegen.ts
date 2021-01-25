@@ -88,6 +88,8 @@ export interface NexusGenObjects {
     // root type
     abbreviation: string // String!
     city: string // String!
+    colorsPrimary?: string | null // String
+    colorsSecondary?: string | null // String
     conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
     division: string // String!
@@ -166,6 +168,8 @@ export interface NexusGenFieldTypes {
     city: string // String!
     coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
     colors: NexusGenRootTypes['Colors'] | null // Colors
+    colorsPrimary: string | null // String
+    colorsSecondary: string | null // String
     conference: string // String!
     createdAt: NexusGenScalars['DateTime'] // DateTime!
     division: string // String!
@@ -237,6 +241,8 @@ export interface NexusGenFieldTypeNames {
     city: 'String'
     coaches: 'Coach'
     colors: 'Colors'
+    colorsPrimary: 'String'
+    colorsSecondary: 'String'
     conference: 'String'
     createdAt: 'DateTime'
     division: 'String'

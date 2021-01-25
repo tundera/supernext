@@ -68,6 +68,8 @@ type Team {
   city: String!
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
   colors: Colors
+  colorsPrimary: String
+  colorsSecondary: String
   conference: String!
   createdAt: DateTime!
   division: String!
