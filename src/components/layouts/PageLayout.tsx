@@ -44,3 +44,5 @@ const PageLayout: FC<Props> = ({ preview = false, children }) => {
 }
 
 export default PageLayout
+
+export type { Props as PageLayoutProps }
