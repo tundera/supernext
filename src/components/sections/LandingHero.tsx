@@ -1,11 +1,13 @@
 import type { FC } from 'react'
 
 import Head from 'next/head'
-import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue } from '@chakra-ui/react'
+import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 import Arrow from '@components/ui/ArrowIcon'
 
-const CallToActionWithAnnotation: FC = () => {
+const LandingHero: FC = () => {
+  const theme = useTheme()
+
   return (
     <>
       <Head>
@@ -14,10 +16,11 @@ const CallToActionWithAnnotation: FC = () => {
 
       <Container maxW="3xl">
         <Stack as={Box} textAlign="center" spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
-          <Heading fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="110%">
-            Make money from <br />
-            <Text as="span" color="green.400">
-              your audience
+          <Heading color="gray.200" fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="110%">
+            Learn full-stack web development by building
+            <br />
+            <Text as="span" color={theme.colors.brand.secondary}>
+              real apps.
             </Text>
           </Heading>
           <Text color="gray.500">
@@ -66,4 +69,4 @@ const CallToActionWithAnnotation: FC = () => {
   )
 }
 
-export default CallToActionWithAnnotation
+export default LandingHero
