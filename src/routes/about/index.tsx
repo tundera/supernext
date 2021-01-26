@@ -1,7 +1,10 @@
-import { Heading, Flex } from '@chakra-ui/react'
+import { Heading, Flex, Divider } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import Features from '@components/sections/Features'
+import ThemeableButton from '@components/ui/buttons/ThemableButton'
+import { ThemableMenu, ThemableMenuItem } from '@components/ui/menus/ThemableMenu'
+import ThemableBadge from '@components/ui/ThemableBadge'
 
 const AboutIndex = () => {
   return (
@@ -12,6 +15,15 @@ const AboutIndex = () => {
             About
           </Heading>
           <Features />
+          <ThemeableButton my="32px" size="lg" variant="solid">
+            Themed Button
+          </ThemeableButton>
+          <ThemableMenu>
+            <ThemableMenuItem my="2">Amazing</ThemableMenuItem>
+            <Divider />
+            <ThemableMenuItem my="2">Menu</ThemableMenuItem>
+          </ThemableMenu>
+          <ThemableBadge>Themed Badge</ThemableBadge>
         </Flex>
       </PageLayout>
     </>

@@ -10,6 +10,8 @@ import fonts from './fonts'
 
 // Component style overrides
 import Button from './components/button'
+import Menu from './components/menu'
+import Badge from './components/badge'
 
 const overrides = {
   styles,
@@ -17,6 +19,8 @@ const overrides = {
   colors,
   components: {
     Button,
+    Menu,
+    Badge,
   },
 }
 

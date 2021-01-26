@@ -10,7 +10,7 @@ import { NextSeo } from 'next-seo'
 import ArticleLayout from '@components/layouts/ArticleLayout'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
-import mdxComponents from '@components/markdown/article'
+import mdxComponents from '@components/mdx/article'
 import { useArticleData } from '@hooks/useArticleData'
 
 const Article = () => {

@@ -1,6 +1,5 @@
 import type { FC } from 'react'
 
-import Head from 'next/head'
 import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 import Arrow from '@components/ui/ArrowIcon'
@@ -10,10 +9,6 @@ const LandingHero: FC = () => {
 
   return (
     <>
-      <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet" />
-      </Head>
-
       <Container maxW="3xl">
         <Stack as={Box} textAlign="center" spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
           <Heading color="gray.200" fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="110%">

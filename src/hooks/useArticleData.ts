@@ -5,7 +5,7 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 import { createDataHook } from 'next-data-hooks'
 
-import mdxComponents from '@components/markdown/article'
+import mdxComponents from '@components/mdx/article'
 
 const root = process.cwd()
 

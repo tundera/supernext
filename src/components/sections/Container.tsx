@@ -7,12 +7,12 @@ const Container: FC = ({ children }) => {
   const { colorMode } = useColorMode()
 
   const color = {
-    light: '#110d5b',
-    dark: '#a3f6e7',
+    light: theme.colors.brand.primary,
+    dark: theme.colors.brand.secondary,
   }
   const bgColor = {
-    light: 'gray.200',
-    dark: 'gray.700',
+    light: '#f8f9fa',
+    dark: '#212529',
   }
 
   return (
