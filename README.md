@@ -43,8 +43,9 @@ Please check out the following projects that served as a base for this one:
 Some notable open-source libraries and developer blog tutorials were were a big aid in creating this template. Check them out:
 
 - [chakra-templates](https://github.com/hauptrolle/chakra-templates)
+- [hauptrolle.me](https://github.com/hauptrolle/hauptrolle.me)
+- [Confetti Button](https://raptis.wtf/blog/gatsby-mdx-copy-code-button-with-confetti/)
 
 ### Media Sources
 
 - [Banner image](https://basketballforever.com/2019/03/07/the-key-points-of-difference-in-the-michael-jordan-lebron-james-goat-debate)
-- [Confetti Button](https://raptis.wtf/blog/gatsby-mdx-copy-code-button-with-confetti/)
