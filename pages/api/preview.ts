@@ -8,10 +8,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
+  // if (req.query.secret !== process.env.NEXT_SANITY_PREVIEW_SECRET) {
+  //   return res.status(401).json({ message: 'Invalid token' })
+  // }
+
   // Enable Preview Mode by setting the cookies
   res.setPreviewData({})
 
   // Redirect to the home page in preview mode
-  res.writeHead(307, { Location: '/' })
+  res.writeHead(307, { Location: req.query.slug ? `/blog/${req.query.slug}` : '/blog' })
   res.end()
 }

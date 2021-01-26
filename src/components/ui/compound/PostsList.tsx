@@ -20,7 +20,7 @@ const PostsList = ({ posts }) => {
           overflow="hidden"
           bgColor="gray.300"
           as="a"
-          href={`/blog/${post.slug.current}`}
+          href={`/blog/${post.slug.current || post.slug}`}
         >
           <Box p="6">
             <Box d="flex" alignItems="baseline">

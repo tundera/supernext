@@ -7,6 +7,7 @@ export const useBlogPostsData = createDataHook('BlogPosts', async ({ preview = f
   sanity.setPreviewMode(preview)
 
   const posts = await sanity.getAll('post')
+  console.dir(posts, { colors: true, depth: null })
 
   const expandPost = async (post) => {
     const { author, date, ...rest } = post

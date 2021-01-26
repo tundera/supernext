@@ -1,8 +1,9 @@
-import type { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
+import { useRouter } from 'next/router'
 import NProgress from 'next-nprogress-emotion'
+import { useTheme, useColorMode } from '@chakra-ui/react'
 
-import { useTheme, useColorMode, color } from '@chakra-ui/react'
 import Navbar from '@components/sections/Navbar'
 import Footer from '@components/sections/Footer'
 import Container from '@components/sections/Container'
@@ -13,8 +14,18 @@ type Props = {
 }
 
 const PageLayout: FC<Props> = ({ preview = false, children }) => {
+  const router = useRouter()
+
   const theme = useTheme()
   const { colorMode } = useColorMode()
+
+  const [isBlogRoute, setIsBlogRoute] = useState<boolean>()
+
+  useEffect(() => {
+    if (router.pathname === '/blog' || router.pathname === '/blog/[slug]') {
+      setIsBlogRoute(true)
+    }
+  }, [router.pathname])
 
   return (
     <div>
@@ -24,7 +35,7 @@ const PageLayout: FC<Props> = ({ preview = false, children }) => {
         showAfterMs={300}
         spinner
       />
-      {process.env.NODE_ENV === 'development' && <PreviewBanner preview={preview} />}
+      {process.env.NODE_ENV === 'development' && isBlogRoute && <PreviewBanner preview={preview} />}
       <Navbar />
       <Container>{children}</Container>
       <Footer />
