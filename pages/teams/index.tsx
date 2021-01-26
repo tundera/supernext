@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next'
 
 import { getDataHooksProps } from 'next-data-hooks'
 
-import TeamsIndex from '@routes/teams'
+import TeamsIndex from '@routes/blog'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const dataHooksProps = await getDataHooksProps({
