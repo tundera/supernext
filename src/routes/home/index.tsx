@@ -2,8 +2,11 @@ import Head from 'next/head'
 import { Flex, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
+import Overview from '@components/sections/Overview'
 import PageLayout from '@components/layouts/PageLayout'
 import CallToActionWithAnnotation from '@components/sections/LandingHero'
+
+import { features } from 'src/constants'
 
 const BouncingEmoji = dynamic(() => import('@components/ui/BouncingEmoji'), {
   ssr: true,
@@ -22,6 +25,8 @@ const HomeIndex = () => {
           </Heading>
           <BouncingEmoji label="Bouncing basketball emoji" symbol="🏀" />
           <CallToActionWithAnnotation />
+
+          <Overview features={features} />
         </Flex>
       </PageLayout>
     </>
