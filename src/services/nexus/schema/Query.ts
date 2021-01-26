@@ -1,4 +1,4 @@
-import { objectType, queryType, list, intArg, nonNull } from 'nexus'
+import { objectType, queryType, list, intArg } from 'nexus'
 
 export const Player = objectType({
   name: 'Player',

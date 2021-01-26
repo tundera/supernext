@@ -41,3 +41,6 @@ yarn-error.log*
 # sanity
 /studio/node_modules
 /studio/dist
+
+# storybook
+/storybook-static

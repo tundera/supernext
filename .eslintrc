@@ -17,11 +17,13 @@
   },
   "rules": {
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     "global-require": "off",
     "consistent-return": "off",
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "warn",
     "import/no-cycle": "off",
     "no-multi-assign": "off",
     "no-underscore-dangle": "off",
@@ -63,6 +65,7 @@
     // Allows for the use of imports
     "sourceType": "module",
     // https://blog.geographer.fr/eslint-parser-services, https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".graphql", ".mdx"]
   }
 }

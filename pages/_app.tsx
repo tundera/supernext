@@ -5,13 +5,13 @@ import ThemeProvider from '@providers/ThemeProvider'
 import DataProvider from '@providers/DataProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { dehydratedState, ...rest } = pageProps
+  const { children, ...rest } = pageProps
 
   return (
     <DataProvider {...rest}>
       <QueryProvider>
         <ThemeProvider>
-          <Component {...rest} />
+          <Component {...rest}>{children}</Component>
         </ThemeProvider>
       </QueryProvider>
     </DataProvider>
