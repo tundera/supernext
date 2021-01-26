@@ -20,15 +20,17 @@ input CoachWhereUniqueInput {
 }
 
 type ColorScheme {
+  createdAt: DateTime!
   id: Int!
   primary: String!
   secondary: String!
   team: Team
+  teamId: Int
+  updatedAt: DateTime!
 }
 
 input ColorSchemeWhereUniqueInput {
   id: Int
-  teamId: Int
 }
 
 scalar DateTime
@@ -64,6 +66,7 @@ type Query {
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
   coachesByTeam(id: Int): [Coach]
   colorScheme(where: ColorSchemeWhereUniqueInput!): ColorScheme
+  colorSchemeByTeam(id: Int): [ColorScheme]
   colorSchemes(
     after: ColorSchemeWhereUniqueInput
     before: ColorSchemeWhereUniqueInput
@@ -81,7 +84,12 @@ type Team {
   abbreviation: String!
   city: String!
   coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
-  color: ColorScheme
+  colorScheme(
+    after: ColorSchemeWhereUniqueInput
+    before: ColorSchemeWhereUniqueInput
+    first: Int
+    last: Int
+  ): [ColorScheme!]!
   conference: String!
   createdAt: DateTime!
   division: String!
@@ -92,8 +100,6 @@ type Team {
   losses: Int
   name: String!
   players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
-  primaryColor: String!
-  secondaryColor: String!
   slug: String!
   updatedAt: DateTime!
   winPercentage: Float

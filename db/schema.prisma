@@ -35,24 +35,25 @@ model Player {
 }
 
 model ColorScheme {
-  id        Int    @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
   primary   String
   secondary String
-  teamId    Int?   @unique
-  team      Team?  @relation(fields: [teamId], references: [id])
+  teamId    Int?
+  team      Team?    @relation(fields: [teamId], references: [id])
 }
 
 model Team {
-  id             Int          @id @default(autoincrement())
-  createdAt      DateTime     @default(now())
+  id             Int           @id @default(autoincrement())
+  createdAt      DateTime      @default(now())
   updatedAt      DateTime
-  handle         String       @unique
-  name           String       @unique
-  slug           String       @unique
+  handle         String        @unique
+  name           String        @unique
+  slug           String        @unique
   city           String
-  abbreviation   String       @unique
-  logo           String       @unique
-  color          ColorScheme?
+  abbreviation   String        @unique
+  logo           String        @unique
   wins           Int?
   losses         Int?
   winPercentage  Float?
@@ -63,4 +64,5 @@ model Team {
   secondaryColor String
   coaches        Coach[]
   players        Player[]
+  colorScheme    ColorScheme[]
 }

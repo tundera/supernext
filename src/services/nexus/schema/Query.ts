@@ -37,8 +37,11 @@ export const ColorScheme = objectType({
   name: 'ColorScheme',
   definition(t) {
     t.model.id()
+    t.model.createdAt()
+    t.model.updatedAt()
     t.model.primary()
     t.model.secondary()
+    t.model.teamId()
     t.model.team()
   },
 })
@@ -53,9 +56,7 @@ export const Team = objectType({
     t.model.name()
     t.model.slug()
     t.model.city()
-    t.model.color()
-    t.model.primaryColor()
-    t.model.secondaryColor()
+    t.model.colorScheme()
     t.model.abbreviation()
     t.model.logo()
     t.model.wins()
@@ -116,6 +117,20 @@ export const Query = queryType({
       },
       resolve: (_parent, args, ctx) => {
         return ctx.prisma.player.findMany({ where: { teamId: args.id } })
+      },
+    })
+
+    t.field('colorSchemeByTeam', {
+      type: list('ColorScheme'),
+      args: {
+        id: intArg(),
+      },
+      resolve: (_parent, args, ctx) => {
+        return ctx.prisma.colorScheme.findMany({
+          where: {
+            teamId: args.id,
+          },
+        })
       },
     })
 

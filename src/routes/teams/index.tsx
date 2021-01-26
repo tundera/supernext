@@ -19,15 +19,7 @@ const TeamsIndex = () => {
           </Heading>
           <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
             {data?.map((team) => {
-              return (
-                <TeamCard
-                  key={team.name}
-                  name={team.name}
-                  logo={team.logo}
-                  primaryColor={team.primaryColor}
-                  secondaryColor={team.secondaryColor}
-                />
-              )
+              return <TeamCard key={team.name} name={team.name} logo={team.logo} />
             })}
           </SimpleGrid>
         </Stack>

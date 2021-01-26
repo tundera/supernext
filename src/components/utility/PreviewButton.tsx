@@ -41,7 +41,6 @@ const PreviewButton: FC = () => {
 
   const onSubmit = (values) => {
     return new Promise<void>((resolve) => {
-      console.log('Clicked the preview button!')
       setTimeout(() => {
         router.replace(`/api/preview?secret=${values.secret}`)
         resolve()

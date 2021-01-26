@@ -48,8 +48,11 @@ export type Coach = {
 export type ColorScheme = {
   __typename?: 'ColorScheme'
   id: Scalars['Int']
+  createdAt: Scalars['DateTime']
+  updatedAt: Scalars['DateTime']
   primary: Scalars['String']
   secondary: Scalars['String']
+  teamId?: Maybe<Scalars['Int']>
   team?: Maybe<Team>
 }
 
@@ -62,9 +65,7 @@ export type Team = {
   name: Scalars['String']
   slug: Scalars['String']
   city: Scalars['String']
-  color?: Maybe<ColorScheme>
-  primaryColor: Scalars['String']
-  secondaryColor: Scalars['String']
+  colorScheme: Array<ColorScheme>
   abbreviation: Scalars['String']
   logo: Scalars['String']
   wins?: Maybe<Scalars['Int']>
@@ -75,6 +76,13 @@ export type Team = {
   established: Scalars['String']
   coaches: Array<Coach>
   players: Array<Player>
+}
+
+export type TeamColorSchemeArgs = {
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<ColorSchemeWhereUniqueInput>
+  after?: Maybe<ColorSchemeWhereUniqueInput>
 }
 
 export type TeamCoachesArgs = {
@@ -99,6 +107,7 @@ export type Query = {
   allColorSchemes?: Maybe<Array<Maybe<ColorScheme>>>
   coachesByTeam?: Maybe<Array<Maybe<Coach>>>
   playersByTeam?: Maybe<Array<Maybe<Player>>>
+  colorSchemeByTeam?: Maybe<Array<Maybe<ColorScheme>>>
   coach?: Maybe<Coach>
   coaches: Array<Coach>
   player?: Maybe<Player>
@@ -114,6 +123,10 @@ export type QueryCoachesByTeamArgs = {
 }
 
 export type QueryPlayersByTeamArgs = {
+  id?: Maybe<Scalars['Int']>
+}
+
+export type QueryColorSchemeByTeamArgs = {
   id?: Maybe<Scalars['Int']>
 }
 
@@ -161,6 +174,10 @@ export type QueryTeamsArgs = {
   after?: Maybe<TeamWhereUniqueInput>
 }
 
+export type ColorSchemeWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>
+}
+
 export type CoachWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
@@ -172,11 +189,6 @@ export type PlayerWhereUniqueInput = {
   handle?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   slug?: Maybe<Scalars['String']>
-}
-
-export type ColorSchemeWhereUniqueInput = {
-  id?: Maybe<Scalars['Int']>
-  teamId?: Maybe<Scalars['Int']>
 }
 
 export type TeamWhereUniqueInput = {
@@ -202,6 +214,14 @@ export type AllCoachesQuery = { __typename?: 'Query' } & {
   >
 }
 
+export type AllColorSchemesQueryVariables = Exact<{ [key: string]: never }>
+
+export type AllColorSchemesQuery = { __typename?: 'Query' } & {
+  allColorSchemes?: Maybe<
+    Array<Maybe<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'id' | 'primary' | 'secondary' | 'teamId'>>>
+  >
+}
+
 export type AllPlayersQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllPlayersQuery = { __typename?: 'Query' } & {
@@ -219,11 +239,7 @@ export type AllPlayersQuery = { __typename?: 'Query' } & {
 export type AllTeamsQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllTeamsQuery = { __typename?: 'Query' } & {
-  allTeams?: Maybe<
-    Array<
-      Maybe<{ __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'primaryColor' | 'secondaryColor' | 'logo'>>
-    >
-  >
+  allTeams?: Maybe<Array<Maybe<{ __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'logo'>>>>
 }
 
 export type CoachesByTeamQueryVariables = Exact<{
@@ -232,6 +248,16 @@ export type CoachesByTeamQueryVariables = Exact<{
 
 export type CoachesByTeamQuery = { __typename?: 'Query' } & {
   coachesByTeam?: Maybe<Array<Maybe<{ __typename?: 'Coach' } & Pick<Coach, 'id' | 'name'>>>>
+}
+
+export type ColorSchemeByTeamQueryVariables = Exact<{
+  id?: Maybe<Scalars['Int']>
+}>
+
+export type ColorSchemeByTeamQuery = { __typename?: 'Query' } & {
+  colorSchemeByTeam?: Maybe<
+    Array<Maybe<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'id' | 'primary' | 'secondary'>>>
+  >
 }
 
 export type PlayersByTeamQueryVariables = Exact<{
@@ -250,6 +276,16 @@ export const AllCoachesDocument = gql`
       team {
         name
       }
+    }
+  }
+`
+export const AllColorSchemesDocument = gql`
+  query AllColorSchemes {
+    allColorSchemes {
+      id
+      primary
+      secondary
+      teamId
     }
   }
 `
@@ -274,8 +310,6 @@ export const AllTeamsDocument = gql`
       id
       name
       city
-      primaryColor
-      secondaryColor
       logo
     }
   }
@@ -285,6 +319,15 @@ export const CoachesByTeamDocument = gql`
     coachesByTeam(id: $id) {
       id
       name
+    }
+  }
+`
+export const ColorSchemeByTeamDocument = gql`
+  query ColorSchemeByTeam($id: Int) {
+    colorSchemeByTeam(id: $id) {
+      id
+      primary
+      secondary
     }
   }
 `
@@ -305,6 +348,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     AllCoaches(variables?: AllCoachesQueryVariables, requestHeaders?: Headers): Promise<AllCoachesQuery> {
       return withWrapper(() => client.request<AllCoachesQuery>(print(AllCoachesDocument), variables, requestHeaders))
     },
+    AllColorSchemes(
+      variables?: AllColorSchemesQueryVariables,
+      requestHeaders?: Headers,
+    ): Promise<AllColorSchemesQuery> {
+      return withWrapper(() =>
+        client.request<AllColorSchemesQuery>(print(AllColorSchemesDocument), variables, requestHeaders),
+      )
+    },
     AllPlayers(variables?: AllPlayersQueryVariables, requestHeaders?: Headers): Promise<AllPlayersQuery> {
       return withWrapper(() => client.request<AllPlayersQuery>(print(AllPlayersDocument), variables, requestHeaders))
     },
@@ -314,6 +365,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CoachesByTeam(variables?: CoachesByTeamQueryVariables, requestHeaders?: Headers): Promise<CoachesByTeamQuery> {
       return withWrapper(() =>
         client.request<CoachesByTeamQuery>(print(CoachesByTeamDocument), variables, requestHeaders),
+      )
+    },
+    ColorSchemeByTeam(
+      variables?: ColorSchemeByTeamQueryVariables,
+      requestHeaders?: Headers,
+    ): Promise<ColorSchemeByTeamQuery> {
+      return withWrapper(() =>
+        client.request<ColorSchemeByTeamQuery>(print(ColorSchemeByTeamDocument), variables, requestHeaders),
       )
     },
     PlayersByTeam(variables?: PlayersByTeamQueryVariables, requestHeaders?: Headers): Promise<PlayersByTeamQuery> {
