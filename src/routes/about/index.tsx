@@ -4,7 +4,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import Features from '@components/sections/Features'
 import Button from '@components/ui/buttons/Button'
 import { ThemableMenu, ThemableMenuItem } from '@components/ui/menus/ThemableMenu'
-import ThemableBadge from '@components/ui/ThemableBadge'
+import DetailBadge from '@components/ui/DetailBadge'
 
 const AboutIndex = () => {
   return (
@@ -16,14 +16,14 @@ const AboutIndex = () => {
           </Heading>
           <Features />
           <Button my="32px" size="lg" variant="solid">
-            Themed Button
+            Custom Button
           </Button>
           <ThemableMenu>
             <ThemableMenuItem my="2">Amazing</ThemableMenuItem>
             <Divider />
             <ThemableMenuItem my="2">Menu</ThemableMenuItem>
           </ThemableMenu>
-          <ThemableBadge>Themed Badge</ThemableBadge>
+          <DetailBadge>Custom Badge</DetailBadge>
         </Flex>
       </PageLayout>
     </>
