@@ -1,0 +1,15 @@
+{
+  "forms": {
+    "signupForm": {
+      "name": "Sign-Up Form",
+      "actions": [
+        {
+          "app": "mailchimp",
+          "type": "addOrUpdateContact",
+          "audience": "tundera.dev",
+          "apiKey": "$NEXT_FORMSPREE_MAILCHIMP_API_KEY"
+        }
+      ]
+    }
+  }
+}

@@ -46,14 +46,17 @@
     "lint": "eslint './{src,pages}/**/*.{js,jsx,ts,tsx}'",
     "format": "eslint './{src,pages,.storybook}/**/*.{js,jsx,ts,tsx}' --fix",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
-    "build:storybook": "build-storybook && yarn storybook extract"
+    "build:storybook": "build-storybook && yarn storybook extract",
+    "forms:deploy": "formspree deploy -k $FORMSPREE_DEPLOY_KEY"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.3",
     "@chakra-ui/react": "^1.1.6",
     "@chakra-ui/theme-tools": "^1.0.3",
+    "@emotion/is-prop-valid": "^1.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@formspree/react": "^2.2.3",
     "@mdx-js/mdx": "^2.0.0-next.8",
     "@mdx-js/react": "^2.0.0-next.8",
     "@mdx-js/tag": "^1.0.0-alpha.6",

@@ -1,12 +1,7 @@
 // 1. Import useStyleConfig
 import { useStyleConfig, Box } from '@chakra-ui/react'
 
-type Props = {
-  size: string
-  variant: string
-}
-
-function Button(props: Props) {
+function Button(props) {
   const { size, variant, ...rest } = props
 
   // 2. Reference `Button` stored in `theme.components`
@@ -17,5 +12,3 @@ function Button(props: Props) {
 }
 
 export default Button
-
-export type { Props as ButtonProps }

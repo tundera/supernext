@@ -1,8 +1,9 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
-import QueryProvider from '@providers/QueryProvider'
-import ThemeProvider from '@providers/ThemeProvider'
 import DataProvider from '@providers/DataProvider'
+import QueryProvider from '@providers/QueryProvider'
+import FormProvider from '@providers/FormProvider'
+import ThemeProvider from '@providers/ThemeProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { children, ...rest } = pageProps
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <DataProvider {...rest}>
       <QueryProvider>
-        <ThemeProvider>
-          <Component {...rest}>{children}</Component>
-        </ThemeProvider>
+        <FormProvider>
+          <ThemeProvider>
+            <Component {...rest}>{children}</Component>
+          </ThemeProvider>
+        </FormProvider>
       </QueryProvider>
     </DataProvider>
   )

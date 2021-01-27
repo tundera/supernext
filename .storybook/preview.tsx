@@ -10,9 +10,10 @@ import '@storybook/addon-console' // Automatically forwards all logs in the "Act
 import { Flex, IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { FaMoon, FaSun } from 'react-icons/fa'
 
+import DataProvider from '../src/providers/DataProvider'
+import FormProvider from '../src/providers/FormProvider'
 import QueryProvider from '../src/providers/QueryProvider'
 import ThemeProvider from '../src/providers/ThemeProvider'
-import DataProvider from '../src/providers/DataProvider'
 
 // Adapted from https://github.com/UnlyEd/next-right-now/blob/e5aba8eaf02918d9506008ee1f11c38954fedc86/.storybook/preview.js
 
@@ -155,12 +156,14 @@ const withProviders = (StoryFn: Function, context: StoryContext) => {
   return (
     <DataProvider>
       <QueryProvider>
-        <ThemeProvider>
-          <div dir={dir} id="story-wrapper" style={{ minHeight: '100vh' }}>
-            <ColorModeToggleBar />
-            <StoryFn />
-          </div>
-        </ThemeProvider>
+        <FormProvider>
+          <ThemeProvider>
+            <div dir={dir} id="story-wrapper" style={{ minHeight: '100vh' }}>
+              <ColorModeToggleBar />
+              <StoryFn />
+            </div>
+          </ThemeProvider>
+        </FormProvider>
       </QueryProvider>
     </DataProvider>
   )
