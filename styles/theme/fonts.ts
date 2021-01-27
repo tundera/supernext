@@ -1,5 +1,8 @@
 export default {
-  body: "'Inter', 'Menlo', sans-serif",
-  heading: "'Inter', 'Menlo', sans-serif",
-  mono: "'Dank Mono', 'Menlo', monospace",
+  body:
+    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  heading:
+    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  mono:
+    "'Dank Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 }

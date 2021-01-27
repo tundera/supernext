@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 import Overview from '@components/sections/Overview'
 import PageLayout from '@components/layouts/PageLayout'
 import CallToActionWithAnnotation from '@components/sections/LandingHero'
-import { useColorModeCookies } from '@hooks/useColorModeCookies'
 
 import { features } from 'src/constants'
 
@@ -33,7 +32,5 @@ const HomeIndex = () => {
     </>
   )
 }
-
-HomeIndex.dataHooks = [useColorModeCookies]
 
 export default HomeIndex
