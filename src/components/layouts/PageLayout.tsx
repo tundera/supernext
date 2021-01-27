@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 import NProgress from 'next-nprogress-emotion'
-import { useTheme, useColorMode } from '@chakra-ui/react'
+import { useTheme, useColorModeValue } from '@chakra-ui/react'
 
 import Navbar from '@components/sections/Navbar'
 import Footer from '@components/sections/Footer'
@@ -17,7 +17,7 @@ const PageLayout: FC<Props> = ({ preview = false, children }) => {
   const router = useRouter()
 
   const theme = useTheme()
-  const { colorMode } = useColorMode()
+  const color = useColorModeValue(theme.colors.brand.secondary, theme.colors.brand.primary)
 
   const [isBlogRoute, setIsBlogRoute] = useState<boolean>()
 
@@ -29,12 +29,7 @@ const PageLayout: FC<Props> = ({ preview = false, children }) => {
 
   return (
     <div>
-      <NProgress
-        color={colorMode === 'dark' ? theme.colors.brand.primary : theme.colors.brand.secondary}
-        options={{ trickleSpeed: 50 }}
-        showAfterMs={300}
-        spinner
-      />
+      <NProgress color={color} options={{ trickleSpeed: 50 }} showAfterMs={300} spinner />
       {process.env.NODE_ENV === 'development' && isBlogRoute && <PreviewBanner preview={preview} />}
       <Navbar />
       <Container>{children}</Container>
