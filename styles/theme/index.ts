@@ -1,6 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 
-// Global style and font overrides
+import config from './config'
 import styles from './styles'
 import colors from './colors'
 import fonts from './fonts'
@@ -14,7 +14,7 @@ import Menu from './components/menu'
 import Badge from './components/badge'
 
 const overrides = {
-  config: { initialColorMode: 'light', useSystemColorMode: false },
+  config,
   styles,
   fonts,
   colors,
