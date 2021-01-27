@@ -14,6 +14,7 @@ import Menu from './components/menu'
 import Badge from './components/badge'
 
 const overrides = {
+  config: { initialColorMode: 'light', useSystemColorMode: false },
   styles,
   fonts,
   colors,
