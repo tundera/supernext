@@ -2,7 +2,7 @@ import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import TeamCard from '@components/TeamCard'
-import { useTeamsData } from '@hooks/useTeamsData'
+import { useTeamsData } from '@hooks/data/useTeamsData'
 
 import { useTeamsQuery } from '@hooks/useTeamsQuery'
 

@@ -1,7 +1,7 @@
 import { Stack, Heading } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import { useArticlesData } from '@hooks/useArticlesData'
+import { useArticlesData } from '@hooks/data/useArticlesData'
 import ArticlesList from '@components/ui/compound/ArticlesList'
 
 const ArticlesIndex = () => {

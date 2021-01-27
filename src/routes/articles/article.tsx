@@ -11,7 +11,7 @@ import ArticleLayout from '@components/layouts/ArticleLayout'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
-import { useArticleData } from '@hooks/useArticleData'
+import { useArticleData } from '@hooks/data/useArticleData'
 
 const Article = () => {
   const router = useRouter()

@@ -3,7 +3,7 @@ import { Stack, Heading, Text } from '@chakra-ui/react'
 import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/constants'
 import PostsList from '@components/ui/compound/PostsList'
-import { useBlogPostsData } from '@hooks/useBlogPostsData'
+import { useBlogPostsData } from '@hooks/data/useBlogPostsData'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPosts } from 'src/services/sanity/posts'
 

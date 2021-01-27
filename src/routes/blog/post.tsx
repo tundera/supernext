@@ -7,7 +7,7 @@ import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
-import { useBlogPostData } from '@hooks/useBlogPostData'
+import { useBlogPostData } from '@hooks/data/useBlogPostData'
 import { createImageUrl } from 'utils/sanity'
 import Callout from '@components/sections/Callout'
 import { usePreviewSubscription } from '@lib/sanity'

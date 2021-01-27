@@ -14,7 +14,7 @@ const DarkModeToggle: FC = () => {
             aria-label="enable dark mode"
             isRound
             variant="ghost"
-            colorScheme="purple"
+            colorScheme="black"
             color="black"
             icon={<FiMoon />}
             onClick={toggleColorMode}
