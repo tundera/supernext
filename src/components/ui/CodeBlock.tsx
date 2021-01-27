@@ -7,7 +7,7 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import synthwave84 from 'prism-react-renderer/themes/synthwave84'
 
 import CopyButton from '@components/ui/buttons/CopyButton'
-import { copyToClipboard } from '@utils/copyToClipboard'
+import { copyToClipboard } from 'utils/copyToClipboard'
 import confetti from 'styles/animations/confetti'
 
 type Props = {

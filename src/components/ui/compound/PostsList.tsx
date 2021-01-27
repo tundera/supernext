@@ -1,6 +1,6 @@
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
 
-import { createImageUrl } from '@utils/sanity'
+import { createImageUrl } from 'utils/sanity'
 
 const PostsList = ({ posts }) => {
   return (
