@@ -1,7 +1,12 @@
 // 1. Import useStyleConfig
 import { useStyleConfig, Box } from '@chakra-ui/react'
 
-function ThemeableButton(props) {
+type Props = {
+  size: string
+  variant: string
+}
+
+function Button(props: Props) {
   const { size, variant, ...rest } = props
 
   // 2. Reference `Button` stored in `theme.components`
@@ -11,4 +16,6 @@ function ThemeableButton(props) {
   return <Box as="button" sx={styles} {...rest} />
 }
 
-export default ThemeableButton
+export default Button
+
+export type { Props as ButtonProps }
