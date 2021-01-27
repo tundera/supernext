@@ -4,6 +4,7 @@ import { Box, Text, List, ListItem, ListIcon, SimpleGrid } from '@chakra-ui/reac
 import { MdDone } from 'react-icons/md'
 
 import SectionHeadline from '@components/ui/SectionHeadline'
+import CodeBlock from '@components/ui/CodeBlock'
 
 type Feature = {
   category: string

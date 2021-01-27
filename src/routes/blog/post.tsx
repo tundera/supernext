@@ -9,7 +9,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
 import { useBlogPostData } from '@hooks/data/useBlogPostData'
 import { createImageUrl } from 'utils/sanity'
-import Callout from '@components/sections/Callout'
+import CodeBlock from '@components/ui/CodeBlock'
 import { usePreviewSubscription } from '@lib/sanity'
 import { getPostBySlug } from 'src/services/sanity/posts'
 
@@ -25,7 +25,7 @@ const BlogPost = () => {
 
   const renderedContent = hydrate(data.content ?? '', {
     components: {
-      Callout,
+      CodeBlock,
     },
   })
 

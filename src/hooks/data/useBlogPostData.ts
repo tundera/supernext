@@ -3,7 +3,7 @@ import { createDataHook } from 'next-data-hooks'
 // import { parse } from 'date-fns'
 
 import sanity from '@lib/sanity/client'
-import Callout from '@components/sections/Callout'
+import CodeBlock from '@components/ui/CodeBlock'
 
 export const useBlogPostData = createDataHook('BlogPost', async ({ params, preview = false }) => {
   const pageSlug = params?.slug as string
@@ -17,7 +17,7 @@ export const useBlogPostData = createDataHook('BlogPost', async ({ params, previ
   // const formattedDate = parse(date, 'MM-dd-yyyy', new Date())
 
   const markup = await renderToString(content ?? '', {
-    components: { Callout },
+    components: { CodeBlock },
   })
 
   const data = {

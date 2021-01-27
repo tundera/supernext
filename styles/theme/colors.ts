@@ -3,7 +3,14 @@ export default {
     primary: '#110d5b',
     secondary: '#a3f6e7',
   },
-  black: '#000000',
-  gold: '#857451',
-  white: '#FFFFFF',
+  dark: {
+    primary: '#857451',
+    secondary: '#000000',
+    text: '#FFFFFF',
+  },
+  light: {
+    primary: '#857451',
+    secondary: '#FFFFFF',
+    text: '#000000',
+  },
 }
