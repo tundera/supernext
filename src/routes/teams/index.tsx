@@ -4,7 +4,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import TeamCard from '@components/TeamCard'
 import { useTeamsData } from '@hooks/data/useTeamsData'
 
-import { useTeamsQuery } from '@hooks/useTeamsQuery'
+import { useTeamsQuery } from '@hooks/queries/useTeamsQuery'
 
 const TeamsIndex = () => {
   const { teams, preview } = useTeamsData()

@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react'
 
-import { usePlayersQuery } from '@hooks/usePlayersQuery'
+import { usePlayersQuery } from '@hooks/queries/usePlayersQuery'
 import Suspense from '@components/utility/QuerySuspense'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
 
