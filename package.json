@@ -64,6 +64,7 @@
     "@storybook/react": "^6.1.15",
     "a11y-react-emoji": "^1.1.2",
     "apollo-server-micro": "^2.19.2",
+    "change-case": "^4.1.2",
     "date-fns": "^2.16.1",
     "deepmerge": "^4.2.2",
     "dotenv": "^8.2.0",

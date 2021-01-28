@@ -1,7 +1,51 @@
 import TimeAgo from 'timeago-react'
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
-
+import { paramCase } from 'change-case'
 import { createImageUrl } from 'utils/sanity'
+
+function PostCard({ slug, author, date, title }) {
+  return (
+    <Box
+      key={slug?.current}
+      maxW="sm"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      bgColor="gray.300"
+      as="a"
+      href={`/blog/${slug.current || slug}`}
+    >
+      <Box p="6">
+        <Box d="flex" alignItems="baseline">
+          <Box
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xs"
+            textTransform="uppercase"
+            ml="2"
+          >
+            <TimeAgo datetime={date} locale="en_US" />
+          </Box>
+        </Box>
+
+        <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+          {title}
+        </Box>
+        <Flex mt="1" as="h6" lineHeight="tight" isTruncated>
+          <Avatar
+            size="xs"
+            name={author?.name || ''}
+            src={createImageUrl(author?.avatar?.asset?._ref as string).url() || ''}
+          />
+          <Badge borderRadius="full" px="2">
+            {author?.name}
+          </Badge>
+        </Flex>
+      </Box>
+    </Box>
+  )
+}
 
 const PostsList = ({ posts }) => {
   return (
@@ -13,45 +57,13 @@ const PostsList = ({ posts }) => {
       )}
 
       {posts?.map((post) => (
-        <Box
-          key={post.slug?.current}
-          maxW="sm"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          bgColor="gray.300"
-          as="a"
-          href={`/blog/${post.slug.current || post.slug}`}
-        >
-          <Box p="6">
-            <Box d="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="teal">
-                {post.author?.name}
-              </Badge>
-              <Box
-                color="gray.500"
-                fontWeight="semibold"
-                letterSpacing="wide"
-                fontSize="xs"
-                textTransform="uppercase"
-                ml="2"
-              >
-                <TimeAgo datetime={post.date} locale="en_US" />
-              </Box>
-            </Box>
-
-            <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-              {post.title}
-            </Box>
-            <Box mt="1" as="h6" lineHeight="tight" isTruncated>
-              <Avatar
-                size="2xs"
-                name={post.author?.name || ''}
-                src={createImageUrl(post.author?.asset?._ref as string).url() || ''}
-              />
-            </Box>
-          </Box>
-        </Box>
+        <PostCard
+          key={paramCase(post.title)}
+          slug={post.slug}
+          author={post.author}
+          date={post.date}
+          title={post.title}
+        />
       ))}
     </Flex>
   )
