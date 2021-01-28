@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { useColorMode, Button } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
@@ -9,7 +7,7 @@ type Props = {
   LinkComponent: typeof NextLink
 }
 
-const NavLink: FC<Props> = ({ LinkComponent, text, href }) => {
+const NavLink = ({ LinkComponent, text, href }: Props) => {
   const { colorMode } = useColorMode()
 
   const color = { light: 'white', dark: 'gray.800' }

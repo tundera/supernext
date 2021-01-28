@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid, useTheme } from '@chakra-ui/react'
 
 const StatsText = ({ children }) => {
@@ -48,7 +46,7 @@ const stats = [
   },
 ]
 
-const StatsGrid: FC = () => {
+function StatsGrid() {
   return (
     <Box bg="gray.800" position="relative">
       <Flex

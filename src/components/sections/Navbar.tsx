@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import NextLink from 'next/link'
 import { useTheme, useColorMode, useColorModeValue, Button, Flex, Box, IconButton, Text } from '@chakra-ui/react'
 import { BsMoon } from 'react-icons/bs'
@@ -17,7 +15,7 @@ const StickyNav = styled(Flex)`
   transition: background-color 0.1 ease-in-out;
 `
 
-const Navbar: FC = () => {
+function Navbar() {
   const theme = useTheme()
   const { colorMode, toggleColorMode } = useColorMode()
   const bg = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)

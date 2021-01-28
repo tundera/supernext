@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 import { useColorMode, useColorModeValue, Button, ButtonGroup, IconButton, Flex, Text } from '@chakra-ui/react'
 import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons'
@@ -22,7 +22,7 @@ const StickyBanner = styled(Flex)`
   transition: background-color 0.1 ease-in-out;
 `
 
-const PreviewBanner: FC<Props> = ({ preview }) => {
+const PreviewBanner = ({ preview }: Props) => {
   const { colorMode } = useColorMode()
   const bg = useColorModeValue('gray.300', 'gray.500')
   const color = useColorModeValue('black', 'white')

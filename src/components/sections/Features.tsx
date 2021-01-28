@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { Box, Container, Heading, SimpleGrid, Icon, Text, Stack, HStack, VStack } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 
@@ -11,7 +9,7 @@ const features = Array(...Array(8)).map((x, i) => {
   }
 })
 
-const Features: FC = () => {
+function Features() {
   return (
     <Box p={4}>
       <Stack spacing={4} as={Container} maxW="3xl" textAlign="center">

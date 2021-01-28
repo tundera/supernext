@@ -1,10 +1,7 @@
-import type { FC } from 'react'
-
 import { Box, Text, List, ListItem, ListIcon, SimpleGrid } from '@chakra-ui/react'
 import { MdDone } from 'react-icons/md'
 
 import SectionHeadline from '@components/ui/SectionHeadline'
-import CodeBlock from '@components/ui/CodeBlock'
 
 type Feature = {
   category: string
@@ -15,7 +12,7 @@ type Props = {
   features: Feature[]
 }
 
-const Overview: FC<Props> = ({ features }) => {
+const Overview = ({ features }: Props) => {
   return (
     <Box bg="gray.900" p={8} rounded="md">
       <SectionHeadline size="lg" as="h3">

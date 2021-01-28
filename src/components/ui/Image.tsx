@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { useBreakpointValue, chakra } from '@chakra-ui/react'
 import NextImage from 'next/image'
 
@@ -14,7 +12,7 @@ const Image = chakra(NextImage, {
   shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop),
 })
 
-const ResponsiveImage: FC<Props> = ({ src, width, height, ...props }) => {
+const ResponsiveImage = ({ src, width, height, ...props }: Props) => {
   const imageWidth = useBreakpointValue(width)?.replace('px', '') || 0
   const imageHeight = useBreakpointValue(height)?.replace('px', '') || 0
   return <Image src={src} width={imageWidth} height={imageHeight} border="4px solid silver" {...props} />

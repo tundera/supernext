@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import type { SimpleGridProps } from '@chakra-ui/react'
 import type { Player } from 'src/services/nexus/types'
 
@@ -8,9 +7,9 @@ type Props = SimpleGridProps & {
   players: Player[]
 }
 
-const TeamRoster: FC<Props> = ({ players }) => {
+const TeamRoster = ({ players, ...props }: Props) => {
   return (
-    <SimpleGrid columns={[1, 1, 2]} spacing={8}>
+    <SimpleGrid columns={[1, 1, 2]} spacing={8} {...props}>
       {players.map((player) => (
         <Box
           key={player.id}

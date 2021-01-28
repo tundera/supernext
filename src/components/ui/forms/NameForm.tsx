@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormErrorMessage, FormLabel, FormControl, Input, Button } from '@chakra-ui/react'
 
@@ -6,7 +5,7 @@ type Inputs = {
   name: string
 }
 
-export const NameForm: FC = () => {
+export function NameForm() {
   const { handleSubmit, errors, register, formState } = useForm<Inputs>()
 
   function validateName(value) {

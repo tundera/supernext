@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import { Box, Heading } from '@chakra-ui/react'
 
 import { usePlayersQuery } from '@hooks/usePlayersQuery'
@@ -11,7 +9,7 @@ type Props = {
 }
 
 // TODO: Convert this use SuspenseList once stable
-const PlayersList: FC<Props> = ({ title }) => {
+const PlayersList = ({ title }: Props) => {
   const { data: players } = usePlayersQuery()
 
   return (

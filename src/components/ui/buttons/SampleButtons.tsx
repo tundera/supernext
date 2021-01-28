@@ -1,11 +1,9 @@
-import type { FC } from 'react'
-
 import { HStack, Box } from '@chakra-ui/react'
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
 import SocialButton from '@components/SocialButton'
 
-const SampleButtons: FC = () => {
+function SampleButtons() {
   return (
     <Box>
       <HStack>

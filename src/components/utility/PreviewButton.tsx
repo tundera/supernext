@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { BsCircleFill } from 'react-icons/bs'
@@ -25,7 +23,7 @@ type Inputs = {
   secret: string
 }
 
-const PreviewButton: FC = () => {
+function PreviewButton() {
   const router = useRouter()
   const { colorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()

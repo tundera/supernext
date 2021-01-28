@@ -6,7 +6,7 @@ import { Global } from '@emotion/react'
 import theme from 'styles/theme'
 import fonts from 'styles/font-face'
 
-const Fonts: FC = () => {
+function Fonts() {
   return <Global styles={fonts} />
 }
 

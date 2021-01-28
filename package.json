@@ -67,6 +67,7 @@
     "date-fns": "^2.16.1",
     "deepmerge": "^4.2.2",
     "dotenv": "^8.2.0",
+    "favicons": "^6.2.0",
     "framer-motion": "^3.2.2-rc.1",
     "globby": "^11.0.2",
     "graphql": "^15.4.0",

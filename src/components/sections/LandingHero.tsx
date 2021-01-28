@@ -1,10 +1,8 @@
-import type { FC } from 'react'
-
 import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 import Arrow from '@components/ui/ArrowIcon'
 
-const LandingHero: FC = () => {
+function LandingHero() {
   const theme = useTheme()
   const color = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
   const altColor = useColorModeValue('black', 'white')

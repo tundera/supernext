@@ -1,12 +1,10 @@
-import type { FC } from 'react'
-
 import { Button, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Tooltip } from '@chakra-ui/react'
 
 import i18n from 'src/i18n'
 import { useRouter } from 'next/router'
 import Emoji from 'a11y-react-emoji'
 
-const LocaleButton: FC = () => {
+function LocaleButton() {
   const router = useRouter()
   const { asPath, locale, replace, route } = router
 

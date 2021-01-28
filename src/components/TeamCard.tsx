@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import Image from 'next/image'
 import { Heading, useColorModeValue, Flex } from '@chakra-ui/react'
 
@@ -8,7 +6,7 @@ type Props = {
   logo: string
 }
 
-const TeamCard: FC<Props> = ({ name, logo }) => {
+const TeamCard = ({ name, logo }: Props) => {
   const color = useColorModeValue('black', 'white')
 
   return (

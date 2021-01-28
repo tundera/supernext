@@ -1,8 +1,7 @@
-import type { FC } from 'react'
 import { Box, IconButton, Tooltip, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { FiMoon, FiSun } from 'react-icons/fi'
 
-const DarkModeToggle: FC = () => {
+function DarkModeToggle() {
   const { colorMode, toggleColorMode } = useColorMode()
 
   const label = useColorModeValue('Dark Mode', 'Light Mode')

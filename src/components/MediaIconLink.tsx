@@ -1,6 +1,6 @@
-import type { FC, ReactElement } from 'react'
+import type { ReactElement } from 'react'
 
-import { Link, IconButton, useColorMode, useColorModeValue, useTheme } from '@chakra-ui/react'
+import { Link, IconButton, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 type Props = {
   title: string
@@ -8,7 +8,7 @@ type Props = {
   href: string
 }
 
-const MediaIconLink: FC<Props> = ({ icon, title, href }) => {
+const MediaIconLink = ({ icon, title, href }: Props) => {
   const theme = useTheme()
   const hoverColor = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
   const color = useColorModeValue(theme.colors.brand.secondary, theme.colors.brand.primary)
