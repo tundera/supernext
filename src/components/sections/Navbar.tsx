@@ -33,7 +33,7 @@ const Navbar: FC = () => {
         as="nav"
         p={4}
         mx="auto"
-        maxWidth="1150px"
+        maxWidth="1200px"
       >
         <Box>
           <NextLink href="/" passHref>
@@ -52,8 +52,11 @@ const Navbar: FC = () => {
         </Box>
 
         <Box>
-          <NavLink LinkComponent={NextLink} href="/about" text="About" />
           <NavLink LinkComponent={NextLink} href="/blog" text="Blog" />
+          <NavLink LinkComponent={NextLink} href="/about" text="About" />
+          <NavLink LinkComponent={NextLink} href="/work" text="Work" />
+          <NavLink LinkComponent={NextLink} href="/courses" text="Courses" />
+          <NavLink LinkComponent={NextLink} href="/store" text="Store" />
           <NavLink LinkComponent={NextLink} href="/teams" text="Teams" />
           <IconButton
             fontWeight={['normal', 'medium', 'bold']}

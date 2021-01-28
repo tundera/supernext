@@ -6,15 +6,17 @@ import Arrow from '@components/ui/ArrowIcon'
 
 const LandingHero: FC = () => {
   const theme = useTheme()
+  const color = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
+  const altColor = useColorModeValue('black', 'white')
 
   return (
     <>
       <Container maxW="3xl">
         <Stack as={Box} textAlign="center" spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
-          <Heading color="gray.200" fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="110%">
+          <Heading color={color} fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="110%">
             Learn full-stack web development by building
             <br />
-            <Text as="span" color={theme.colors.brand.secondary}>
+            <Text as="span" color={altColor}>
               real apps.
             </Text>
           </Heading>

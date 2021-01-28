@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Confetti from 'react-dom-confetti'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import synthwave84 from 'prism-react-renderer/themes/synthwave84'
+import palenight from 'prism-react-renderer/themes/palenight'
+import { chakra } from '@chakra-ui/react'
 
 import CopyButton from '@components/ui/buttons/CopyButton'
 import { copyToClipboard } from 'utils/copyToClipboard'
@@ -34,9 +35,17 @@ const CodeBlock: FC<Props> = ({ codeString, language, children, ...props }) => {
   }
   return (
     <Wrapper>
-      <Highlight {...defaultProps} code={codeString} language={language} theme={synthwave84}>
+      <Highlight {...defaultProps} code={codeString} language={language} theme={palenight}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={{ ...style, padding: '2rem', position: 'relative' }}>
+          <chakra.pre
+            className={className}
+            py="12"
+            pl="8"
+            pr="20"
+            my="4"
+            sx={{ position: 'relative', borderRadius: '12px' }}
+            style={{ ...style }}
+          >
             <CopyButton
               onClick={() => {
                 copyToClipboard(codeString)
@@ -53,7 +62,7 @@ const CodeBlock: FC<Props> = ({ codeString, language, children, ...props }) => {
                 ))}
               </div>
             ))}
-          </pre>
+          </chakra.pre>
         )}
       </Highlight>
       <ConfettiWrapper>

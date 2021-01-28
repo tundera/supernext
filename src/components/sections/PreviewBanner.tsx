@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { useColorMode, Button, ButtonGroup, IconButton, Flex, Text } from '@chakra-ui/react'
+import { useColorMode, useColorModeValue, Button, ButtonGroup, IconButton, Flex, Text } from '@chakra-ui/react'
 import { ChevronUpIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import { BsCircleFill } from 'react-icons/bs'
 import styled from '@emotion/styled'
@@ -24,6 +24,8 @@ const StickyBanner = styled(Flex)`
 
 const PreviewBanner: FC<Props> = ({ preview }) => {
   const { colorMode } = useColorMode()
+  const bg = useColorModeValue('gray.300', 'gray.500')
+  const color = useColorModeValue('black', 'white')
 
   const [isHidden, setIsHidden] = useState(true)
 
@@ -32,33 +34,16 @@ const PreviewBanner: FC<Props> = ({ preview }) => {
   }
 
   return (
-    <StickyBanner bgColor={colorMode === 'dark' ? 'gray.500' : 'gray.300'}>
-      <Text
-        py={2}
-        fontSize={isHidden ? '16px' : '24px'}
-        textAlign="center"
-        color={colorMode === 'dark' ? 'white' : 'black'}
-      >
+    <StickyBanner bg={bg}>
+      <Text py={2} fontSize={isHidden ? '16px' : '24px'} textAlign="center" color={color}>
         This site is currently showing {preview ? <b>preview</b> : <b>published</b>} content.
       </Text>
       {!isHidden ? (
         <>
-          <Text py={2} fontSize="16px" textAlign="center" color={colorMode === 'dark' ? 'white' : 'black'}>
+          <Text py={2} fontSize="16px" textAlign="center" color={color}>
             Toggle content type below.
           </Text>
           <ButtonGroup variant="outline" spacing="6">
-            {/* <Button
-              as="a"
-              href={`/api/preview?secret=${process.env.NEXT_SANITY_PREVIEW_SECRET}`}
-              iconSpacing={4}
-              rightIcon={<BsCircleFill size="12px" color="orange" />}
-              w="175px"
-              py={4}
-              my={4}
-              bgColor={colorMode === 'dark' ? 'gray.600' : 'white'}
-            >
-              Preview
-            </Button> */}
             <PreviewButton />
             <Button
               as="a"

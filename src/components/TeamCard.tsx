@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import Image from 'next/image'
-import { Heading, useColorMode, Flex } from '@chakra-ui/react'
+import { Heading, useColorModeValue, Flex } from '@chakra-ui/react'
 
 type Props = {
   name: string
@@ -9,12 +9,12 @@ type Props = {
 }
 
 const TeamCard: FC<Props> = ({ name, logo }) => {
-  const { colorMode } = useColorMode()
+  const color = useColorModeValue('black', 'white')
 
   return (
     <Flex p={5} flexDir="column" bgColor="white" shadow="md" borderRadius={4} bgImage={logo}>
       <Image src={logo} height="100" width="auto" />
-      <Heading fontSize="lg" textAlign="center" color={colorMode === 'dark' ? 'white' : 'black'} mt="8">
+      <Heading fontSize="lg" textAlign="center" color={color} mt="8">
         {name}
       </Heading>
     </Flex>

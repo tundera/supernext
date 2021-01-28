@@ -7,6 +7,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import CallToActionWithAnnotation from '@components/sections/LandingHero'
 
 import { features } from 'src/constants'
+import StatsGrid from '@components/sections/StatsGrid'
 
 const BouncingEmoji = dynamic(() => import('@components/ui/BouncingEmoji'), {
   ssr: true,
@@ -25,6 +26,8 @@ const HomeIndex = () => {
           </Heading>
           <BouncingEmoji label="Bouncing basketball emoji" symbol="🏀" />
           <CallToActionWithAnnotation />
+
+          <StatsGrid />
 
           <Overview features={features} />
         </Flex>
