@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await sanity.getAll('post')
-  const paths = posts.map((post) => `/blog/${post.slug.current}`)
+  const paths = posts.map((post) => `/blog/${post?.slug?.current}`)
 
   return {
     paths,
