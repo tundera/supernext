@@ -11775,6 +11775,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+light-date@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/light-date/-/light-date-1.2.0.tgz#b945e2c5acd8c42f07811430a253ecc0d2e28942"
+  integrity sha512-fdndhOogZm9m/XeAmP+UDgvplEd3SEfFoS3ObI6xhLmNyX3VdT+Ss8mddvP3XmVnh7I3t/Yg4OuFvWvYD+YBeA==
+
 line-column@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/line-column/-/line-column-1.0.2.tgz#d25af2936b6f4849172b312e4792d1d987bc34a2"
@@ -16828,6 +16833,18 @@ through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
+
+timeago-react@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/timeago-react/-/timeago-react-3.0.1.tgz#b67a7271f3241b8535c10d3bc2cf3ee18a0649e8"
+  integrity sha512-IWSLWO47saoPOplrrLF5JbOW474oXnx+GfTw4SIuskY9yaSbzNnf0Lah2G9AwLuuQ4dQHSu4EgEOSNTPBxdoQA==
+  dependencies:
+    timeago.js "^4.0.0"
+
+timeago.js@^4.0.0:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/timeago.js/-/timeago.js-4.0.2.tgz#724e8c8833e3490676c7bb0a75f5daf20e558028"
+  integrity sha512-a7wPxPdVlQL7lqvitHGGRsofhdwtkoSXPGATFuSOA2i1ZNQEPLrGnj68vOp2sOJTCFAQVXPeNMX/GctBaO9L2w==
 
 timers-browserify@^2.0.4:
   version "2.0.12"

@@ -74,6 +74,7 @@
     "graphql-tag": "^2.11.0",
     "gray-matter": "^4.0.2",
     "image-size": "^0.9.3",
+    "light-date": "^1.2.0",
     "mdx-prism": "^0.3.1",
     "mdx-utils": "^0.2.0",
     "next": "^10.0.6-canary.7",
@@ -105,6 +106,7 @@
     "remark-stringify": "^9.0.1",
     "remark-toc": "^7.0.0",
     "sanity-codegen": "^0.8.3",
+    "timeago-react": "^3.0.1",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3"
   },

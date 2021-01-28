@@ -1,3 +1,4 @@
+import TimeAgo from 'timeago-react'
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
 
 import { createImageUrl } from 'utils/sanity'
@@ -35,7 +36,7 @@ const PostsList = ({ posts }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {post.date}
+                <TimeAgo datetime={post.date} locale="en_US" />
               </Box>
             </Box>
 

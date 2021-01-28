@@ -1,6 +1,5 @@
 import { createDataHook } from 'next-data-hooks'
-// import { parse } from 'date-fns'
-
+import { format } from 'light-date'
 import sanity from '@lib/sanity/client'
 
 export const useBlogPostsData = createDataHook('BlogPosts', async ({ preview = false }) => {
@@ -11,12 +10,12 @@ export const useBlogPostsData = createDataHook('BlogPosts', async ({ preview = f
   const expandPost = async (post) => {
     const { author, date, ...rest } = post
     const expandedAuthor = await sanity.expand(author)
-    // const formattedDate = parse(date, 'MM-dd-yyyy', new Date())
+    const dateString = format(new Date(date), '{MM}/{dd}/{yyyy}')
 
     return {
       ...rest,
       author: expandedAuthor,
-      date,
+      date: dateString,
     }
   }
 

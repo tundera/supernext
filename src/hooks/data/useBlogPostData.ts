@@ -1,6 +1,6 @@
 import renderToString from 'next-mdx-remote/render-to-string'
 import { createDataHook } from 'next-data-hooks'
-// import { parse } from 'date-fns'
+import { format } from 'light-date'
 
 import sanity from '@lib/sanity/client'
 import CodeBlock from '@components/ui/CodeBlock'
@@ -13,17 +13,17 @@ export const useBlogPostData = createDataHook('BlogPost', async ({ params, previ
   const [post] = await sanity.getAll('post', `_type == "post" && slug.current == "${pageSlug}"`)
   const { author, date, content, ...rest } = post
 
-  const expandedAuthor = await sanity.expand(author)
-  // const formattedDate = parse(date, 'MM-dd-yyyy', new Date())
+  const expandedAuthor = await sanity.expand(post.author)
+  const dateString = format(new Date(date), '{MM}/{dd}/{yyyy}')
 
-  const markup = await renderToString(content ?? '', {
+  const markup = await renderToString(post.content ?? '', {
     components: { CodeBlock },
   })
 
   const data = {
     ...rest,
     author: expandedAuthor,
-    date,
+    date: dateString,
     content: markup,
   }
 
