@@ -1,19 +1,24 @@
-import type { ReactNode, FC } from 'react'
-import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-const StatsText = ({ color, children }) => (
-  <Text as="span" fontWeight={700} color={color}>
-    {children}
-  </Text>
-)
+import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid, useTheme } from '@chakra-ui/react'
+
+const StatsText = ({ children }) => {
+  const theme = useTheme()
+
+  return (
+    <Text as="span" fontWeight={700} color={theme.colors.brand.primary}>
+      {children}
+    </Text>
+  )
+}
 
 const stats = [
   {
     title: 'React',
     content: (
       <>
-        The choice frontend framework of developers for building <StatsText color="green.300">powerful</StatsText> sites
-        for the modern web.
+        The choice frontend framework of developers for building <StatsText>powerful</StatsText> sites for the modern
+        web.
       </>
     ),
   },
@@ -21,7 +26,7 @@ const stats = [
     title: 'TypeScript',
     content: (
       <>
-        <StatsText color="blue.300">Analytics</StatsText> enabled right in your dashboard without history limitations
+        <StatsText>Analytics</StatsText> enabled right in your dashboard without history limitations
       </>
     ),
   },
