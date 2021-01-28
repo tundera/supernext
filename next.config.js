@@ -2,6 +2,10 @@ module.exports = {
   experimental: {
     reactMode: 'concurrent',
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de'],
+  },
   images: {
     domains: ['res.cloudinary.com', 'cdn.sanity.io'],
   },

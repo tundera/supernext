@@ -7,6 +7,7 @@ import { BiSun } from 'react-icons/bi'
 import styled from '@emotion/styled'
 
 import NavLink from '@components/NavLink'
+import LocaleButton from '@components/utility/LocaleToggle'
 
 const StickyNav = styled(Flex)`
   position: sticky;
@@ -69,6 +70,7 @@ const Navbar: FC = () => {
             color={iconColor}
             _focus={{ boxShadow: 'none' }}
           />
+          <LocaleButton />
         </Box>
       </Flex>
     </StickyNav>
