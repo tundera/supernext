@@ -19,7 +19,7 @@ function Navbar() {
   const theme = useTheme()
   const { colorMode, toggleColorMode } = useColorMode()
   const bg = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
-  const color = useColorModeValue(theme.colors.brand.secondary, theme.colors.brand.primary)
+  const color = useColorModeValue('white', 'black')
   const iconColor = useColorModeValue('white', 'black')
 
   return (
@@ -30,8 +30,8 @@ function Navbar() {
         alignItems="center"
         width="100%"
         as="nav"
-        p={4}
-        mx="auto"
+        p={2}
+        m="0 auto"
         maxWidth="1200px"
       >
         <Box>

@@ -10,7 +10,7 @@ type Props = {
 const NavLink = ({ LinkComponent, text, href }: Props) => {
   const { colorMode } = useColorMode()
 
-  const color = { light: 'white', dark: 'gray.800' }
+  const color = { light: 'white', dark: 'black' }
 
   return (
     <LinkComponent href={href} passHref>
@@ -20,7 +20,8 @@ const NavLink = ({ LinkComponent, text, href }: Props) => {
         as="a"
         variant="ghost"
         _hover={{ bg: 'rgba(0,0,0,.2)' }}
-        p={[1, 4]}
+        p={4}
+        mx={2}
         color={color[colorMode]}
       >
         {text}
