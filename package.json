@@ -75,6 +75,7 @@
     "graphql-request": "^3.4.0",
     "graphql-tag": "^2.11.0",
     "gray-matter": "^4.0.2",
+    "icomoon-react": "^2.0.19",
     "image-size": "^0.9.3",
     "light-date": "^1.2.0",
     "mdx-prism": "^0.3.1",

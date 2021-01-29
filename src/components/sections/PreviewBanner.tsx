@@ -34,7 +34,7 @@ const PreviewBanner = ({ preview }: Props) => {
   }
 
   return (
-    <StickyBanner bg={bg}>
+    <StickyBanner bg={bg} minWidth="100%">
       <Text py={2} fontSize={isHidden ? '16px' : '24px'} textAlign="center" color={color}>
         This site is currently showing {preview ? <b>preview</b> : <b>published</b>} content.
       </Text>

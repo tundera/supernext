@@ -10,14 +10,7 @@ function Footer() {
   const color = { light: '#a3f6e7', dark: '#110d5b' }
 
   return (
-    <Flex
-      bottom="0"
-      align="center"
-      direction="column"
-      bgColor={bgColor[colorMode]}
-      color={color[colorMode]}
-      minHeight="10vh"
-    >
+    <Flex bottom="0" align="center" direction="column" bgColor="stone.500" color="gold.500" w="100%" minHeight="5vh">
       <Box mt="2">
         <MediaIconLink href="https://twitter.com/tunderadev" title="Twitter" icon={<FaTwitter />} />
         <MediaIconLink href="https://github.com/tundera/next-goat" title="GitHub" icon={<FaGithub />} />

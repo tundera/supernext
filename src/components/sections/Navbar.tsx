@@ -9,11 +9,10 @@ import styled from '@emotion/styled'
 import Logo from '@components/ui/Logo'
 import NavbarItem from '@components/ui/menus/NavbarItem'
 import LocaleButton from '@components/utility/LocaleToggle'
+import DarkModeToggle from '@components/utility/DarkModeToggle'
 
 const StickyNav = styled(Flex)`
   position: sticky;
-  z-index: 10;
-  top: 0;
   backdrop-filter: saturate(180%) blur(20px);
   transition: background-color 0.1 ease-in-out;
 `
@@ -21,8 +20,6 @@ const StickyNav = styled(Flex)`
 function Navbar({ ...props }) {
   const theme = useTheme()
   const { colorMode, toggleColorMode } = useColorMode()
-  const bg = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
-  const color = useColorModeValue('white', 'black')
   const iconColor = useColorModeValue('white', 'black')
 
   const [show, setShow] = useState(false)
@@ -30,6 +27,8 @@ function Navbar({ ...props }) {
 
   return (
     <StickyNav
+      zIndex={20}
+      top="0"
       minHeight="5vh"
       as="nav"
       align="center"
@@ -38,22 +37,11 @@ function Navbar({ ...props }) {
       w="100%"
       mb={8}
       p={8}
-      bg={['gold.500', 'gold.500', 'transparent', 'transparent']}
+      bg={['stone.500', 'stone.500', 'transparent', 'transparent']}
       color={['white', 'white', 'primary.700', 'primary.700']}
       {...props}
     >
       <Flex align="center">
-        <IconButton
-          fontWeight={['normal', 'medium', 'bold']}
-          fontSize={['xs', 'sm', 'lg', 'xl']}
-          variant="ghost"
-          _hover={{ bg: 'rgba(0,0,0,.2)' }}
-          aria-label="Toggle dark mode"
-          icon={colorMode === 'dark' ? <BiSun /> : <BsMoon />}
-          onClick={toggleColorMode}
-          color={iconColor}
-          _focus={{ boxShadow: 'none' }}
-        />
         <LocaleButton />
         <Logo w="100px" color={['white', 'white', 'gold.500', 'gold.500']} />
       </Flex>
@@ -87,6 +75,7 @@ function Navbar({ ...props }) {
               Store
             </Button>
           </NavbarItem>
+          <DarkModeToggle />
         </Flex>
       </Box>
     </StickyNav>

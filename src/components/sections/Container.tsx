@@ -1,27 +1,20 @@
 import type { FC } from 'react'
 
-import { Flex, useColorMode, useTheme } from '@chakra-ui/react'
+import { Flex, useColorMode, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 const Container: FC = ({ children }) => {
   const theme = useTheme()
   const { colorMode } = useColorMode()
-
-  const color = {
-    light: theme.colors.brand.primary,
-    dark: theme.colors.brand.secondary,
-  }
-  const bgColor = {
-    light: '#FFFFFF',
-    dark: '#212529',
-  }
+  const bg = useColorModeValue('stone.500', 'gold.500')
+  const color = useColorModeValue('gold.500', 'stone.500')
 
   return (
     <Flex
       as="main"
-      justifyContent="center"
+      justify="center"
       flexDirection="column"
-      bg={bgColor[colorMode]}
-      color={color[colorMode]}
+      bg={bg}
+      color={color}
       px={8}
       maxW={theme.sizes.width}
       minHeight="95vh"
