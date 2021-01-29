@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTheme, useColorMode, useColorModeValue, Button, Flex, Box, IconButton } from '@chakra-ui/react'
+import { useTheme, useColorMode, useColorModeValue, IconButton, Flex, Box } from '@chakra-ui/react'
 import { BsMoon } from 'react-icons/bs'
 import { FaBars as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
 import { BiSun } from 'react-icons/bi'
@@ -40,8 +40,8 @@ function Navbar({ ...props }) {
       bg={[
         'stone.700',
         'stone.700',
-        colorMode === 'dark' ? 'gold.700' : 'stone.700',
-        colorMode === 'dark' ? 'gold.700' : 'stone.700',
+        colorMode === 'dark' ? 'transparent' : 'stone.700',
+        colorMode === 'dark' ? 'transparent' : 'stone.700',
       ]}
       {...props}
     >
@@ -65,20 +65,7 @@ function Navbar({ ...props }) {
           <NavbarItem to="/blog">Blog</NavbarItem>
           <NavbarItem to="/about">About</NavbarItem>
           <NavbarItem to="/work">Work</NavbarItem>
-          <NavbarItem to="/store" isLast>
-            <Button
-              size="sm"
-              rounded="md"
-              color={['stone.500', 'stone.500', 'white', 'white']}
-              bg={['white', 'white', 'stone.500', 'stone.500']}
-              _hover={{
-                bg: ['gold.100', 'gold.100', 'gold.600', 'gold.600'],
-              }}
-              rightIcon={<ShoppingCartIcon />}
-            >
-              Store
-            </Button>
-          </NavbarItem>
+          <NavbarItem to="/store" isLast />
           <DarkModeToggle />
         </Flex>
       </Box>

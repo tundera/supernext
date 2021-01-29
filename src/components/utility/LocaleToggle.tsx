@@ -1,8 +1,10 @@
-import { Button, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Tooltip } from '@chakra-ui/react'
+import { chakra, Button, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Tooltip } from '@chakra-ui/react'
 
 import i18n from 'src/i18n'
 import { useRouter } from 'next/router'
 import Emoji from 'a11y-react-emoji'
+
+const LocaleEmoji = chakra(Emoji)
 
 function LocaleButton() {
   const router = useRouter()
@@ -16,7 +18,7 @@ function LocaleButton() {
     <Menu>
       <Tooltip hasArrow label="Select language ✨">
         <MenuButton as={Button} variant="ghost" mx="2">
-          <Emoji symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
+          <LocaleEmoji fontSize={['1rem', '1.5rem']} symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
         </MenuButton>
       </Tooltip>
 
