@@ -1,10 +1,13 @@
-import NextLink from 'next/link'
-import { useTheme, useColorMode, useColorModeValue, Button, Flex, Box, IconButton, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import { useTheme, useColorMode, useColorModeValue, Button, Flex, Box, IconButton } from '@chakra-ui/react'
 import { BsMoon } from 'react-icons/bs'
+import { FaHamburger as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
 import { BiSun } from 'react-icons/bi'
+
 import styled from '@emotion/styled'
 
-import NavLink from '@components/NavLink'
+import Logo from '@components/ui/Logo'
+import NavbarItem from '@components/ui/menus/NavbarItem'
 import LocaleButton from '@components/utility/LocaleToggle'
 
 const StickyNav = styled(Flex)`
@@ -22,6 +25,9 @@ function Navbar() {
   const color = useColorModeValue('white', 'black')
   const iconColor = useColorModeValue('white', 'black')
 
+  const [show, setShow] = useState(false)
+  const toggleMenu = () => setShow(!show)
+
   return (
     <StickyNav minHeight="5vh" bg={bg} color={color}>
       <Flex
@@ -34,29 +40,7 @@ function Navbar() {
         m="0 auto"
         maxWidth="1200px"
       >
-        <Box>
-          <NextLink href="/" passHref>
-            <Button
-              fontWeight={['normal', 'medium', 'medium']}
-              fontSize={['xs', 'sm', 'lg', 'xl']}
-              as="a"
-              variant="ghost"
-              _hover={{ bg: 'rgba(0,0,0,.2)' }}
-              p={[1, 4]}
-              color={color}
-            >
-              <Text fontSize={['xl', 'lg', 'lg', 'xl']}>Home</Text>
-            </Button>
-          </NextLink>
-        </Box>
-
-        <Box>
-          <NavLink LinkComponent={NextLink} href="/blog" text="Blog" />
-          <NavLink LinkComponent={NextLink} href="/about" text="About" />
-          <NavLink LinkComponent={NextLink} href="/work" text="Work" />
-          <NavLink LinkComponent={NextLink} href="/courses" text="Courses" />
-          <NavLink LinkComponent={NextLink} href="/store" text="Store" />
-          <NavLink LinkComponent={NextLink} href="/teams" text="Teams" />
+        <Flex align="center">
           <IconButton
             fontWeight={['normal', 'medium', 'bold']}
             fontSize={['xs', 'sm', 'lg', 'xl']}
@@ -69,6 +53,38 @@ function Navbar() {
             _focus={{ boxShadow: 'none' }}
           />
           <LocaleButton />
+          <Logo w="100px" color={['white', 'white', 'gold.500', 'gold.500']} />
+        </Flex>
+
+        <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
+          {show ? <CloseIcon /> : <MenuIcon />}
+        </Box>
+
+        <Flex
+          align={['center', 'center', 'center', 'center']}
+          justify={['center', 'space-between', 'flex-end', 'flex-end']}
+          direction={['column', 'row', 'row', 'row']}
+          pt={[4, 4, 0, 0]}
+        />
+        <Box>
+          <NavbarItem to="/">Home</NavbarItem>
+          <NavbarItem to="/blog">Blog</NavbarItem>
+          <NavbarItem to="/about">About</NavbarItem>
+          <NavbarItem to="/work">Work</NavbarItem>
+          <NavbarItem to="/store" isLast>
+            <Button
+              size="sm"
+              rounded="md"
+              color={['stone.500', 'stone.500', 'white', 'white']}
+              bg={['white', 'white', 'stone.500', 'stone.500']}
+              _hover={{
+                bg: ['gold.100', 'gold.100', 'gold.600', 'gold.600'],
+              }}
+              rightIcon={<ShoppingCartIcon />}
+            >
+              Store
+            </Button>
+          </NavbarItem>
         </Box>
       </Flex>
     </StickyNav>

@@ -15,7 +15,7 @@ function LocaleButton() {
   return (
     <Menu>
       <Tooltip hasArrow label="Select language ✨">
-        <MenuButton as={Button} variant="ghost">
+        <MenuButton as={Button} variant="ghost" mx="2">
           <Emoji symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
         </MenuButton>
       </Tooltip>
