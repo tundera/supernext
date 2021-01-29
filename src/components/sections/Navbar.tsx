@@ -91,3 +91,5 @@ function Navbar() {
     </StickyNav>
   )
 }
+
+export default Navbar
