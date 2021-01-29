@@ -60,35 +60,34 @@ function Navbar() {
           {show ? <CloseIcon /> : <MenuIcon />}
         </Box>
 
-        <Flex
-          align={['center', 'center', 'center', 'center']}
-          justify={['center', 'space-between', 'flex-end', 'flex-end']}
-          direction={['column', 'row', 'row', 'row']}
-          pt={[4, 4, 0, 0]}
-        />
-        <Box>
-          <NavbarItem to="/">Home</NavbarItem>
-          <NavbarItem to="/blog">Blog</NavbarItem>
-          <NavbarItem to="/about">About</NavbarItem>
-          <NavbarItem to="/work">Work</NavbarItem>
-          <NavbarItem to="/store" isLast>
-            <Button
-              size="sm"
-              rounded="md"
-              color={['stone.500', 'stone.500', 'white', 'white']}
-              bg={['white', 'white', 'stone.500', 'stone.500']}
-              _hover={{
-                bg: ['gold.100', 'gold.100', 'gold.600', 'gold.600'],
-              }}
-              rightIcon={<ShoppingCartIcon />}
-            >
-              Store
-            </Button>
-          </NavbarItem>
+        <Box display={{ base: show ? 'block' : 'none', md: 'block' }} flexBasis={{ base: '100%', md: 'auto' }}>
+          <Flex
+            align={['center', 'center', 'center', 'center']}
+            justify={['center', 'space-between', 'flex-end', 'flex-end']}
+            direction={['column', 'row', 'row', 'row']}
+            pt={[4, 4, 0, 0]}
+          >
+            <NavbarItem to="/">Home</NavbarItem>
+            <NavbarItem to="/blog">Blog</NavbarItem>
+            <NavbarItem to="/about">About</NavbarItem>
+            <NavbarItem to="/work">Work</NavbarItem>
+            <NavbarItem to="/store" isLast>
+              <Button
+                size="sm"
+                rounded="md"
+                color={['stone.500', 'stone.500', 'white', 'white']}
+                bg={['white', 'white', 'stone.500', 'stone.500']}
+                _hover={{
+                  bg: ['gold.100', 'gold.100', 'gold.600', 'gold.600'],
+                }}
+                rightIcon={<ShoppingCartIcon />}
+              >
+                Store
+              </Button>
+            </NavbarItem>
+          </Flex>
         </Box>
       </Flex>
     </StickyNav>
   )
 }
-
-export default Navbar
