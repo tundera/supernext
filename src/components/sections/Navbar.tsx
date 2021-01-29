@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTheme, useColorMode, useColorModeValue, Button, Flex, Box, IconButton } from '@chakra-ui/react'
 import { BsMoon } from 'react-icons/bs'
-import { FaHamburger as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
+import { FaBars as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
 import { BiSun } from 'react-icons/bi'
 
 import styled from '@emotion/styled'
