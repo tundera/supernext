@@ -11,7 +11,7 @@ const Container: FC = ({ children }) => {
     dark: theme.colors.brand.secondary,
   }
   const bgColor = {
-    light: '#f8f9fa',
+    light: '#FFFFFF',
     dark: '#212529',
   }
 
