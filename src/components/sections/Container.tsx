@@ -5,8 +5,8 @@ import { Flex, useColorMode, useColorModeValue, useTheme } from '@chakra-ui/reac
 const Container: FC = ({ children }) => {
   const theme = useTheme()
   const { colorMode } = useColorMode()
-  const bg = useColorModeValue('stone.500', 'gold.500')
-  const color = useColorModeValue('gold.500', 'stone.500')
+  const bg = useColorModeValue('white', 'stone.700')
+  const color = useColorModeValue('stone.700', 'gold.700')
 
   return (
     <Flex

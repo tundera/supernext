@@ -37,13 +37,17 @@ function Navbar({ ...props }) {
       w="100%"
       mb={8}
       p={8}
-      bg={['stone.500', 'stone.500', 'transparent', 'transparent']}
-      color={['white', 'white', 'primary.700', 'primary.700']}
+      bg={[
+        'stone.700',
+        'stone.700',
+        colorMode === 'dark' ? 'gold.700' : 'stone.700',
+        colorMode === 'dark' ? 'gold.700' : 'stone.700',
+      ]}
       {...props}
     >
       <Flex align="center">
         <LocaleButton />
-        <Logo w="100px" color={['white', 'white', 'gold.500', 'gold.500']} />
+        <Logo w="100px" color="white" />
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>

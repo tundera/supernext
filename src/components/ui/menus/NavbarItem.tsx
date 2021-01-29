@@ -10,14 +10,14 @@ type Props = {
 }
 
 const MenuItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
-  const textColor = useColorModeValue('black', 'white')
+  const color = useColorModeValue('white', 'stone.800')
 
   return (
     <Text
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
       display="block"
-      color={textColor}
+      color={color}
       {...props}
     >
       <NavLink to={to}>{children}</NavLink>

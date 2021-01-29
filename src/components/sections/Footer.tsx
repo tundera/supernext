@@ -1,19 +1,17 @@
-import { Flex, useColorMode, Text, Box } from '@chakra-ui/react'
+import { Flex, useColorModeValue, Text, Box } from '@chakra-ui/react'
 import { FaTwitter, FaGithub, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import Emoji from 'a11y-react-emoji'
 import MediaIconLink from '@components/MediaIconLink'
 
 function Footer() {
-  const { colorMode } = useColorMode()
-
-  const bgColor = { light: '#110d5b', dark: '#a3f6e7' }
-  const color = { light: '#a3f6e7', dark: '#110d5b' }
+  const bg = useColorModeValue('stone.700', 'gold.700')
+  const color = useColorModeValue('gold.700', 'stone.700')
 
   return (
-    <Flex bottom="0" align="center" direction="column" bgColor="stone.500" color="gold.500" w="100%" minHeight="5vh">
+    <Flex bottom="0" align="center" direction="column" bg={bg} color={color} w="100%" minHeight="5vh">
       <Box mt="2">
         <MediaIconLink href="https://twitter.com/tunderadev" title="Twitter" icon={<FaTwitter />} />
-        <MediaIconLink href="https://github.com/tundera/next-goat" title="GitHub" icon={<FaGithub />} />
+        <MediaIconLink href="https://github.com/tundera" title="GitHub" icon={<FaGithub />} />
         <MediaIconLink
           href="https://www.youtube.com/channel/UCAJ3i5kADQ5MUJnQeEoJxfA"
           title="YouTube"
@@ -21,7 +19,7 @@ function Footer() {
         />
         <MediaIconLink href="mailto:me@blog.tundera.dev" title="Email" icon={<FaEnvelope />} />
       </Box>
-      <Text my={4}>
+      <Text mt={2} mb={4} fontWeight="bold" fontFamily="mono">
         Made with <Emoji symbol="🔥" label="Fire emoji" /> in Colorado
       </Text>
     </Flex>

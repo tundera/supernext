@@ -9,9 +9,8 @@ type Props = {
 }
 
 const MediaIconLink = ({ icon, title, href }: Props) => {
-  const theme = useTheme()
-  const hoverColor = useColorModeValue(theme.colors.brand.primary, theme.colors.brand.secondary)
-  const color = useColorModeValue(theme.colors.brand.secondary, theme.colors.brand.primary)
+  const hoverColor = useColorModeValue('stone.500', 'gold.500')
+  const color = useColorModeValue('gold.700', 'stone.700')
 
   return (
     <Link href={href} title={title} isExternal mx={2}>

@@ -15,7 +15,7 @@ export default {
     body: {
       fontFamily: 'body',
       // color: mode('gray.800', 'whiteAlpha.900')(props),
-      // bg: mode('white', 'gray.800')(props),
+      bg: mode('white', 'stone.700')(props),
       lineHeight: 'base',
     },
   }),

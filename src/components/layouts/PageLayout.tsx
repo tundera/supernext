@@ -17,7 +17,7 @@ const PageLayout: FC<Props> = ({ preview = false, children, ...props }) => {
   const router = useRouter()
 
   const theme = useTheme()
-  const color = useColorModeValue('gold.500', 'stone.500')
+  const color = useColorModeValue('gold.700', 'stone.700')
 
   const [isBlogRoute, setIsBlogRoute] = useState<boolean>()
 

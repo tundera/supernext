@@ -14,7 +14,7 @@ function DarkModeToggle() {
             isRound
             variant="ghost"
             colorScheme="black"
-            color="black"
+            color="white"
             icon={<FiMoon />}
             onClick={toggleColorMode}
           />
@@ -24,7 +24,7 @@ function DarkModeToggle() {
             isRound
             variant="ghost"
             colorScheme="purple"
-            color="white"
+            color="stone.700"
             icon={<FiSun />}
             onClick={toggleColorMode}
           />
