@@ -174,7 +174,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged --ignore-path .prettyquickignore",
+      "pre-commit": "lint-staged && pretty-quick --ignore-path .prettyquickignore --staged",
       "pre-push": "tsc && yarn lint && npm run test"
     }
   },
