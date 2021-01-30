@@ -79,24 +79,21 @@ export type Team = {
 }
 
 export type TeamColorSchemeArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<ColorSchemeWhereUniqueInput>
-  after?: Maybe<ColorSchemeWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<ColorSchemeWhereUniqueInput>
 }
 
 export type TeamCoachesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<CoachWhereUniqueInput>
-  after?: Maybe<CoachWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<CoachWhereUniqueInput>
 }
 
 export type TeamPlayersArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<PlayerWhereUniqueInput>
-  after?: Maybe<PlayerWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<PlayerWhereUniqueInput>
 }
 
 export type Query = {
@@ -135,10 +132,9 @@ export type QueryCoachArgs = {
 }
 
 export type QueryCoachesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<CoachWhereUniqueInput>
-  after?: Maybe<CoachWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<CoachWhereUniqueInput>
 }
 
 export type QueryPlayerArgs = {
@@ -146,10 +142,9 @@ export type QueryPlayerArgs = {
 }
 
 export type QueryPlayersArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<PlayerWhereUniqueInput>
-  after?: Maybe<PlayerWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<PlayerWhereUniqueInput>
 }
 
 export type QueryColorSchemeArgs = {
@@ -157,10 +152,9 @@ export type QueryColorSchemeArgs = {
 }
 
 export type QueryColorSchemesArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<ColorSchemeWhereUniqueInput>
-  after?: Maybe<ColorSchemeWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<ColorSchemeWhereUniqueInput>
 }
 
 export type QueryTeamArgs = {
@@ -168,10 +162,9 @@ export type QueryTeamArgs = {
 }
 
 export type QueryTeamsArgs = {
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-  before?: Maybe<TeamWhereUniqueInput>
-  after?: Maybe<TeamWhereUniqueInput>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<TeamWhereUniqueInput>
 }
 
 export type ColorSchemeWhereUniqueInput = {

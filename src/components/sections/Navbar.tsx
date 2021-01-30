@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTheme, useColorMode, useColorModeValue, Flex, Box } from '@chakra-ui/react'
-import { FaBars as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
+import { FaBars as MenuIcon, FaTimes as CloseIcon } from 'react-icons/fa'
 import styled from '@emotion/styled'
 
 import NavbarItem from '@components/ui/menus/NavbarItem'

@@ -1,22 +1,35 @@
 import { makeSchema } from 'nexus'
-import { nexusPrisma } from 'nexus-plugin-prisma'
+import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
+import { join } from 'path'
+import { Context } from '../context'
 
-import path from 'path'
-import * as QueryTypes from './Query'
+import * as allTypes from './Query'
+
+const nexusPrisma = nexusSchemaPrisma({
+  experimentalCRUD: true,
+  paginationStrategy: 'prisma',
+  prismaClient: (ctx: Context) => ctx.prisma,
+})
 
 export const schema = makeSchema({
-  types: [QueryTypes],
-  plugins: [nexusPrisma({ experimentalCRUD: true })],
+  types: [allTypes],
+  plugins: [nexusPrisma],
   outputs: {
-    typegen: path.join(process.cwd(), 'src/services/nexus/generated/typegen.ts'),
-    schema: path.join(process.cwd(), 'src/services/nexus/generated/schema.graphql'),
+    typegen: join(process.cwd(), 'src/services/nexus/generated/index.d.ts'),
+    schema: join(process.cwd(), 'src/services/nexus/generated/schema.graphql'),
   },
-  prettierConfig: path.join(process.cwd(), 'prettier.config.js'),
-  contextType: { module: path.join(process.cwd(), 'src/services/nexus', 'context.ts'), export: 'Context' },
+  contextType: {
+    module: join(process.cwd(), 'src/services/nexus', 'context.ts'),
+    export: 'Context',
+    alias: 'ctx',
+  },
   sourceTypes: {
     modules: [
-      { module: '@prisma/client', alias: 'prisma' },
-      { module: path.join(process.cwd(), 'src/services/nexus', 'context.ts'), alias: 'Context' },
+      {
+        module: require.resolve('@prisma/client'),
+        alias: 'prisma',
+      },
     ],
   },
+  prettierConfig: join(process.cwd(), 'prettier.config.js'),
 })

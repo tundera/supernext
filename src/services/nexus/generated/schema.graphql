@@ -63,33 +63,23 @@ type Query {
   allPlayers: [Player]
   allTeams: [Team]
   coach(where: CoachWhereUniqueInput!): Coach
-  coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
+  coaches(cursor: CoachWhereUniqueInput, skip: Int, take: Int): [Coach!]!
   coachesByTeam(id: Int): [Coach]
   colorScheme(where: ColorSchemeWhereUniqueInput!): ColorScheme
   colorSchemeByTeam(id: Int): [ColorScheme]
-  colorSchemes(
-    after: ColorSchemeWhereUniqueInput
-    before: ColorSchemeWhereUniqueInput
-    first: Int
-    last: Int
-  ): [ColorScheme!]!
+  colorSchemes(cursor: ColorSchemeWhereUniqueInput, skip: Int, take: Int): [ColorScheme!]!
   player(where: PlayerWhereUniqueInput!): Player
-  players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  players(cursor: PlayerWhereUniqueInput, skip: Int, take: Int): [Player!]!
   playersByTeam(id: Int): [Player]
   team(where: TeamWhereUniqueInput!): Team
-  teams(after: TeamWhereUniqueInput, before: TeamWhereUniqueInput, first: Int, last: Int): [Team!]!
+  teams(cursor: TeamWhereUniqueInput, skip: Int, take: Int): [Team!]!
 }
 
 type Team {
   abbreviation: String!
   city: String!
-  coaches(after: CoachWhereUniqueInput, before: CoachWhereUniqueInput, first: Int, last: Int): [Coach!]!
-  colorScheme(
-    after: ColorSchemeWhereUniqueInput
-    before: ColorSchemeWhereUniqueInput
-    first: Int
-    last: Int
-  ): [ColorScheme!]!
+  coaches(cursor: CoachWhereUniqueInput, skip: Int, take: Int): [Coach!]!
+  colorScheme(cursor: ColorSchemeWhereUniqueInput, skip: Int, take: Int): [ColorScheme!]!
   conference: String!
   createdAt: DateTime!
   division: String!
@@ -99,7 +89,7 @@ type Team {
   logo: String!
   losses: Int
   name: String!
-  players(after: PlayerWhereUniqueInput, before: PlayerWhereUniqueInput, first: Int, last: Int): [Player!]!
+  players(cursor: PlayerWhereUniqueInput, skip: Int, take: Int): [Player!]!
   slug: String!
   updatedAt: DateTime!
   winPercentage: Float
