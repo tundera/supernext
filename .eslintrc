@@ -21,6 +21,7 @@
     "global-require": "off",
     "consistent-return": "off",
     "import/prefer-default-export": "off",
+    "import/no-useless-path-segments": "off",
     "no-param-reassign": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "warn",
