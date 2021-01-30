@@ -239,7 +239,15 @@ export type AllPlayersQuery = { __typename?: 'Query' } & {
 export type AllTeamsQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllTeamsQuery = { __typename?: 'Query' } & {
-  allTeams?: Maybe<Array<Maybe<{ __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'logo'>>>>
+  allTeams?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'logo'> & {
+            colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
+          }
+      >
+    >
+  >
 }
 
 export type CoachesByTeamQueryVariables = Exact<{
@@ -311,6 +319,10 @@ export const AllTeamsDocument = gql`
       name
       city
       logo
+      colorScheme {
+        primary
+        secondary
+      }
     }
   }
 `

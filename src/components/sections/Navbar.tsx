@@ -63,6 +63,7 @@ function Navbar({ ...props }) {
           <NavbarItem to="/about">About</NavbarItem>
           <NavbarItem to="/work">Work</NavbarItem>
           <NavbarItem to="/store" isLast />
+          <NavbarItem to="/teams" isLast />
           <DarkModeToggle />
           <LocaleButton />
         </Flex>

@@ -7,6 +7,10 @@ export default gql`
       name
       city
       logo
+      colorScheme {
+        primary
+        secondary
+      }
     }
   }
 `
