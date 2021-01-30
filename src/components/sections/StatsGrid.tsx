@@ -48,7 +48,15 @@ const stats = [
 
 function StatsGrid() {
   return (
-    <Flex direction="column" mx={12} pl={16} bg="stone.900" position="relative" boxShadow="2xl" borderRadius={8}>
+    <Flex
+      direction="column"
+      mx={[0, 4, 12]}
+      px={16}
+      bg="stone.900"
+      position="relative"
+      boxShadow="dark-lg"
+      borderRadius={8}
+    >
       <Flex
         flex={1}
         zIndex={0}
@@ -62,11 +70,16 @@ function StatsGrid() {
         insetY={0}
         right={0}
       >
-        <Flex bgGradient="linear(to-l, gold.700 10%, transparent)" w="full" h="full" />
+        {/* <Flex bgGradient="linear(to-l, gold.700 10%, transparent)" w="full" h="full" /> */}
       </Flex>
       <Container maxW="7xl" zIndex={10} position="relative">
         <Stack direction={{ base: 'column', lg: 'row' }}>
-          <Stack flex={1} color="gray.400" justify={{ lg: 'center' }} py={{ base: 4, md: 20, xl: 60 }}>
+          <Stack
+            flex={1}
+            color="gray.400"
+            justify={{ sm: 'center', md: 'center', lg: 'left' }}
+            py={{ base: 4, md: 20, xl: 60 }}
+          >
             <Box mb={{ base: 8, md: 20 }}>
               <Text
                 fontFamily="heading"
@@ -78,7 +91,7 @@ function StatsGrid() {
               >
                 Technologies
               </Text>
-              <Heading color="white" mb={5} fontSize={{ base: '3xl', md: '5xl' }}>
+              <Heading color="white" mb={5} fontSize={{ base: '4xl', md: '6xl' }}>
                 All the good shit.
               </Heading>
               <Text fontSize="xl" color="gray.400">
