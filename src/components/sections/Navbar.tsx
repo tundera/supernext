@@ -34,7 +34,8 @@ function Navbar({ ...props }) {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      p={8}
+      px={16}
+      py={8}
       bg={[
         'stone.700',
         'stone.700',
@@ -62,8 +63,10 @@ function Navbar({ ...props }) {
           <NavbarItem to="/blog">Blog</NavbarItem>
           <NavbarItem to="/about">About</NavbarItem>
           <NavbarItem to="/work">Work</NavbarItem>
-          <NavbarItem to="/store" isLast />
-          <NavbarItem to="/teams" isLast />
+          <NavbarItem to="/store">Store</NavbarItem>
+          <NavbarItem to="/teams" isLast>
+            Teams
+          </NavbarItem>
           <DarkModeToggle />
           <LocaleButton />
         </Flex>

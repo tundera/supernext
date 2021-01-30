@@ -1,11 +1,17 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import { ReactSVG } from 'react-svg'
 
 function Logo({ ...props }) {
   return (
     <Box {...props}>
-      <Text fontSize="lg" fontWeight="bold">
-        Logo
-      </Text>
+      <ReactSVG
+        role="img"
+        src="static/logo-gold.svg"
+        beforeInjection={(svg) => {
+          svg.classList.add('svg-class-name')
+          svg.setAttribute('style', 'width: 100px')
+        }}
+      />
     </Box>
   )
 }

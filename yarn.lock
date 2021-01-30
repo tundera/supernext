@@ -4028,6 +4028,15 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@tanem/svg-injector@^8.2.2":
+  version "8.2.2"
+  resolved "https://registry.npmjs.org/@tanem/svg-injector/-/svg-injector-8.2.2.tgz#70ab9c6942374b85c1151ba9b21b6b07ad0b2e15"
+  integrity sha512-a4C3GMCD15URV+ZNjt8Fibxu04qejJip0G6qIDl/Dne7TGt++2MjJzwV5lRVo7yqT/OIVFOnAQwMH0qfHGWlpw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    content-type "^1.0.4"
+    tslib "^2.0.3"
+
 "@testing-library/dom@^7.22.0":
   version "7.29.4"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-7.29.4.tgz#1647c2b478789621ead7a50614ad81ab5ae5b86c"
@@ -7370,7 +7379,7 @@ content-disposition@0.5.3:
   dependencies:
     safe-buffer "5.1.2"
 
-content-type@1.0.4, content-type@~1.0.4:
+content-type@1.0.4, content-type@^1.0.4, content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
@@ -15584,6 +15593,15 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-svg@^11.2.3:
+  version "11.2.3"
+  resolved "https://registry.npmjs.org/react-svg/-/react-svg-11.2.3.tgz#d37b1ecc678ac34f18a5340c979f40a399060321"
+  integrity sha512-Hv801wOXZ5+x8NCuWh7W0m0oXIKcftW/nla9WfD1otKXYKWf9xLGeDGl16alz4E48CUBn2YJH5hbgeEr/L+J+w==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@tanem/svg-injector" "^8.2.2"
+    prop-types "^15.7.2"
 
 react-syntax-highlighter@^11.0.2:
   version "11.0.2"
