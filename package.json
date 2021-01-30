@@ -13,8 +13,7 @@
     "url": "https://github.com/tundera/next-goat.git"
   },
   "engines": {
-    "node": ">=12",
-    "yarn": ">=1.15"
+    "node": ">=12"
   },
   "prisma": {
     "schema": "db/schema.prisma"
