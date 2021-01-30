@@ -24,8 +24,8 @@ export default {
     900: '#594E36',
   },
   brand: {
-    primary: '#110d5b',
-    secondary: '#a3f6e7',
+    deep: '#110d5b',
+    spark: '#a3f6e7',
   },
   dark: {
     primary: '#857451',
