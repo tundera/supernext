@@ -2,6 +2,7 @@ module.exports = {
   experimental: {
     reactMode: 'concurrent',
   },
+  target: 'experimental-serverless-trace',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'de'],

@@ -19,7 +19,7 @@ function LandingHero() {
             </Text>
           </Heading>
           <Text color="gray.500">
-            Build your own content while learning skills to get you paid. Dolla dolla bill y'all
+            Build your own content while learning skills to get you paid. Dolla dolla bill y&apos;all
           </Text>
           <Stack direction="column" spacing={3} align="center" alignSelf="center" position="relative">
             <Button

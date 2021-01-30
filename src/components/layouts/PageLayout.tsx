@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 import NProgress from 'next-nprogress-emotion'
-import { useTheme, useColorModeValue, Flex } from '@chakra-ui/react'
+import { useColorModeValue, Flex } from '@chakra-ui/react'
 
 import Navbar from '@components/sections/Navbar'
 import Footer from '@components/sections/Footer'
@@ -16,7 +16,6 @@ type Props = {
 const PageLayout: FC<Props> = ({ preview = false, children, ...props }) => {
   const router = useRouter()
 
-  const theme = useTheme()
   const color = useColorModeValue('gold.700', 'stone.700')
 
   const [isBlogRoute, setIsBlogRoute] = useState<boolean>()

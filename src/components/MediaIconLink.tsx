@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Link, IconButton, useColorModeValue, useTheme } from '@chakra-ui/react'
+import { Link, IconButton, useColorModeValue } from '@chakra-ui/react'
 
 type Props = {
   title: string
