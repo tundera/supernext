@@ -172,15 +172,15 @@
     "ts-node-dev": "^1.1.1",
     "typescript": "^4.1.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --ignore-path=.prettyquickignore --staged",
-      "pre-push": "tsc && yarn lint && npm run test"
-    }
-  },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "{src,pages.storybook}/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "pre-push": "tsc && yarn lint && npm run test"
+    }
   }
 }
