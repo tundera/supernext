@@ -174,7 +174,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged --pattern='./(src/**/!generated|pages|storybook)/**/*.(js|jsx|ts|tsx)'",
+      "pre-commit": "lint-staged && pretty-quick --staged --ignore-path='src/services/nexus/generated/**/*'",
       "pre-push": "tsc && yarn lint && npm run test"
     }
   },
