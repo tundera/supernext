@@ -19,8 +19,8 @@ const StickyNav = styled(Flex)`
 
 function Navbar({ ...props }) {
   const theme = useTheme()
-  const { colorMode, toggleColorMode } = useColorMode()
-  const iconColor = useColorModeValue('white', 'black')
+  const { colorMode } = useColorMode()
+  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   const [show, setShow] = useState(false)
   const toggleMenu = () => setShow(!show)
@@ -29,25 +29,24 @@ function Navbar({ ...props }) {
     <StickyNav
       zIndex={20}
       top="0"
+      boxShadow="2xl"
       minHeight="5vh"
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
       p={8}
       bg={[
         'stone.700',
         'stone.700',
-        colorMode === 'dark' ? 'transparent' : 'stone.700',
-        colorMode === 'dark' ? 'transparent' : 'stone.700',
+        colorMode === 'dark' ? 'stone.700' : 'whiteAlpha.900',
+        colorMode === 'dark' ? 'stone.700' : 'whiteAlpha.900',
       ]}
       {...props}
     >
       <Flex align="center">
-        <LocaleButton />
-        <Logo w="100px" color="white" />
+        <Logo w="100px" color={color} />
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
@@ -67,6 +66,7 @@ function Navbar({ ...props }) {
           <NavbarItem to="/work">Work</NavbarItem>
           <NavbarItem to="/store" isLast />
           <DarkModeToggle />
+          <LocaleButton />
         </Flex>
       </Box>
     </StickyNav>

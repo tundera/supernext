@@ -7,10 +7,10 @@ type Props = {
 }
 
 const TeamCard = ({ name, logo }: Props) => {
-  const color = useColorModeValue('black', 'white')
+  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   return (
-    <Flex p={5} flexDir="column" bgColor="white" shadow="md" borderRadius={4} bgImage={logo}>
+    <Flex p={5} flexDir="column" bgColor="whiteAlpha.900" shadow="md" borderRadius={4} bgImage={logo}>
       <Image src={logo} height="100" width="auto" />
       <Heading fontSize="lg" textAlign="center" color={color} mt="8">
         {name}

@@ -10,7 +10,7 @@ type Props = {
 }
 
 const MenuItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
-  const color = useColorModeValue('white', 'stone.800')
+  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   return (
     <Text

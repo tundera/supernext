@@ -48,7 +48,7 @@ const stats = [
 
 function StatsGrid() {
   return (
-    <Box bg="gray.800" position="relative">
+    <Flex direction="column" mx={12} pl={16} bg="stone.900" position="relative" boxShadow="2xl" borderRadius={8}>
       <Flex
         flex={1}
         zIndex={0}
@@ -58,11 +58,11 @@ function StatsGrid() {
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
         position="absolute"
-        width="50%"
+        width="30%"
         insetY={0}
         right={0}
       >
-        <Flex bgGradient="linear(to-r, gray.800 10%, transparent)" w="full" h="full" />
+        <Flex bgGradient="linear(to-l, gold.700 10%, transparent)" w="full" h="full" />
       </Flex>
       <Container maxW="7xl" zIndex={10} position="relative">
         <Stack direction={{ base: 'column', lg: 'row' }}>
@@ -82,8 +82,7 @@ function StatsGrid() {
                 All the good shit.
               </Heading>
               <Text fontSize="xl" color="gray.400">
-                The NewLife™ technology allows you to monitor your crops and get complete insights at real time. The
-                proprietary software/hardware ecosystem prevents your plants from getting neglected.
+                Make money doing what you love. Stop wasting time doing what you hate.
               </Text>
             </Box>
 
@@ -103,7 +102,7 @@ function StatsGrid() {
           <Flex flex={1} />
         </Stack>
       </Container>
-    </Box>
+    </Flex>
   )
 }
 

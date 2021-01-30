@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Flex, Heading } from '@chakra-ui/react'
+import { Flex, Heading, useTheme } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
 import Overview from '@components/sections/Overview'
@@ -14,6 +14,8 @@ const BouncingEmoji = dynamic(() => import('@components/ui/BouncingEmoji'), {
 })
 
 const HomeIndex = () => {
+  const theme = useTheme()
+
   return (
     <>
       <Head>
@@ -21,14 +23,14 @@ const HomeIndex = () => {
       </Head>
       <PageLayout>
         <Flex flexDir="column" alignItems="center">
+          <CallToActionWithAnnotation />
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Next Goat
           </Heading>
           <BouncingEmoji label="Bouncing basketball emoji" symbol="🏀" />
-          <CallToActionWithAnnotation />
-
-          <StatsGrid />
-
+          <Flex maxW={theme.sizes.width} direction="column" align="center" justify="center">
+            <StatsGrid />
+          </Flex>
           <Overview features={features} />
         </Flex>
       </PageLayout>

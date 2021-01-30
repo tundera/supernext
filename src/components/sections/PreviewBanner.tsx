@@ -25,7 +25,7 @@ const StickyBanner = styled(Flex)`
 const PreviewBanner = ({ preview }: Props) => {
   const { colorMode } = useColorMode()
   const bg = useColorModeValue('gray.300', 'gray.500')
-  const color = useColorModeValue('black', 'white')
+  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   const [isHidden, setIsHidden] = useState(true)
 
