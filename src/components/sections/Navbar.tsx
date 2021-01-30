@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useTheme, useColorMode, useColorModeValue, Flex, Box } from '@chakra-ui/react'
 import { FaBars as MenuIcon, FaTimes as CloseIcon, FaShoppingCart as ShoppingCartIcon } from 'react-icons/fa'
-
 import styled from '@emotion/styled'
 
-import Logo from '@components/ui/Logo'
 import NavbarItem from '@components/ui/menus/NavbarItem'
 import LocaleButton from '@components/utility/LocaleToggle'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
+
+import { createBrandLogoIcon } from 'src/createBrandLogoIcon'
 
 const StickyNav = styled(Flex)`
   position: sticky;
@@ -16,12 +16,16 @@ const StickyNav = styled(Flex)`
 `
 
 function Navbar({ ...props }) {
+  const [show, setShow] = useState(false)
+  const toggleMenu = () => setShow(!show)
+
   const theme = useTheme()
   const { colorMode } = useColorMode()
   const color = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const iconColor = useColorModeValue(theme.colors.stone['500'], theme.colors.gold['500'])
 
-  const [show, setShow] = useState(false)
-  const toggleMenu = () => setShow(!show)
+  console.log('ICONCOLOR: ', iconColor)
+  const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
   return (
     <StickyNav
@@ -45,7 +49,7 @@ function Navbar({ ...props }) {
       {...props}
     >
       <Flex align="center">
-        <Logo w="100px" color={color} />
+        <BrandLogoIcon w="100px" />
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
