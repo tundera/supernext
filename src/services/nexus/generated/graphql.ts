@@ -96,77 +96,6 @@ export type TeamPlayersArgs = {
   cursor?: Maybe<PlayerWhereUniqueInput>
 }
 
-export type Query = {
-  __typename?: 'Query'
-  allCoaches?: Maybe<Array<Maybe<Coach>>>
-  allPlayers?: Maybe<Array<Maybe<Player>>>
-  allTeams?: Maybe<Array<Maybe<Team>>>
-  allColorSchemes?: Maybe<Array<Maybe<ColorScheme>>>
-  coachesByTeam?: Maybe<Array<Maybe<Coach>>>
-  playersByTeam?: Maybe<Array<Maybe<Player>>>
-  colorSchemeByTeam?: Maybe<Array<Maybe<ColorScheme>>>
-  coach?: Maybe<Coach>
-  coaches: Array<Coach>
-  player?: Maybe<Player>
-  players: Array<Player>
-  colorScheme?: Maybe<ColorScheme>
-  colorSchemes: Array<ColorScheme>
-  team?: Maybe<Team>
-  teams: Array<Team>
-}
-
-export type QueryCoachesByTeamArgs = {
-  id?: Maybe<Scalars['Int']>
-}
-
-export type QueryPlayersByTeamArgs = {
-  id?: Maybe<Scalars['Int']>
-}
-
-export type QueryColorSchemeByTeamArgs = {
-  id?: Maybe<Scalars['Int']>
-}
-
-export type QueryCoachArgs = {
-  where: CoachWhereUniqueInput
-}
-
-export type QueryCoachesArgs = {
-  take?: Maybe<Scalars['Int']>
-  skip?: Maybe<Scalars['Int']>
-  cursor?: Maybe<CoachWhereUniqueInput>
-}
-
-export type QueryPlayerArgs = {
-  where: PlayerWhereUniqueInput
-}
-
-export type QueryPlayersArgs = {
-  take?: Maybe<Scalars['Int']>
-  skip?: Maybe<Scalars['Int']>
-  cursor?: Maybe<PlayerWhereUniqueInput>
-}
-
-export type QueryColorSchemeArgs = {
-  where: ColorSchemeWhereUniqueInput
-}
-
-export type QueryColorSchemesArgs = {
-  take?: Maybe<Scalars['Int']>
-  skip?: Maybe<Scalars['Int']>
-  cursor?: Maybe<ColorSchemeWhereUniqueInput>
-}
-
-export type QueryTeamArgs = {
-  where: TeamWhereUniqueInput
-}
-
-export type QueryTeamsArgs = {
-  take?: Maybe<Scalars['Int']>
-  skip?: Maybe<Scalars['Int']>
-  cursor?: Maybe<TeamWhereUniqueInput>
-}
-
 export type ColorSchemeWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
 }
@@ -184,6 +113,64 @@ export type PlayerWhereUniqueInput = {
   slug?: Maybe<Scalars['String']>
 }
 
+export type CoachWhereInput = {
+  AND?: Maybe<Array<CoachWhereInput>>
+  OR?: Maybe<Array<CoachWhereInput>>
+  NOT?: Maybe<Array<CoachWhereInput>>
+  id?: Maybe<IntFilter>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+  handle?: Maybe<StringFilter>
+  name?: Maybe<StringFilter>
+  teamId?: Maybe<IntNullableFilter>
+  type?: Maybe<StringNullableFilter>
+  isAssistant?: Maybe<StringNullableFilter>
+  team?: Maybe<TeamWhereInput>
+}
+
+export type CoachOrderByInput = {
+  id?: Maybe<SortOrder>
+  createdAt?: Maybe<SortOrder>
+  updatedAt?: Maybe<SortOrder>
+  handle?: Maybe<SortOrder>
+  name?: Maybe<SortOrder>
+  teamId?: Maybe<SortOrder>
+  type?: Maybe<SortOrder>
+  isAssistant?: Maybe<SortOrder>
+}
+
+export type PlayerWhereInput = {
+  AND?: Maybe<Array<PlayerWhereInput>>
+  OR?: Maybe<Array<PlayerWhereInput>>
+  NOT?: Maybe<Array<PlayerWhereInput>>
+  id?: Maybe<IntFilter>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+  handle?: Maybe<StringFilter>
+  name?: Maybe<StringFilter>
+  slug?: Maybe<StringFilter>
+  teamId?: Maybe<IntNullableFilter>
+  height?: Maybe<StringFilter>
+  weight?: Maybe<StringFilter>
+  number?: Maybe<StringNullableFilter>
+  position?: Maybe<StringNullableFilter>
+  team?: Maybe<TeamWhereInput>
+}
+
+export type PlayerOrderByInput = {
+  id?: Maybe<SortOrder>
+  createdAt?: Maybe<SortOrder>
+  updatedAt?: Maybe<SortOrder>
+  handle?: Maybe<SortOrder>
+  name?: Maybe<SortOrder>
+  slug?: Maybe<SortOrder>
+  teamId?: Maybe<SortOrder>
+  height?: Maybe<SortOrder>
+  weight?: Maybe<SortOrder>
+  number?: Maybe<SortOrder>
+  position?: Maybe<SortOrder>
+}
+
 export type TeamWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
   handle?: Maybe<Scalars['String']>
@@ -191,6 +178,327 @@ export type TeamWhereUniqueInput = {
   slug?: Maybe<Scalars['String']>
   abbreviation?: Maybe<Scalars['String']>
   logo?: Maybe<Scalars['String']>
+}
+
+export type TeamWhereInput = {
+  AND?: Maybe<Array<TeamWhereInput>>
+  OR?: Maybe<Array<TeamWhereInput>>
+  NOT?: Maybe<Array<TeamWhereInput>>
+  id?: Maybe<IntFilter>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+  handle?: Maybe<StringFilter>
+  name?: Maybe<StringFilter>
+  slug?: Maybe<StringFilter>
+  city?: Maybe<StringFilter>
+  abbreviation?: Maybe<StringFilter>
+  logo?: Maybe<StringFilter>
+  wins?: Maybe<IntNullableFilter>
+  losses?: Maybe<IntNullableFilter>
+  winPercentage?: Maybe<FloatNullableFilter>
+  conference?: Maybe<StringFilter>
+  division?: Maybe<StringFilter>
+  established?: Maybe<StringFilter>
+  primaryColor?: Maybe<StringFilter>
+  secondaryColor?: Maybe<StringFilter>
+  coaches?: Maybe<CoachListRelationFilter>
+  players?: Maybe<PlayerListRelationFilter>
+  colorScheme?: Maybe<ColorSchemeListRelationFilter>
+}
+
+export type TeamOrderByInput = {
+  id?: Maybe<SortOrder>
+  createdAt?: Maybe<SortOrder>
+  updatedAt?: Maybe<SortOrder>
+  handle?: Maybe<SortOrder>
+  name?: Maybe<SortOrder>
+  slug?: Maybe<SortOrder>
+  city?: Maybe<SortOrder>
+  abbreviation?: Maybe<SortOrder>
+  logo?: Maybe<SortOrder>
+  wins?: Maybe<SortOrder>
+  losses?: Maybe<SortOrder>
+  winPercentage?: Maybe<SortOrder>
+  conference?: Maybe<SortOrder>
+  division?: Maybe<SortOrder>
+  established?: Maybe<SortOrder>
+  primaryColor?: Maybe<SortOrder>
+  secondaryColor?: Maybe<SortOrder>
+}
+
+export type ColorSchemeWhereInput = {
+  AND?: Maybe<Array<ColorSchemeWhereInput>>
+  OR?: Maybe<Array<ColorSchemeWhereInput>>
+  NOT?: Maybe<Array<ColorSchemeWhereInput>>
+  id?: Maybe<IntFilter>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+  primary?: Maybe<StringFilter>
+  secondary?: Maybe<StringFilter>
+  teamId?: Maybe<IntNullableFilter>
+  team?: Maybe<TeamWhereInput>
+}
+
+export type ColorSchemeOrderByInput = {
+  id?: Maybe<SortOrder>
+  createdAt?: Maybe<SortOrder>
+  updatedAt?: Maybe<SortOrder>
+  primary?: Maybe<SortOrder>
+  secondary?: Maybe<SortOrder>
+  teamId?: Maybe<SortOrder>
+}
+
+export type IntFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntFilter>
+}
+
+export type DateTimeFilter = {
+  equals?: Maybe<Scalars['DateTime']>
+  in?: Maybe<Array<Scalars['DateTime']>>
+  notIn?: Maybe<Array<Scalars['DateTime']>>
+  lt?: Maybe<Scalars['DateTime']>
+  lte?: Maybe<Scalars['DateTime']>
+  gt?: Maybe<Scalars['DateTime']>
+  gte?: Maybe<Scalars['DateTime']>
+  not?: Maybe<NestedDateTimeFilter>
+}
+
+export type StringFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  mode?: Maybe<QueryMode>
+  not?: Maybe<NestedStringFilter>
+}
+
+export type IntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntNullableFilter>
+}
+
+export type StringNullableFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  mode?: Maybe<QueryMode>
+  not?: Maybe<NestedStringNullableFilter>
+}
+
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc',
+}
+
+export type FloatNullableFilter = {
+  equals?: Maybe<Scalars['Float']>
+  in?: Maybe<Array<Scalars['Float']>>
+  notIn?: Maybe<Array<Scalars['Float']>>
+  lt?: Maybe<Scalars['Float']>
+  lte?: Maybe<Scalars['Float']>
+  gt?: Maybe<Scalars['Float']>
+  gte?: Maybe<Scalars['Float']>
+  not?: Maybe<NestedFloatNullableFilter>
+}
+
+export type CoachListRelationFilter = {
+  every?: Maybe<CoachWhereInput>
+  some?: Maybe<CoachWhereInput>
+  none?: Maybe<CoachWhereInput>
+}
+
+export type PlayerListRelationFilter = {
+  every?: Maybe<PlayerWhereInput>
+  some?: Maybe<PlayerWhereInput>
+  none?: Maybe<PlayerWhereInput>
+}
+
+export type ColorSchemeListRelationFilter = {
+  every?: Maybe<ColorSchemeWhereInput>
+  some?: Maybe<ColorSchemeWhereInput>
+  none?: Maybe<ColorSchemeWhereInput>
+}
+
+export type NestedIntFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntFilter>
+}
+
+export type NestedDateTimeFilter = {
+  equals?: Maybe<Scalars['DateTime']>
+  in?: Maybe<Array<Scalars['DateTime']>>
+  notIn?: Maybe<Array<Scalars['DateTime']>>
+  lt?: Maybe<Scalars['DateTime']>
+  lte?: Maybe<Scalars['DateTime']>
+  gt?: Maybe<Scalars['DateTime']>
+  gte?: Maybe<Scalars['DateTime']>
+  not?: Maybe<NestedDateTimeFilter>
+}
+
+export enum QueryMode {
+  Default = 'default',
+  Insensitive = 'insensitive',
+}
+
+export type NestedStringFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  not?: Maybe<NestedStringFilter>
+}
+
+export type NestedIntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntNullableFilter>
+}
+
+export type NestedStringNullableFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  not?: Maybe<NestedStringNullableFilter>
+}
+
+export type NestedFloatNullableFilter = {
+  equals?: Maybe<Scalars['Float']>
+  in?: Maybe<Array<Scalars['Float']>>
+  notIn?: Maybe<Array<Scalars['Float']>>
+  lt?: Maybe<Scalars['Float']>
+  lte?: Maybe<Scalars['Float']>
+  gt?: Maybe<Scalars['Float']>
+  gte?: Maybe<Scalars['Float']>
+  not?: Maybe<NestedFloatNullableFilter>
+}
+
+export type Query = {
+  __typename?: 'Query'
+  coach?: Maybe<Coach>
+  coaches: Array<Coach>
+  allCoaches?: Maybe<Array<Maybe<Coach>>>
+  coachesByTeam?: Maybe<Array<Maybe<Coach>>>
+  player?: Maybe<Player>
+  players: Array<Player>
+  allPlayers?: Maybe<Array<Maybe<Player>>>
+  playersByTeam?: Maybe<Array<Maybe<Player>>>
+  team?: Maybe<Team>
+  teams: Array<Team>
+  allTeams?: Maybe<Array<Maybe<Team>>>
+  colorScheme?: Maybe<ColorScheme>
+  colorSchemes: Array<ColorScheme>
+  allColorSchemes?: Maybe<Array<Maybe<ColorScheme>>>
+  colorSchemeByTeam?: Maybe<Array<Maybe<ColorScheme>>>
+}
+
+export type QueryCoachArgs = {
+  where: CoachWhereUniqueInput
+}
+
+export type QueryCoachesArgs = {
+  where?: Maybe<CoachWhereInput>
+  orderBy?: Maybe<Array<CoachOrderByInput>>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<CoachWhereUniqueInput>
+}
+
+export type QueryCoachesByTeamArgs = {
+  id?: Maybe<Scalars['Int']>
+}
+
+export type QueryPlayerArgs = {
+  where: PlayerWhereUniqueInput
+}
+
+export type QueryPlayersArgs = {
+  where?: Maybe<PlayerWhereInput>
+  orderBy?: Maybe<Array<PlayerOrderByInput>>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<PlayerWhereUniqueInput>
+}
+
+export type QueryPlayersByTeamArgs = {
+  id?: Maybe<Scalars['Int']>
+}
+
+export type QueryTeamArgs = {
+  where: TeamWhereUniqueInput
+}
+
+export type QueryTeamsArgs = {
+  where?: Maybe<TeamWhereInput>
+  orderBy?: Maybe<Array<TeamOrderByInput>>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<TeamWhereUniqueInput>
+}
+
+export type QueryColorSchemeArgs = {
+  where: ColorSchemeWhereUniqueInput
+}
+
+export type QueryColorSchemesArgs = {
+  where?: Maybe<ColorSchemeWhereInput>
+  orderBy?: Maybe<Array<ColorSchemeOrderByInput>>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<ColorSchemeWhereUniqueInput>
+}
+
+export type QueryColorSchemeByTeamArgs = {
+  id?: Maybe<Scalars['Int']>
 }
 
 export type AllCoachesQueryVariables = Exact<{ [key: string]: never }>

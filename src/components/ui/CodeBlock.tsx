@@ -8,7 +8,7 @@ import palenight from 'prism-react-renderer/themes/palenight'
 import { chakra } from '@chakra-ui/react'
 
 import CopyButton from '@components/ui/buttons/CopyButton'
-import { copyToClipboard } from 'utils/copyToClipboard'
+import { copyToClipboard } from 'src/utils/copyToClipboard'
 import confetti from 'styles/animations/confetti'
 
 type Props = {

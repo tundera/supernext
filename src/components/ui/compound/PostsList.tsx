@@ -1,7 +1,7 @@
 import TimeAgo from 'timeago-react'
 import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
 import { paramCase } from 'change-case'
-import { createImageUrl } from 'utils/sanity'
+import { createImageUrl } from 'src/utils/sanity'
 
 function PostCard({ slug, author, date, title }) {
   return (

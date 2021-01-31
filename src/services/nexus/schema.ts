@@ -3,7 +3,7 @@ import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
 import { join } from 'path'
 import { Context } from './context'
 
-import * as allTypes from './resolvers/Queries'
+import * as allTypes from './resolvers'
 
 const nexusPrisma = nexusSchemaPrisma({
   experimentalCRUD: true,

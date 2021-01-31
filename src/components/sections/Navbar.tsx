@@ -7,7 +7,7 @@ import NavbarItem from '@components/ui/menus/NavbarItem'
 import LocaleButton from '@components/utility/LocaleToggle'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 
-import { createBrandLogoIcon } from 'src/createBrandLogoIcon'
+import { createBrandLogoIcon } from 'src/utils/createBrandLogoIcon'
 
 const StickyNav = styled(Flex)`
   position: sticky;

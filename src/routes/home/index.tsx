@@ -6,7 +6,7 @@ import Overview from '@components/sections/Overview'
 import PageLayout from '@components/layouts/PageLayout'
 import CallToActionWithAnnotation from '@components/sections/LandingHero'
 
-import { features } from 'src/constants'
+import { features } from 'src/utils/constants'
 import StatsGrid from '@components/sections/StatsGrid'
 
 const BouncingEmoji = dynamic(() => import('@components/ui/BouncingEmoji'), {

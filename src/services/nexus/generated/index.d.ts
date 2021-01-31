@@ -17,15 +17,229 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CoachListRelationFilter: {
+    // input type
+    every?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
+    none?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
+    some?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
+  }
+  CoachOrderByInput: {
+    // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    isAssistant?: NexusGenEnums['SortOrder'] | null // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null // SortOrder
+    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
+    type?: NexusGenEnums['SortOrder'] | null // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
+  CoachWhereInput: {
+    // input type
+    AND?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
+    NOT?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
+    OR?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null // IntFilter
+    isAssistant?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    name?: NexusGenInputs['StringFilter'] | null // StringFilter
+    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
+    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
+    type?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+  }
   CoachWhereUniqueInput: {
     // input type
     handle?: string | null // String
     id?: number | null // Int
     name?: string | null // String
   }
+  ColorSchemeListRelationFilter: {
+    // input type
+    every?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
+    none?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
+    some?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
+  }
+  ColorSchemeOrderByInput: {
+    // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    primary?: NexusGenEnums['SortOrder'] | null // SortOrder
+    secondary?: NexusGenEnums['SortOrder'] | null // SortOrder
+    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
+  ColorSchemeWhereInput: {
+    // input type
+    AND?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
+    NOT?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
+    OR?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    id?: NexusGenInputs['IntFilter'] | null // IntFilter
+    primary?: NexusGenInputs['StringFilter'] | null // StringFilter
+    secondary?: NexusGenInputs['StringFilter'] | null // StringFilter
+    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
+    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+  }
   ColorSchemeWhereUniqueInput: {
     // input type
     id?: number | null // Int
+  }
+  DateTimeFilter: {
+    // input type
+    equals?: NexusGenScalars['DateTime'] | null // DateTime
+    gt?: NexusGenScalars['DateTime'] | null // DateTime
+    gte?: NexusGenScalars['DateTime'] | null // DateTime
+    in?: NexusGenScalars['DateTime'][] | null // [DateTime!]
+    lt?: NexusGenScalars['DateTime'] | null // DateTime
+    lte?: NexusGenScalars['DateTime'] | null // DateTime
+    not?: NexusGenInputs['NestedDateTimeFilter'] | null // NestedDateTimeFilter
+    notIn?: NexusGenScalars['DateTime'][] | null // [DateTime!]
+  }
+  FloatNullableFilter: {
+    // input type
+    equals?: number | null // Float
+    gt?: number | null // Float
+    gte?: number | null // Float
+    in?: number[] | null // [Float!]
+    lt?: number | null // Float
+    lte?: number | null // Float
+    not?: NexusGenInputs['NestedFloatNullableFilter'] | null // NestedFloatNullableFilter
+    notIn?: number[] | null // [Float!]
+  }
+  IntFilter: {
+    // input type
+    equals?: number | null // Int
+    gt?: number | null // Int
+    gte?: number | null // Int
+    in?: number[] | null // [Int!]
+    lt?: number | null // Int
+    lte?: number | null // Int
+    not?: NexusGenInputs['NestedIntFilter'] | null // NestedIntFilter
+    notIn?: number[] | null // [Int!]
+  }
+  IntNullableFilter: {
+    // input type
+    equals?: number | null // Int
+    gt?: number | null // Int
+    gte?: number | null // Int
+    in?: number[] | null // [Int!]
+    lt?: number | null // Int
+    lte?: number | null // Int
+    not?: NexusGenInputs['NestedIntNullableFilter'] | null // NestedIntNullableFilter
+    notIn?: number[] | null // [Int!]
+  }
+  NestedDateTimeFilter: {
+    // input type
+    equals?: NexusGenScalars['DateTime'] | null // DateTime
+    gt?: NexusGenScalars['DateTime'] | null // DateTime
+    gte?: NexusGenScalars['DateTime'] | null // DateTime
+    in?: NexusGenScalars['DateTime'][] | null // [DateTime!]
+    lt?: NexusGenScalars['DateTime'] | null // DateTime
+    lte?: NexusGenScalars['DateTime'] | null // DateTime
+    not?: NexusGenInputs['NestedDateTimeFilter'] | null // NestedDateTimeFilter
+    notIn?: NexusGenScalars['DateTime'][] | null // [DateTime!]
+  }
+  NestedFloatNullableFilter: {
+    // input type
+    equals?: number | null // Float
+    gt?: number | null // Float
+    gte?: number | null // Float
+    in?: number[] | null // [Float!]
+    lt?: number | null // Float
+    lte?: number | null // Float
+    not?: NexusGenInputs['NestedFloatNullableFilter'] | null // NestedFloatNullableFilter
+    notIn?: number[] | null // [Float!]
+  }
+  NestedIntFilter: {
+    // input type
+    equals?: number | null // Int
+    gt?: number | null // Int
+    gte?: number | null // Int
+    in?: number[] | null // [Int!]
+    lt?: number | null // Int
+    lte?: number | null // Int
+    not?: NexusGenInputs['NestedIntFilter'] | null // NestedIntFilter
+    notIn?: number[] | null // [Int!]
+  }
+  NestedIntNullableFilter: {
+    // input type
+    equals?: number | null // Int
+    gt?: number | null // Int
+    gte?: number | null // Int
+    in?: number[] | null // [Int!]
+    lt?: number | null // Int
+    lte?: number | null // Int
+    not?: NexusGenInputs['NestedIntNullableFilter'] | null // NestedIntNullableFilter
+    notIn?: number[] | null // [Int!]
+  }
+  NestedStringFilter: {
+    // input type
+    contains?: string | null // String
+    endsWith?: string | null // String
+    equals?: string | null // String
+    gt?: string | null // String
+    gte?: string | null // String
+    in?: string[] | null // [String!]
+    lt?: string | null // String
+    lte?: string | null // String
+    not?: NexusGenInputs['NestedStringFilter'] | null // NestedStringFilter
+    notIn?: string[] | null // [String!]
+    startsWith?: string | null // String
+  }
+  NestedStringNullableFilter: {
+    // input type
+    contains?: string | null // String
+    endsWith?: string | null // String
+    equals?: string | null // String
+    gt?: string | null // String
+    gte?: string | null // String
+    in?: string[] | null // [String!]
+    lt?: string | null // String
+    lte?: string | null // String
+    not?: NexusGenInputs['NestedStringNullableFilter'] | null // NestedStringNullableFilter
+    notIn?: string[] | null // [String!]
+    startsWith?: string | null // String
+  }
+  PlayerListRelationFilter: {
+    // input type
+    every?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
+    none?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
+    some?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
+  }
+  PlayerOrderByInput: {
+    // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
+    height?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null // SortOrder
+    number?: NexusGenEnums['SortOrder'] | null // SortOrder
+    position?: NexusGenEnums['SortOrder'] | null // SortOrder
+    slug?: NexusGenEnums['SortOrder'] | null // SortOrder
+    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    weight?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
+  PlayerWhereInput: {
+    // input type
+    AND?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
+    NOT?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
+    OR?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
+    height?: NexusGenInputs['StringFilter'] | null // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null // StringFilter
+    number?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    position?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+    slug?: NexusGenInputs['StringFilter'] | null // StringFilter
+    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
+    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    weight?: NexusGenInputs['StringFilter'] | null // StringFilter
   }
   PlayerWhereUniqueInput: {
     // input type
@@ -33,6 +247,82 @@ export interface NexusGenInputs {
     id?: number | null // Int
     name?: string | null // String
     slug?: string | null // String
+  }
+  StringFilter: {
+    // input type
+    contains?: string | null // String
+    endsWith?: string | null // String
+    equals?: string | null // String
+    gt?: string | null // String
+    gte?: string | null // String
+    in?: string[] | null // [String!]
+    lt?: string | null // String
+    lte?: string | null // String
+    mode?: NexusGenEnums['QueryMode'] | null // QueryMode
+    not?: NexusGenInputs['NestedStringFilter'] | null // NestedStringFilter
+    notIn?: string[] | null // [String!]
+    startsWith?: string | null // String
+  }
+  StringNullableFilter: {
+    // input type
+    contains?: string | null // String
+    endsWith?: string | null // String
+    equals?: string | null // String
+    gt?: string | null // String
+    gte?: string | null // String
+    in?: string[] | null // [String!]
+    lt?: string | null // String
+    lte?: string | null // String
+    mode?: NexusGenEnums['QueryMode'] | null // QueryMode
+    not?: NexusGenInputs['NestedStringNullableFilter'] | null // NestedStringNullableFilter
+    notIn?: string[] | null // [String!]
+    startsWith?: string | null // String
+  }
+  TeamOrderByInput: {
+    // input type
+    abbreviation?: NexusGenEnums['SortOrder'] | null // SortOrder
+    city?: NexusGenEnums['SortOrder'] | null // SortOrder
+    conference?: NexusGenEnums['SortOrder'] | null // SortOrder
+    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    division?: NexusGenEnums['SortOrder'] | null // SortOrder
+    established?: NexusGenEnums['SortOrder'] | null // SortOrder
+    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    logo?: NexusGenEnums['SortOrder'] | null // SortOrder
+    losses?: NexusGenEnums['SortOrder'] | null // SortOrder
+    name?: NexusGenEnums['SortOrder'] | null // SortOrder
+    primaryColor?: NexusGenEnums['SortOrder'] | null // SortOrder
+    secondaryColor?: NexusGenEnums['SortOrder'] | null // SortOrder
+    slug?: NexusGenEnums['SortOrder'] | null // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    winPercentage?: NexusGenEnums['SortOrder'] | null // SortOrder
+    wins?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
+  TeamWhereInput: {
+    // input type
+    AND?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
+    NOT?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
+    OR?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
+    abbreviation?: NexusGenInputs['StringFilter'] | null // StringFilter
+    city?: NexusGenInputs['StringFilter'] | null // StringFilter
+    coaches?: NexusGenInputs['CoachListRelationFilter'] | null // CoachListRelationFilter
+    colorScheme?: NexusGenInputs['ColorSchemeListRelationFilter'] | null // ColorSchemeListRelationFilter
+    conference?: NexusGenInputs['StringFilter'] | null // StringFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    division?: NexusGenInputs['StringFilter'] | null // StringFilter
+    established?: NexusGenInputs['StringFilter'] | null // StringFilter
+    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null // IntFilter
+    logo?: NexusGenInputs['StringFilter'] | null // StringFilter
+    losses?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
+    name?: NexusGenInputs['StringFilter'] | null // StringFilter
+    players?: NexusGenInputs['PlayerListRelationFilter'] | null // PlayerListRelationFilter
+    primaryColor?: NexusGenInputs['StringFilter'] | null // StringFilter
+    secondaryColor?: NexusGenInputs['StringFilter'] | null // StringFilter
+    slug?: NexusGenInputs['StringFilter'] | null // StringFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    winPercentage?: NexusGenInputs['FloatNullableFilter'] | null // FloatNullableFilter
+    wins?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
   }
   TeamWhereUniqueInput: {
     // input type
@@ -45,7 +335,10 @@ export interface NexusGenInputs {
   }
 }
 
-export interface NexusGenEnums {}
+export interface NexusGenEnums {
+  QueryMode: 'default' | 'insensitive'
+  SortOrder: 'asc' | 'desc'
+}
 
 export interface NexusGenScalars {
   String: string
@@ -118,7 +411,7 @@ export interface NexusGenUnions {}
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
   Coach: {
@@ -287,8 +580,10 @@ export interface NexusGenArgTypes {
     coaches: {
       // args
       cursor?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      orderBy?: NexusGenInputs['CoachOrderByInput'][] | null // [CoachOrderByInput!]
       skip?: number | null // Int
       take?: number | null // Int
+      where?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
     }
     coachesByTeam: {
       // args
@@ -305,8 +600,10 @@ export interface NexusGenArgTypes {
     colorSchemes: {
       // args
       cursor?: NexusGenInputs['ColorSchemeWhereUniqueInput'] | null // ColorSchemeWhereUniqueInput
+      orderBy?: NexusGenInputs['ColorSchemeOrderByInput'][] | null // [ColorSchemeOrderByInput!]
       skip?: number | null // Int
       take?: number | null // Int
+      where?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
     }
     player: {
       // args
@@ -315,8 +612,10 @@ export interface NexusGenArgTypes {
     players: {
       // args
       cursor?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      orderBy?: NexusGenInputs['PlayerOrderByInput'][] | null // [PlayerOrderByInput!]
       skip?: number | null // Int
       take?: number | null // Int
+      where?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
     }
     playersByTeam: {
       // args
@@ -329,8 +628,10 @@ export interface NexusGenArgTypes {
     teams: {
       // args
       cursor?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
+      orderBy?: NexusGenInputs['TeamOrderByInput'][] | null // [TeamOrderByInput!]
       skip?: number | null // Int
       take?: number | null // Int
+      where?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
     }
   }
   Team: {
@@ -363,7 +664,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects
 
 export type NexusGenInputNames = keyof NexusGenInputs
 
-export type NexusGenEnumNames = never
+export type NexusGenEnumNames = keyof NexusGenEnums
 
 export type NexusGenInterfaceNames = never
 
