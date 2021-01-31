@@ -1,15 +1,16 @@
 import { ApolloServer } from 'apollo-server-micro'
-
+import { applyMiddleware } from 'graphql-middleware'
 import { schema } from 'src/services/nexus/schema'
-import { createContext } from 'src/services/nexus/context'
+import { createContext, isDev } from 'src/services/nexus/helpers'
+import { permissions } from 'src/services/nexus/rules'
 
 const server = new ApolloServer({
-  schema,
+  schema: applyMiddleware(schema, permissions),
   context: createContext,
   playground: true,
-  tracing: process.env.NODE_ENV === 'development',
+  tracing: isDev(),
   introspection: true,
-  debug: process.env.NODE_ENV === 'development',
+  debug: isDev(),
 })
 
 export const config = {

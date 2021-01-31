@@ -1,7 +1,7 @@
 import { makeSchema } from 'nexus'
 import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
 import { join } from 'path'
-import { Context } from './context'
+import { Context } from './types'
 
 import * as allTypes from './resolvers'
 
@@ -19,7 +19,7 @@ export const schema = makeSchema({
     schema: join(process.cwd(), 'src/services/nexus/generated/schema.graphql'),
   },
   contextType: {
-    module: join(process.cwd(), 'src/services/nexus', 'context.ts'),
+    module: join(process.cwd(), 'src/services/nexus', 'types.ts'),
     export: 'Context',
     alias: 'ctx',
   },
