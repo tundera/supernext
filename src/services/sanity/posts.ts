@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 
-export const getPostBySlug = groq`
+export const PostBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
@@ -16,7 +16,7 @@ export const getPostBySlug = groq`
 }
 `
 
-export const getPosts = groq`
+export const AllPostsQuery = groq`
   *[_type == "post"] | order(date desc) [0..($count - 1)] {
     _id,
     title,
