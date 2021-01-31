@@ -49,9 +49,3 @@ export const createContext = (ctx: any): Context => {
 }
 
 export const isDev = () => process.env.NODE_ENV === 'development'
-
-export const errors = {
-  notAuthenticated: new AuthenticationError('Unauthenticated user!'),
-  userAlreadyExists: new UserInputError('User already exists!'),
-  invalidUser: new UserInputError('Invalid username or password'),
-}
