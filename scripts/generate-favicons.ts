@@ -49,16 +49,9 @@ const generateFavicons = async () => {
 }
 
 const main = async () => {
-  try {
-    await generateFavicons()
-    console.log('Successfully generated favicons ✅')
-
-    process.exit(0)
-  } catch (err) {
-    console.error(err)
-
-    process.exit(1)
-  }
+  await generateFavicons()
 }
 
-main()
+main().finally(() => {
+  console.log('Successfully generated favicons ✅')
+})

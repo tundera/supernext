@@ -24,7 +24,6 @@ function Navbar({ ...props }) {
   const color = useColorModeValue('stone.700', 'whiteAlpha.900')
   const iconColor = useColorModeValue(theme.colors.stone['500'], theme.colors.gold['500'])
 
-  console.log('ICONCOLOR: ', iconColor)
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
   return (

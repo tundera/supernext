@@ -25,4 +25,6 @@ const main = async () => {
   }
 }
 
-main()
+main().finally(async () => {
+  await prisma.$disconnect()
+})

@@ -1,9 +1,9 @@
 import { makeSchema } from 'nexus'
 import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
 import { join } from 'path'
-import { Context } from '../context'
+import { Context } from './context'
 
-import * as allTypes from './Query'
+import * as allTypes from './resolvers/Queries'
 
 const nexusPrisma = nexusSchemaPrisma({
   experimentalCRUD: true,
@@ -26,7 +26,7 @@ export const schema = makeSchema({
   sourceTypes: {
     modules: [
       {
-        module: require.resolve('@prisma/client'),
+        module: '@prisma/client',
         alias: 'prisma',
       },
     ],
