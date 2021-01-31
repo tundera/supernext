@@ -1,25 +1,36 @@
 import type { InferGetStaticPropsType } from 'next'
 
-import { getAllTeams } from '@lib/nexus/teams'
+import { QueryClient } from 'react-query'
+import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import TeamCard from '@components/TeamCard'
+import { getAllTeams } from '@lib/nexus/teams'
 import { useTeamsQuery } from '@hooks/queries/useTeamsQuery'
 
 export const getStaticProps = async ({ preview = false }) => {
-  const teams = await getAllTeams()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        suspense: true,
+      },
+    },
+  })
+
+  await queryClient.prefetchQuery('teams', getAllTeams)
 
   return {
     props: {
-      teams,
+      dehydratedState: dehydrate(queryClient),
       preview,
     },
     revalidate: 1,
   }
 }
-const Teams = ({ teams, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useTeamsQuery({ initialData: teams })
+
+const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data } = useTeamsQuery()
 
   return (
     <>

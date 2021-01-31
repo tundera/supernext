@@ -13619,11 +13619,6 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.npmjs.org/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-next-data-hooks@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/next-data-hooks/-/next-data-hooks-0.5.0.tgz#32f5fa0d31a629e501a85816484cebc3a6d7e7f8"
-  integrity sha512-mVe2KWHrzr3djgVyYCSOwS/ev2XDzxabrv1Or6SDTFC/uPgcpaheV5/Ogea2Rbl9tQLMQLuBDhqM1lHudPrvFA==
-
 next-mdx-remote@^2.1.3:
   version "2.1.3"
   resolved "https://registry.npmjs.org/next-mdx-remote/-/next-mdx-remote-2.1.3.tgz#a427d690691af081384770b464d3803350ada41f"

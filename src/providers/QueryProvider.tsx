@@ -1,14 +1,20 @@
 import type { FC } from 'react'
 
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate } from 'react-query/hydration'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-const queryClient = new QueryClient()
+type Props = {
+  client: QueryClient
+  state?: unknown
+}
 
-const QueryProvider: FC = ({ children }) => (
-  <QueryClientProvider client={queryClient}>
-    {children}
-    <ReactQueryDevtools initialIsOpen={false} />
+const QueryProvider: FC<Props> = ({ client, state, children }) => (
+  <QueryClientProvider client={client}>
+    <Hydrate state={state}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </Hydrate>
   </QueryClientProvider>
 )
 

@@ -1,23 +1,28 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
-import DataProvider from '@providers/DataProvider'
+import { QueryClient } from 'react-query'
+
 import QueryProvider from '@providers/QueryProvider'
 import FormProvider from '@providers/FormProvider'
 import ThemeProvider from '@providers/ThemeProvider'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const { children, ...rest } = pageProps
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+})
 
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <DataProvider {...rest}>
-      <QueryProvider>
-        <FormProvider>
-          <ThemeProvider>
-            <Component {...rest}>{children}</Component>
-          </ThemeProvider>
-        </FormProvider>
-      </QueryProvider>
-    </DataProvider>
+    <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
+      <FormProvider>
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </FormProvider>
+    </QueryProvider>
   )
 }
 
