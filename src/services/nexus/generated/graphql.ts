@@ -654,7 +654,7 @@ export type MutationDeletePostArgs = {
 }
 
 export type MutationPublishArgs = {
-  id?: Maybe<Scalars['Int']>
+  id: Scalars['Int']
 }
 
 export type MutationSignupArgs = {
