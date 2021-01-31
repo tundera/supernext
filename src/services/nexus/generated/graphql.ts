@@ -16,6 +16,36 @@ export type Scalars = {
   DateTime: any
 }
 
+export type Post = {
+  __typename?: 'Post'
+  id: Scalars['Int']
+  published: Scalars['Boolean']
+  title: Scalars['String']
+  content?: Maybe<Scalars['String']>
+  author?: Maybe<User>
+}
+
+export type User = {
+  __typename?: 'User'
+  createdAt: Scalars['DateTime']
+  id: Scalars['Int']
+  name?: Maybe<Scalars['String']>
+  email: Scalars['String']
+  posts: Array<Post>
+}
+
+export type UserPostsArgs = {
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<PostWhereUniqueInput>
+}
+
+export type AuthPayload = {
+  __typename?: 'AuthPayload'
+  accessToken?: Maybe<Scalars['String']>
+  user?: Maybe<User>
+}
+
 export type Player = {
   __typename?: 'Player'
   id: Scalars['Int']
@@ -96,6 +126,10 @@ export type TeamPlayersArgs = {
   cursor?: Maybe<PlayerWhereUniqueInput>
 }
 
+export type PostWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>
+}
+
 export type ColorSchemeWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>
 }
@@ -111,6 +145,30 @@ export type PlayerWhereUniqueInput = {
   handle?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   slug?: Maybe<Scalars['String']>
+}
+
+export type PostWhereInput = {
+  AND?: Maybe<Array<PostWhereInput>>
+  OR?: Maybe<Array<PostWhereInput>>
+  NOT?: Maybe<Array<PostWhereInput>>
+  id?: Maybe<IntFilter>
+  published?: Maybe<BoolFilter>
+  title?: Maybe<StringFilter>
+  content?: Maybe<StringNullableFilter>
+  authorId?: Maybe<IntNullableFilter>
+  author?: Maybe<UserWhereInput>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+}
+
+export type PostOrderByInput = {
+  id?: Maybe<SortOrder>
+  published?: Maybe<SortOrder>
+  title?: Maybe<SortOrder>
+  content?: Maybe<SortOrder>
+  authorId?: Maybe<SortOrder>
+  createdAt?: Maybe<SortOrder>
+  updatedAt?: Maybe<SortOrder>
 }
 
 export type CoachWhereInput = {
@@ -248,6 +306,15 @@ export type ColorSchemeOrderByInput = {
   teamId?: Maybe<SortOrder>
 }
 
+export type PostCreateInput = {
+  published?: Maybe<Scalars['Boolean']>
+  title: Scalars['String']
+  content?: Maybe<Scalars['String']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  author?: Maybe<UserCreateOneWithoutPostsInput>
+}
+
 export type IntFilter = {
   equals?: Maybe<Scalars['Int']>
   in?: Maybe<Array<Scalars['Int']>>
@@ -259,15 +326,9 @@ export type IntFilter = {
   not?: Maybe<NestedIntFilter>
 }
 
-export type DateTimeFilter = {
-  equals?: Maybe<Scalars['DateTime']>
-  in?: Maybe<Array<Scalars['DateTime']>>
-  notIn?: Maybe<Array<Scalars['DateTime']>>
-  lt?: Maybe<Scalars['DateTime']>
-  lte?: Maybe<Scalars['DateTime']>
-  gt?: Maybe<Scalars['DateTime']>
-  gte?: Maybe<Scalars['DateTime']>
-  not?: Maybe<NestedDateTimeFilter>
+export type BoolFilter = {
+  equals?: Maybe<Scalars['Boolean']>
+  not?: Maybe<NestedBoolFilter>
 }
 
 export type StringFilter = {
@@ -285,17 +346,6 @@ export type StringFilter = {
   not?: Maybe<NestedStringFilter>
 }
 
-export type IntNullableFilter = {
-  equals?: Maybe<Scalars['Int']>
-  in?: Maybe<Array<Scalars['Int']>>
-  notIn?: Maybe<Array<Scalars['Int']>>
-  lt?: Maybe<Scalars['Int']>
-  lte?: Maybe<Scalars['Int']>
-  gt?: Maybe<Scalars['Int']>
-  gte?: Maybe<Scalars['Int']>
-  not?: Maybe<NestedIntNullableFilter>
-}
-
 export type StringNullableFilter = {
   equals?: Maybe<Scalars['String']>
   in?: Maybe<Array<Scalars['String']>>
@@ -309,6 +359,41 @@ export type StringNullableFilter = {
   endsWith?: Maybe<Scalars['String']>
   mode?: Maybe<QueryMode>
   not?: Maybe<NestedStringNullableFilter>
+}
+
+export type IntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntNullableFilter>
+}
+
+export type UserWhereInput = {
+  AND?: Maybe<Array<UserWhereInput>>
+  OR?: Maybe<Array<UserWhereInput>>
+  NOT?: Maybe<Array<UserWhereInput>>
+  id?: Maybe<IntFilter>
+  email?: Maybe<StringFilter>
+  password?: Maybe<StringFilter>
+  name?: Maybe<StringNullableFilter>
+  posts?: Maybe<PostListRelationFilter>
+  createdAt?: Maybe<DateTimeFilter>
+  updatedAt?: Maybe<DateTimeFilter>
+}
+
+export type DateTimeFilter = {
+  equals?: Maybe<Scalars['DateTime']>
+  in?: Maybe<Array<Scalars['DateTime']>>
+  notIn?: Maybe<Array<Scalars['DateTime']>>
+  lt?: Maybe<Scalars['DateTime']>
+  lte?: Maybe<Scalars['DateTime']>
+  gt?: Maybe<Scalars['DateTime']>
+  gte?: Maybe<Scalars['DateTime']>
+  not?: Maybe<NestedDateTimeFilter>
 }
 
 export enum SortOrder {
@@ -345,6 +430,12 @@ export type ColorSchemeListRelationFilter = {
   none?: Maybe<ColorSchemeWhereInput>
 }
 
+export type UserCreateOneWithoutPostsInput = {
+  create?: Maybe<UserCreateWithoutPostsInput>
+  connect?: Maybe<UserWhereUniqueInput>
+  connectOrCreate?: Maybe<UserCreateOrConnectWithoutpostsInput>
+}
+
 export type NestedIntFilter = {
   equals?: Maybe<Scalars['Int']>
   in?: Maybe<Array<Scalars['Int']>>
@@ -356,15 +447,9 @@ export type NestedIntFilter = {
   not?: Maybe<NestedIntFilter>
 }
 
-export type NestedDateTimeFilter = {
-  equals?: Maybe<Scalars['DateTime']>
-  in?: Maybe<Array<Scalars['DateTime']>>
-  notIn?: Maybe<Array<Scalars['DateTime']>>
-  lt?: Maybe<Scalars['DateTime']>
-  lte?: Maybe<Scalars['DateTime']>
-  gt?: Maybe<Scalars['DateTime']>
-  gte?: Maybe<Scalars['DateTime']>
-  not?: Maybe<NestedDateTimeFilter>
+export type NestedBoolFilter = {
+  equals?: Maybe<Scalars['Boolean']>
+  not?: Maybe<NestedBoolFilter>
 }
 
 export enum QueryMode {
@@ -386,17 +471,6 @@ export type NestedStringFilter = {
   not?: Maybe<NestedStringFilter>
 }
 
-export type NestedIntNullableFilter = {
-  equals?: Maybe<Scalars['Int']>
-  in?: Maybe<Array<Scalars['Int']>>
-  notIn?: Maybe<Array<Scalars['Int']>>
-  lt?: Maybe<Scalars['Int']>
-  lte?: Maybe<Scalars['Int']>
-  gt?: Maybe<Scalars['Int']>
-  gte?: Maybe<Scalars['Int']>
-  not?: Maybe<NestedIntNullableFilter>
-}
-
 export type NestedStringNullableFilter = {
   equals?: Maybe<Scalars['String']>
   in?: Maybe<Array<Scalars['String']>>
@@ -411,6 +485,34 @@ export type NestedStringNullableFilter = {
   not?: Maybe<NestedStringNullableFilter>
 }
 
+export type NestedIntNullableFilter = {
+  equals?: Maybe<Scalars['Int']>
+  in?: Maybe<Array<Scalars['Int']>>
+  notIn?: Maybe<Array<Scalars['Int']>>
+  lt?: Maybe<Scalars['Int']>
+  lte?: Maybe<Scalars['Int']>
+  gt?: Maybe<Scalars['Int']>
+  gte?: Maybe<Scalars['Int']>
+  not?: Maybe<NestedIntNullableFilter>
+}
+
+export type PostListRelationFilter = {
+  every?: Maybe<PostWhereInput>
+  some?: Maybe<PostWhereInput>
+  none?: Maybe<PostWhereInput>
+}
+
+export type NestedDateTimeFilter = {
+  equals?: Maybe<Scalars['DateTime']>
+  in?: Maybe<Array<Scalars['DateTime']>>
+  notIn?: Maybe<Array<Scalars['DateTime']>>
+  lt?: Maybe<Scalars['DateTime']>
+  lte?: Maybe<Scalars['DateTime']>
+  gt?: Maybe<Scalars['DateTime']>
+  gte?: Maybe<Scalars['DateTime']>
+  not?: Maybe<NestedDateTimeFilter>
+}
+
 export type NestedFloatNullableFilter = {
   equals?: Maybe<Scalars['Float']>
   in?: Maybe<Array<Scalars['Float']>>
@@ -422,8 +524,29 @@ export type NestedFloatNullableFilter = {
   not?: Maybe<NestedFloatNullableFilter>
 }
 
+export type UserCreateWithoutPostsInput = {
+  email: Scalars['String']
+  password: Scalars['String']
+  name?: Maybe<Scalars['String']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type UserWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>
+  email?: Maybe<Scalars['String']>
+}
+
+export type UserCreateOrConnectWithoutpostsInput = {
+  where: UserWhereUniqueInput
+  create: UserCreateWithoutPostsInput
+}
+
 export type Query = {
   __typename?: 'Query'
+  me?: Maybe<User>
+  posts: Array<Post>
+  post?: Maybe<Post>
   coach?: Maybe<Coach>
   coaches: Array<Coach>
   allCoaches?: Maybe<Array<Maybe<Coach>>>
@@ -439,6 +562,18 @@ export type Query = {
   colorSchemes: Array<ColorScheme>
   allColorSchemes?: Maybe<Array<Maybe<ColorScheme>>>
   colorSchemeByTeam?: Maybe<Array<Maybe<ColorScheme>>>
+}
+
+export type QueryPostsArgs = {
+  where?: Maybe<PostWhereInput>
+  orderBy?: Maybe<Array<PostOrderByInput>>
+  take?: Maybe<Scalars['Int']>
+  skip?: Maybe<Scalars['Int']>
+  cursor?: Maybe<PostWhereUniqueInput>
+}
+
+export type QueryPostArgs = {
+  where: PostWhereUniqueInput
 }
 
 export type QueryCoachArgs = {
@@ -501,6 +636,38 @@ export type QueryColorSchemeByTeamArgs = {
   id?: Maybe<Scalars['Int']>
 }
 
+export type Mutation = {
+  __typename?: 'Mutation'
+  createDraft: Post
+  deletePost?: Maybe<Post>
+  publish?: Maybe<Post>
+  signup?: Maybe<AuthPayload>
+  login?: Maybe<AuthPayload>
+}
+
+export type MutationCreateDraftArgs = {
+  data: PostCreateInput
+}
+
+export type MutationDeletePostArgs = {
+  where: PostWhereUniqueInput
+}
+
+export type MutationPublishArgs = {
+  id?: Maybe<Scalars['Int']>
+}
+
+export type MutationSignupArgs = {
+  name?: Maybe<Scalars['String']>
+  email: Scalars['String']
+  password: Scalars['String']
+}
+
+export type MutationLoginArgs = {
+  email: Scalars['String']
+  password: Scalars['String']
+}
+
 export type AllCoachesQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllCoachesQuery = { __typename?: 'Query' } & {
@@ -534,6 +701,16 @@ export type AllPlayersQuery = { __typename?: 'Query' } & {
           }
       >
     >
+  >
+}
+
+export type AllPostsQueryVariables = Exact<{ [key: string]: never }>
+
+export type AllPostsQuery = { __typename?: 'Query' } & {
+  posts: Array<
+    { __typename?: 'Post' } & Pick<Post, 'id' | 'title' | 'content' | 'published'> & {
+        author?: Maybe<{ __typename?: 'User' } & Pick<User, 'id' | 'name' | 'email'>>
+      }
   >
 }
 
@@ -613,6 +790,21 @@ export const AllPlayersDocument = gql`
     }
   }
 `
+export const AllPostsDocument = gql`
+  query AllPosts {
+    posts {
+      id
+      title
+      content
+      published
+      author {
+        id
+        name
+        email
+      }
+    }
+  }
+`
 export const AllTeamsDocument = gql`
   query AllTeams {
     allTeams {
@@ -671,6 +863,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     AllPlayers(variables?: AllPlayersQueryVariables, requestHeaders?: Headers): Promise<AllPlayersQuery> {
       return withWrapper(() => client.request<AllPlayersQuery>(print(AllPlayersDocument), variables, requestHeaders))
+    },
+    AllPosts(variables?: AllPostsQueryVariables, requestHeaders?: Headers): Promise<AllPostsQuery> {
+      return withWrapper(() => client.request<AllPostsQuery>(print(AllPostsDocument), variables, requestHeaders))
     },
     AllTeams(variables?: AllTeamsQueryVariables, requestHeaders?: Headers): Promise<AllTeamsQuery> {
       return withWrapper(() => client.request<AllTeamsQuery>(print(AllTeamsDocument), variables, requestHeaders))

@@ -10,8 +10,8 @@ export const rules = {
         return handleError(errors.notAuthenticated)
       }
       return true
-    } catch (e) {
-      return e
+    } catch (err) {
+      return err
     }
   }),
   isPostOwner: rule({ cache: 'contextual' })(async (_parent, args, ctx: Context) => {
@@ -25,8 +25,8 @@ export const rules = {
         })
         .author()
       return ctx?.userId === author?.id
-    } catch (e) {
-      return e
+    } catch (err) {
+      return err
     }
   }),
 }
@@ -41,8 +41,5 @@ export const permissions = shield({
     createDraft: rules.isAuthenticatedUser,
     deletePost: rules.isPostOwner,
     publish: rules.isPostOwner,
-  },
-  Subscription: {
-    latestPost: rules.isAuthenticatedUser,
   },
 })

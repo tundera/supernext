@@ -195,6 +195,6 @@ addDecorator(withPerformance)
 //       results: testResults,
 //     }),
 //   )
-// } catch (e) {
+// } catch (err) {
 //   console.log(`Couldn't find ../.jest-test-results.json, Jest tests might not work properly.`)
 // }

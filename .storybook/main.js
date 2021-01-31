@@ -38,6 +38,8 @@ module.exports = {
       node: {
         ...config.node,
         fs: 'empty',
+        tls: 'empty',
+        net: 'empty',
       },
       resolve: {
         ...config.resolve,
