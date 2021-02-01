@@ -1,0 +1,22 @@
+import type { FC } from 'react'
+
+import { Box, Text, Heading } from '@chakra-ui/react'
+
+type Props = {
+  label: string
+}
+
+const {{pascalCase name}}: FC<Props> = ({ label }) => {
+return (
+  <Box>
+    <Heading as="h2" size="4xl" my={4} p={2}>
+      {{pascalCase name}}
+    </Heading>
+    <Text>{label}</Text>
+  </Box>
+)
+}
+
+export default {{pascalCase name}}
+
+export type { Props as {{addPropsSuffix name}} }

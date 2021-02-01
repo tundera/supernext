@@ -1,6 +1,5 @@
 import type { InferGetStaticPropsType } from 'next'
 
-import dynamic from 'next/dynamic'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
