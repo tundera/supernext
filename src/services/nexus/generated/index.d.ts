@@ -17,11 +17,6 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  BoolFilter: {
-    // input type
-    equals?: boolean | null // Boolean
-    not?: NexusGenInputs['NestedBoolFilter'] | null // NestedBoolFilter
-  }
   CoachListRelationFilter: {
     // input type
     every?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
@@ -135,11 +130,6 @@ export interface NexusGenInputs {
     lte?: number | null // Int
     not?: NexusGenInputs['NestedIntNullableFilter'] | null // NestedIntNullableFilter
     notIn?: number[] | null // [Int!]
-  }
-  NestedBoolFilter: {
-    // input type
-    equals?: boolean | null // Boolean
-    not?: NexusGenInputs['NestedBoolFilter'] | null // NestedBoolFilter
   }
   NestedDateTimeFilter: {
     // input type
@@ -258,49 +248,6 @@ export interface NexusGenInputs {
     name?: string | null // String
     slug?: string | null // String
   }
-  PostCreateInput: {
-    // input type
-    author?: NexusGenInputs['UserCreateOneWithoutPostsInput'] | null // UserCreateOneWithoutPostsInput
-    content?: string | null // String
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    published?: boolean | null // Boolean
-    title: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  PostListRelationFilter: {
-    // input type
-    every?: NexusGenInputs['PostWhereInput'] | null // PostWhereInput
-    none?: NexusGenInputs['PostWhereInput'] | null // PostWhereInput
-    some?: NexusGenInputs['PostWhereInput'] | null // PostWhereInput
-  }
-  PostOrderByInput: {
-    // input type
-    authorId?: NexusGenEnums['SortOrder'] | null // SortOrder
-    content?: NexusGenEnums['SortOrder'] | null // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null // SortOrder
-    published?: NexusGenEnums['SortOrder'] | null // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null // SortOrder
-    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-  }
-  PostWhereInput: {
-    // input type
-    AND?: NexusGenInputs['PostWhereInput'][] | null // [PostWhereInput!]
-    NOT?: NexusGenInputs['PostWhereInput'][] | null // [PostWhereInput!]
-    OR?: NexusGenInputs['PostWhereInput'][] | null // [PostWhereInput!]
-    author?: NexusGenInputs['UserWhereInput'] | null // UserWhereInput
-    authorId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
-    content?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    published?: NexusGenInputs['BoolFilter'] | null // BoolFilter
-    title?: NexusGenInputs['StringFilter'] | null // StringFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-  }
-  PostWhereUniqueInput: {
-    // input type
-    id?: number | null // Int
-  }
   StringFilter: {
     // input type
     contains?: string | null // String
@@ -386,43 +333,6 @@ export interface NexusGenInputs {
     name?: string | null // String
     slug?: string | null // String
   }
-  UserCreateOneWithoutPostsInput: {
-    // input type
-    connect?: NexusGenInputs['UserWhereUniqueInput'] | null // UserWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutpostsInput'] | null // UserCreateOrConnectWithoutpostsInput
-    create?: NexusGenInputs['UserCreateWithoutPostsInput'] | null // UserCreateWithoutPostsInput
-  }
-  UserCreateOrConnectWithoutpostsInput: {
-    // input type
-    create: NexusGenInputs['UserCreateWithoutPostsInput'] // UserCreateWithoutPostsInput!
-    where: NexusGenInputs['UserWhereUniqueInput'] // UserWhereUniqueInput!
-  }
-  UserCreateWithoutPostsInput: {
-    // input type
-    createdAt?: NexusGenScalars['DateTime'] | null // DateTime
-    email: string // String!
-    name?: string | null // String
-    password: string // String!
-    updatedAt?: NexusGenScalars['DateTime'] | null // DateTime
-  }
-  UserWhereInput: {
-    // input type
-    AND?: NexusGenInputs['UserWhereInput'][] | null // [UserWhereInput!]
-    NOT?: NexusGenInputs['UserWhereInput'][] | null // [UserWhereInput!]
-    OR?: NexusGenInputs['UserWhereInput'][] | null // [UserWhereInput!]
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    email?: NexusGenInputs['StringFilter'] | null // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    name?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    password?: NexusGenInputs['StringFilter'] | null // StringFilter
-    posts?: NexusGenInputs['PostListRelationFilter'] | null // PostListRelationFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-  }
-  UserWhereUniqueInput: {
-    // input type
-    email?: string | null // String
-    id?: number | null // Int
-  }
 }
 
 export interface NexusGenEnums {
@@ -440,11 +350,6 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  AuthPayload: {
-    // root type
-    accessToken?: string | null // String
-    user?: NexusGenRootTypes['User'] | null // User
-  }
   Coach: {
     // root type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -465,7 +370,6 @@ export interface NexusGenObjects {
     teamId?: number | null // Int
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
   }
-  Mutation: {}
   Player: {
     // root type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -479,13 +383,6 @@ export interface NexusGenObjects {
     teamId?: number | null // Int
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     weight: string // String!
-  }
-  Post: {
-    // root type
-    content?: string | null // String
-    id: number // Int!
-    published: boolean // Boolean!
-    title: string // String!
   }
   Query: {}
   Team: {
@@ -506,13 +403,6 @@ export interface NexusGenObjects {
     winPercentage?: number | null // Float
     wins?: number | null // Int
   }
-  User: {
-    // root type
-    createdAt: NexusGenScalars['DateTime'] // DateTime!
-    email: string // String!
-    id: number // Int!
-    name?: string | null // String
-  }
 }
 
 export interface NexusGenInterfaces {}
@@ -524,11 +414,6 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
-  AuthPayload: {
-    // field return type
-    accessToken: string | null // String
-    user: NexusGenRootTypes['User'] | null // User
-  }
   Coach: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -551,14 +436,6 @@ export interface NexusGenFieldTypes {
     teamId: number | null // Int
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
   }
-  Mutation: {
-    // field return type
-    createDraft: NexusGenRootTypes['Post'] // Post!
-    deletePost: NexusGenRootTypes['Post'] | null // Post
-    login: NexusGenRootTypes['AuthPayload'] | null // AuthPayload
-    publish: NexusGenRootTypes['Post'] | null // Post
-    signup: NexusGenRootTypes['AuthPayload'] | null // AuthPayload
-  }
   Player: {
     // field return type
     createdAt: NexusGenScalars['DateTime'] // DateTime!
@@ -574,14 +451,6 @@ export interface NexusGenFieldTypes {
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     weight: string // String!
   }
-  Post: {
-    // field return type
-    author: NexusGenRootTypes['User'] | null // User
-    content: string | null // String
-    id: number // Int!
-    published: boolean // Boolean!
-    title: string // String!
-  }
   Query: {
     // field return type
     allCoaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
@@ -594,12 +463,9 @@ export interface NexusGenFieldTypes {
     colorScheme: NexusGenRootTypes['ColorScheme'] | null // ColorScheme
     colorSchemeByTeam: Array<NexusGenRootTypes['ColorScheme'] | null> | null // [ColorScheme]
     colorSchemes: NexusGenRootTypes['ColorScheme'][] // [ColorScheme!]!
-    me: NexusGenRootTypes['User'] | null // User
     player: NexusGenRootTypes['Player'] | null // Player
     players: NexusGenRootTypes['Player'][] // [Player!]!
     playersByTeam: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
-    post: NexusGenRootTypes['Post'] | null // Post
-    posts: NexusGenRootTypes['Post'][] // [Post!]!
     team: NexusGenRootTypes['Team'] | null // Team
     teams: NexusGenRootTypes['Team'][] // [Team!]!
   }
@@ -624,22 +490,9 @@ export interface NexusGenFieldTypes {
     winPercentage: number | null // Float
     wins: number | null // Int
   }
-  User: {
-    // field return type
-    createdAt: NexusGenScalars['DateTime'] // DateTime!
-    email: string // String!
-    id: number // Int!
-    name: string | null // String
-    posts: NexusGenRootTypes['Post'][] // [Post!]!
-  }
 }
 
 export interface NexusGenFieldTypeNames {
-  AuthPayload: {
-    // field return type name
-    accessToken: 'String'
-    user: 'User'
-  }
   Coach: {
     // field return type name
     createdAt: 'DateTime'
@@ -662,14 +515,6 @@ export interface NexusGenFieldTypeNames {
     teamId: 'Int'
     updatedAt: 'DateTime'
   }
-  Mutation: {
-    // field return type name
-    createDraft: 'Post'
-    deletePost: 'Post'
-    login: 'AuthPayload'
-    publish: 'Post'
-    signup: 'AuthPayload'
-  }
   Player: {
     // field return type name
     createdAt: 'DateTime'
@@ -685,14 +530,6 @@ export interface NexusGenFieldTypeNames {
     updatedAt: 'DateTime'
     weight: 'String'
   }
-  Post: {
-    // field return type name
-    author: 'User'
-    content: 'String'
-    id: 'Int'
-    published: 'Boolean'
-    title: 'String'
-  }
   Query: {
     // field return type name
     allCoaches: 'Coach'
@@ -705,12 +542,9 @@ export interface NexusGenFieldTypeNames {
     colorScheme: 'ColorScheme'
     colorSchemeByTeam: 'ColorScheme'
     colorSchemes: 'ColorScheme'
-    me: 'User'
     player: 'Player'
     players: 'Player'
     playersByTeam: 'Player'
-    post: 'Post'
-    posts: 'Post'
     team: 'Team'
     teams: 'Team'
   }
@@ -735,42 +569,9 @@ export interface NexusGenFieldTypeNames {
     winPercentage: 'Float'
     wins: 'Int'
   }
-  User: {
-    // field return type name
-    createdAt: 'DateTime'
-    email: 'String'
-    id: 'Int'
-    name: 'String'
-    posts: 'Post'
-  }
 }
 
 export interface NexusGenArgTypes {
-  Mutation: {
-    createDraft: {
-      // args
-      data: NexusGenInputs['PostCreateInput'] // PostCreateInput!
-    }
-    deletePost: {
-      // args
-      where: NexusGenInputs['PostWhereUniqueInput'] // PostWhereUniqueInput!
-    }
-    login: {
-      // args
-      email: string // String!
-      password: string // String!
-    }
-    publish: {
-      // args
-      id: number // Int!
-    }
-    signup: {
-      // args
-      email: string // String!
-      name?: string | null // String
-      password: string // String!
-    }
-  }
   Query: {
     coach: {
       // args
@@ -820,18 +621,6 @@ export interface NexusGenArgTypes {
       // args
       id?: number | null // Int
     }
-    post: {
-      // args
-      where: NexusGenInputs['PostWhereUniqueInput'] // PostWhereUniqueInput!
-    }
-    posts: {
-      // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null // PostWhereUniqueInput
-      orderBy?: NexusGenInputs['PostOrderByInput'][] | null // [PostOrderByInput!]
-      skip?: number | null // Int
-      take?: number | null // Int
-      where?: NexusGenInputs['PostWhereInput'] | null // PostWhereInput
-    }
     team: {
       // args
       where: NexusGenInputs['TeamWhereUniqueInput'] // TeamWhereUniqueInput!
@@ -861,14 +650,6 @@ export interface NexusGenArgTypes {
     players: {
       // args
       cursor?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
-      skip?: number | null // Int
-      take?: number | null // Int
-    }
-  }
-  User: {
-    posts: {
-      // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null // PostWhereUniqueInput
       skip?: number | null // Int
       take?: number | null // Int
     }

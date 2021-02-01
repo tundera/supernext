@@ -8,13 +8,6 @@ export interface Context {
   prisma: PrismaClient
   req: NextApiRequest
   res: NextApiResponse
-  userId: number
-}
-
-export interface Token {
-  userId: number
-  type: string
-  timestamp: number
 }
 
 export type Coach = NexusGenObjects['Coach']

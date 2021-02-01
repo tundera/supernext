@@ -1,6 +1,6 @@
 import type { InferGetStaticPropsType } from 'next'
 
-import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
@@ -41,7 +41,9 @@ const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
             {data?.map((team) => {
               return <TeamCard key={team.name} name={team.name} logo={team.logo} />
             })}
-            <PlayersList title="NBA Players" />
+            <QuerySuspense fallback={<LoadingSpinner />}>
+              <PlayersList title="NBA Players" />
+            </QuerySuspense>
           </SimpleGrid>
         </Stack>
       </PageLayout>
