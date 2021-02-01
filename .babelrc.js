@@ -16,5 +16,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },
     ],
+    'superjson-next',
   ],
 }

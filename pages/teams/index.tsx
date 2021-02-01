@@ -1,22 +1,20 @@
 import type { InferGetStaticPropsType } from 'next'
 
+import { Suspense } from 'react'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import TeamCard from '@components/TeamCard'
+import QuerySuspense from '@components/utility/QuerySuspense'
 import { getAllTeams } from '@lib/nexus/teams'
 import { useTeamsQuery } from '@hooks/queries/useTeamsQuery'
+import LoadingSpinner from '@components/utility/LoadingSpinner'
+import PlayersList from '@components/ui/compound/PlayersList'
 
 export const getStaticProps = async ({ preview = false }) => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        suspense: true,
-      },
-    },
-  })
+  const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('teams', getAllTeams)
 
@@ -30,7 +28,7 @@ export const getStaticProps = async ({ preview = false }) => {
 }
 
 const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useTeamsQuery()
+  const { data } = useTeamsQuery({ suspense: false })
 
   return (
     <>
@@ -43,6 +41,7 @@ const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
             {data?.map((team) => {
               return <TeamCard key={team.name} name={team.name} logo={team.logo} />
             })}
+            <PlayersList title="NBA Players" />
           </SimpleGrid>
         </Stack>
       </PageLayout>

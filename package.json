@@ -63,6 +63,7 @@
     "@storybook/react": "^6.1.15",
     "a11y-react-emoji": "^1.1.2",
     "apollo-server-micro": "^2.19.2",
+    "babel-plugin-superjson-next": "^0.2.1",
     "bcrypt": "^5.0.0",
     "change-case": "^4.1.2",
     "date-fns": "^2.16.1",
@@ -112,6 +113,7 @@
     "remark-stringify": "^9.0.1",
     "remark-toc": "^7.0.0",
     "sanity-codegen": "^0.8.3",
+    "superjson": "^1.5.2",
     "timeago-react": "^3.0.1",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3"
