@@ -1,18 +1,35 @@
 ---
-to: components/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>.tsx
+to: src/components/<%=type%>/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>.tsx
 ---
 <% formattedPath = h.camelizedPathName(name) -%>
 <% component = h.camelizedBaseName(name) -%>
-import React from 'react';
-import { Heading, Center } from '@chakra-ui/core';
+import type { FC } from 'react'
 
-/** Description of component */
-export function <%= component %>() {
-  const message = 'Hola! <%= component %> Created!';
+import NextLink from 'next/link'
+
+import { useColorModeValue, Heading, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
+
+type Props = {
+  title: string
+}
+
+const <%= component %>: FC<Props> = ({ title }) => {
+  const bg = useColorModeValue('stone.700', 'alphaWhite.500')
+  const color = useColorModeValue('alphaWhite.500', 'stone.700')
 
   return (
-    <Center bg="red.300" color="white" padding={{ base: 16, lg: 24 }}>
-      <Heading>{message}</Heading>
-    </Center>
-  );
-};
+    <LinkBox as="article" bg={bg} color={color}>
+      <Heading as="h2">
+        <NextLink href="#" passHref>
+          <LinkOverlay>{title}</LinkOverlay>
+        </NextLink>
+      </Heading>
+      <Text>Add a description for your blog post here.</Text>
+      <a href="#">Some inner link</a>
+    </LinkBox>
+  )
+}
+
+export default <%= component %>
+
+export type { Props as <%= component %>Props }

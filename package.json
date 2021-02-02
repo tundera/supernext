@@ -24,7 +24,6 @@
     "generate:page:ssr": "next-codegen page --ssr",
     "generate:page:ssg": "next-codegen page --ssg",
     "generate:api": "next-codegen api",
-    "generate:component": "plop component --plopfile ./generators/plopfile.js",
     "generate:graphql": "graphql-codegen",
     "generate:groq": "sanity-codegen",
     "generate": "yarn generate:graphql && yarn generate:groq",

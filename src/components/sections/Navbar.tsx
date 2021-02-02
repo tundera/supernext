@@ -7,7 +7,7 @@ import NavbarItem from '@components/ui/menus/NavbarItem'
 import LocaleButton from '@components/utility/LocaleToggle'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 
-import { createBrandLogoIcon } from 'src/utils/createBrandLogoIcon'
+import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
 const StickyNav = styled(Flex)`
   position: sticky;
@@ -48,7 +48,7 @@ function Navbar({ ...props }) {
       {...props}
     >
       <Flex align="center">
-        <BrandLogoIcon w="100px" />
+        <BrandLogoIcon />
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
