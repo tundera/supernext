@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 const cwd = process.cwd()
 
 export async function getAllArticles() {
-  const root = path.join(cwd, 'src/services/content/articles')
+  const root = path.join(cwd, 'services/content/articles')
   const articles = fs.readdirSync(root).map((p) => {
     const content = fs.readFileSync(path.join(root, p), 'utf8')
 
@@ -20,7 +20,7 @@ export async function getAllArticles() {
 }
 
 export async function getArticle(slug: string) {
-  const root = path.join(cwd, 'src/services/content/articles')
+  const root = path.join(cwd, 'services/content/articles')
   const source = fs.readFileSync(path.join(root, `${slug}.mdx`), 'utf8')
 
   const { data: frontMatter, content } = matter(source)

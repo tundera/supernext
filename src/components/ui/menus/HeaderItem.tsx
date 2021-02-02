@@ -9,7 +9,7 @@ type Props = {
   isLast?: boolean
 }
 
-const MenuItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
+const HeaderItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
   const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   return (
@@ -25,4 +25,4 @@ const MenuItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
   )
 }
 
-export default MenuItem
+export default HeaderItem

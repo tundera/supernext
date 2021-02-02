@@ -1,6 +1,10 @@
 import { preToCodeBlock } from 'mdx-utils'
-import CodeBlock from '@components/ui/CodeBlock'
 import { MDXProvider } from '@mdx-js/react'
+
+import { Text, UnorderedList, ListItem } from '@chakra-ui/react'
+
+import Layout from '@components/layouts/MdxLayout'
+import CodeBlock from '@components/ui/CodeBlock'
 
 const components = {
   pre: (preProps) => {
@@ -10,5 +14,32 @@ const components = {
     }
     return <pre {...preProps} />
   },
+  h1: ({ children }) => (
+    <Text fontSize="2xl" mb={3}>
+      {children}
+    </Text>
+  ),
+  h2: ({ children }) => (
+    <Text fontSize="xl" my={3}>
+      {children}
+    </Text>
+  ),
+  h3: ({ children }) => (
+    <Text fontSize="md" my={3}>
+      {children}
+    </Text>
+  ),
+  h4: ({ children }) => (
+    <Text fontSize="sm" my={3}>
+      {children}
+    </Text>
+  ),
+  ul: ({ children }) => <UnorderedList my={2}>{children}</UnorderedList>,
+  li: ({ children }) => <ListItem>{children}</ListItem>,
+  p: ({ children }) => <Text my={2}>{children}</Text>,
+  Header,
+  HeaderText,
+  Section,
+  Layout,
 }
 export const wrapRootElement = ({ element }) => <MDXProvider components={components}>{element}</MDXProvider>

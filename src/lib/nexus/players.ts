@@ -1,9 +1,9 @@
-import type { Player } from 'src/services/nexus/types'
+import type { Player } from 'services/nexus/types'
 
 import { request } from 'graphql-request'
 
-import AllPlayersQuery from 'src/services/nexus/graphql/queries/AllPlayers'
-import PlayersByTeamQuery from 'src/services/nexus/graphql/queries/PlayersByTeam'
+import AllPlayersQuery from 'services/nexus/graphql/queries/AllPlayers'
+import PlayersByTeamQuery from 'services/nexus/graphql/queries/PlayersByTeam'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

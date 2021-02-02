@@ -1,4 +1,4 @@
-import { Box, Text, List, ListItem, ListIcon, SimpleGrid } from '@chakra-ui/react'
+import { useColorModeValue, Box, Text, List, ListItem, ListIcon, SimpleGrid } from '@chakra-ui/react'
 import { MdDone } from 'react-icons/md'
 
 import SectionHeadline from '@components/ui/SectionHeadline'
@@ -13,8 +13,10 @@ type Props = {
 }
 
 const Overview = ({ features }: Props) => {
+  const bg = useColorModeValue('whiteAlpha.900', 'stone.700')
+
   return (
-    <Box bg="gray.900" p={8} rounded="md">
+    <Box bg={bg} p={8} rounded="md" boxShadow="xl">
       <SectionHeadline size="lg" as="h3">
         Product Features
       </SectionHeadline>

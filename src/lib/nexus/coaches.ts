@@ -1,8 +1,8 @@
-import type { Coach } from 'src/services/nexus/types'
+import type { Coach } from 'services/nexus/types'
 
 import { request } from 'graphql-request'
 
-import AllCoachesQuery from 'src/services/nexus/graphql/queries/AllCoaches'
+import AllCoachesQuery from 'services/nexus/graphql/queries/AllCoaches'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

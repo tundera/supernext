@@ -1,4 +1,4 @@
-import type { Coach } from 'src/services/nexus/types'
+import type { Coach } from 'services/nexus/types'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 

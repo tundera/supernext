@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { FrontMatter } from 'src/services/content/types'
+import type { FrontMatter } from 'services/content/types'
 
 import fs from 'fs'
 import path from 'path'
@@ -14,7 +14,7 @@ import { Heading, Text, Box } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { MdxRemote } from 'next-mdx-remote/types'
 
-import ArticleLayout from '@components/layouts/ArticleLayout'
+import ArticleLayout from '@components/layouts/MdxLayout'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: fs.readdirSync(path.join(cwd, 'src/services/content/articles')).map((p) => ({
+    paths: fs.readdirSync(path.join(cwd, 'services/content/articles')).map((p) => ({
       params: {
         slug: p.replace(/\.mdx?/, ''),
       },

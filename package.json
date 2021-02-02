@@ -27,7 +27,7 @@
     "generate:graphql": "graphql-codegen",
     "generate:groq": "sanity-codegen",
     "generate": "yarn generate:graphql && yarn generate:groq",
-    "build:nexus": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only src/services/nexus/schema",
+    "build:nexus": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only services/nexus/schema",
     "build:next": "next build",
     "build": "yarn build:nexus && yarn build:next",
     "db:introspect": "prisma introspect --schema='db/schema.prisma' --print",

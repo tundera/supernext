@@ -4,8 +4,8 @@ import Emoji from 'a11y-react-emoji'
 import MediaIconLink from '@components/MediaIconLink'
 
 function Footer() {
-  const bg = useColorModeValue('stone.700', 'gold.700')
-  const color = useColorModeValue('gold.700', 'stone.700')
+  const bg = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const color = useColorModeValue('whiteAlpha.900', 'stone.700')
 
   return (
     <Flex bottom="0" align="center" direction="column" bg={bg} color={color} w="100%" minHeight="5vh">

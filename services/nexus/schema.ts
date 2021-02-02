@@ -15,11 +15,11 @@ export const schema = makeSchema({
   types: [allTypes],
   plugins: [nexusPrisma],
   outputs: {
-    typegen: join(process.cwd(), 'src/services/nexus/generated/index.d.ts'),
-    schema: join(process.cwd(), 'src/services/nexus/generated/schema.graphql'),
+    typegen: join(process.cwd(), 'services/nexus/generated/index.d.ts'),
+    schema: join(process.cwd(), 'services/nexus/generated/schema.graphql'),
   },
   contextType: {
-    module: join(process.cwd(), 'src/services/nexus', 'types.ts'),
+    module: join(process.cwd(), 'services/nexus', 'types.ts'),
     export: 'Context',
     alias: 'ctx',
   },

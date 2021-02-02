@@ -4,7 +4,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import * as NavbarStories from './Navbar.stories'
+import * as HeaderStories from './Header.stories'
 import * as ContainerStories from './Container.stories'
 
 export default {
@@ -16,12 +16,12 @@ const Template: Story<PageLayoutProps> = (args) => <PageLayout {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  ...NavbarStories.Default.args,
+  ...HeaderStories.Default.args,
 }
 
 export const Preview = Template.bind({})
 Preview.args = {
-  ...NavbarStories.Default.args,
+  ...HeaderStories.Default.args,
   ...ContainerStories.Default.args,
   preview: true,
 }

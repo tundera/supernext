@@ -5,7 +5,7 @@ import { Flex, useColorModeValue, useTheme } from '@chakra-ui/react'
 const Container: FC = ({ children }) => {
   const theme = useTheme()
   const bg = useColorModeValue('whiteAlpha.900', 'stone.700')
-  const color = useColorModeValue('stone.700', 'gold.700')
+  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
 
   return (
     <Flex

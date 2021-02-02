@@ -8,11 +8,24 @@ type Props = {
 }
 
 const NavLink: FC<Props> = ({ to, children }) => {
-  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const color = useColorModeValue('whiteAlpha.900', 'stone.700')
+  const hoverColor = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const hoverBg = useColorModeValue('whiteAlpha.500', 'stone.300')
 
   return (
     <NextLink href={to} passHref>
-      <Button color={color} fontWeight="500" fontSize={['xs', 'sm', 'md', 'md']} as="a" variant="ghost" p={4} mx={2}>
+      <Button
+        color={color}
+        size="sm"
+        fontWeight="500"
+        fontSize={['xs', 'sm', 'md', 'md']}
+        as="a"
+        variant="ghost"
+        _hover={{ color: hoverColor, bg: hoverBg }}
+        _active={{ color: hoverColor, bg: hoverBg }}
+        p={4}
+        mx={2}
+      >
         {children}
       </Button>
     </NextLink>

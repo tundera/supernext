@@ -70,7 +70,7 @@ function StatsGrid() {
         insetY={0}
         right={0}
       >
-        {/* <Flex bgGradient="linear(to-l, gold.700 10%, transparent)" w="full" h="full" /> */}
+        {/* <Flex bgGradient="linear(to-l, whiteAlpha.900 10%, transparent)" w="full" h="full" /> */}
       </Flex>
       <Container maxW="7xl" zIndex={10} position="relative">
         <Stack direction={{ base: 'column', lg: 'row' }}>

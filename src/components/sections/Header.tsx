@@ -1,38 +1,36 @@
 import { useState } from 'react'
-import { useTheme, useColorMode, useColorModeValue, Flex, Box } from '@chakra-ui/react'
+import { useTheme, useColorModeValue, Flex, Box } from '@chakra-ui/react'
 import { FaBars as MenuIcon, FaTimes as CloseIcon } from 'react-icons/fa'
 import styled from '@emotion/styled'
 
-import NavbarItem from '@components/ui/menus/NavbarItem'
+import HeaderItem from '@components/ui/menus/HeaderItem'
 import LocaleButton from '@components/utility/LocaleToggle'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 
 import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
-const StickyNav = styled(Flex)`
+const StickyHeader = styled(Flex)`
   position: sticky;
   backdrop-filter: saturate(180%) blur(20px);
   transition: background-color 0.1 ease-in-out;
 `
 
-function Navbar({ ...props }) {
+function Header({ ...props }) {
   const [show, setShow] = useState(false)
   const toggleMenu = () => setShow(!show)
 
   const theme = useTheme()
-  const { colorMode } = useColorMode()
-  const bg = useColorModeValue('whiteAlpha.900', 'stone.700')
-  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
-  const iconColor = useColorModeValue(theme.colors.stone['500'], theme.colors.whiteAlpha['900'])
+  const bg = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const iconColor = useColorModeValue(theme.colors.whiteAlpha['900'], theme.colors.stone['700'])
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
   return (
-    <StickyNav
+    <StickyHeader
       zIndex={20}
       top="0"
       boxShadow="2xl"
-      minHeight={['5vh']}
+      minHeight="5vh"
       as="nav"
       align="center"
       justify="space-between"
@@ -58,22 +56,22 @@ function Navbar({ ...props }) {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <NavbarItem to="/">Home</NavbarItem>
-          <NavbarItem to="/blog">Blog</NavbarItem>
-          <NavbarItem to="/about">About</NavbarItem>
-          <NavbarItem to="/work">Work</NavbarItem>
-          <NavbarItem to="/store">Store</NavbarItem>
-          <NavbarItem to="/teams" isLast>
+          <HeaderItem to="/">Home</HeaderItem>
+          <HeaderItem to="/blog">Blog</HeaderItem>
+          <HeaderItem to="/about">About</HeaderItem>
+          <HeaderItem to="/work">Work</HeaderItem>
+          <HeaderItem to="/store">Store</HeaderItem>
+          <HeaderItem to="/teams" isLast>
             Teams
-          </NavbarItem>
+          </HeaderItem>
           <Flex ml="8" align="center">
             <DarkModeToggle />
             <LocaleButton />
           </Flex>
         </Flex>
       </Box>
-    </StickyNav>
+    </StickyHeader>
   )
 }
 
-export default Navbar
+export default Header

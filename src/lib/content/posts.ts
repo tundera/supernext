@@ -1,4 +1,4 @@
-import type { Post } from 'src/services/sanity/generated/groq'
+import type { Post } from 'services/sanity/generated/groq'
 
 import { format } from 'light-date'
 

@@ -16,7 +16,7 @@ import LoadingSpinner from '@components/utility/LoadingSpinner'
 import { createImageUrl } from 'src/utils/sanity'
 
 import { usePreviewSubscription } from '@lib/sanity'
-import { PostBySlugQuery } from 'src/services/sanity/posts'
+import { PostBySlugQuery } from 'services/sanity/posts'
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   sanity.setPreviewMode(preview)

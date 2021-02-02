@@ -1,9 +1,9 @@
 generates:
-  src/services/nexus/generated/graphql.ts:
+  services/nexus/generated/graphql.ts:
     schema:
       - http://localhost:3000/api/graphql
     documents:
-      - src/services/nexus/graphql/**/*.ts
+      - services/nexus/graphql/**/*.ts
     plugins:
       - typescript
       - typescript-operations
@@ -12,11 +12,11 @@ generates:
       fetcher: graphql-request
       useTypeImports: true
 
-  src/services/sanity/generated/graphql.ts:
+  services/sanity/generated/graphql.ts:
     schema:
       - https://56u545lj.api.sanity.io/v1/graphql/production/default
     documents:
-      - src/services/sanity/graphql/**/*.ts
+      - services/sanity/graphql/**/*.ts
     plugins:
       - typescript
       - typescript-operations

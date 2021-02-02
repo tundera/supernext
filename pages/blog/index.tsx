@@ -6,7 +6,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
 import PostsList from '@components/ui/compound/PostsList'
 import { usePreviewSubscription } from '@lib/sanity'
-import { AllPostsQuery } from 'src/services/sanity/posts'
+import { AllPostsQuery } from 'services/sanity/posts'
 import sanity from '@lib/sanity/client'
 import { getAllPosts } from '@lib/content/posts'
 

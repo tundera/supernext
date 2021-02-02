@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import type { NexusGenObjects } from 'src/services/nexus/generated'
+import type { NexusGenObjects } from 'services/nexus/generated'
 
 import { PrismaClient } from '@prisma/client'
 
