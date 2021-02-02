@@ -14,7 +14,7 @@ import { Heading, Text, Box } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { MdxRemote } from 'next-mdx-remote/types'
 
-import ArticleLayout from '@components/layouts/MdxLayout'
+import MdxLayout from '@components/layouts/MdxLayout'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
@@ -107,7 +107,7 @@ const Article = ({ article, frontMatter, preview }: Props) => {
         }}
       />
       <PageLayout preview={preview}>
-        <ArticleLayout>
+        <MdxLayout>
           <Heading>
             <nav>
               <NextLink href="/">
@@ -122,7 +122,7 @@ const Article = ({ article, frontMatter, preview }: Props) => {
             {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
           </Box>
           {renderedContent}
-        </ArticleLayout>
+        </MdxLayout>
       </PageLayout>
     </>
   )

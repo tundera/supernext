@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { Flex, Container } from '@chakra-ui/react'
 
-const ArticleLayout: FC = ({ children }) => {
+const MdxLayout: FC = ({ children }) => {
   return (
     <Flex bg="gray.400" minHeight="100vh" alignItems="center" justifyContent="center">
       <Container>{children}</Container>
@@ -10,4 +10,4 @@ const ArticleLayout: FC = ({ children }) => {
   )
 }
 
-export default ArticleLayout
+export default MdxLayout

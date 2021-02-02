@@ -4,6 +4,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
 import Layout from '@components/layouts/MdxLayout'
+import Header from '@components/sections/Header'
 import CodeBlock from '@components/ui/CodeBlock'
 
 const components = {
@@ -38,8 +39,7 @@ const components = {
   li: ({ children }) => <ListItem>{children}</ListItem>,
   p: ({ children }) => <Text my={2}>{children}</Text>,
   Header,
-  HeaderText,
-  Section,
   Layout,
 }
-export const wrapRootElement = ({ element }) => <MDXProvider components={components}>{element}</MDXProvider>
+
+export default ({ children }) => <MDXProvider components={components}>{children}</MDXProvider>
