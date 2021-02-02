@@ -39,6 +39,9 @@ yarn-error.log*
 .env
 .env.build
 
+# prisma
+db/data/**
+
 # sanity
 /studio/node_modules
 /studio/dist
