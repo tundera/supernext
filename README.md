@@ -42,6 +42,7 @@ Please check out the following projects that served as a base for this one:
 
 Some notable open-source libraries and developer blog tutorials were were a big aid in creating this template. Check them out:
 
+- [Bison App](https://github.com/echobind/bisonapp)
 - [surabayajs.org](https://github.com/surabayajs/surabayajs.org)
 - [chakra-templates](https://github.com/hauptrolle/chakra-templates)
 - [hauptrolle.me](https://github.com/hauptrolle/hauptrolle.me)
