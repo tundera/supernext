@@ -14,7 +14,7 @@ const MenuItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
 
   return (
     <Text
-      mb={{ base: isLast ? 0 : 8, sm: 0 }}
+      mb={{ base: isLast ? 2 : 8, sm: 2 }}
       mr={{ base: 0, sm: isLast ? 0 : 2 }}
       display="block"
       color={color}

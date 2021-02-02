@@ -6,7 +6,7 @@ function DarkModeToggle() {
 
   const label = useColorModeValue('Dark Mode', 'Light Mode')
   return (
-    <Box>
+    <Box mx="2">
       <Tooltip label={label} hasArrow>
         {colorMode === 'light' ? (
           <IconButton

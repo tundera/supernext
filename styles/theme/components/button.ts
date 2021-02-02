@@ -9,17 +9,17 @@ export default {
     sm: {
       h: '24px',
       fontSize: '12px',
-      px: '16px',
+      px: '8px',
     },
     md: {
       h: '32px',
       fontSize: '16px',
-      px: '24px',
+      px: '8px',
     },
     xl: {
       h: '56px',
       fontSize: 'lg',
-      px: '32px',
+      px: '16px',
     },
   },
   // 3. We can add a new visual variant

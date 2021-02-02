@@ -21,8 +21,9 @@ function Navbar({ ...props }) {
 
   const theme = useTheme()
   const { colorMode } = useColorMode()
+  const bg = useColorModeValue('whiteAlpha.900', 'stone.700')
   const color = useColorModeValue('stone.700', 'whiteAlpha.900')
-  const iconColor = useColorModeValue(theme.colors.stone['500'], theme.colors.gold['500'])
+  const iconColor = useColorModeValue(theme.colors.stone['500'], theme.colors.whiteAlpha['900'])
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
@@ -31,25 +32,20 @@ function Navbar({ ...props }) {
       zIndex={20}
       top="0"
       boxShadow="2xl"
-      minHeight="5vh"
+      minHeight={['5vh']}
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       w="100%"
-      px={16}
-      py={8}
-      bg={[
-        'stone.700',
-        'stone.700',
-        colorMode === 'dark' ? 'stone.700' : 'whiteAlpha.900',
-        colorMode === 'dark' ? 'stone.700' : 'whiteAlpha.900',
-      ]}
+      px={[8, 32]}
+      py={[1, 4]}
+      bg={bg}
       {...props}
     >
-      <Flex align="center">
-        <BrandLogoIcon />
-      </Flex>
+      <Box align="center">
+        <BrandLogoIcon ml="2" w="24" h="24" preserveAspectRatio="true" />
+      </Box>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
         {show ? <CloseIcon /> : <MenuIcon />}
@@ -70,8 +66,10 @@ function Navbar({ ...props }) {
           <NavbarItem to="/teams" isLast>
             Teams
           </NavbarItem>
-          <DarkModeToggle />
-          <LocaleButton />
+          <Flex ml="8" align="center">
+            <DarkModeToggle />
+            <LocaleButton />
+          </Flex>
         </Flex>
       </Box>
     </StickyNav>
