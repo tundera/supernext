@@ -2054,16 +2054,6 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
-"@graphql-codegen/typescript-graphql-request@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@graphql-codegen/typescript-graphql-request/-/typescript-graphql-request-3.0.0.tgz#4db40327919986d82034c24ac96dd848eb960655"
-  integrity sha512-W2GF0SAPJAd7t8yQWKBgIp9XaKad56YcThvpe2qxaMGrM0L9Y7dK91csad0SFxhm5kmkPcDnAodIVr2VplSKNw==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "^1.18.2"
-    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
-    auto-bind "~4.0.0"
-    tslib "~2.0.1"
-
 "@graphql-codegen/typescript-operations@^1.17.14":
   version "1.17.14"
   resolved "https://registry.npmjs.org/@graphql-codegen/typescript-operations/-/typescript-operations-1.17.14.tgz#69b4bee4d66f2ea7e288f1be889e08946ef3452a"
@@ -2073,6 +2063,18 @@
     "@graphql-codegen/typescript" "^1.20.1"
     "@graphql-codegen/visitor-plugin-common" "^1.18.1"
     auto-bind "~4.0.0"
+    tslib "~2.1.0"
+
+"@graphql-codegen/typescript-react-query@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@graphql-codegen/typescript-react-query/-/typescript-react-query-1.1.0.tgz#68287dddf06d336365b6ceb6b85bb500a2e22c6f"
+  integrity sha512-IORnI3dcXBzXiDriZrp56hiyvKQNNC6muugWyugUadNXYXDOzTZrh45dxFgxgro3iUN4ORITCr4cWS+QeDgmnw==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    "@graphql-codegen/visitor-plugin-common" "^1.18.1"
+    auto-bind "~4.0.0"
+    camel-case "^4.1.2"
+    pascal-case "^3.1.1"
     tslib "~2.1.0"
 
 "@graphql-codegen/typescript@^1.20.1", "@graphql-codegen/typescript@^1.20.2":
@@ -2085,7 +2087,7 @@
     auto-bind "~4.0.0"
     tslib "~2.1.0"
 
-"@graphql-codegen/visitor-plugin-common@^1.17.22", "@graphql-codegen/visitor-plugin-common@^1.18.1", "@graphql-codegen/visitor-plugin-common@^1.18.2":
+"@graphql-codegen/visitor-plugin-common@^1.18.1", "@graphql-codegen/visitor-plugin-common@^1.18.2":
   version "1.18.2"
   resolved "https://registry.npmjs.org/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.18.2.tgz#1a30bd33f011b4fb976e0f8462d160126db875ea"
   integrity sha512-A8yBJGq7A7gxaVVXK4QXwV1ZpzZ64fH7U7JTGeq86o3jA7QNV2rmCRXCY0JttS2fu+olV18NjsWRwAXuAb1g9A==
@@ -10294,6 +10296,13 @@ graphql-request@^3.3.0, graphql-request@^3.4.0:
     extract-files "^9.0.0"
     form-data "^3.0.0"
 
+graphql-scalars@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.npmjs.org/graphql-scalars/-/graphql-scalars-1.7.0.tgz#32cf623027664f1d50c5d058767a87387475c107"
+  integrity sha512-CCL9aaZdK1VD2jYFCF0ONB1cT5brK9DXymSuu/E/JoYLmAaLwGgjdzY66mT2ZI5oOIrSrJqWTf4y20qdSaE4MQ==
+  dependencies:
+    tslib "~2.0.3"
+
 graphql-shield@^7.5.0:
   version "7.5.0"
   resolved "https://registry.npmjs.org/graphql-shield/-/graphql-shield-7.5.0.tgz#aa3af226946946dfadac33eccc6cbe7fec6e9000"
@@ -18392,7 +18401,7 @@ tslib@^2, tslib@^2.0.1, tslib@^2.0.3, tslib@~2.1.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
 
-tslib@^2.0.0, tslib@~2.0.1:
+tslib@^2.0.0, tslib@~2.0.1, tslib@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==

@@ -1,9 +1,9 @@
-import type { Player } from 'services/nexus/types'
+import type { Player } from '@prisma/client'
 
 import { request } from 'graphql-request'
 
-import AllPlayersQuery from 'services/nexus/graphql/queries/AllPlayers'
-import PlayersByTeamQuery from 'services/nexus/graphql/queries/PlayersByTeam'
+import AllPlayersQuery from 'services/graphql/operations/queries/AllPlayers'
+import PlayersByTeamQuery from 'services/graphql/operations/queries/PlayersByTeam'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

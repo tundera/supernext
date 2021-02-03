@@ -6,14 +6,14 @@ import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
 import PostsList from '@components/ui/compound/PostsList'
 import { usePreviewSubscription } from '@lib/sanity'
-import { AllPostsQuery } from 'services/sanity/posts'
+import { PostsQuery } from 'services/sanity/posts'
 import sanity from '@lib/sanity/client'
-import { getAllPosts } from '@lib/content/posts'
+import { getPosts } from '@lib/content/posts'
 
 export const getStaticProps = async ({ preview = false }) => {
   sanity.setPreviewMode(preview)
 
-  const posts = await getAllPosts()
+  const posts = await getPosts()
 
   return {
     props: {
@@ -25,7 +25,7 @@ export const getStaticProps = async ({ preview = false }) => {
 }
 
 const Blog = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = usePreviewSubscription(AllPostsQuery, {
+  const { data } = usePreviewSubscription(PostsQuery, {
     params: { count: POSTS_PER_PAGE },
     initialData: posts,
     enabled: preview,

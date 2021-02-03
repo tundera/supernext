@@ -1,4 +1,4 @@
-import type { Post } from 'services/sanity/generated/groq'
+import type { Post } from 'services/sanity/generated/types'
 
 import { format } from 'light-date'
 
@@ -20,14 +20,14 @@ const getExpandedPosts = async (posts: Post[]) => {
   return Promise.all(posts.map((post) => expandPost(post)))
 }
 
-export async function getAllPosts() {
+export async function getPosts() {
   const data = await sanity.getAll('post')
   const posts = await getExpandedPosts(data)
 
   return posts
 }
 
-export async function getPost(slug: string) {
+export async function getPostBySlug(slug: string) {
   const [post] = await sanity.getAll('post', `_type == "post" && slug.current == "${slug}"`)
   const { author, date, ...rest } = post
 

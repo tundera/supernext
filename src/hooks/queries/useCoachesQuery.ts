@@ -1,4 +1,4 @@
-import type { Coach } from 'services/nexus/types'
+import type { Coach } from '@prisma/client'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 

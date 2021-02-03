@@ -1,0 +1,7 @@
+query ColorSchemeByTeam($id: Int) {
+  colorSchemeByTeam(id: $id) {
+    id
+    primary
+    secondary
+  }
+}

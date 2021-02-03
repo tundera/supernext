@@ -1,0 +1,12 @@
+query AllTeams {
+  allTeams {
+    id
+    name
+    city
+    logo
+    colorScheme {
+      primary
+      secondary
+    }
+  }
+}

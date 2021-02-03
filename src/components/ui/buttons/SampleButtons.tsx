@@ -7,10 +7,10 @@ function SampleButtons() {
   return (
     <Box>
       <HStack>
-        <SocialButton colorScheme="facebook" icon={<FaFacebook />}>
+        <SocialButton scheme="facebook" icon={<FaFacebook />}>
           Facebook
         </SocialButton>
-        <SocialButton colorScheme="twitter" icon={<FaTwitter />}>
+        <SocialButton scheme="twitter" icon={<FaTwitter />}>
           Twitter
         </SocialButton>
       </HStack>

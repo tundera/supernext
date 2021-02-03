@@ -1,0 +1,9 @@
+query AllCoaches {
+  allCoaches {
+    id
+    name
+    team {
+      name
+    }
+  }
+}

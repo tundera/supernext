@@ -9,7 +9,7 @@ import { Suspense } from 'react'
 import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
 
 import sanity from '@lib/sanity/client'
-import { getPost } from '@lib/content/posts'
+import { getPostBySlug } from '@lib/content/posts'
 import CodeBlock from '@components/ui/CodeBlock'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/LoadingSpinner'
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     content,
     slug: { current },
     ...rest
-  } = await getPost(pageSlug)
+  } = await getPostBySlug(pageSlug)
 
   if (current !== pageSlug || !content) {
     return {

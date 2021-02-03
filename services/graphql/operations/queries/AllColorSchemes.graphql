@@ -1,0 +1,8 @@
+query AllColorSchemes {
+  allColorSchemes {
+    id
+    primary
+    secondary
+    teamId
+  }
+}

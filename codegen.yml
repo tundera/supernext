@@ -1,28 +1,14 @@
+schema: http://localhost:3000/api/graphql
+documents: './services/graphql/operations/**/*.graphql'
 generates:
-  services/nexus/generated/graphql.ts:
-    schema:
-      - http://localhost:3000/api/graphql
-    documents:
-      - services/nexus/graphql/**/*.ts
+  ./services/graphql/generated/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
-      - typescript-graphql-request
+      - typescript-react-query
     config:
       fetcher: graphql-request
       useTypeImports: true
-
-  services/sanity/generated/graphql.ts:
-    schema:
-      - https://56u545lj.api.sanity.io/v1/graphql/production/default
-    documents:
-      - services/sanity/graphql/**/*.ts
-    plugins:
-      - typescript
-      - typescript-operations
-      - typescript-graphql-request
-    config:
-      useTypeImports: true
 hooks:
-  afterOneFileWrite:
-    - eslint --fix
+  afterAllFileWrite:
+    - prettier --write

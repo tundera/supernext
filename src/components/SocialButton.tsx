@@ -3,13 +3,13 @@ import type { FC, ReactElement } from 'react'
 import { Button } from '@chakra-ui/react'
 
 type Props = {
-  colorScheme: string
+  scheme: string
   icon: ReactElement
 }
 
-const SocialButton: FC<Props> = ({ colorScheme, icon, children }) => {
+const SocialButton: FC<Props> = ({ scheme, icon, children }) => {
   return (
-    <Button colorScheme={colorScheme} leftIcon={icon}>
+    <Button colorScheme={scheme} leftIcon={icon}>
       {children}
     </Button>
   )

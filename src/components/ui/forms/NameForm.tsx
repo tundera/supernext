@@ -35,7 +35,7 @@ export function NameForm() {
         <Input name="name" defaultValue="Example Name" placeholder="name" ref={register({ validate: validateName })} />
         <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
       </FormControl>
-      <Button mt={4} colorScheme="teal" isLoading={formState.isSubmitting} type="submit">
+      <Button mt={4} colorScheme="blue" isLoading={formState.isSubmitting} type="submit">
         Submit
       </Button>
     </form>

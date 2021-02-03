@@ -3,7 +3,12 @@ import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
 import { join } from 'path'
 import { Context } from './types'
 
-import * as allTypes from './resolvers'
+import * as moduleTypes from './modules'
+import * as scalarTypes from './scalars'
+
+import prettierConfig from '../../prettier.config'
+
+const cwd = process.cwd()
 
 const nexusPrisma = nexusSchemaPrisma({
   experimentalCRUD: true,
@@ -12,14 +17,14 @@ const nexusPrisma = nexusSchemaPrisma({
 })
 
 export const schema = makeSchema({
-  types: [allTypes],
+  types: [moduleTypes, scalarTypes],
   plugins: [nexusPrisma],
   outputs: {
-    typegen: join(process.cwd(), 'services/nexus/generated/index.d.ts'),
-    schema: join(process.cwd(), 'services/nexus/generated/schema.graphql'),
+    typegen: join(cwd, 'services/graphql/generated/index.d.ts'),
+    schema: join(cwd, 'services/graphql/generated/schema.graphql'),
   },
   contextType: {
-    module: join(process.cwd(), 'services/nexus', 'types.ts'),
+    module: join(cwd, 'services/graphql', 'types.ts'),
     export: 'Context',
     alias: 'ctx',
   },
@@ -31,5 +36,5 @@ export const schema = makeSchema({
       },
     ],
   },
-  prettierConfig: join(process.cwd(), 'prettier.config.js'),
+  prettierConfig,
 })

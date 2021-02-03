@@ -1,6 +1,21 @@
-import { extendType, list, intArg } from 'nexus'
+import { objectType, extendType, list, intArg } from 'nexus'
 
-export const coach = extendType({
+export const Coach = objectType({
+  name: 'Coach',
+  definition(t) {
+    t.model.id()
+    t.model.createdAt()
+    t.model.updatedAt()
+    t.model.handle()
+    t.model.name()
+    t.model.teamId()
+    t.model.type()
+    t.model.isAssistant()
+    t.model.team()
+  },
+})
+
+export const CoachQueries = extendType({
   type: 'Query',
   definition(t) {
     t.crud.coach()

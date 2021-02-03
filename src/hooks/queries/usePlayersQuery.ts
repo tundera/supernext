@@ -1,4 +1,4 @@
-import type { Player } from 'services/nexus/types'
+import type { Player } from '@prisma/client'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 

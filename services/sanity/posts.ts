@@ -16,7 +16,7 @@ export const PostBySlugQuery = groq`
 }
 `
 
-export const AllPostsQuery = groq`
+export const PostsQuery = groq`
   *[_type == "post"] | order(date desc) [0..($count - 1)] {
     _id,
     title,

@@ -1,0 +1,13 @@
+query AllPlayers {
+  allPlayers {
+    id
+    name
+    team {
+      name
+    }
+    position
+    number
+    height
+    weight
+  }
+}

@@ -1,0 +1,6 @@
+query CoachesByTeam($id: Int) {
+  coachesByTeam(id: $id) {
+    id
+    name
+  }
+}
