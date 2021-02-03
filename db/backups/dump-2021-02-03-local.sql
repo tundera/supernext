@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.1
+-- Dumped from database version 12.5
 -- Dumped by pg_dump version 13.1
 
 SET statement_timeout = 0;
@@ -28,8 +28,8 @@ CREATE TABLE public."Coach" (
     id integer NOT NULL,
     "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "updatedAt" timestamp(3) without time zone NOT NULL,
-    handle text,
-    name text,
+    handle text NOT NULL,
+    name text NOT NULL,
     "teamId" integer,
     type text,
     "isAssistant" text
@@ -61,6 +61,44 @@ ALTER SEQUENCE public."Coach_id_seq" OWNED BY public."Coach".id;
 
 
 --
+-- Name: ColorScheme; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."ColorScheme" (
+    id integer NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "primary" text NOT NULL,
+    secondary text NOT NULL,
+    "teamId" integer
+);
+
+
+ALTER TABLE public."ColorScheme" OWNER TO postgres;
+
+--
+-- Name: ColorScheme_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."ColorScheme_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."ColorScheme_id_seq" OWNER TO postgres;
+
+--
+-- Name: ColorScheme_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."ColorScheme_id_seq" OWNED BY public."ColorScheme".id;
+
+
+--
 -- Name: Player; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -68,12 +106,12 @@ CREATE TABLE public."Player" (
     id integer NOT NULL,
     "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "updatedAt" timestamp(3) without time zone NOT NULL,
-    handle text,
-    name text,
-    slug text,
+    handle text NOT NULL,
+    name text NOT NULL,
+    slug text NOT NULL,
     "teamId" integer,
-    height text,
-    weight text,
+    height text NOT NULL,
+    weight text NOT NULL,
     number text,
     "position" text
 );
@@ -111,17 +149,20 @@ CREATE TABLE public."Team" (
     id integer NOT NULL,
     "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "updatedAt" timestamp(3) without time zone NOT NULL,
-    handle text,
-    name text,
-    slug text,
-    city text,
-    abbreviation text,
+    handle text NOT NULL,
+    name text NOT NULL,
+    slug text NOT NULL,
+    city text NOT NULL,
+    abbreviation text NOT NULL,
     wins integer,
     losses integer,
     "winPercentage" numeric(65,30),
-    conference text,
-    division text,
-    established text
+    conference text NOT NULL,
+    division text NOT NULL,
+    established text NOT NULL,
+    "primaryColor" text NOT NULL,
+    "secondaryColor" text NOT NULL,
+    logo text NOT NULL
 );
 
 
@@ -150,49 +191,6 @@ ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
--- Name: _Migration; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."_Migration" (
-    revision integer NOT NULL,
-    name text NOT NULL,
-    datamodel text NOT NULL,
-    status text NOT NULL,
-    applied integer NOT NULL,
-    rolled_back integer NOT NULL,
-    datamodel_steps text NOT NULL,
-    database_migration text NOT NULL,
-    errors text NOT NULL,
-    started_at timestamp(3) without time zone NOT NULL,
-    finished_at timestamp(3) without time zone
-);
-
-
-ALTER TABLE public."_Migration" OWNER TO postgres;
-
---
--- Name: _Migration_revision_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."_Migration_revision_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public."_Migration_revision_seq" OWNER TO postgres;
-
---
--- Name: _Migration_revision_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."_Migration_revision_seq" OWNED BY public."_Migration".revision;
-
-
---
 -- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -218,6 +216,13 @@ ALTER TABLE ONLY public."Coach" ALTER COLUMN id SET DEFAULT nextval('public."Coa
 
 
 --
+-- Name: ColorScheme id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ColorScheme" ALTER COLUMN id SET DEFAULT nextval('public."ColorScheme_id_seq"'::regclass);
+
+
+--
 -- Name: Player id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -229,13 +234,6 @@ ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Pl
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
-
-
---
--- Name: _Migration revision; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."_Migration" ALTER COLUMN revision SET DEFAULT nextval('public."_Migration_revision_seq"'::regclass);
 
 
 --
@@ -474,6 +472,44 @@ COPY public."Coach" (id, "createdAt", "updatedAt", handle, name, "teamId", type,
 218	2020-11-03 19:18:09.83	2020-11-03 19:18:09.83	1997	Mike Wells	29	Assistant Coach	2
 221	2020-11-03 19:18:09.833	2020-11-03 19:18:09.833	204007	Alex Jensen	29	Assistant Coach	2
 223	2020-11-03 19:18:09.835	2020-11-03 19:18:09.835	101277	Brian Zettler	29	Trainer	3
+\.
+
+
+--
+-- Data for Name: ColorScheme; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."ColorScheme" (id, "createdAt", "updatedAt", "primary", secondary, "teamId") FROM stdin;
+29	2021-01-26 04:05:11.968	2021-01-26 04:05:08.826	#002D62	#FDBB30	12
+30	2021-01-26 04:05:12.421	2021-01-26 04:05:08.819	#0C2340	#236192	18
+32	2021-01-26 04:32:32.495	2021-01-26 04:32:32.492	#CE1141	#000000	5
+33	2021-01-26 04:38:17.75	2021-01-26 04:38:17.747	#CE1141	#000000	28
+1	2021-01-26 04:05:08.844	2021-01-26 04:05:08.819	# 002B5C	#E31837	30
+2	2021-01-26 04:05:09.289	2021-01-26 04:05:08.82	#C4CED4	#000000	27
+3	2021-01-26 04:05:09.731	2021-01-26 04:05:08.82	#5A2D81	#63727A	26
+4	2021-01-26 04:05:09.731	2021-01-26 04:05:08.82	#002B5C	#F9A01B	29
+5	2021-01-26 04:05:10.175	2021-01-26 04:05:08.821	#98002E	#000000	16
+6	2021-01-26 04:05:10.175	2021-01-26 04:05:08.821	#E03A3E	#000000	25
+7	2021-01-26 04:05:10.175	2021-01-26 04:05:08.821	#1D1160	#E56020	24
+8	2021-01-26 04:05:10.631	2021-01-26 04:05:08.822	#5D76A9	#12173F	15
+10	2021-01-26 04:05:10.631	2021-01-26 04:05:08.823	#00471B	#EEE1C6	17
+9	2021-01-26 04:05:10.631	2021-01-26 04:05:08.822	#007AC1	#EF3B24	21
+11	2021-01-26 04:05:10.631	2021-01-26 04:05:08.822	#006BB6	#D50032	23
+15	2021-01-26 04:05:11.081	2021-01-26 04:05:08.823	#006BB6	#F58426	20
+13	2021-01-26 04:05:11.081	2021-01-26 04:05:08.823	#0C2340	#C8102E	19
+12	2021-01-26 04:05:11.081	2021-01-26 04:05:08.824	#C8102E	#1D428A	13
+14	2021-01-26 04:05:11.081	2021-01-26 04:05:08.824	#552583	#FDB927	14
+16	2021-01-26 04:05:11.081	2021-01-26 04:05:08.823	#0077C0	#C4CED4	22
+18	2021-01-26 04:05:11.521	2021-01-26 04:05:08.825	#1D428A	#FFC72C	10
+19	2021-01-26 04:05:11.521	2021-01-26 04:05:08.825	#0E2240	#FEC524	8
+21	2021-01-26 04:05:11.521	2021-01-26 04:05:08.826	#C8102E	#1D42BA	9
+17	2021-01-26 04:05:11.521	2021-01-26 04:05:08.825	#CE1141	#000000	11
+22	2021-01-26 04:05:11.521	2021-01-26 04:05:08.824	#00538C	#B8C4CA	7
+28	2021-01-26 04:05:11.968	2021-01-26 04:05:08.827	#000000	#FFFFFF	3
+26	2021-01-26 04:05:11.968	2021-01-26 04:05:08.828	#E03A3E	#C1D32F	1
+24	2021-01-26 04:05:11.968	2021-01-26 04:05:08.827	#007A33	#BA9653	2
+23	2021-01-26 04:05:11.968	2021-01-26 04:05:08.827	#860038	#041E42	6
+25	2021-01-26 04:05:11.968	2021-01-26 04:05:08.826	#1D1160	#00788C	4
 \.
 
 
@@ -999,46 +1035,37 @@ COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId"
 -- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, wins, losses, "winPercentage", conference, division, established) FROM stdin;
-1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	20	47	0.299000000000000000000000000000	East	Southeast	1949
-2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	48	24	0.667000000000000000000000000000	East	Atlantic	1946
-3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	35	37	0.486000000000000000000000000000	East	Atlantic	1976
-4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	23	42	0.354000000000000000000000000000	East	Southeast	1988
-5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	22	43	0.338000000000000000000000000000	East	Central	1966
-6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	19	46	0.292000000000000000000000000000	East	Central	1970
-7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	43	32	0.573000000000000000000000000000	West	Southwest	1980
-8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	46	27	0.630000000000000000000000000000	West	Northwest	1976
-9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	20	46	0.303000000000000000000000000000	East	Central	1948
-10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	15	50	0.231000000000000000000000000000	West	Pacific	1946
-11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	44	28	0.611000000000000000000000000000	West	Southwest	1967
-12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	45	28	0.616000000000000000000000000000	East	Central	1976
-13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	LA	LAC	49	23	0.681000000000000000000000000000	West	Pacific	1970
-14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	52	19	0.732000000000000000000000000000	West	Pacific	1948
-15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	34	39	0.466000000000000000000000000000	West	Southwest	1995
-16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	44	29	0.603000000000000000000000000000	East	Southeast	1988
-17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	56	17	0.767000000000000000000000000000	East	Central	1968
-18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	19	45	0.297000000000000000000000000000	West	Northwest	1989
-19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	30	42	0.417000000000000000000000000000	West	Southwest	2002
-20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	21	45	0.318000000000000000000000000000	East	Atlantic	1946
-21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	44	28	0.611000000000000000000000000000	West	Northwest	1967
-22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	33	40	0.452000000000000000000000000000	East	Southeast	1989
-23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	43	30	0.589000000000000000000000000000	East	Atlantic	1949
-24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	34	39	0.466000000000000000000000000000	West	Pacific	1968
-25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	35	39	0.473000000000000000000000000000	West	Northwest	1970
-26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	31	41	0.431000000000000000000000000000	West	Pacific	1948
-27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	32	39	0.451000000000000000000000000000	West	Southwest	1976
-28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	53	19	0.736000000000000000000000000000	East	Atlantic	1995
-29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	44	28	0.611000000000000000000000000000	West	Northwest	1974
-30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	25	47	0.347000000000000000000000000000	East	Southeast	1961
-\.
-
-
---
--- Data for Name: _Migration; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."_Migration" (revision, name, datamodel, status, applied, rolled_back, datamodel_steps, database_migration, errors, started_at, finished_at) FROM stdin;
-1	20201103190612	datasource db {\n  provider = "postgres"\n  url      = "***"\n}\n\nmodel User {\n  id             Int       @id @default(autoincrement())\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n  name           String?\n  email          String    @unique\n  hashedPassword String?\n  role           String    @default("user")\n  sessions       Session[]\n}\n\nmodel Session {\n  id                 Int       @id @default(autoincrement())\n  createdAt          DateTime  @default(now())\n  updatedAt          DateTime  @updatedAt\n  expiresAt          DateTime?\n  handle             String    @unique\n  user               User?     @relation(fields: [userId], references: [id])\n  userId             Int?\n  hashedSessionToken String?\n  antiCSRFToken      String?\n  publicData         String?\n  privateData        String?\n}\n\nmodel Team {\n  id            Int      @id @default(autoincrement())\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n  handle        String?  @unique\n  name          String?\n  slug          String?\n  city          String?\n  abbreviation  String?\n  wins          Int?\n  losses        Int?\n  winPercentage Float?\n  conference    String?\n  division      String?\n  established   String?\n  coaches       Coach[]\n  players       Player[]\n}\n\nmodel Player {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  handle    String?  @unique\n  name      String?\n  slug      String?\n  team      Team?    @relation(fields: [teamId], references: [id])\n  teamId    Int?\n  height    String?\n  weight    String?\n  number    String?\n  position  String?\n}\n\nmodel Coach {\n  id          Int      @id @default(autoincrement())\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  handle      String?  @unique\n  name        String?\n  team        Team?    @relation(fields: [teamId], references: [id])\n  teamId      Int?\n  type        String?\n  isAssistant String?\n}\n	MigrationSuccess	13	0	[{"tag":"CreateSource","source":"db"},{"tag":"CreateArgument","location":{"tag":"Source","source":"db"},"argument":"provider","value":"\\"postgres\\""},{"tag":"CreateArgument","location":{"tag":"Source","source":"db"},"argument":"url","value":"\\"***\\""},{"tag":"CreateModel","model":"User"},{"tag":"CreateField","model":"User","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"User","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"User","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"User","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"User","field":"email","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"email"},"directive":"unique"}},{"tag":"CreateField","model":"User","field":"hashedPassword","type":"String","arity":"Optional"},{"tag":"CreateField","model":"User","field":"role","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"User","field":"role"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"User","field":"role"},"directive":"default"},"argument":"","value":"\\"user\\""},{"tag":"CreateField","model":"User","field":"sessions","type":"Session","arity":"List"},{"tag":"CreateModel","model":"Session"},{"tag":"CreateField","model":"Session","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Session","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Session","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Session","field":"expiresAt","type":"DateTime","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"handle","type":"String","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Session","field":"user","type":"User","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"},"argument":"fields","value":"[userId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Session","field":"user"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Session","field":"userId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"hashedSessionToken","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"antiCSRFToken","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"publicData","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Session","field":"privateData","type":"String","arity":"Optional"},{"tag":"CreateModel","model":"Team"},{"tag":"CreateField","model":"Team","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Team","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Team","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Team","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Team","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Team","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Team","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Team","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"slug","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"city","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"abbreviation","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"wins","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"losses","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"winPercentage","type":"Float","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"conference","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"division","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"established","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Team","field":"coaches","type":"Coach","arity":"List"},{"tag":"CreateField","model":"Team","field":"players","type":"Player","arity":"List"},{"tag":"CreateModel","model":"Player"},{"tag":"CreateField","model":"Player","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Player","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Player","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Player","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Player","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"slug","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"team","type":"Team","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"},"argument":"fields","value":"[teamId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Player","field":"team"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Player","field":"teamId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"height","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"weight","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"number","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Player","field":"position","type":"String","arity":"Optional"},{"tag":"CreateModel","model":"Coach"},{"tag":"CreateField","model":"Coach","field":"id","type":"Int","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"id"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"id"},"directive":"default"},"argument":"","value":"autoincrement()"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"id"},"directive":"id"}},{"tag":"CreateField","model":"Coach","field":"createdAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"createdAt"},"directive":"default"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"createdAt"},"directive":"default"},"argument":"","value":"now()"},{"tag":"CreateField","model":"Coach","field":"updatedAt","type":"DateTime","arity":"Required"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"updatedAt"},"directive":"updatedAt"}},{"tag":"CreateField","model":"Coach","field":"handle","type":"String","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"handle"},"directive":"unique"}},{"tag":"CreateField","model":"Coach","field":"name","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"team","type":"Team","arity":"Optional"},{"tag":"CreateDirective","location":{"path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"}},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"},"argument":"fields","value":"[teamId]"},{"tag":"CreateArgument","location":{"tag":"Directive","path":{"tag":"Field","model":"Coach","field":"team"},"directive":"relation"},"argument":"references","value":"[id]"},{"tag":"CreateField","model":"Coach","field":"teamId","type":"Int","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"type","type":"String","arity":"Optional"},{"tag":"CreateField","model":"Coach","field":"isAssistant","type":"String","arity":"Optional"}]	{"before":{"tables":[{"name":"_Migration","columns":[{"name":"revision","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":{"SEQUENCE":"nextval('\\"_Migration_revision_seq\\"'::regclass)"},"autoIncrement":true},{"name":"name","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"datamodel","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"status","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"applied","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":null,"autoIncrement":false},{"name":"rolled_back","tpe":{"dataType":"integer","fullDataType":"int4","characterMaximumLength":null,"family":"int","arity":"required","nativeType":"Integer"},"default":null,"autoIncrement":false},{"name":"datamodel_steps","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"database_migration","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"errors","tpe":{"dataType":"text","fullDataType":"text","characterMaximumLength":null,"family":"string","arity":"required","nativeType":"Text"},"default":null,"autoIncrement":false},{"name":"started_at","tpe":{"dataType":"timestamp without time zone","fullDataType":"timestamp","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":{"Timestamp":3}},"default":null,"autoIncrement":false},{"name":"finished_at","tpe":{"dataType":"timestamp without time zone","fullDataType":"timestamp","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":{"Timestamp":3}},"default":null,"autoIncrement":false}],"indices":[],"primaryKey":{"columns":["revision"],"sequence":{"name":"_Migration_revision_seq","initialValue":1,"allocationSize":1},"constraintName":"_Migration_pkey"},"foreignKeys":[]}],"enums":[],"sequences":[{"name":"_Migration_revision_seq","initialValue":1,"allocationSize":1}]},"after":{"tables":[{"name":"User","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"email","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedPassword","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"role","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":{"VALUE":"user"},"autoIncrement":false}],"indices":[{"name":"User.email_unique","columns":["email"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]},{"name":"Session","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"expiresAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"userId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedSessionToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"antiCSRFToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"publicData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"privateData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]},{"name":"Team","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"city","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"abbreviation","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"wins","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"losses","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"winPercentage","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"float","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"conference","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"division","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"established","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]},{"name":"Player","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"height","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"weight","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"number","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"position","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]},{"name":"Coach","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"type","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"isAssistant","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}],"enums":[],"sequences":[]},"steps":[{"CreateTable":{"table":{"name":"User","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"email","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedPassword","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"role","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":{"VALUE":"user"},"autoIncrement":false}],"indices":[{"name":"User.email_unique","columns":["email"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]}}},{"CreateTable":{"table":{"name":"Session","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"expiresAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"userId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"hashedSessionToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"antiCSRFToken","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"publicData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"privateData","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateTable":{"table":{"name":"Team","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"city","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"abbreviation","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"wins","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"losses","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"winPercentage","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"float","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"conference","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"division","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"established","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[]}}},{"CreateTable":{"table":{"name":"Player","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"slug","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"height","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"weight","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"number","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"position","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateTable":{"table":{"name":"Coach","columns":[{"name":"id","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"required","nativeType":null},"default":{"SEQUENCE":""},"autoIncrement":true},{"name":"createdAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":"NOW","autoIncrement":false},{"name":"updatedAt","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"dateTime","arity":"required","nativeType":null},"default":null,"autoIncrement":false},{"name":"handle","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"name","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"teamId","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"int","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"type","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false},{"name":"isAssistant","tpe":{"dataType":"","fullDataType":"","characterMaximumLength":null,"family":"string","arity":"nullable","nativeType":null},"default":null,"autoIncrement":false}],"indices":[{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"}],"primaryKey":{"columns":["id"],"sequence":null,"constraintName":null},"foreignKeys":[{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}]}}},{"CreateIndex":{"table":"User","index":{"name":"User.email_unique","columns":["email"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":false}},{"CreateIndex":{"table":"Session","index":{"name":"Session.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":false}},{"CreateIndex":{"table":"Team","index":{"name":"Team.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"CreateIndex":{"table":"Player","index":{"name":"Player.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"CreateIndex":{"table":"Coach","index":{"name":"Coach.handle_unique","columns":["handle"],"tpe":"unique"},"caused_by_create_table":true,"contains_nullable_columns":true}},{"AddForeignKey":{"table":"Session","foreign_key":{"constraintName":null,"columns":["userId"],"referencedTable":"User","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}},{"AddForeignKey":{"table":"Player","foreign_key":{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}},{"AddForeignKey":{"table":"Coach","foreign_key":{"constraintName":null,"columns":["teamId"],"referencedTable":"Team","referencedColumns":["id"],"onDeleteAction":"setNull","onUpdateAction":"cascade"}}}]}	[]	2020-11-03 19:15:58.437	2020-11-03 19:15:58.495
+COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor", logo) FROM stdin;
+30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	25	47	0.347000000000000000000000000000	East	Southeast	1961	# 002B5C	#E31837	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/washington-wizards-logo.png
+18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	19	45	0.297000000000000000000000000000	West	Northwest	1989	#0C2340	#236192	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/minnesota-timberwolves-logo.png
+27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	32	39	0.451000000000000000000000000000	West	Southwest	1976	#C4CED4	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/san-antonio-spurs-logo.png
+29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	44	28	0.611000000000000000000000000000	West	Northwest	1974	#002B5C	#F9A01B	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/utah-jazz-logo.png
+26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	31	41	0.431000000000000000000000000000	West	Pacific	1948	#5A2D81	#63727A	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/sacramento-kings-logo.png
+24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	34	39	0.466000000000000000000000000000	West	Pacific	1968	#1D1160	#E56020	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/phoenix-suns-logo.png
+25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	35	39	0.473000000000000000000000000000	West	Northwest	1970	#E03A3E	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/portland-trail-blazers-logo.png
+16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	44	29	0.603000000000000000000000000000	East	Southeast	1988	#98002E	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/miami-heat-logo.png
+23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	43	30	0.589000000000000000000000000000	East	Atlantic	1949	#006BB6	#D50032	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/philadelphia-76ers-logo.png
+21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	44	28	0.611000000000000000000000000000	West	Northwest	1967	#007AC1	#EF3B24	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/oklahoma-city-thunder-logo.png
+15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	34	39	0.466000000000000000000000000000	West	Southwest	1995	#5D76A9	#12173F	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/memphis-grizzlies-logo.png
+17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	56	17	0.767000000000000000000000000000	East	Central	1968	#00471B	#EEE1C6	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/milwaukee-bucks-logo.png
+22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	33	40	0.452000000000000000000000000000	East	Southeast	1989	#0077C0	#C4CED4	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/orlando-magic-logo.png
+19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	30	42	0.417000000000000000000000000000	West	Southwest	2002	#0C2340	#C8102E	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/new-orleans-pelicans-logo.png
+20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	21	45	0.318000000000000000000000000000	East	Atlantic	1946	#006BB6	#F58426	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/new-york-knicks-logo.png
+13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	Los Angeles	LAC	49	23	0.681000000000000000000000000000	West	Pacific	1970	#C8102E	#1D428A	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-clippers-logo.png
+14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	52	19	0.732000000000000000000000000000	West	Pacific	1948	#552583	#FDB927	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-lakers-logo.png
+7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	43	32	0.573000000000000000000000000000	West	Southwest	1980	#00538C	#B8C4CA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/dallas-mavericks-logo.png
+10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	15	50	0.231000000000000000000000000000	West	Pacific	1946	#1D428A	#FFC72C	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/golden-state-warriors-logo.png
+11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	44	28	0.611000000000000000000000000000	West	Southwest	1967	#CE1141	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/houston-rockets-logo.png
+8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	46	27	0.630000000000000000000000000000	West	Northwest	1976	#0E2240	#FEC524	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/denver-nuggets-logo.png
+9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	20	46	0.303000000000000000000000000000	East	Central	1948	#C8102E	#1D42BA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/detroit-pistons-logo.png
+12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	45	28	0.616000000000000000000000000000	East	Central	1976	#002D62	#FDBB30	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/indiana-pacers-logo.png
+4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	23	42	0.354000000000000000000000000000	East	Southeast	1988	#1D1160	#00788C	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/charlotte-hornets-logo.png
+5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	22	43	0.338000000000000000000000000000	East	Central	1966	#CE1141	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/chicago-bulls-logo.png
+2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	48	24	0.667000000000000000000000000000	East	Atlantic	1946	#007A33	#BA9653	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/boston-celtics-logo.png
+3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	35	37	0.486000000000000000000000000000	East	Atlantic	1976	#000000	#FFFFFF	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/brooklyn-nets-logo.png
+6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	19	46	0.292000000000000000000000000000	East	Central	1970	#860038	#041E42	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/cleveland-cavaliers-logo.png
+28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	53	19	0.736000000000000000000000000000	East	Atlantic	1995	#CE1141	#000000	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/toronto-raptors-logo.png
+1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	20	47	0.299000000000000000000000000000	East	Southeast	1949	#E03A3E	#C1D32F	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/atlanta-hawks-logo.png
 \.
 
 
@@ -1047,7 +1074,7 @@ COPY public."_Migration" (revision, name, datamodel, status, applied, rolled_bac
 --
 
 COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
-fdbcb702-585c-4229-9b41-3b6159f0fb12	14ec4a1e5ded5c70ddfb1e9ccd7397bb86988b3f453dad5feb9607976b674e5	2021-01-10 14:39:12.199556-07	20210110213906_rename_coach_player_team_fields	\N	\N	2021-01-10 14:39:12.149674-07	1
+e717cc3f-effb-4a7e-8d17-ad60c1fe3bf3	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	2021-02-03 22:02:32.000819+00	20210203205646_init_db		\N	2021-02-03 22:02:32.000819+00	0
 \.
 
 
@@ -1056,6 +1083,13 @@ fdbcb702-585c-4229-9b41-3b6159f0fb12	14ec4a1e5ded5c70ddfb1e9ccd7397bb86988b3f453
 --
 
 SELECT pg_catalog.setval('public."Coach_id_seq"', 231, true);
+
+
+--
+-- Name: ColorScheme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."ColorScheme_id_seq"', 33, true);
 
 
 --
@@ -1073,18 +1107,19 @@ SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
 
 
 --
--- Name: _Migration_revision_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."_Migration_revision_seq"', 1, true);
-
-
---
 -- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Coach"
     ADD CONSTRAINT "Coach_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: ColorScheme ColorScheme_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ColorScheme"
+    ADD CONSTRAINT "ColorScheme_pkey" PRIMARY KEY (id);
 
 
 --
@@ -1104,14 +1139,6 @@ ALTER TABLE ONLY public."Team"
 
 
 --
--- Name: _Migration _Migration_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."_Migration"
-    ADD CONSTRAINT "_Migration_pkey" PRIMARY KEY (revision);
-
-
---
 -- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1127,6 +1154,13 @@ CREATE UNIQUE INDEX "Coach.handle_unique" ON public."Coach" USING btree (handle)
 
 
 --
+-- Name: Coach.name_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Coach.name_unique" ON public."Coach" USING btree (name);
+
+
+--
 -- Name: Player.handle_unique; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1134,10 +1168,52 @@ CREATE UNIQUE INDEX "Player.handle_unique" ON public."Player" USING btree (handl
 
 
 --
+-- Name: Player.name_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Player.name_unique" ON public."Player" USING btree (name);
+
+
+--
+-- Name: Player.slug_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Player.slug_unique" ON public."Player" USING btree (slug);
+
+
+--
+-- Name: Team.abbreviation_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Team.abbreviation_unique" ON public."Team" USING btree (abbreviation);
+
+
+--
 -- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX "Team.handle_unique" ON public."Team" USING btree (handle);
+
+
+--
+-- Name: Team.logo_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Team.logo_unique" ON public."Team" USING btree (logo);
+
+
+--
+-- Name: Team.name_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Team.name_unique" ON public."Team" USING btree (name);
+
+
+--
+-- Name: Team.slug_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "Team.slug_unique" ON public."Team" USING btree (slug);
 
 
 --
@@ -1149,18 +1225,19 @@ ALTER TABLE ONLY public."Coach"
 
 
 --
+-- Name: ColorScheme ColorScheme_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ColorScheme"
+    ADD CONSTRAINT "ColorScheme_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES public."Team"(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
 -- Name: Player Player_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Player"
     ADD CONSTRAINT "Player_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES public."Team"(id) ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --

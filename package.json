@@ -28,7 +28,7 @@
     "codegen:sanity": "sanity-codegen",
     "codegen": "yarn codegen:graphql && yarn codegen:sanity",
     "build:nexus": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only services/graphql/schema",
-    "build:next": "NODE_ENV=production yarn db:migrate:deploy && next build",
+    "build:next": "yarn db:migrate:deploy && next build",
     "build": "yarn build:nexus && yarn build:next",
     "db:introspect": "prisma introspect --schema='db/schema.prisma' --print",
     "db:format": "prisma format",

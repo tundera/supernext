@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.5 (Ubuntu 12.5-1.pgdg16.04+1)
+-- Dumped from database version 12.5
 -- Dumped by pg_dump version 13.1
 
 SET statement_timeout = 0;
@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: Coach; Type: TABLE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach; Type: TABLE; Schema: public; Owner: doadmin
 --
 
 CREATE TABLE public."Coach" (
@@ -36,10 +36,10 @@ CREATE TABLE public."Coach" (
 );
 
 
-ALTER TABLE public."Coach" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Coach" OWNER TO doadmin;
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
 --
 
 CREATE SEQUENCE public."Coach_id_seq"
@@ -51,17 +51,17 @@ CREATE SEQUENCE public."Coach_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Coach_id_seq" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Coach_id_seq" OWNER TO doadmin;
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
 --
 
 ALTER SEQUENCE public."Coach_id_seq" OWNED BY public."Coach".id;
 
 
 --
--- Name: ColorScheme; Type: TABLE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme; Type: TABLE; Schema: public; Owner: doadmin
 --
 
 CREATE TABLE public."ColorScheme" (
@@ -74,10 +74,10 @@ CREATE TABLE public."ColorScheme" (
 );
 
 
-ALTER TABLE public."ColorScheme" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."ColorScheme" OWNER TO doadmin;
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
 --
 
 CREATE SEQUENCE public."ColorScheme_id_seq"
@@ -89,17 +89,17 @@ CREATE SEQUENCE public."ColorScheme_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."ColorScheme_id_seq" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."ColorScheme_id_seq" OWNER TO doadmin;
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
 --
 
 ALTER SEQUENCE public."ColorScheme_id_seq" OWNED BY public."ColorScheme".id;
 
 
 --
--- Name: Player; Type: TABLE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player; Type: TABLE; Schema: public; Owner: doadmin
 --
 
 CREATE TABLE public."Player" (
@@ -117,10 +117,10 @@ CREATE TABLE public."Player" (
 );
 
 
-ALTER TABLE public."Player" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Player" OWNER TO doadmin;
 
 --
--- Name: Player_id_seq; Type: SEQUENCE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
 --
 
 CREATE SEQUENCE public."Player_id_seq"
@@ -132,17 +132,17 @@ CREATE SEQUENCE public."Player_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Player_id_seq" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Player_id_seq" OWNER TO doadmin;
 
 --
--- Name: Player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
 --
 
 ALTER SEQUENCE public."Player_id_seq" OWNED BY public."Player".id;
 
 
 --
--- Name: Team; Type: TABLE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team; Type: TABLE; Schema: public; Owner: doadmin
 --
 
 CREATE TABLE public."Team" (
@@ -166,10 +166,10 @@ CREATE TABLE public."Team" (
 );
 
 
-ALTER TABLE public."Team" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Team" OWNER TO doadmin;
 
 --
--- Name: Team_id_seq; Type: SEQUENCE; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
 --
 
 CREATE SEQUENCE public."Team_id_seq"
@@ -181,45 +181,63 @@ CREATE SEQUENCE public."Team_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Team_id_seq" OWNER TO glznkvimxbxlhp;
+ALTER TABLE public."Team_id_seq" OWNER TO doadmin;
 
 --
--- Name: Team_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
 --
 
 ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
--- Name: Coach id; Type: DEFAULT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: doadmin
+--
+
+CREATE TABLE public._prisma_migrations (
+    id character varying(36) NOT NULL,
+    checksum character varying(64) NOT NULL,
+    finished_at timestamp with time zone,
+    migration_name character varying(255) NOT NULL,
+    logs text,
+    rolled_back_at timestamp with time zone,
+    started_at timestamp with time zone DEFAULT now() NOT NULL,
+    applied_steps_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public._prisma_migrations OWNER TO doadmin;
+
+--
+-- Name: Coach id; Type: DEFAULT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Coach" ALTER COLUMN id SET DEFAULT nextval('public."Coach_id_seq"'::regclass);
 
 
 --
--- Name: ColorScheme id; Type: DEFAULT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme id; Type: DEFAULT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."ColorScheme" ALTER COLUMN id SET DEFAULT nextval('public."ColorScheme_id_seq"'::regclass);
 
 
 --
--- Name: Player id; Type: DEFAULT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player id; Type: DEFAULT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Player_id_seq"'::regclass);
 
 
 --
--- Name: Team id; Type: DEFAULT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team id; Type: DEFAULT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
 
 
 --
--- Data for Name: Coach; Type: TABLE DATA; Schema: public; Owner: glznkvimxbxlhp
+-- Data for Name: Coach; Type: TABLE DATA; Schema: public; Owner: doadmin
 --
 
 COPY public."Coach" (id, "createdAt", "updatedAt", handle, name, "teamId", type, "isAssistant") FROM stdin;
@@ -458,7 +476,7 @@ COPY public."Coach" (id, "createdAt", "updatedAt", handle, name, "teamId", type,
 
 
 --
--- Data for Name: ColorScheme; Type: TABLE DATA; Schema: public; Owner: glznkvimxbxlhp
+-- Data for Name: ColorScheme; Type: TABLE DATA; Schema: public; Owner: doadmin
 --
 
 COPY public."ColorScheme" (id, "createdAt", "updatedAt", "primary", secondary, "teamId") FROM stdin;
@@ -496,7 +514,7 @@ COPY public."ColorScheme" (id, "createdAt", "updatedAt", "primary", secondary, "
 
 
 --
--- Data for Name: Player; Type: TABLE DATA; Schema: public; Owner: glznkvimxbxlhp
+-- Data for Name: Player; Type: TABLE DATA; Schema: public; Owner: doadmin
 --
 
 COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId", height, weight, number, "position") FROM stdin;
@@ -1014,7 +1032,7 @@ COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId"
 
 
 --
--- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: glznkvimxbxlhp
+-- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: doadmin
 --
 
 COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor", logo) FROM stdin;
@@ -1052,35 +1070,44 @@ COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbr
 
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: glznkvimxbxlhp
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: doadmin
+--
+
+COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
+e717cc3f-effb-4a7e-8d17-ad60c1fe3bf3	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	2021-02-03 22:02:32.000819+00	20210203205646_init_db		\N	2021-02-03 22:02:32.000819+00	0
+\.
+
+
+--
+-- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
 --
 
 SELECT pg_catalog.setval('public."Coach_id_seq"', 231, true);
 
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
 --
 
 SELECT pg_catalog.setval('public."ColorScheme_id_seq"', 33, true);
 
 
 --
--- Name: Player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
 --
 
 SELECT pg_catalog.setval('public."Player_id_seq"', 510, true);
 
 
 --
--- Name: Team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
 --
 
 SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
 
 
 --
--- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Coach"
@@ -1088,7 +1115,7 @@ ALTER TABLE ONLY public."Coach"
 
 
 --
--- Name: ColorScheme ColorScheme_pkey; Type: CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme ColorScheme_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."ColorScheme"
@@ -1096,7 +1123,7 @@ ALTER TABLE ONLY public."ColorScheme"
 
 
 --
--- Name: Player Player_pkey; Type: CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player Player_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Player"
@@ -1104,7 +1131,7 @@ ALTER TABLE ONLY public."Player"
 
 
 --
--- Name: Team Team_pkey; Type: CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team Team_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Team"
@@ -1112,77 +1139,85 @@ ALTER TABLE ONLY public."Team"
 
 
 --
--- Name: Coach.handle_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+--
+
+ALTER TABLE ONLY public._prisma_migrations
+    ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: Coach.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Coach.handle_unique" ON public."Coach" USING btree (handle);
 
 
 --
--- Name: Coach.name_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach.name_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Coach.name_unique" ON public."Coach" USING btree (name);
 
 
 --
--- Name: Player.handle_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Player.handle_unique" ON public."Player" USING btree (handle);
 
 
 --
--- Name: Player.name_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player.name_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Player.name_unique" ON public."Player" USING btree (name);
 
 
 --
--- Name: Player.slug_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player.slug_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Player.slug_unique" ON public."Player" USING btree (slug);
 
 
 --
--- Name: Team.abbreviation_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team.abbreviation_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Team.abbreviation_unique" ON public."Team" USING btree (abbreviation);
 
 
 --
--- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Team.handle_unique" ON public."Team" USING btree (handle);
 
 
 --
--- Name: Team.logo_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team.logo_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Team.logo_unique" ON public."Team" USING btree (logo);
 
 
 --
--- Name: Team.name_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team.name_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Team.name_unique" ON public."Team" USING btree (name);
 
 
 --
--- Name: Team.slug_unique; Type: INDEX; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Team.slug_unique; Type: INDEX; Schema: public; Owner: doadmin
 --
 
 CREATE UNIQUE INDEX "Team.slug_unique" ON public."Team" USING btree (slug);
 
 
 --
--- Name: Coach Coach_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Coach Coach_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Coach"
@@ -1190,7 +1225,7 @@ ALTER TABLE ONLY public."Coach"
 
 
 --
--- Name: ColorScheme ColorScheme_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: ColorScheme ColorScheme_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."ColorScheme"
@@ -1198,28 +1233,11 @@ ALTER TABLE ONLY public."ColorScheme"
 
 
 --
--- Name: Player Player_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: glznkvimxbxlhp
+-- Name: Player Player_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
 --
 
 ALTER TABLE ONLY public."Player"
     ADD CONSTRAINT "Player_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES public."Team"(id) ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: glznkvimxbxlhp
---
-
-REVOKE ALL ON SCHEMA public FROM postgres;
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO glznkvimxbxlhp;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
---
-
-GRANT ALL ON LANGUAGE plpgsql TO glznkvimxbxlhp;
 
 
 --
