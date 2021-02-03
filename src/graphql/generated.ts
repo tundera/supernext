@@ -561,11 +561,23 @@ export type PlayersByTeamQuery = { __typename?: 'Query' } & {
   playersByTeam?: Maybe<Array<Maybe<{ __typename?: 'Player' } & Pick<Player, 'id' | 'name'>>>>
 }
 
+export type TeamBySlugQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type TeamBySlugQuery = { __typename?: 'Query' } & {
+  team?: Maybe<
+    { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'established' | 'logo'> & {
+        colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
+      }
+  >
+}
+
 export type TeamsQueryVariables = Exact<{ [key: string]: never }>
 
 export type TeamsQuery = { __typename?: 'Query' } & {
   teams: Array<
-    { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'logo'> & {
+    { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'slug' | 'city' | 'logo'> & {
         colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
       }
   >
@@ -692,11 +704,37 @@ export const usePlayersByTeamQuery = <TData = PlayersByTeamQuery, TError = unkno
     fetcher<PlayersByTeamQuery, PlayersByTeamQueryVariables>(client, PlayersByTeamDocument, variables),
     options,
   )
+export const TeamBySlugDocument = `
+    query TeamBySlug($slug: String!) {
+  team(where: {slug: $slug}) {
+    id
+    name
+    city
+    established
+    logo
+    colorScheme {
+      primary
+      secondary
+    }
+  }
+}
+    `
+export const useTeamBySlugQuery = <TData = TeamBySlugQuery, TError = unknown>(
+  client: GraphQLClient,
+  variables: TeamBySlugQueryVariables,
+  options?: UseQueryOptions<TeamBySlugQuery, TError, TData>,
+) =>
+  useQuery<TeamBySlugQuery, TError, TData>(
+    ['TeamBySlug', variables],
+    fetcher<TeamBySlugQuery, TeamBySlugQueryVariables>(client, TeamBySlugDocument, variables),
+    options,
+  )
 export const TeamsDocument = `
     query Teams {
   teams {
     id
     name
+    slug
     city
     logo
     colorScheme {

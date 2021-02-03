@@ -2,6 +2,7 @@ query Teams {
   teams {
     id
     name
+    slug
     city
     logo
     colorScheme {

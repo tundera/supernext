@@ -7,15 +7,9 @@ import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import TeamsList from '@components/ui/lists/TeamsList'
-import QuerySuspense from '@components/utility/QuerySuspense'
-import { getAllTeams } from '@lib/nexus/teams'
+import { getAllTeams } from '@lib/graphql/teams'
+import client from '@lib/graphql/client'
 import { useTeamsQuery } from 'src/graphql/generated'
-import { GraphQLClient } from 'graphql-request'
-import LoadingSpinner from '@components/utility/LoadingSpinner'
-import PlayersList from '@components/ui/lists/PlayersList'
-
-const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
-const client = new GraphQLClient(endpoint)
 
 export const getStaticProps = async ({ preview = false }) => {
   const queryClient = new QueryClient()

@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
-// import ErrorPage from 'next/error'
 import renderToString from 'next-mdx-remote/render-to-string'
 import Image from 'next/image'
 import hydrate from 'next-mdx-remote/hydrate'

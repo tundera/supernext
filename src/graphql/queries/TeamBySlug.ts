@@ -1,12 +1,12 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query AllTeams {
-    allTeams {
+  query TeamBySlug($slug: String!) {
+    team(where: { slug: $slug }) {
       id
       name
-      slug
       city
+      established
       logo
       colorScheme {
         primary

@@ -2,7 +2,7 @@ import type { Player } from '@prisma/client'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 
-import { getAllPlayers } from '@lib/nexus/players'
+import { getAllPlayers } from '@lib/graphql/players'
 
 export function usePlayersQuery(options?: UseQueryOptions<Player[], Error>) {
   const queryOptions = { ...options }
