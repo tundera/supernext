@@ -1,7 +1,7 @@
-schema: http://localhost:3000/api/graphql
-documents: './services/graphql/operations/**/*.graphql'
+schema: './services/graphql/generated/schema.graphql'
+documents: './src/graphql/**/*.graphql'
 generates:
-  ./services/graphql/generated/graphql.ts:
+  ./src/graphql/generated.ts:
     plugins:
       - typescript
       - typescript-operations
@@ -11,4 +11,4 @@ generates:
       useTypeImports: true
 hooks:
   afterAllFileWrite:
-    - prettier --write
+    - eslint --fix

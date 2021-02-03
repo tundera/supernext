@@ -2,7 +2,7 @@ import type { Team } from '@prisma/client'
 
 import { request } from 'graphql-request'
 
-import AllTeamsQuery from 'services/graphql/operations/queries/AllTeams'
+import AllTeamsQuery from 'src/graphql/queries/AllTeams'
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 

@@ -3,7 +3,7 @@ import type { InferGetStaticPropsType } from 'next'
 import { Stack, Heading } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import ArticlesList from '@components/ui/compound/ArticlesList'
+import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getAllArticles } from '@lib/content/articles'
 
 export const getStaticProps = async ({ preview = false }) => {
@@ -18,7 +18,7 @@ export const getStaticProps = async ({ preview = false }) => {
   }
 }
 
-const Articles = ({ articles, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const ArticlesPage = ({ articles, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <PageLayout preview={preview}>
@@ -33,4 +33,4 @@ const Articles = ({ articles, preview }: InferGetStaticPropsType<typeof getStati
   )
 }
 
-export default Articles
+export default ArticlesPage

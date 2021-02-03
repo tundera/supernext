@@ -2,8 +2,8 @@ import type { Player } from '@prisma/client'
 
 import { request } from 'graphql-request'
 
-import AllPlayersQuery from 'services/graphql/operations/queries/AllPlayers'
-import PlayersByTeamQuery from 'services/graphql/operations/queries/PlayersByTeam'
+import AllPlayersQuery from 'src/graphql/queries/AllPlayers'
+import PlayersByTeamQuery from 'src/graphql/queries/PlayersByTeam'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

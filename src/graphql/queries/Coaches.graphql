@@ -1,5 +1,5 @@
-query AllCoaches {
-  allCoaches {
+query Coaches {
+  coaches {
     id
     name
     team {

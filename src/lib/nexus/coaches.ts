@@ -2,7 +2,7 @@ import type { Coach } from '@prisma/client'
 
 import { request } from 'graphql-request'
 
-import AllCoachesQuery from 'services/graphql/operations/queries/AllCoaches'
+import AllCoachesQuery from 'src/graphql/queries/AllCoaches'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 

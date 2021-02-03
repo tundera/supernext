@@ -1,5 +1,5 @@
-query AllPlayers {
-  allPlayers {
+query Players {
+  players {
     id
     name
     team {

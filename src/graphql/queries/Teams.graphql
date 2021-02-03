@@ -1,5 +1,5 @@
-query AllTeams {
-  allTeams {
+query Teams {
+  teams {
     id
     name
     city

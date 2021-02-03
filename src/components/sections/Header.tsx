@@ -45,7 +45,7 @@ function Header({ ...props }) {
         <BrandLogoIcon ml="2" w="24" h="24" preserveAspectRatio="true" />
       </Box>
 
-      <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
+      <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu} color={iconColor}>
         {show ? <CloseIcon /> : <MenuIcon />}
       </Box>
 

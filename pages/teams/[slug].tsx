@@ -31,7 +31,7 @@ export const getStaticProps = async ({ preview = false }) => {
   }
 }
 
-const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const TeamPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = useTeamsQuery(client, undefined, { suspense: false })
 
   return (
@@ -43,9 +43,9 @@ const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) 
           </Heading>
           <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
             {data && <TeamsList teams={data.teams} />}
-            {/* <QuerySuspense fallback={<LoadingSpinner />}>
+            <QuerySuspense fallback={<LoadingSpinner />}>
               <PlayersList title="NBA Players" />
-            </QuerySuspense> */}
+            </QuerySuspense>
           </SimpleGrid>
         </Stack>
       </PageLayout>
@@ -53,4 +53,4 @@ const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) 
   )
 }
 
-export default TeamsPage
+export default TeamPage

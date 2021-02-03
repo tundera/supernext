@@ -4,7 +4,7 @@ import { Stack, Heading, Text } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
-import PostsList from '@components/ui/compound/PostsList'
+import PostsList from '@components/ui/lists/PostsList'
 import { usePreviewSubscription } from '@lib/sanity'
 import { PostsQuery } from 'services/sanity/posts'
 import sanity from '@lib/sanity/client'
@@ -24,7 +24,7 @@ export const getStaticProps = async ({ preview = false }) => {
   }
 }
 
-const Blog = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const PostsPage = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data } = usePreviewSubscription(PostsQuery, {
     params: { count: POSTS_PER_PAGE },
     initialData: posts,
@@ -44,4 +44,4 @@ const Blog = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticProps>
   )
 }
 
-export default Blog
+export default PostsPage

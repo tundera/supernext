@@ -19,7 +19,7 @@
     "schema": "db/schema.prisma"
   },
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && yarn build:nexus && yarn codegen",
     "dev": "NODE_OPTIONS='--inspect' next",
     "generate:page:ssr": "next-codegen page --ssr",
     "generate:page:ssg": "next-codegen page --ssg",

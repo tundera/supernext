@@ -15,7 +15,7 @@ const Container: FC = ({ children }) => {
       bg={bg}
       color={color}
       px={8}
-      maxW={theme.sizes.width}
+      minW={[768, 1050, 1150]}
       minHeight="95vh"
     >
       {children}

@@ -1,5 +1,5 @@
-query AllColorSchemes {
-  allColorSchemes {
+query ColorSchemes {
+  colorSchemes {
     id
     primary
     secondary

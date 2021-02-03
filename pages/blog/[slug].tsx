@@ -60,7 +60,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BlogPost = ({ post, preview }) => {
+const PostPage = ({ post, preview }) => {
   const router = useRouter()
 
   const { data } = usePreviewSubscription(PostBySlugQuery, {
@@ -106,4 +106,4 @@ const BlogPost = ({ post, preview }) => {
   )
 }
 
-export default BlogPost
+export default PostPage

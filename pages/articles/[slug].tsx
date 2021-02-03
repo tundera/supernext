@@ -73,7 +73,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const Article = ({ article, frontMatter, preview }: Props) => {
+const ArticlePage = ({ article, frontMatter, preview }: Props) => {
   const router = useRouter()
 
   const renderedContent = hydrate(article ?? '', { components: mdxComponents })
@@ -128,4 +128,4 @@ const Article = ({ article, frontMatter, preview }: Props) => {
   )
 }
 
-export default Article
+export default ArticlePage
