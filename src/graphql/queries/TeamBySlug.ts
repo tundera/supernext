@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 export default gql`
   query TeamBySlug($slug: String!) {
-    team(where: { slug: $slug }) {
+    team(slug: $slug) {
       id
       name
       city

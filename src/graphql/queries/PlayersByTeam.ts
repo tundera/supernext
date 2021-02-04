@@ -5,6 +5,11 @@ export default gql`
     playersByTeam(id: $id) {
       id
       name
+      slug
+      number
+      position
+      height
+      weight
     }
   }
 `

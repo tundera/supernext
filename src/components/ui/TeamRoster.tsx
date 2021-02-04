@@ -1,5 +1,5 @@
 import type { SimpleGridProps } from '@chakra-ui/react'
-import type { Player } from '@prisma/client'
+import type { Player } from 'db'
 
 import { Box, Link, Text, Stack, Flex, SimpleGrid, Heading } from '@chakra-ui/react'
 

@@ -257,7 +257,13 @@ export type PlayersByTeamQueryVariables = Exact<{
 }>
 
 export type PlayersByTeamQuery = { __typename?: 'Query' } & {
-  playersByTeam?: Maybe<Array<Maybe<{ __typename?: 'Player' } & Pick<Player, 'id' | 'name'>>>>
+  playersByTeam?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Player' } & Pick<Player, 'id' | 'name' | 'slug' | 'number' | 'position' | 'height' | 'weight'>
+      >
+    >
+  >
 }
 
 export type TeamBySlugQueryVariables = Exact<{
@@ -394,6 +400,11 @@ export const PlayersByTeamDocument = `
   playersByTeam(id: $id) {
     id
     name
+    slug
+    number
+    position
+    height
+    weight
   }
 }
     `

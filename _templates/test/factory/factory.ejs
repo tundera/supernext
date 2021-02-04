@@ -4,7 +4,7 @@ to: tests/factories/<%= name %>.ts
 <% single = h.inflection.singularize(name) -%>
 <% upper = h.inflection.camelize(single, false) -%>
 import Chance from 'chance';
-import { <%= upper %> } from '@prisma/client';
+import { <%= upper %> } from 'db';
 import { buildPrismaIncludeFromAttrs, prisma } from '../helpers';
 
 const chance = new Chance();

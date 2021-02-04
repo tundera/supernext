@@ -61,7 +61,7 @@ const TeamPage = ({ slug, preview }) => {
             </Heading>
             <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
               <QuerySuspense fallback={<LoadingSpinner />}>
-                <PlayersList title="NBA Players" />
+                <PlayersList title="Team Roster" teamId={data?.team?.id as number} />
               </QuerySuspense>
             </SimpleGrid>
           </Stack>

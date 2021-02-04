@@ -1,12 +1,25 @@
-import { Heading, Flex, Divider } from '@chakra-ui/react'
+import { useState, useEffect } from 'react'
+import { Heading, Flex, Text } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import Features from '@components/sections/Features'
 import Button from '@components/ui/buttons/Button'
-import { ThemableMenu, ThemableMenuItem } from '@components/ui/menus/ThemableMenu'
-import DetailBadge from '@components/ui/DetailBadge'
+
+function useRandomNumber() {
+  const [number, setNumber] = useState<number>()
+
+  useEffect(() => {
+    fetch('/api/nest/randomNumber')
+      .then((response) => response.text())
+      .then((text) => setNumber(+text))
+  }, [])
+
+  return number
+}
 
 const About = () => {
+  const number = useRandomNumber()
+
   return (
     <>
       <PageLayout>
@@ -14,16 +27,11 @@ const About = () => {
           <Heading as="h1" size="4xl" mt={8} p={2}>
             About
           </Heading>
+          <Text>Random number: {number} </Text>
           <Features />
           <Button my="32px" size="lg" variant="solid">
             Custom Button
           </Button>
-          <ThemableMenu>
-            <ThemableMenuItem my="2">Amazing</ThemableMenuItem>
-            <Divider />
-            <ThemableMenuItem my="2">Menu</ThemableMenuItem>
-          </ThemableMenu>
-          <DetailBadge>Custom Badge</DetailBadge>
         </Flex>
       </PageLayout>
     </>

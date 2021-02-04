@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node-script
 
-import { PrismaClient, Team } from '@prisma/client'
+import { PrismaClient, Team } from 'db'
 
 const prisma = new PrismaClient()
 

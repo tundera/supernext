@@ -8,6 +8,8 @@
     "noEmit": true,
     "strict": false,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",

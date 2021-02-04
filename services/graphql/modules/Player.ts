@@ -56,7 +56,7 @@ export const PlayerQueries = extendType({
         return ctx.prisma.player.findMany({
           where: { teamId: args.id },
           orderBy: {
-            name: 'desc',
+            name: 'asc',
           },
         })
       },

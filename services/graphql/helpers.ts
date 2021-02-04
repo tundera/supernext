@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from 'db'
 import { Context } from './types'
 
 export const prisma = new PrismaClient()
