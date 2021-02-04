@@ -20,7 +20,7 @@ function <%= pageName %>() {
           </Heading>
           <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
             {data &&
-              data.allTeams?.map((team) =>
+              data.teams?.map((team) =>
                 team ? <TeamCard key={team.name} name={team.name} logo={team.logo} /> : null,
               )}
             <QuerySuspense fallback={<LoadingSpinner />}>
@@ -45,7 +45,7 @@ const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </Heading>
           <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
             {data &&
-              data.allTeams?.map((team) =>
+              data.teams?.map((team) =>
                 team ? <TeamCard key={team.name} name={team.name} logo={team.logo} /> : null,
               )}
             <QuerySuspense fallback={<LoadingSpinner />}>

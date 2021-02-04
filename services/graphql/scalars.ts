@@ -1,7 +1,6 @@
-import { DateTimeResolver, JSONObjectResolver } from 'graphql-scalars'
+import { GraphQLDateTime } from 'graphql-iso-date'
 import { asNexusMethod } from 'nexus'
 import { GraphQLUpload } from 'graphql-upload'
 
-export const uploadScalar = asNexusMethod(GraphQLUpload, 'upload')
-export const jsonScalar = asNexusMethod(JSONObjectResolver, 'json')
-export const dateTimeScalar = asNexusMethod(DateTimeResolver, 'date')
+export const Upload = asNexusMethod(GraphQLUpload, 'upload')
+export const DateTime = asNexusMethod(GraphQLDateTime, 'date')

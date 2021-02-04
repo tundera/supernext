@@ -8,7 +8,7 @@ import TeamBySlugQuery from 'src/graphql/queries/TeamBySlug'
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 
 export async function getAllTeams(): Promise<Team[]> {
-  const { allTeams: data } = await request(endpoint, AllTeamsQuery)
+  const { teams: data } = await request(endpoint, AllTeamsQuery)
 
   return data
 }

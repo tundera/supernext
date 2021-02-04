@@ -13,42 +13,17 @@ type Coach {
   updatedAt: DateTime!
 }
 
-input CoachListRelationFilter {
-  every: CoachWhereInput
-  none: CoachWhereInput
-  some: CoachWhereInput
-}
-
 input CoachOrderByInput {
-  createdAt: SortOrder
-  handle: SortOrder
-  id: SortOrder
-  isAssistant: SortOrder
-  name: SortOrder
-  teamId: SortOrder
-  type: SortOrder
-  updatedAt: SortOrder
+  name: SortOrder!
 }
 
 input CoachWhereInput {
-  AND: [CoachWhereInput!]
-  NOT: [CoachWhereInput!]
-  OR: [CoachWhereInput!]
-  createdAt: DateTimeFilter
-  handle: StringFilter
-  id: IntFilter
-  isAssistant: StringNullableFilter
-  name: StringFilter
-  team: TeamWhereInput
-  teamId: IntNullableFilter
-  type: StringNullableFilter
-  updatedAt: DateTimeFilter
+  id: Int!
+  name: StringFilter!
 }
 
 input CoachWhereUniqueInput {
-  handle: String
-  id: Int
-  name: String
+  id: Int!
 }
 
 type ColorScheme {
@@ -61,162 +36,22 @@ type ColorScheme {
   updatedAt: DateTime!
 }
 
-input ColorSchemeListRelationFilter {
-  every: ColorSchemeWhereInput
-  none: ColorSchemeWhereInput
-  some: ColorSchemeWhereInput
-}
-
-input ColorSchemeOrderByInput {
-  createdAt: SortOrder
-  id: SortOrder
-  primary: SortOrder
-  secondary: SortOrder
-  teamId: SortOrder
-  updatedAt: SortOrder
-}
-
-input ColorSchemeWhereInput {
-  AND: [ColorSchemeWhereInput!]
-  NOT: [ColorSchemeWhereInput!]
-  OR: [ColorSchemeWhereInput!]
-  createdAt: DateTimeFilter
-  id: IntFilter
-  primary: StringFilter
-  secondary: StringFilter
-  team: TeamWhereInput
-  teamId: IntNullableFilter
-  updatedAt: DateTimeFilter
-}
-
-input ColorSchemeWhereUniqueInput {
-  id: Int
-}
-
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
 
-input DateTimeFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeFilter
-  notIn: [DateTime!]
-}
-
-input FloatNullableFilter {
-  equals: Float
-  gt: Float
-  gte: Float
-  in: [Float!]
-  lt: Float
-  lte: Float
-  not: NestedFloatNullableFilter
-  notIn: [Float!]
-}
-
 input IntFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntFilter
-  notIn: [Int!]
-}
-
-input IntNullableFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableFilter
-  notIn: [Int!]
-}
-
-"""
-The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSONObject
-
-input NestedDateTimeFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: NestedDateTimeFilter
-  notIn: [DateTime!]
-}
-
-input NestedFloatNullableFilter {
-  equals: Float
-  gt: Float
-  gte: Float
-  in: [Float!]
-  lt: Float
-  lte: Float
-  not: NestedFloatNullableFilter
-  notIn: [Float!]
-}
-
-input NestedIntFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntFilter
-  notIn: [Int!]
-}
-
-input NestedIntNullableFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: NestedIntNullableFilter
-  notIn: [Int!]
-}
-
-input NestedStringFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  not: NestedStringFilter
-  notIn: [String!]
-  startsWith: String
-}
-
-input NestedStringNullableFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  not: NestedStringNullableFilter
-  notIn: [String!]
-  startsWith: String
+  contains: Int!
+  endsWith: Int!
+  equals: Int!
+  gt: Int!
+  gte: Int!
+  in: [Int!]!
+  lt: Int!
+  lte: Int!
+  notIn: [Int!]!
+  startsWith: Int!
 }
 
 type Player {
@@ -234,96 +69,28 @@ type Player {
   weight: String!
 }
 
-input PlayerListRelationFilter {
-  every: PlayerWhereInput
-  none: PlayerWhereInput
-  some: PlayerWhereInput
-}
-
 input PlayerOrderByInput {
-  createdAt: SortOrder
-  handle: SortOrder
-  height: SortOrder
-  id: SortOrder
-  name: SortOrder
-  number: SortOrder
-  position: SortOrder
-  slug: SortOrder
-  teamId: SortOrder
-  updatedAt: SortOrder
-  weight: SortOrder
+  name: SortOrder!
 }
 
 input PlayerWhereInput {
-  AND: [PlayerWhereInput!]
-  NOT: [PlayerWhereInput!]
-  OR: [PlayerWhereInput!]
-  createdAt: DateTimeFilter
-  handle: StringFilter
-  height: StringFilter
-  id: IntFilter
-  name: StringFilter
-  number: StringNullableFilter
-  position: StringNullableFilter
-  slug: StringFilter
-  team: TeamWhereInput
-  teamId: IntNullableFilter
-  updatedAt: DateTimeFilter
-  weight: StringFilter
+  id: Int!
+  name: StringFilter!
 }
 
 input PlayerWhereUniqueInput {
-  handle: String
-  id: Int
-  name: String
-  slug: String
+  id: Int!
 }
 
 type Query {
-  allCoaches: [Coach]
-  allColorSchemes: [ColorScheme]
-  allPlayers: [Player]
-  allTeams: [Team]
-  coach(where: CoachWhereUniqueInput!): Coach
-  coaches(
-    cursor: CoachWhereUniqueInput
-    orderBy: [CoachOrderByInput!]
-    skip: Int
-    take: Int
-    where: CoachWhereInput
-  ): [Coach!]!
+  coaches: [Coach]
   coachesByTeam(id: Int): [Coach]
-  colorScheme(where: ColorSchemeWhereUniqueInput!): ColorScheme
-  colorSchemeByTeam(id: Int): [ColorScheme]
-  colorSchemes(
-    cursor: ColorSchemeWhereUniqueInput
-    orderBy: [ColorSchemeOrderByInput!]
-    skip: Int
-    take: Int
-    where: ColorSchemeWhereInput
-  ): [ColorScheme!]!
-  player(where: PlayerWhereUniqueInput!): Player
-  players(
-    cursor: PlayerWhereUniqueInput
-    orderBy: [PlayerOrderByInput!]
-    skip: Int
-    take: Int
-    where: PlayerWhereInput
-  ): [Player!]!
+  colorSchemeByTeam(id: Int): ColorScheme
+  colorSchemes: [ColorScheme]
+  players: [Player]
   playersByTeam(id: Int): [Player]
-  team(where: TeamWhereUniqueInput!): Team
-  teams(
-    cursor: TeamWhereUniqueInput
-    orderBy: [TeamOrderByInput!]
-    skip: Int
-    take: Int
-    where: TeamWhereInput
-  ): [Team!]!
-}
-
-enum QueryMode {
-  default
-  insensitive
+  team(slug: String): Team
+  teams: [Team]
 }
 
 enum SortOrder {
@@ -332,40 +99,29 @@ enum SortOrder {
 }
 
 input StringFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  mode: QueryMode
-  not: NestedStringFilter
-  notIn: [String!]
-  startsWith: String
-}
-
-input StringNullableFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  mode: QueryMode
-  not: NestedStringNullableFilter
-  notIn: [String!]
-  startsWith: String
+  contains: String!
+  endsWith: String!
+  equals: String!
+  gt: String!
+  gte: String!
+  in: [String!]!
+  lt: String!
+  lte: String!
+  notIn: [String!]!
+  startsWith: String!
 }
 
 type Team {
   abbreviation: String!
   city: String!
-  coaches(cursor: CoachWhereUniqueInput, skip: Int, take: Int): [Coach!]!
-  colorScheme(cursor: ColorSchemeWhereUniqueInput, skip: Int, take: Int): [ColorScheme!]!
+  coaches(
+    cursor: CoachWhereUniqueInput
+    orderBy: CoachOrderByInput
+    skip: Int
+    take: Int
+    where: CoachWhereInput
+  ): [Coach!]!
+  colorScheme: [ColorScheme!]!
   conference: String!
   createdAt: DateTime!
   division: String!
@@ -375,7 +131,15 @@ type Team {
   logo: String!
   losses: Int
   name: String!
-  players(cursor: PlayerWhereUniqueInput, skip: Int, take: Int): [Player!]!
+  players(
+    cursor: PlayerWhereUniqueInput
+    orderBy: PlayerOrderByInput
+    skip: Int
+    take: Int
+    where: PlayerWhereInput
+  ): [Player!]!
+  primaryColor: String!
+  secondaryColor: String!
   slug: String!
   updatedAt: DateTime!
   winPercentage: Float
@@ -383,58 +147,16 @@ type Team {
 }
 
 input TeamOrderByInput {
-  abbreviation: SortOrder
-  city: SortOrder
-  conference: SortOrder
-  createdAt: SortOrder
-  division: SortOrder
-  established: SortOrder
-  handle: SortOrder
-  id: SortOrder
-  logo: SortOrder
-  losses: SortOrder
-  name: SortOrder
-  primaryColor: SortOrder
-  secondaryColor: SortOrder
-  slug: SortOrder
-  updatedAt: SortOrder
-  winPercentage: SortOrder
-  wins: SortOrder
+  slug: SortOrder!
 }
 
 input TeamWhereInput {
-  AND: [TeamWhereInput!]
-  NOT: [TeamWhereInput!]
-  OR: [TeamWhereInput!]
-  abbreviation: StringFilter
-  city: StringFilter
-  coaches: CoachListRelationFilter
-  colorScheme: ColorSchemeListRelationFilter
-  conference: StringFilter
-  createdAt: DateTimeFilter
-  division: StringFilter
-  established: StringFilter
-  handle: StringFilter
-  id: IntFilter
-  logo: StringFilter
-  losses: IntNullableFilter
-  name: StringFilter
-  players: PlayerListRelationFilter
-  primaryColor: StringFilter
-  secondaryColor: StringFilter
-  slug: StringFilter
-  updatedAt: DateTimeFilter
-  winPercentage: FloatNullableFilter
-  wins: IntNullableFilter
+  id: Int!
+  slug: StringFilter!
 }
 
 input TeamWhereUniqueInput {
-  abbreviation: String
-  handle: String
-  id: Int
-  logo: String
-  name: String
-  slug: String
+  id: Int!
 }
 
 """

@@ -15,10 +15,6 @@ declare global {
       opts?: core.CommonInputFieldConfig<TypeName, FieldName>,
     ): void // "Upload";
     /**
-     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-     */
-    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "JSONObject";
-    /**
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
@@ -31,19 +27,9 @@ declare global {
      */
     upload<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Upload";
     /**
-     * The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-     */
-    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "JSONObject";
-    /**
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
-  }
-}
-declare global {
-  interface NexusGenCustomOutputProperties<TypeName extends string> {
-    crud: NexusPrisma<TypeName, 'crud'>
-    model: NexusPrisma<TypeName, 'model'>
   }
 }
 
@@ -52,326 +38,74 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  CoachListRelationFilter: {
-    // input type
-    every?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
-    none?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
-    some?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
-  }
   CoachOrderByInput: {
     // input type
-    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null // SortOrder
-    isAssistant?: NexusGenEnums['SortOrder'] | null // SortOrder
-    name?: NexusGenEnums['SortOrder'] | null // SortOrder
-    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
-    type?: NexusGenEnums['SortOrder'] | null // SortOrder
-    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    name: NexusGenEnums['SortOrder'] // SortOrder!
   }
   CoachWhereInput: {
     // input type
-    AND?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
-    NOT?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
-    OR?: NexusGenInputs['CoachWhereInput'][] | null // [CoachWhereInput!]
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    isAssistant?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    name?: NexusGenInputs['StringFilter'] | null // StringFilter
-    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
-    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
-    type?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
+    id: number // Int!
+    name: NexusGenInputs['StringFilter'] // StringFilter!
   }
   CoachWhereUniqueInput: {
     // input type
-    handle?: string | null // String
-    id?: number | null // Int
-    name?: string | null // String
-  }
-  ColorSchemeListRelationFilter: {
-    // input type
-    every?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
-    none?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
-    some?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
-  }
-  ColorSchemeOrderByInput: {
-    // input type
-    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null // SortOrder
-    primary?: NexusGenEnums['SortOrder'] | null // SortOrder
-    secondary?: NexusGenEnums['SortOrder'] | null // SortOrder
-    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
-    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-  }
-  ColorSchemeWhereInput: {
-    // input type
-    AND?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
-    NOT?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
-    OR?: NexusGenInputs['ColorSchemeWhereInput'][] | null // [ColorSchemeWhereInput!]
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    primary?: NexusGenInputs['StringFilter'] | null // StringFilter
-    secondary?: NexusGenInputs['StringFilter'] | null // StringFilter
-    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
-    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-  }
-  ColorSchemeWhereUniqueInput: {
-    // input type
-    id?: number | null // Int
-  }
-  DateTimeFilter: {
-    // input type
-    equals?: NexusGenScalars['DateTime'] | null // DateTime
-    gt?: NexusGenScalars['DateTime'] | null // DateTime
-    gte?: NexusGenScalars['DateTime'] | null // DateTime
-    in?: NexusGenScalars['DateTime'][] | null // [DateTime!]
-    lt?: NexusGenScalars['DateTime'] | null // DateTime
-    lte?: NexusGenScalars['DateTime'] | null // DateTime
-    not?: NexusGenInputs['NestedDateTimeFilter'] | null // NestedDateTimeFilter
-    notIn?: NexusGenScalars['DateTime'][] | null // [DateTime!]
-  }
-  FloatNullableFilter: {
-    // input type
-    equals?: number | null // Float
-    gt?: number | null // Float
-    gte?: number | null // Float
-    in?: number[] | null // [Float!]
-    lt?: number | null // Float
-    lte?: number | null // Float
-    not?: NexusGenInputs['NestedFloatNullableFilter'] | null // NestedFloatNullableFilter
-    notIn?: number[] | null // [Float!]
+    id: number // Int!
   }
   IntFilter: {
     // input type
-    equals?: number | null // Int
-    gt?: number | null // Int
-    gte?: number | null // Int
-    in?: number[] | null // [Int!]
-    lt?: number | null // Int
-    lte?: number | null // Int
-    not?: NexusGenInputs['NestedIntFilter'] | null // NestedIntFilter
-    notIn?: number[] | null // [Int!]
-  }
-  IntNullableFilter: {
-    // input type
-    equals?: number | null // Int
-    gt?: number | null // Int
-    gte?: number | null // Int
-    in?: number[] | null // [Int!]
-    lt?: number | null // Int
-    lte?: number | null // Int
-    not?: NexusGenInputs['NestedIntNullableFilter'] | null // NestedIntNullableFilter
-    notIn?: number[] | null // [Int!]
-  }
-  NestedDateTimeFilter: {
-    // input type
-    equals?: NexusGenScalars['DateTime'] | null // DateTime
-    gt?: NexusGenScalars['DateTime'] | null // DateTime
-    gte?: NexusGenScalars['DateTime'] | null // DateTime
-    in?: NexusGenScalars['DateTime'][] | null // [DateTime!]
-    lt?: NexusGenScalars['DateTime'] | null // DateTime
-    lte?: NexusGenScalars['DateTime'] | null // DateTime
-    not?: NexusGenInputs['NestedDateTimeFilter'] | null // NestedDateTimeFilter
-    notIn?: NexusGenScalars['DateTime'][] | null // [DateTime!]
-  }
-  NestedFloatNullableFilter: {
-    // input type
-    equals?: number | null // Float
-    gt?: number | null // Float
-    gte?: number | null // Float
-    in?: number[] | null // [Float!]
-    lt?: number | null // Float
-    lte?: number | null // Float
-    not?: NexusGenInputs['NestedFloatNullableFilter'] | null // NestedFloatNullableFilter
-    notIn?: number[] | null // [Float!]
-  }
-  NestedIntFilter: {
-    // input type
-    equals?: number | null // Int
-    gt?: number | null // Int
-    gte?: number | null // Int
-    in?: number[] | null // [Int!]
-    lt?: number | null // Int
-    lte?: number | null // Int
-    not?: NexusGenInputs['NestedIntFilter'] | null // NestedIntFilter
-    notIn?: number[] | null // [Int!]
-  }
-  NestedIntNullableFilter: {
-    // input type
-    equals?: number | null // Int
-    gt?: number | null // Int
-    gte?: number | null // Int
-    in?: number[] | null // [Int!]
-    lt?: number | null // Int
-    lte?: number | null // Int
-    not?: NexusGenInputs['NestedIntNullableFilter'] | null // NestedIntNullableFilter
-    notIn?: number[] | null // [Int!]
-  }
-  NestedStringFilter: {
-    // input type
-    contains?: string | null // String
-    endsWith?: string | null // String
-    equals?: string | null // String
-    gt?: string | null // String
-    gte?: string | null // String
-    in?: string[] | null // [String!]
-    lt?: string | null // String
-    lte?: string | null // String
-    not?: NexusGenInputs['NestedStringFilter'] | null // NestedStringFilter
-    notIn?: string[] | null // [String!]
-    startsWith?: string | null // String
-  }
-  NestedStringNullableFilter: {
-    // input type
-    contains?: string | null // String
-    endsWith?: string | null // String
-    equals?: string | null // String
-    gt?: string | null // String
-    gte?: string | null // String
-    in?: string[] | null // [String!]
-    lt?: string | null // String
-    lte?: string | null // String
-    not?: NexusGenInputs['NestedStringNullableFilter'] | null // NestedStringNullableFilter
-    notIn?: string[] | null // [String!]
-    startsWith?: string | null // String
-  }
-  PlayerListRelationFilter: {
-    // input type
-    every?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
-    none?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
-    some?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
+    contains: number // Int!
+    endsWith: number // Int!
+    equals: number // Int!
+    gt: number // Int!
+    gte: number // Int!
+    in: number[] // [Int!]!
+    lt: number // Int!
+    lte: number // Int!
+    notIn: number[] // [Int!]!
+    startsWith: number // Int!
   }
   PlayerOrderByInput: {
     // input type
-    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
-    height?: NexusGenEnums['SortOrder'] | null // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null // SortOrder
-    name?: NexusGenEnums['SortOrder'] | null // SortOrder
-    number?: NexusGenEnums['SortOrder'] | null // SortOrder
-    position?: NexusGenEnums['SortOrder'] | null // SortOrder
-    slug?: NexusGenEnums['SortOrder'] | null // SortOrder
-    teamId?: NexusGenEnums['SortOrder'] | null // SortOrder
-    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    weight?: NexusGenEnums['SortOrder'] | null // SortOrder
+    name: NexusGenEnums['SortOrder'] // SortOrder!
   }
   PlayerWhereInput: {
     // input type
-    AND?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
-    NOT?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
-    OR?: NexusGenInputs['PlayerWhereInput'][] | null // [PlayerWhereInput!]
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
-    height?: NexusGenInputs['StringFilter'] | null // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    name?: NexusGenInputs['StringFilter'] | null // StringFilter
-    number?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    position?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
-    slug?: NexusGenInputs['StringFilter'] | null // StringFilter
-    team?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
-    teamId?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    weight?: NexusGenInputs['StringFilter'] | null // StringFilter
+    id: number // Int!
+    name: NexusGenInputs['StringFilter'] // StringFilter!
   }
   PlayerWhereUniqueInput: {
     // input type
-    handle?: string | null // String
-    id?: number | null // Int
-    name?: string | null // String
-    slug?: string | null // String
+    id: number // Int!
   }
   StringFilter: {
     // input type
-    contains?: string | null // String
-    endsWith?: string | null // String
-    equals?: string | null // String
-    gt?: string | null // String
-    gte?: string | null // String
-    in?: string[] | null // [String!]
-    lt?: string | null // String
-    lte?: string | null // String
-    mode?: NexusGenEnums['QueryMode'] | null // QueryMode
-    not?: NexusGenInputs['NestedStringFilter'] | null // NestedStringFilter
-    notIn?: string[] | null // [String!]
-    startsWith?: string | null // String
-  }
-  StringNullableFilter: {
-    // input type
-    contains?: string | null // String
-    endsWith?: string | null // String
-    equals?: string | null // String
-    gt?: string | null // String
-    gte?: string | null // String
-    in?: string[] | null // [String!]
-    lt?: string | null // String
-    lte?: string | null // String
-    mode?: NexusGenEnums['QueryMode'] | null // QueryMode
-    not?: NexusGenInputs['NestedStringNullableFilter'] | null // NestedStringNullableFilter
-    notIn?: string[] | null // [String!]
-    startsWith?: string | null // String
+    contains: string // String!
+    endsWith: string // String!
+    equals: string // String!
+    gt: string // String!
+    gte: string // String!
+    in: string[] // [String!]!
+    lt: string // String!
+    lte: string // String!
+    notIn: string[] // [String!]!
+    startsWith: string // String!
   }
   TeamOrderByInput: {
     // input type
-    abbreviation?: NexusGenEnums['SortOrder'] | null // SortOrder
-    city?: NexusGenEnums['SortOrder'] | null // SortOrder
-    conference?: NexusGenEnums['SortOrder'] | null // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    division?: NexusGenEnums['SortOrder'] | null // SortOrder
-    established?: NexusGenEnums['SortOrder'] | null // SortOrder
-    handle?: NexusGenEnums['SortOrder'] | null // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null // SortOrder
-    logo?: NexusGenEnums['SortOrder'] | null // SortOrder
-    losses?: NexusGenEnums['SortOrder'] | null // SortOrder
-    name?: NexusGenEnums['SortOrder'] | null // SortOrder
-    primaryColor?: NexusGenEnums['SortOrder'] | null // SortOrder
-    secondaryColor?: NexusGenEnums['SortOrder'] | null // SortOrder
-    slug?: NexusGenEnums['SortOrder'] | null // SortOrder
-    updatedAt?: NexusGenEnums['SortOrder'] | null // SortOrder
-    winPercentage?: NexusGenEnums['SortOrder'] | null // SortOrder
-    wins?: NexusGenEnums['SortOrder'] | null // SortOrder
+    slug: NexusGenEnums['SortOrder'] // SortOrder!
   }
   TeamWhereInput: {
     // input type
-    AND?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
-    NOT?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
-    OR?: NexusGenInputs['TeamWhereInput'][] | null // [TeamWhereInput!]
-    abbreviation?: NexusGenInputs['StringFilter'] | null // StringFilter
-    city?: NexusGenInputs['StringFilter'] | null // StringFilter
-    coaches?: NexusGenInputs['CoachListRelationFilter'] | null // CoachListRelationFilter
-    colorScheme?: NexusGenInputs['ColorSchemeListRelationFilter'] | null // ColorSchemeListRelationFilter
-    conference?: NexusGenInputs['StringFilter'] | null // StringFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    division?: NexusGenInputs['StringFilter'] | null // StringFilter
-    established?: NexusGenInputs['StringFilter'] | null // StringFilter
-    handle?: NexusGenInputs['StringFilter'] | null // StringFilter
-    id?: NexusGenInputs['IntFilter'] | null // IntFilter
-    logo?: NexusGenInputs['StringFilter'] | null // StringFilter
-    losses?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
-    name?: NexusGenInputs['StringFilter'] | null // StringFilter
-    players?: NexusGenInputs['PlayerListRelationFilter'] | null // PlayerListRelationFilter
-    primaryColor?: NexusGenInputs['StringFilter'] | null // StringFilter
-    secondaryColor?: NexusGenInputs['StringFilter'] | null // StringFilter
-    slug?: NexusGenInputs['StringFilter'] | null // StringFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null // DateTimeFilter
-    winPercentage?: NexusGenInputs['FloatNullableFilter'] | null // FloatNullableFilter
-    wins?: NexusGenInputs['IntNullableFilter'] | null // IntNullableFilter
+    id: number // Int!
+    slug: NexusGenInputs['StringFilter'] // StringFilter!
   }
   TeamWhereUniqueInput: {
     // input type
-    abbreviation?: string | null // String
-    handle?: string | null // String
-    id?: number | null // Int
-    logo?: string | null // String
-    name?: string | null // String
-    slug?: string | null // String
+    id: number // Int!
   }
 }
 
 export interface NexusGenEnums {
-  QueryMode: 'default' | 'insensitive'
   SortOrder: 'asc' | 'desc'
 }
 
@@ -382,7 +116,6 @@ export interface NexusGenScalars {
   Boolean: boolean
   ID: string
   DateTime: any
-  JSONObject: any
   Upload: any
 }
 
@@ -435,6 +168,8 @@ export interface NexusGenObjects {
     logo: string // String!
     losses?: number | null // Int
     name: string // String!
+    primaryColor: string // String!
+    secondaryColor: string // String!
     slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage?: number | null // Float
@@ -490,21 +225,14 @@ export interface NexusGenFieldTypes {
   }
   Query: {
     // field return type
-    allCoaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
-    allColorSchemes: Array<NexusGenRootTypes['ColorScheme'] | null> | null // [ColorScheme]
-    allPlayers: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
-    allTeams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
-    coach: NexusGenRootTypes['Coach'] | null // Coach
-    coaches: NexusGenRootTypes['Coach'][] // [Coach!]!
+    coaches: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
     coachesByTeam: Array<NexusGenRootTypes['Coach'] | null> | null // [Coach]
-    colorScheme: NexusGenRootTypes['ColorScheme'] | null // ColorScheme
-    colorSchemeByTeam: Array<NexusGenRootTypes['ColorScheme'] | null> | null // [ColorScheme]
-    colorSchemes: NexusGenRootTypes['ColorScheme'][] // [ColorScheme!]!
-    player: NexusGenRootTypes['Player'] | null // Player
-    players: NexusGenRootTypes['Player'][] // [Player!]!
+    colorSchemeByTeam: NexusGenRootTypes['ColorScheme'] | null // ColorScheme
+    colorSchemes: Array<NexusGenRootTypes['ColorScheme'] | null> | null // [ColorScheme]
+    players: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
     playersByTeam: Array<NexusGenRootTypes['Player'] | null> | null // [Player]
     team: NexusGenRootTypes['Team'] | null // Team
-    teams: NexusGenRootTypes['Team'][] // [Team!]!
+    teams: Array<NexusGenRootTypes['Team'] | null> | null // [Team]
   }
   Team: {
     // field return type
@@ -522,6 +250,8 @@ export interface NexusGenFieldTypes {
     losses: number | null // Int
     name: string // String!
     players: NexusGenRootTypes['Player'][] // [Player!]!
+    primaryColor: string // String!
+    secondaryColor: string // String!
     slug: string // String!
     updatedAt: NexusGenScalars['DateTime'] // DateTime!
     winPercentage: number | null // Float
@@ -569,17 +299,10 @@ export interface NexusGenFieldTypeNames {
   }
   Query: {
     // field return type name
-    allCoaches: 'Coach'
-    allColorSchemes: 'ColorScheme'
-    allPlayers: 'Player'
-    allTeams: 'Team'
-    coach: 'Coach'
     coaches: 'Coach'
     coachesByTeam: 'Coach'
-    colorScheme: 'ColorScheme'
     colorSchemeByTeam: 'ColorScheme'
     colorSchemes: 'ColorScheme'
-    player: 'Player'
     players: 'Player'
     playersByTeam: 'Player'
     team: 'Team'
@@ -601,6 +324,8 @@ export interface NexusGenFieldTypeNames {
     losses: 'Int'
     name: 'String'
     players: 'Player'
+    primaryColor: 'String'
+    secondaryColor: 'String'
     slug: 'String'
     updatedAt: 'DateTime'
     winPercentage: 'Float'
@@ -610,49 +335,13 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Query: {
-    coach: {
-      // args
-      where: NexusGenInputs['CoachWhereUniqueInput'] // CoachWhereUniqueInput!
-    }
-    coaches: {
-      // args
-      cursor?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
-      orderBy?: NexusGenInputs['CoachOrderByInput'][] | null // [CoachOrderByInput!]
-      skip?: number | null // Int
-      take?: number | null // Int
-      where?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
-    }
     coachesByTeam: {
       // args
       id?: number | null // Int
     }
-    colorScheme: {
-      // args
-      where: NexusGenInputs['ColorSchemeWhereUniqueInput'] // ColorSchemeWhereUniqueInput!
-    }
     colorSchemeByTeam: {
       // args
       id?: number | null // Int
-    }
-    colorSchemes: {
-      // args
-      cursor?: NexusGenInputs['ColorSchemeWhereUniqueInput'] | null // ColorSchemeWhereUniqueInput
-      orderBy?: NexusGenInputs['ColorSchemeOrderByInput'][] | null // [ColorSchemeOrderByInput!]
-      skip?: number | null // Int
-      take?: number | null // Int
-      where?: NexusGenInputs['ColorSchemeWhereInput'] | null // ColorSchemeWhereInput
-    }
-    player: {
-      // args
-      where: NexusGenInputs['PlayerWhereUniqueInput'] // PlayerWhereUniqueInput!
-    }
-    players: {
-      // args
-      cursor?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
-      orderBy?: NexusGenInputs['PlayerOrderByInput'][] | null // [PlayerOrderByInput!]
-      skip?: number | null // Int
-      take?: number | null // Int
-      where?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
     }
     playersByTeam: {
       // args
@@ -660,35 +349,25 @@ export interface NexusGenArgTypes {
     }
     team: {
       // args
-      where: NexusGenInputs['TeamWhereUniqueInput'] // TeamWhereUniqueInput!
-    }
-    teams: {
-      // args
-      cursor?: NexusGenInputs['TeamWhereUniqueInput'] | null // TeamWhereUniqueInput
-      orderBy?: NexusGenInputs['TeamOrderByInput'][] | null // [TeamOrderByInput!]
-      skip?: number | null // Int
-      take?: number | null // Int
-      where?: NexusGenInputs['TeamWhereInput'] | null // TeamWhereInput
+      slug?: string | null // String
     }
   }
   Team: {
     coaches: {
       // args
       cursor?: NexusGenInputs['CoachWhereUniqueInput'] | null // CoachWhereUniqueInput
+      orderBy?: NexusGenInputs['CoachOrderByInput'] | null // CoachOrderByInput
       skip?: number | null // Int
       take?: number | null // Int
-    }
-    colorScheme: {
-      // args
-      cursor?: NexusGenInputs['ColorSchemeWhereUniqueInput'] | null // ColorSchemeWhereUniqueInput
-      skip?: number | null // Int
-      take?: number | null // Int
+      where?: NexusGenInputs['CoachWhereInput'] | null // CoachWhereInput
     }
     players: {
       // args
       cursor?: NexusGenInputs['PlayerWhereUniqueInput'] | null // PlayerWhereUniqueInput
+      orderBy?: NexusGenInputs['PlayerOrderByInput'] | null // PlayerOrderByInput
       skip?: number | null // Int
       take?: number | null // Int
+      where?: NexusGenInputs['PlayerWhereInput'] | null // PlayerWhereInput
     }
   }
 }

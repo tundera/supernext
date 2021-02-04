@@ -1,4 +1,4 @@
-query ColorSchemeByTeam($id: Int) {
+query ColorSchemeByTeam($id: Int!) {
   colorSchemeByTeam(id: $id) {
     id
     primary

@@ -8,7 +8,7 @@ import CoachesByTeamQuery from 'src/graphql/queries/CoachesByTeam'
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
 export async function getAllCoaches(): Promise<Coach[]> {
-  const { allCoaches: data } = await request(endpoint, AllCoachesQuery)
+  const { coaches: data } = await request(endpoint, AllCoachesQuery)
 
   return data
 }
