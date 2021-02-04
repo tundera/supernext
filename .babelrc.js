@@ -9,6 +9,7 @@ module.exports = {
         root: ['./'],
         alias: {
           '@routes': './src/routes',
+          '@graphql': './src/graphql',
           '@components': './src/components',
           '@hooks': './src/hooks',
           '@providers': './src/providers',

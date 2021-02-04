@@ -1,31 +1,38 @@
 import Image from 'next/image'
-import { Heading, useColorModeValue, Flex } from '@chakra-ui/react'
+import { Heading, Flex, Stack, Box } from '@chakra-ui/react'
+
+import useColors from '@hooks/useColors'
 
 type Props = {
   name: string
-  logo: string
   slug: string
+  logo: string
+  background: string
 }
 
-const TeamCard = ({ name, logo, slug }: Props) => {
-  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
-
+const TeamCard = ({ name, slug, logo, background }: Props) => {
   return (
-    <Flex
-      p={5}
-      flexDir="column"
-      bgColor="whiteAlpha.900"
-      shadow="md"
-      borderRadius={4}
-      bgImage={logo}
-      as="a"
-      href={`/teams/${slug}`}
-    >
-      <Image src={logo} height="100" width="auto" />
-      <Heading fontSize="lg" textAlign="center" color={color} mt="8">
-        {name}
-      </Heading>
-    </Flex>
+    <Box minHeight="200px" bg="stone.500" maxW="200px" p={4} borderRadius="2rem">
+      <Stack align="center">
+        <Flex
+          borderRadius="lg"
+          background={background}
+          as="a"
+          direction="column"
+          align="center"
+          href={`/teams/${slug}`}
+          minW={['100%', '75%', '150px']}
+          border="1px solid black"
+          boxShadow="xl"
+          py="4"
+        >
+          <Image src={logo} height="100" width="100" layout="fixed" />
+        </Flex>
+        <Heading as="h3" size="md" fontWeight="bold" mb={4} color="whiteAlpha.900" textTransform="uppercase">
+          {name}
+        </Heading>
+      </Stack>
+    </Box>
   )
 }
 

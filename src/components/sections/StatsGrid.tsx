@@ -1,10 +1,12 @@
-import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid, useTheme } from '@chakra-ui/react'
+import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid } from '@chakra-ui/react'
+
+import useColors from '@hooks/useColors'
 
 const StatsText = ({ children }) => {
-  const theme = useTheme()
+  const { primaryTextColor } = useColors()
 
   return (
-    <Text as="span" fontWeight={700} color={theme.colors.brand.primary}>
+    <Text as="span" fontWeight={700} color={primaryTextColor}>
       {children}
     </Text>
   )
