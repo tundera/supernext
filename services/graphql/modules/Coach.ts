@@ -20,8 +20,8 @@ export const Coach = objectType({
     t.string('isAssistant')
     t.field('team', {
       type: 'Team',
-      resolve: (parent, _args, context) => {
-        return context.prisma.coach
+      resolve: (parent, _args, ctx) => {
+        return ctx.db.coach
           .findUnique({
             where: { id: parent.id },
           })
@@ -40,7 +40,7 @@ export const CoachQueries = extendType({
     t.field('coaches', {
       type: list('Coach'),
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.coach.findMany({})
+        return ctx.db.coach.findMany({})
       },
     })
 
@@ -50,7 +50,7 @@ export const CoachQueries = extendType({
         id: intArg(),
       },
       resolve(_parent, args, ctx) {
-        return ctx.prisma.coach.findMany({
+        return ctx.db.coach.findMany({
           where: { teamId: args.id },
           orderBy: {
             name: 'desc',

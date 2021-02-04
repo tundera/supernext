@@ -18,8 +18,8 @@ export const ColorScheme = objectType({
     t.int('teamId')
     t.field('team', {
       type: 'Team',
-      resolve: (parent, _, context) => {
-        return context.prisma.colorScheme
+      resolve: (parent, _args, ctx) => {
+        return ctx.db.colorScheme
           .findUnique({
             where: { id: parent.id },
           })
@@ -38,7 +38,7 @@ export const ColorSchemeQueries = extendType({
     t.field('colorSchemes', {
       type: list('ColorScheme'),
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.colorScheme.findMany({})
+        return ctx.db.colorScheme.findMany({})
       },
     })
 
@@ -48,7 +48,7 @@ export const ColorSchemeQueries = extendType({
         id: intArg(),
       },
       resolve: (_parent, args, ctx) => {
-        return ctx.prisma.colorScheme.findUnique({
+        return ctx.db.colorScheme.findUnique({
           where: { id: args.id ?? undefined },
         })
       },

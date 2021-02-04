@@ -48,6 +48,7 @@ Some notable open-source libraries and developer blog tutorials were were a big 
 - [hauptrolle.me](https://github.com/hauptrolle/hauptrolle.me)
 - [Confetti Button](https://raptis.wtf/blog/gatsby-mdx-copy-code-button-with-confetti/)
 - [MDX component mapping](https://richardhaines.dev/create-a-landing-page-with-next-and-mdx/)
+- [ogzhanolguncu.com](https://github.com/ogzhanolguncu/ogzhanolguncu.com)
 
 ### Media Sources
 

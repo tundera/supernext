@@ -11,7 +11,7 @@ import sanity from '@lib/sanity/client'
 import { getPostBySlug } from '@lib/content/posts'
 import CodeBlock from '@components/ui/CodeBlock'
 import PageLayout from '@components/layouts/PageLayout'
-import LoadingSpinner from '@components/utility/LoadingSpinner'
+import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { createImageUrl } from 'src/utils/sanity'
 
 import { usePreviewSubscription } from '@lib/sanity'

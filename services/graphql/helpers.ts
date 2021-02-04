@@ -1,12 +1,10 @@
-import { PrismaClient } from 'db'
+import db from 'db'
 import { Context } from './types'
-
-export const prisma = new PrismaClient()
 
 export const createContext = (ctx: any): Context => {
   return {
     ...ctx,
-    prisma,
+    db,
   }
 }
 

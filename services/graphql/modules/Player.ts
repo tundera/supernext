@@ -24,7 +24,7 @@ export const Player = objectType({
     t.field('team', {
       type: 'Team',
       resolve: (parent, _args, ctx) => {
-        return ctx.prisma.player
+        return ctx.db.player
           .findUnique({
             where: { id: parent.id },
           })
@@ -43,7 +43,7 @@ export const PlayerQueries = extendType({
     t.field('players', {
       type: list('Player'),
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.player.findMany({})
+        return ctx.db.player.findMany({})
       },
     })
 
@@ -53,7 +53,7 @@ export const PlayerQueries = extendType({
         id: intArg(),
       },
       resolve: (_parent, args, ctx) => {
-        return ctx.prisma.player.findMany({
+        return ctx.db.player.findMany({
           where: { teamId: args.id },
           orderBy: {
             name: 'asc',

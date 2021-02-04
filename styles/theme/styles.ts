@@ -2,19 +2,19 @@ import { mode } from '@chakra-ui/theme-tools'
 
 export default {
   global: (props) => ({
-    'html, #__next': {
-      height: '100%',
+    html: {
+      minWidth: '360px',
+      scrollBehavior: 'smooth',
     },
     '#__next': {
       display: 'flex',
       flexDirection: 'column',
-    },
-    html: {
-      scrollBehavior: 'smooth',
+      minHeight: '100vh',
+      background: mode('stone.700', 'whiteAlpha.900')(props),
     },
     body: {
       fontFamily: 'body',
-      bg: mode('stone.700', 'gray.200')(props),
+      background: mode('stone.700', 'whiteAlpha.900')(props),
       lineHeight: 'base',
     },
   }),

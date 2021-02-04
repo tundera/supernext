@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { Heading, Flex, Stack, Box } from '@chakra-ui/react'
 
-import useColors from '@hooks/useColors'
-
 type Props = {
   name: string
   slug: string

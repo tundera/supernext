@@ -16,7 +16,7 @@ import { MdxRemote } from 'next-mdx-remote/types'
 
 import MdxLayout from '@components/layouts/MdxLayout'
 import PageLayout from '@components/layouts/PageLayout'
-import LoadingSpinner from '@components/utility/LoadingSpinner'
+import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
 import { getArticle } from '@lib/content/articles'
 

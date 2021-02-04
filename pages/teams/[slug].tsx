@@ -5,11 +5,11 @@ import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import QuerySuspense from '@components/utility/QuerySuspense'
+import QuerySuspense from '@components/utility/suspense/QuerySuspense'
 import { getTeamBySlug, getAllTeams } from '@lib/graphql/teams'
 import { useTeamBySlugQuery } from 'src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
-import LoadingSpinner from '@components/utility/LoadingSpinner'
+import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import PlayersList from '@components/ui/lists/PlayersList'
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''

@@ -48,3 +48,6 @@ db/data/**
 
 # storybook
 /storybook-static
+
+# blitz
+.blitz-console-history

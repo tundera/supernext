@@ -36,8 +36,8 @@ export const Team = objectType({
         orderBy: arg({ type: 'CoachOrderByInput' }),
         where: arg({ type: 'CoachWhereInput' }),
       },
-      resolve: (parent, args, context) => {
-        return context.prisma.team
+      resolve: (parent, args, ctx) => {
+        return ctx.db.team
           .findUnique({
             where: { id: parent.id },
           })
@@ -62,8 +62,8 @@ export const Team = objectType({
         orderBy: arg({ type: 'PlayerOrderByInput' }),
         where: arg({ type: 'PlayerWhereInput' }),
       },
-      resolve: (parent, args, context) => {
-        return context.prisma.team
+      resolve: (parent, args, ctx) => {
+        return ctx.db.team
           .findUnique({
             where: { id: parent.id },
           })
@@ -81,8 +81,8 @@ export const Team = objectType({
     })
     t.nonNull.list.nonNull.field('colorScheme', {
       type: 'ColorScheme',
-      resolve: (parent, _args, context) => {
-        return context.prisma.team
+      resolve: (parent, _args, ctx) => {
+        return ctx.db.team
           .findUnique({
             where: { id: parent.id },
           })
@@ -104,14 +104,14 @@ export const TeamQueries = extendType({
         slug: stringArg(),
       },
       resolve(_parent, args, ctx) {
-        return ctx.prisma.team.findUnique({ where: { slug: args?.slug ?? undefined } })
+        return ctx.db.team.findUnique({ where: { slug: args?.slug ?? undefined } })
       },
     })
 
     t.field('teams', {
       type: list('Team'),
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.team.findMany({})
+        return ctx.db.team.findMany({})
       },
     })
   },
