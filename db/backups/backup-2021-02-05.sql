@@ -1248,16 +1248,6 @@ COPY public."User" (id, "createdAt", "updatedAt", name, email, "hashedPassword",
 
 
 --
--- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: tundera
---
-
-COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
-de12bcc2-5bcf-4425-bec1-93e27254dbb6	35af66fcc5d1727e2b79995f341daeda38a9a7b1b7cbf2d352ddab8682a7b4	2021-02-05 05:03:49.34175+00	20210205050349_init_migration	\N	\N	2021-02-05 05:03:49.04425+00	1
-e6329bd1-381a-449a-8baf-d5ada2e2c303	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	\N	20210203205646_init_db	Database error: Error querying the database: db error: ERROR: relation "Coach" already exists\n   0: migration_core::api::ApplyMigrations\n             at migration-engine/core/src/api.rs:72	\N	2021-02-05 19:32:50.207592+00	0
-\.
-
-
---
 -- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
