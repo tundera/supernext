@@ -5,6 +5,7 @@ query Teams {
     slug
     city
     logo
+    logoSlug
     colorScheme {
       primary
       secondary

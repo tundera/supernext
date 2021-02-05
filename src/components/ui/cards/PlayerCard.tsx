@@ -1,7 +1,9 @@
 import type { FC } from 'react'
 import type { Player } from 'db'
 
-import { Button, Badge, Heading, Flex, Image, Spacer, VStack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Image } from 'cloudinary-react'
+
+import { Button, Badge, Heading, Flex, Spacer, VStack, Text, useColorModeValue } from '@chakra-ui/react'
 
 type Props = {
   player: Player

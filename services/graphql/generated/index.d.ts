@@ -166,6 +166,7 @@ export interface NexusGenObjects {
     handle: string // String!
     id: number // Int!
     logo: string // String!
+    logoSlug: string // String!
     losses?: number | null // Int
     name: string // String!
     primaryColor: string // String!
@@ -247,6 +248,7 @@ export interface NexusGenFieldTypes {
     handle: string // String!
     id: number // Int!
     logo: string // String!
+    logoSlug: string // String!
     losses: number | null // Int
     name: string // String!
     players: NexusGenRootTypes['Player'][] // [Player!]!
@@ -321,6 +323,7 @@ export interface NexusGenFieldTypeNames {
     handle: 'String'
     id: 'Int'
     logo: 'String'
+    logoSlug: 'String'
     losses: 'Int'
     name: 'String'
     players: 'Player'

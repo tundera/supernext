@@ -129,6 +129,7 @@ type Team {
   handle: String!
   id: Int!
   logo: String!
+  logoSlug: String!
   losses: Int
   name: String!
   players(

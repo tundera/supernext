@@ -11,7 +11,9 @@ module.exports = {
     locales: ['en', 'de'],
   },
   images: {
-    domains: ['res.cloudinary.com', 'cdn.sanity.io'],
+    // loader: 'cloudinary',
+    // path: 'https://res.cloudinary.com/dbc3x3s7c/image/upload/',
+    domains: ['cdn.sanity.io'],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {

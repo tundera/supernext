@@ -16,6 +16,7 @@ export const Team = objectType({
     t.nonNull.string('handle')
     t.nonNull.string('name')
     t.nonNull.string('slug')
+    t.nonNull.string('logoSlug')
     t.nonNull.string('city')
     t.nonNull.string('abbreviation')
     t.nonNull.string('logo')

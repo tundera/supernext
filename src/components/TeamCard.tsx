@@ -8,7 +8,7 @@ type Props = {
   background: string
 }
 
-const TeamCard = ({ name, slug, logo, background }: Props) => {
+const TeamBanner = ({ name, slug, logo, background }: Props) => {
   return (
     <Box minHeight="200px" bg="stone.500" maxW="200px" p={4} borderRadius="2rem">
       <Stack align="center">
@@ -24,7 +24,7 @@ const TeamCard = ({ name, slug, logo, background }: Props) => {
           boxShadow="xl"
           py="4"
         >
-          <Image src={logo} height="100" width="100" layout="fixed" />
+          <Image src={`${logo}.png`} height="100" width="100" layout="fixed" />
         </Flex>
         <Heading as="h3" size="md" fontWeight="bold" mb={4} color="whiteAlpha.900" textTransform="uppercase">
           {name}
@@ -34,4 +34,4 @@ const TeamCard = ({ name, slug, logo, background }: Props) => {
   )
 }
 
-export default TeamCard
+export default TeamBanner
