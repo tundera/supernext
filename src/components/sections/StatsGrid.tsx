@@ -6,7 +6,7 @@ const StatsText = ({ children }) => {
   const { primaryTextColor } = useColors()
 
   return (
-    <Text as="span" fontWeight={700} color={primaryTextColor}>
+    <Text as="span" fontWeight="700" color={primaryTextColor}>
       {children}
     </Text>
   )
@@ -85,7 +85,7 @@ function StatsGrid() {
             <Box mb={{ base: 8, md: 20 }}>
               <Text
                 fontFamily="heading"
-                fontWeight={700}
+                fontWeight="700"
                 textTransform="uppercase"
                 mb={3}
                 fontSize="xl"

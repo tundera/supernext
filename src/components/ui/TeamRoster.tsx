@@ -26,7 +26,7 @@ const TeamRoster = ({ players, ...props }: Props) => {
           }}
         >
           <Stack spacing={4} h="full">
-            <Heading as="h3" size="md" fontWeight={500} color="brandGreen.500">
+            <Heading as="h3" size="md" fontWeight="500" color="brandGreen.500">
               {player.name}
             </Heading>
             <Text>
@@ -34,7 +34,7 @@ const TeamRoster = ({ players, ...props }: Props) => {
             </Text>
             <Flex height="full">
               <Flex mt="auto" w="full" alignItems="center" justifyContent="space-between">
-                <Text fontWeight={600} display="inline-flex" alignSelf="flex-end">
+                <Text fontWeight="600" display="inline-flex" alignSelf="flex-end">
                   See stats on ESPN
                 </Text>
               </Flex>

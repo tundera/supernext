@@ -6,7 +6,7 @@ const ChakraHeading = chakra(Heading, {
 
 function SectionHeadline({ children, ...props }) {
   return (
-    <ChakraHeading as="h2" size="xl" fontWeight={600} mb={8} {...props}>
+    <ChakraHeading as="h2" size="xl" fontWeight="600" mb={8} {...props}>
       {children}
     </ChakraHeading>
   )

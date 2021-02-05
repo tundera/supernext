@@ -28,7 +28,7 @@ function Features() {
                 <Icon as={CheckIcon} />
               </Box>
               <VStack align="start">
-                <Text fontWeight={600}>{feature.title}</Text>
+                <Text fontWeight="600">{feature.title}</Text>
                 <Text color="gray.600">{feature.text}</Text>
               </VStack>
             </HStack>

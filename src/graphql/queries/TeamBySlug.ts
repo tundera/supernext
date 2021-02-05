@@ -8,7 +8,6 @@ export default gql`
       city
       established
       logo
-      logoSlug
       colorScheme {
         primary
         secondary

@@ -5,7 +5,6 @@ query TeamBySlug($slug: String!) {
         city
         established
         logo
-        logoSlug
         colorScheme {
             primary
             secondary
