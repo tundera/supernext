@@ -12,9 +12,6 @@
     "type": "git",
     "url": "https://github.com/tundera/next-goat.git"
   },
-  "engines": {
-    "node": ">=12"
-  },
   "prisma": {
     "schema": "db/schema.prisma"
   },
@@ -47,8 +44,6 @@
     "g:test:factory": "hygen test factory --name",
     "g:test:request": "hygen test request --name",
     "g:test:util": "hygen test util --name",
-    "studio:start": "yarn workspace studio start",
-    "studio:deploy": "yarn workspace studio deploy",
     "start": "next start",
     "test": "jest --passWithNoTests",
     "test:ci": "jest --passWithNoTests --runInBand",
@@ -110,8 +105,8 @@
     "nexus": "^1.0.0",
     "prettier": "^2.2.1",
     "prism-react-renderer": "^1.1.1",
-    "react": "^0.0.0-experimental-27659559e",
-    "react-dom": "^0.0.0-experimental-27659559e",
+    "react": "^0.0.0-experimental-a703c3f7e",
+    "react-dom": "^0.0.0-experimental-a703c3f7e",
     "react-dom-confetti": "^0.2.0",
     "react-error-boundary": "^3.1.0",
     "react-hook-form": "^6.14.2",

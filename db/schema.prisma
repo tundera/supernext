@@ -56,7 +56,7 @@ model Team {
   city           String
   abbreviation   String        @unique
   logo           String        @unique
-  logoSlug       String?       @unique
+  logoSlug       String        @unique
   wins           Int?
   losses         Int?
   winPercentage  Float?

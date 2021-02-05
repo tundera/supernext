@@ -2,19 +2,18 @@ import type { Player } from 'db'
 
 import { request } from 'graphql-request'
 
-import AllPlayersQuery from 'src/graphql/queries/AllPlayers'
-import PlayersByTeamQuery from 'src/graphql/queries/PlayersByTeam'
+import { PlayersDocument, PlayersByTeamDocument } from 'src/graphql/generated'
 
 const endpoint = `${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`
 
 export async function getAllPlayers(): Promise<Player[]> {
-  const { players: data } = await request(endpoint, AllPlayersQuery)
+  const { players: data } = await request(endpoint, PlayersDocument)
 
   return data
 }
 
 export async function getPlayersByTeam(id: number): Promise<Player[]> {
-  const { players: data } = await request(endpoint, PlayersByTeamQuery, { id })
+  const { players: data } = await request(endpoint, PlayersByTeamDocument, { id })
 
   return data
 }
