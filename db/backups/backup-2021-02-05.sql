@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.5 (Debian 12.5-1.pgdg100+1)
+-- Dumped from database version 12.5
 -- Dumped by pg_dump version 13.1
 
 SET statement_timeout = 0;
@@ -16,12 +16,23 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: TokenType; Type: TYPE; Schema: public; Owner: tundera
+--
+
+CREATE TYPE public."TokenType" AS ENUM (
+    'RESET_PASSWORD'
+);
+
+
+ALTER TYPE public."TokenType" OWNER TO tundera;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: Coach; Type: TABLE; Schema: public; Owner: postgres
+-- Name: Coach; Type: TABLE; Schema: public; Owner: tundera
 --
 
 CREATE TABLE public."Coach" (
@@ -36,10 +47,10 @@ CREATE TABLE public."Coach" (
 );
 
 
-ALTER TABLE public."Coach" OWNER TO doadmin;
+ALTER TABLE public."Coach" OWNER TO tundera;
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
+-- Name: Coach_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
 --
 
 CREATE SEQUENCE public."Coach_id_seq"
@@ -51,17 +62,17 @@ CREATE SEQUENCE public."Coach_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Coach_id_seq" OWNER TO doadmin;
+ALTER TABLE public."Coach_id_seq" OWNER TO tundera;
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
+-- Name: Coach_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
 --
 
 ALTER SEQUENCE public."Coach_id_seq" OWNED BY public."Coach".id;
 
 
 --
--- Name: ColorScheme; Type: TABLE; Schema: public; Owner: doadmin
+-- Name: ColorScheme; Type: TABLE; Schema: public; Owner: tundera
 --
 
 CREATE TABLE public."ColorScheme" (
@@ -74,10 +85,10 @@ CREATE TABLE public."ColorScheme" (
 );
 
 
-ALTER TABLE public."ColorScheme" OWNER TO doadmin;
+ALTER TABLE public."ColorScheme" OWNER TO tundera;
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
+-- Name: ColorScheme_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
 --
 
 CREATE SEQUENCE public."ColorScheme_id_seq"
@@ -89,17 +100,17 @@ CREATE SEQUENCE public."ColorScheme_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."ColorScheme_id_seq" OWNER TO doadmin;
+ALTER TABLE public."ColorScheme_id_seq" OWNER TO tundera;
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
+-- Name: ColorScheme_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
 --
 
 ALTER SEQUENCE public."ColorScheme_id_seq" OWNED BY public."ColorScheme".id;
 
 
 --
--- Name: Player; Type: TABLE; Schema: public; Owner: doadmin
+-- Name: Player; Type: TABLE; Schema: public; Owner: tundera
 --
 
 CREATE TABLE public."Player" (
@@ -117,10 +128,10 @@ CREATE TABLE public."Player" (
 );
 
 
-ALTER TABLE public."Player" OWNER TO doadmin;
+ALTER TABLE public."Player" OWNER TO tundera;
 
 --
--- Name: Player_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
+-- Name: Player_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
 --
 
 CREATE SEQUENCE public."Player_id_seq"
@@ -132,17 +143,59 @@ CREATE SEQUENCE public."Player_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Player_id_seq" OWNER TO doadmin;
+ALTER TABLE public."Player_id_seq" OWNER TO tundera;
 
 --
--- Name: Player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
+-- Name: Player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
 --
 
 ALTER SEQUENCE public."Player_id_seq" OWNED BY public."Player".id;
 
 
 --
--- Name: Team; Type: TABLE; Schema: public; Owner: doadmin
+-- Name: Session; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public."Session" (
+    id integer NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "expiresAt" timestamp(3) without time zone,
+    handle text NOT NULL,
+    "hashedSessionToken" text,
+    "antiCSRFToken" text,
+    "publicData" text,
+    "privateData" text,
+    "userId" integer
+);
+
+
+ALTER TABLE public."Session" OWNER TO tundera;
+
+--
+-- Name: Session_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public."Session_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Session_id_seq" OWNER TO tundera;
+
+--
+-- Name: Session_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public."Session_id_seq" OWNED BY public."Session".id;
+
+
+--
+-- Name: Team; Type: TABLE; Schema: public; Owner: tundera
 --
 
 CREATE TABLE public."Team" (
@@ -155,6 +208,7 @@ CREATE TABLE public."Team" (
     city text NOT NULL,
     abbreviation text NOT NULL,
     logo text NOT NULL,
+    "logoSlug" text,
     wins integer,
     losses integer,
     "winPercentage" numeric(65,30),
@@ -162,15 +216,14 @@ CREATE TABLE public."Team" (
     division text NOT NULL,
     established text NOT NULL,
     "primaryColor" text NOT NULL,
-    "secondaryColor" text NOT NULL,
-    "logoSlug" text
+    "secondaryColor" text NOT NULL
 );
 
 
-ALTER TABLE public."Team" OWNER TO doadmin;
+ALTER TABLE public."Team" OWNER TO tundera;
 
 --
--- Name: Team_id_seq; Type: SEQUENCE; Schema: public; Owner: doadmin
+-- Name: Team_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
 --
 
 CREATE SEQUENCE public."Team_id_seq"
@@ -182,17 +235,96 @@ CREATE SEQUENCE public."Team_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Team_id_seq" OWNER TO doadmin;
+ALTER TABLE public."Team_id_seq" OWNER TO tundera;
 
 --
--- Name: Team_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: doadmin
+-- Name: Team_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
 --
 
 ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
--- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: doadmin
+-- Name: Token; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public."Token" (
+    id integer NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    "hashedToken" text NOT NULL,
+    type public."TokenType" NOT NULL,
+    "expiresAt" timestamp(3) without time zone NOT NULL,
+    "sentTo" text NOT NULL,
+    "userId" integer NOT NULL
+);
+
+
+ALTER TABLE public."Token" OWNER TO tundera;
+
+--
+-- Name: Token_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public."Token_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Token_id_seq" OWNER TO tundera;
+
+--
+-- Name: Token_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public."Token_id_seq" OWNED BY public."Token".id;
+
+
+--
+-- Name: User; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public."User" (
+    id integer NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    name text,
+    email text NOT NULL,
+    "hashedPassword" text,
+    role text DEFAULT 'user'::text NOT NULL
+);
+
+
+ALTER TABLE public."User" OWNER TO tundera;
+
+--
+-- Name: User_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public."User_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."User_id_seq" OWNER TO tundera;
+
+--
+-- Name: User_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
+
+
+--
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: tundera
 --
 
 CREATE TABLE public._prisma_migrations (
@@ -207,38 +339,59 @@ CREATE TABLE public._prisma_migrations (
 );
 
 
-ALTER TABLE public._prisma_migrations OWNER TO doadmin;
+ALTER TABLE public._prisma_migrations OWNER TO tundera;
 
 --
--- Name: Coach id; Type: DEFAULT; Schema: public; Owner: doadmin
+-- Name: Coach id; Type: DEFAULT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Coach" ALTER COLUMN id SET DEFAULT nextval('public."Coach_id_seq"'::regclass);
 
 
 --
--- Name: ColorScheme id; Type: DEFAULT; Schema: public; Owner: doadmin
+-- Name: ColorScheme id; Type: DEFAULT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."ColorScheme" ALTER COLUMN id SET DEFAULT nextval('public."ColorScheme_id_seq"'::regclass);
 
 
 --
--- Name: Player id; Type: DEFAULT; Schema: public; Owner: doadmin
+-- Name: Player id; Type: DEFAULT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Player_id_seq"'::regclass);
 
 
 --
--- Name: Team id; Type: DEFAULT; Schema: public; Owner: doadmin
+-- Name: Session id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Session" ALTER COLUMN id SET DEFAULT nextval('public."Session_id_seq"'::regclass);
+
+
+--
+-- Name: Team id; Type: DEFAULT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
 
 
 --
--- Data for Name: Coach; Type: TABLE DATA; Schema: public; Owner: doadmin
+-- Name: Token id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Token" ALTER COLUMN id SET DEFAULT nextval('public."Token_id_seq"'::regclass);
+
+
+--
+-- Name: User id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
+
+
+--
+-- Data for Name: Coach; Type: TABLE DATA; Schema: public; Owner: tundera
 --
 
 COPY public."Coach" (id, "createdAt", "updatedAt", handle, name, "teamId", type, "isAssistant") FROM stdin;
@@ -477,7 +630,7 @@ COPY public."Coach" (id, "createdAt", "updatedAt", handle, name, "teamId", type,
 
 
 --
--- Data for Name: ColorScheme; Type: TABLE DATA; Schema: public; Owner: doadmin
+-- Data for Name: ColorScheme; Type: TABLE DATA; Schema: public; Owner: tundera
 --
 
 COPY public."ColorScheme" (id, "createdAt", "updatedAt", "primary", secondary, "teamId") FROM stdin;
@@ -515,7 +668,7 @@ COPY public."ColorScheme" (id, "createdAt", "updatedAt", "primary", secondary, "
 
 
 --
--- Data for Name: Player; Type: TABLE DATA; Schema: public; Owner: doadmin
+-- Data for Name: Player; Type: TABLE DATA; Schema: public; Owner: tundera
 --
 
 COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId", height, weight, number, "position") FROM stdin;
@@ -1033,83 +1186,128 @@ COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId"
 
 
 --
--- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: doadmin
+-- Data for Name: Session; Type: TABLE DATA; Schema: public; Owner: tundera
 --
 
-COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, logo, wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor", "logoSlug") FROM stdin;
-30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/washington-wizards-logo.png	25	47	0.347000000000000000000000000000	East	Southeast	1961	# 002B5C	#E31837	washington-wizards-logo
-29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/utah-jazz-logo.png	44	28	0.611000000000000000000000000000	West	Northwest	1974	#002B5C	#F9A01B	utah-jazz-logo
-24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/phoenix-suns-logo.png	34	39	0.466000000000000000000000000000	West	Pacific	1968	#1D1160	#E56020	phoenix-suns-logo
-27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/san-antonio-spurs-logo.png	32	39	0.451000000000000000000000000000	West	Southwest	1976	#C4CED4	#000000	san-antonio-spurs-logo
-16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/miami-heat-logo.png	44	29	0.603000000000000000000000000000	East	Southeast	1988	#98002E	#000000	miami-heat-logo
-26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/sacramento-kings-logo.png	31	41	0.431000000000000000000000000000	West	Pacific	1948	#5A2D81	#63727A	sacramento-kings-logo
-15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/memphis-grizzlies-logo.png	34	39	0.466000000000000000000000000000	West	Southwest	1995	#5D76A9	#12173F	memphis-grizzlies-logo
-21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/oklahoma-city-thunder-logo.png	44	28	0.611000000000000000000000000000	West	Northwest	1967	#007AC1	#EF3B24	oklahoma-city-thunder-logo
-7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/dallas-mavericks-logo.png	43	32	0.573000000000000000000000000000	West	Southwest	1980	#00538C	#B8C4CA	dallas-mavericks-logo
-20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/new-york-knicks-logo.png	21	45	0.318000000000000000000000000000	East	Atlantic	1946	#006BB6	#F58426	new-york-knicks-logo
-13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	Los Angeles	LAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-clippers-logo.png	49	23	0.681000000000000000000000000000	West	Pacific	1970	#C8102E	#1D428A	los-angeles-clippers-logo
-19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/new-orleans-pelicans-logo.png	30	42	0.417000000000000000000000000000	West	Southwest	2002	#0C2340	#C8102E	new-orleans-pelicans-logo
-8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/denver-nuggets-logo.png	46	27	0.630000000000000000000000000000	West	Northwest	1976	#0E2240	#FEC524	denver-nuggets-logo
-12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/indiana-pacers-logo.png	45	28	0.616000000000000000000000000000	East	Central	1976	#002D62	#FDBB30	indiana-pacers-logo
-4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/charlotte-hornets-logo.png	23	42	0.354000000000000000000000000000	East	Southeast	1988	#1D1160	#00788C	charlotte-hornets-logo
-9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/detroit-pistons-logo.png	20	46	0.303000000000000000000000000000	East	Central	1948	#C8102E	#1D42BA	detroit-pistons-logo
-10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/golden-state-warriors-logo.png	15	50	0.231000000000000000000000000000	West	Pacific	1946	#1D428A	#FFC72C	golden-state-warriors-logo
-5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/chicago-bulls-logo.png	22	43	0.338000000000000000000000000000	East	Central	1966	#CE1141	#000000	chicago-bulls-logo
-1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/atlanta-hawks-logo.png	20	47	0.299000000000000000000000000000	East	Southeast	1949	#E03A3E	#C1D32F	atlanta-hawks-logo
-3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/brooklyn-nets-logo.png	35	37	0.486000000000000000000000000000	East	Atlantic	1976	#000000	#FFFFFF	brooklyn-nets-logo
-18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/minnesota-timberwolves-logo.png	19	45	0.297000000000000000000000000000	West	Northwest	1989	#0C2340	#236192	minnesota-timberwolves-logo
-6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/cleveland-cavaliers-logo.png	19	46	0.292000000000000000000000000000	East	Central	1970	#860038	#041E42	cleveland-cavaliers-logo
-2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/boston-celtics-logo.png	48	24	0.667000000000000000000000000000	East	Atlantic	1946	#007A33	#BA9653	boston-celtics-logo
-25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/portland-trail-blazers-logo.png	35	39	0.473000000000000000000000000000	West	Northwest	1970	#E03A3E	#000000	portland-trail-blazers-logo
-17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/milwaukee-bucks-logo.png	56	17	0.767000000000000000000000000000	East	Central	1968	#00471B	#EEE1C6	milwaukee-bucks-logo
-14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-lakers-logo.png	52	19	0.732000000000000000000000000000	West	Pacific	1948	#552583	#FDB927	los-angeles-lakers-logo
-22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/orlando-magic-logo.png	33	40	0.452000000000000000000000000000	East	Southeast	1989	#0077C0	#C4CED4	orlando-magic-logo
-11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/houston-rockets-logo.png	44	28	0.611000000000000000000000000000	West	Southwest	1967	#CE1141	#000000	houston-rockets-logo
-28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/toronto-raptors-logo.png	53	19	0.736000000000000000000000000000	East	Atlantic	1995	#CE1141	#000000	toronto-raptors-logo
-23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/philadelphia-76ers-logo.png	43	30	0.589000000000000000000000000000	East	Atlantic	1949	#006BB6	#D50032	philadelphia-76ers-logo
+COPY public."Session" (id, "createdAt", "updatedAt", "expiresAt", handle, "hashedSessionToken", "antiCSRFToken", "publicData", "privateData", "userId") FROM stdin;
 \.
 
 
 --
--- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: doadmin
+-- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, logo, "logoSlug", wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor") FROM stdin;
+30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/washington-wizards-logo.png	washington-wizards-logo	25	47	0.347000000000000000000000000000	East	Southeast	1961	# 002B5C	#E31837
+29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/utah-jazz-logo.png	utah-jazz-logo	44	28	0.611000000000000000000000000000	West	Northwest	1974	#002B5C	#F9A01B
+24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/phoenix-suns-logo.png	phoenix-suns-logo	34	39	0.466000000000000000000000000000	West	Pacific	1968	#1D1160	#E56020
+27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/san-antonio-spurs-logo.png	san-antonio-spurs-logo	32	39	0.451000000000000000000000000000	West	Southwest	1976	#C4CED4	#000000
+16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/miami-heat-logo.png	miami-heat-logo	44	29	0.603000000000000000000000000000	East	Southeast	1988	#98002E	#000000
+26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/sacramento-kings-logo.png	sacramento-kings-logo	31	41	0.431000000000000000000000000000	West	Pacific	1948	#5A2D81	#63727A
+15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/memphis-grizzlies-logo.png	memphis-grizzlies-logo	34	39	0.466000000000000000000000000000	West	Southwest	1995	#5D76A9	#12173F
+21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/oklahoma-city-thunder-logo.png	oklahoma-city-thunder-logo	44	28	0.611000000000000000000000000000	West	Northwest	1967	#007AC1	#EF3B24
+7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/dallas-mavericks-logo.png	dallas-mavericks-logo	43	32	0.573000000000000000000000000000	West	Southwest	1980	#00538C	#B8C4CA
+20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/new-york-knicks-logo.png	new-york-knicks-logo	21	45	0.318000000000000000000000000000	East	Atlantic	1946	#006BB6	#F58426
+13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	Los Angeles	LAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-clippers-logo.png	los-angeles-clippers-logo	49	23	0.681000000000000000000000000000	West	Pacific	1970	#C8102E	#1D428A
+19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/new-orleans-pelicans-logo.png	new-orleans-pelicans-logo	30	42	0.417000000000000000000000000000	West	Southwest	2002	#0C2340	#C8102E
+8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/denver-nuggets-logo.png	denver-nuggets-logo	46	27	0.630000000000000000000000000000	West	Northwest	1976	#0E2240	#FEC524
+12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/indiana-pacers-logo.png	indiana-pacers-logo	45	28	0.616000000000000000000000000000	East	Central	1976	#002D62	#FDBB30
+4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/charlotte-hornets-logo.png	charlotte-hornets-logo	23	42	0.354000000000000000000000000000	East	Southeast	1988	#1D1160	#00788C
+9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/detroit-pistons-logo.png	detroit-pistons-logo	20	46	0.303000000000000000000000000000	East	Central	1948	#C8102E	#1D42BA
+10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/golden-state-warriors-logo.png	golden-state-warriors-logo	15	50	0.231000000000000000000000000000	West	Pacific	1946	#1D428A	#FFC72C
+5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/chicago-bulls-logo.png	chicago-bulls-logo	22	43	0.338000000000000000000000000000	East	Central	1966	#CE1141	#000000
+1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/atlanta-hawks-logo.png	atlanta-hawks-logo	20	47	0.299000000000000000000000000000	East	Southeast	1949	#E03A3E	#C1D32F
+3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/brooklyn-nets-logo.png	brooklyn-nets-logo	35	37	0.486000000000000000000000000000	East	Atlantic	1976	#000000	#FFFFFF
+18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/minnesota-timberwolves-logo.png	minnesota-timberwolves-logo	19	45	0.297000000000000000000000000000	West	Northwest	1989	#0C2340	#236192
+6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/cleveland-cavaliers-logo.png	cleveland-cavaliers-logo	19	46	0.292000000000000000000000000000	East	Central	1970	#860038	#041E42
+2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/boston-celtics-logo.png	boston-celtics-logo	48	24	0.667000000000000000000000000000	East	Atlantic	1946	#007A33	#BA9653
+25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/portland-trail-blazers-logo.png	portland-trail-blazers-logo	35	39	0.473000000000000000000000000000	West	Northwest	1970	#E03A3E	#000000
+17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/milwaukee-bucks-logo.png	milwaukee-bucks-logo	56	17	0.767000000000000000000000000000	East	Central	1968	#00471B	#EEE1C6
+14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-lakers-logo.png	los-angeles-lakers-logo	52	19	0.732000000000000000000000000000	West	Pacific	1948	#552583	#FDB927
+22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/orlando-magic-logo.png	orlando-magic-logo	33	40	0.452000000000000000000000000000	East	Southeast	1989	#0077C0	#C4CED4
+11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/houston-rockets-logo.png	houston-rockets-logo	44	28	0.611000000000000000000000000000	West	Southwest	1967	#CE1141	#000000
+28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/toronto-raptors-logo.png	toronto-raptors-logo	53	19	0.736000000000000000000000000000	East	Atlantic	1995	#CE1141	#000000
+23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/philadelphia-76ers-logo.png	philadelphia-76ers-logo	43	30	0.589000000000000000000000000000	East	Atlantic	1949	#006BB6	#D50032
+\.
+
+
+--
+-- Data for Name: Token; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public."Token" (id, "createdAt", "updatedAt", "hashedToken", type, "expiresAt", "sentTo", "userId") FROM stdin;
+\.
+
+
+--
+-- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public."User" (id, "createdAt", "updatedAt", name, email, "hashedPassword", role) FROM stdin;
+\.
+
+
+--
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: tundera
 --
 
 COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
-5358defb-64fc-4d98-b5f5-be2cfa2d69b4	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	2021-02-03 22:30:25.337557+00	20210203205646_init_db	\N	\N	2021-02-03 22:30:25.068+00	1
-e717cc3f-effb-4a7e-8d17-ad60c1fe3bf3	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	2021-02-03 22:02:32.000819+00	20210203205646_init_db		\N	2021-02-03 22:02:32.000819+00	0
+de12bcc2-5bcf-4425-bec1-93e27254dbb6	35af66fcc5d1727e2b79995f341daeda38a9a7b1b7cbf2d352ddab8682a7b4	2021-02-05 05:03:49.34175+00	20210205050349_init_migration	\N	\N	2021-02-05 05:03:49.04425+00	1
+e6329bd1-381a-449a-8baf-d5ada2e2c303	a56ccca253808ca4e2912a0231bd98d673157eec21496375e54c11e4834172	\N	20210203205646_init_db	Database error: Error querying the database: db error: ERROR: relation "Coach" already exists\n   0: migration_core::api::ApplyMigrations\n             at migration-engine/core/src/api.rs:72	\N	2021-02-05 19:32:50.207592+00	0
 \.
 
 
 --
--- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
+-- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
 SELECT pg_catalog.setval('public."Coach_id_seq"', 231, true);
 
 
 --
--- Name: ColorScheme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
+-- Name: ColorScheme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
 SELECT pg_catalog.setval('public."ColorScheme_id_seq"', 33, true);
 
 
 --
--- Name: Player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
+-- Name: Player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
 SELECT pg_catalog.setval('public."Player_id_seq"', 510, true);
 
 
 --
--- Name: Team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: doadmin
+-- Name: Session_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public."Session_id_seq"', 1, false);
+
+
+--
+-- Name: Team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
 SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
 
 
 --
--- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Token_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public."Token_id_seq"', 1, false);
+
+
+--
+-- Name: User_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public."User_id_seq"', 1, false);
+
+
+--
+-- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Coach"
@@ -1117,7 +1315,7 @@ ALTER TABLE ONLY public."Coach"
 
 
 --
--- Name: ColorScheme ColorScheme_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: ColorScheme ColorScheme_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."ColorScheme"
@@ -1125,7 +1323,7 @@ ALTER TABLE ONLY public."ColorScheme"
 
 
 --
--- Name: Player Player_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Player Player_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Player"
@@ -1133,7 +1331,15 @@ ALTER TABLE ONLY public."Player"
 
 
 --
--- Name: Team Team_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Session Session_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Session"
+    ADD CONSTRAINT "Session_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: Team Team_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Team"
@@ -1141,7 +1347,23 @@ ALTER TABLE ONLY public."Team"
 
 
 --
--- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Token Token_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Token"
+    ADD CONSTRAINT "Token_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: User User_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."User"
+    ADD CONSTRAINT "User_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public._prisma_migrations
@@ -1149,84 +1371,105 @@ ALTER TABLE ONLY public._prisma_migrations
 
 
 --
--- Name: Coach.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Coach.handle_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Coach.handle_unique" ON public."Coach" USING btree (handle);
 
 
 --
--- Name: Coach.name_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Coach.name_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Coach.name_unique" ON public."Coach" USING btree (name);
 
 
 --
--- Name: Player.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Player.handle_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Player.handle_unique" ON public."Player" USING btree (handle);
 
 
 --
--- Name: Player.name_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Player.name_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Player.name_unique" ON public."Player" USING btree (name);
 
 
 --
--- Name: Player.slug_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Player.slug_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Player.slug_unique" ON public."Player" USING btree (slug);
 
 
 --
--- Name: Team.abbreviation_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Session.handle_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "Session.handle_unique" ON public."Session" USING btree (handle);
+
+
+--
+-- Name: Team.abbreviation_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.abbreviation_unique" ON public."Team" USING btree (abbreviation);
 
 
 --
--- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Team.handle_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.handle_unique" ON public."Team" USING btree (handle);
 
 
 --
--- Name: Team.logoSlug_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Team.logoSlug_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.logoSlug_unique" ON public."Team" USING btree ("logoSlug");
 
 
 --
--- Name: Team.logo_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Team.logo_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.logo_unique" ON public."Team" USING btree (logo);
 
 
 --
--- Name: Team.name_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Team.name_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.name_unique" ON public."Team" USING btree (name);
 
 
 --
--- Name: Team.slug_unique; Type: INDEX; Schema: public; Owner: doadmin
+-- Name: Team.slug_unique; Type: INDEX; Schema: public; Owner: tundera
 --
 
 CREATE UNIQUE INDEX "Team.slug_unique" ON public."Team" USING btree (slug);
 
 
 --
--- Name: Coach Coach_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Token.hashedToken_type_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "Token.hashedToken_type_unique" ON public."Token" USING btree ("hashedToken", type);
+
+
+--
+-- Name: User.email_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "User.email_unique" ON public."User" USING btree (email);
+
+
+--
+-- Name: Coach Coach_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Coach"
@@ -1234,7 +1477,7 @@ ALTER TABLE ONLY public."Coach"
 
 
 --
--- Name: ColorScheme ColorScheme_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: ColorScheme ColorScheme_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."ColorScheme"
@@ -1242,11 +1485,27 @@ ALTER TABLE ONLY public."ColorScheme"
 
 
 --
--- Name: Player Player_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: doadmin
+-- Name: Player Player_teamId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tundera
 --
 
 ALTER TABLE ONLY public."Player"
     ADD CONSTRAINT "Player_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES public."Team"(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- Name: Session Session_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Session"
+    ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES public."User"(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- Name: Token Token_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public."Token"
+    ADD CONSTRAINT "Token_userId_fkey" FOREIGN KEY ("userId") REFERENCES public."User"(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

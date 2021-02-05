@@ -3,16 +3,16 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
-    "NEXT_SANITY_API_TOKEN": "@next_goat_sanity_api_token",
-    "NEXT_SANITY_PREVIEW_SECRET": "@next_goat_sanity_preview_secret",
-    "NEXT_DATABASE_URL": "@next_goat_database_url",
-    "NEXT_FORMSPREE_MAILCHIMP_API_KEY": "@next_goat_formspree_mailchimp_api_key"
+    "NEXT_SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
+    "NEXT_SANITY_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
+    "NEXT_DATABASE_URL": "@tunderadev_database_url",
+    "NEXT_FORMSPREE_MAILCHIMP_API_KEY": "@tunderadev_formspree_mailchimp_api_key"
   },
   "build": {
     "env": {
-      "NEXT_SANITY_API_TOKEN": "@next_goat_sanity_api_token",
-      "NEXT_SANITY_PREVIEW_SECRET": "@next_goat_sanity_preview_secret",
-      "NEXT_DATABASE_URL": "@next_goat_database_url"
+      "NEXT_SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
+      "NEXT_SANITY_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
+      "NEXT_DATABASE_URL": "@tunderadev_database_url"
     }
   }
 }
