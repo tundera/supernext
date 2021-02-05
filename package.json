@@ -1,6 +1,6 @@
 {
-  "name": "next-goat",
-  "description": "Next.js template 🐐",
+  "name": "next-tundera",
+  "description": "Next.js app for tundera.dev",
   "private": true,
   "version": "0.1.0",
   "author": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tundera/next-goat.git"
+    "url": "https://github.com/tundera/next-tundera.git"
   },
   "prisma": {
     "schema": "db/schema.prisma"
@@ -206,7 +206,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn test"
+      "pre-push": "yarn lint && docker-compose -f docker-compose.test.yml up -d && yarn test && docker-compose down"
     }
   }
 }
