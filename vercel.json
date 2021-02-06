@@ -14,5 +14,11 @@
       "NEXT_SANITY_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
       "NEXT_DATABASE_URL": "@tunderadev_database_url"
     }
-  }
+  },
+  "rewrites": [
+    { 
+      "source": "/metrics", 
+      "destination": "https://metrics.tundera.dev" 
+    }
+  ]
 }
