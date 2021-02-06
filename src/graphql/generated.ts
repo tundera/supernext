@@ -273,7 +273,7 @@ export type TeamBySlugQueryVariables = Exact<{
 
 export type TeamBySlugQuery = { __typename?: 'Query' } & {
   team?: Maybe<
-    { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'established' | 'logo'> & {
+    { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'established' | 'logo' | 'logoSlug'> & {
         colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
       }
   >
@@ -285,7 +285,7 @@ export type TeamsQuery = { __typename?: 'Query' } & {
   teams?: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'slug' | 'city' | 'logo'> & {
+        { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'slug' | 'city' | 'logo' | 'logoSlug'> & {
             colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
           }
       >
@@ -427,6 +427,7 @@ export const TeamBySlugDocument = `
     city
     established
     logo
+    logoSlug
     colorScheme {
       primary
       secondary
@@ -452,6 +453,7 @@ export const TeamsDocument = `
     slug
     city
     logo
+    logoSlug
     colorScheme {
       primary
       secondary
