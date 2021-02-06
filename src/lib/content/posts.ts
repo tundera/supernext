@@ -31,7 +31,7 @@ export async function getPostBySlug(slug: string) {
   const [post] = await sanity.getAll('post', `_type == "post" && slug.current == "${slug}"`)
   const { author, date, ...rest } = post
 
-  const expandedAuthor = await sanity.expand(post.author)
+  const expandedAuthor = await sanity.expand(author)
   const dateString = format(new Date(date), '{MM}/{dd}/{yyyy}')
 
   return {

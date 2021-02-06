@@ -1,5 +1,5 @@
-import { useForm, ValidationError } from '@formspree/react'
-import { FormLabel, FormControl, Input, Button, Text } from '@chakra-ui/react'
+import { useForm } from '@formspree/react'
+import { Text } from '@chakra-ui/react'
 import Emoji from 'a11y-react-emoji'
 
 export function UpdatesForm() {
@@ -8,8 +8,9 @@ export function UpdatesForm() {
   if (state.succeeded) {
     return (
       <Text>
-        We'll keep you posted on course availability! Thanks for your support. We've sent over a special discount code
-        for you to use when the course is released! Stay tuned <Emoji symbol="🥳" label="Party face emoji" />
+        I&apos;ll keep you posted on course availability. Thanks for your support. Check your email for a special
+        discount code for you to use when the course is released! Stay tuned{' '}
+        <Emoji symbol="🥳" label="Party face emoji" />
       </Text>
     )
   }

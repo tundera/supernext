@@ -56,9 +56,9 @@ const CodeBlock: FC<Props> = ({ codeString, language, children, ...props }) => {
               {isCopied ? '🎉 Copied!' : 'Copy'}
             </CopyButton>
             {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })} style={style}>
+              <div {...getLineProps({ line, key: i })} style={style} key={i}>
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
+                  <span {...getTokenProps({ token, key })} key={key} />
                 ))}
               </div>
             ))}

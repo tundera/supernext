@@ -1,4 +1,3 @@
-import { Player } from 'src/graphql/generated'
 import { Box, Heading } from '@chakra-ui/react'
 
 const PlayersList = ({ players }) => {

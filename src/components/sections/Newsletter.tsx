@@ -19,7 +19,7 @@ const Newsletter = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
         Subscribe to my newsletter
       </Heading>
       <Text color={primaryTextColor} fontSize="1.1rem" fontWeight="400" padding="0.8rem 1rem">
-        Something extra to check out if you like React and want to hear what I'm working on.
+        Something extra to check out if you like React and want to hear what I&apos;m working on.
       </Text>
       <Button
         href="https://ogzhanolguncu.substack.com/subscribe"
