@@ -15,7 +15,7 @@
       "NEXT_DATABASE_URL": "@tunderadev_database_url"
     }
   },
-  "rewrites": [
+  "redirects": [
     { 
       "source": "/metrics", 
       "destination": "https://metrics.tundera.dev" 
