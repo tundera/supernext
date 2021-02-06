@@ -10,5 +10,14 @@ query TeamBySlug($slug: String!) {
             primary
             secondary
         }
+        players {
+            id
+            name
+            slug
+            number
+            position
+            height
+            weight
+        }
     }
 }

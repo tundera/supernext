@@ -275,6 +275,9 @@ export type TeamBySlugQuery = { __typename?: 'Query' } & {
   team?: Maybe<
     { __typename?: 'Team' } & Pick<Team, 'id' | 'name' | 'city' | 'established' | 'logo' | 'logoSlug'> & {
         colorScheme: Array<{ __typename?: 'ColorScheme' } & Pick<ColorScheme, 'primary' | 'secondary'>>
+        players: Array<
+          { __typename?: 'Player' } & Pick<Player, 'id' | 'name' | 'slug' | 'number' | 'position' | 'height' | 'weight'>
+        >
       }
   >
 }
@@ -431,6 +434,15 @@ export const TeamBySlugDocument = `
     colorScheme {
       primary
       secondary
+    }
+    players {
+      id
+      name
+      slug
+      number
+      position
+      height
+      weight
     }
   }
 }

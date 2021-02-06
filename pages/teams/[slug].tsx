@@ -5,12 +5,12 @@ import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import QuerySuspense from '@components/utility/suspense/QuerySuspense'
 import { getTeamBySlug, getAllTeams } from '@lib/graphql/teams'
 import { useTeamBySlugQuery } from 'src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import PlayersList from '@components/ui/lists/PlayersList'
+import { getPlayersByTeam } from '@lib/graphql/players'
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 const client = new GraphQLClient(endpoint)
@@ -60,7 +60,7 @@ const TeamPage = ({ slug, preview }) => {
               {data?.team?.name}
             </Heading>
             <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-              <PlayersList title="Team Roster" teamId={data?.team?.id as number} />
+              <PlayersList players={data?.team?.players ?? []} />
             </SimpleGrid>
           </Stack>
         )}
