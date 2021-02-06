@@ -1,9 +1,10 @@
 module.exports = {
-  experimental: {
-    reactMode: 'concurrent',
-  },
+  reactStrictMode: true,
   future: {
     webpack5: true,
+  },
+  experimental: {
+    reactMode: 'concurrent',
   },
   target: 'experimental-serverless-trace',
   i18n: {

@@ -1,4 +1,4 @@
-import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue, useTheme } from '@chakra-ui/react'
+import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue } from '@chakra-ui/react'
 
 import Arrow from '@components/ui/ArrowIcon'
 
