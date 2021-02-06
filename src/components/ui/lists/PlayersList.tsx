@@ -4,6 +4,7 @@ import { Box, Heading } from '@chakra-ui/react'
 import { usePlayersByTeamQuery } from 'src/graphql/generated'
 import client from 'src/lib/graphql/client'
 import Suspense from '@components/utility/suspense/QuerySuspense'
+
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 
 type Props = {
@@ -20,18 +21,15 @@ const PlayersList = ({ title, teamId }: Props) => {
       <Heading p={2} my={1}>
         {title}
       </Heading>
-      {data?.playersByTeam?.map(
-        (player) =>
-          player && (
-            <Suspense fallback={<LoadingSpinner />}>
-              <Box key={player.id} p={5} bg="gray.200" shadow="md" borderRadius={4} height="80px">
-                <Heading fontSize="lg" textAlign="center">
-                  {player.name}
-                </Heading>
-              </Box>
-            </Suspense>
-          ),
-      )}
+      {data?.playersByTeam?.map((player) => (
+        <Suspense fallback={<LoadingSpinner />}>
+          <Box key={player?.id} p={5} bg="gray.200" shadow="md" borderRadius={4} height="80px">
+            <Heading fontSize="lg" textAlign="center">
+              {player?.name}
+            </Heading>
+          </Box>
+        </Suspense>
+      ))}
     </Box>
   )
 }
