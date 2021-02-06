@@ -2,14 +2,13 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:react/recommended",
-    "airbnb-typescript",
     "prettier/@typescript-eslint",
     "plugin:jsx-a11y/recommended",
     "prettier/react",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "jest", "react"],
+  "plugins": ["prettier", "@typescript-eslint", "jest", "react", "import"],
   "env": {
     "es6": true,
     "browser": true,
@@ -18,6 +17,10 @@
   "rules": {
     "@typescript-eslint/no-shadow": "off",
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "global-require": "off",
     "consistent-return": "off",
