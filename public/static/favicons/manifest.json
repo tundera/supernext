@@ -8,12 +8,12 @@
   "orientation": "any",
   "start_url": "/?homescreen=1",
   "background_color": {
-    "primary": "#c7e3eb",
-    "secondary": "#262727"
+    "primary": "#060819",
+    "secondary": "#eeebff"
   },
   "theme_color": {
-    "primary": "#c7e3eb",
-    "secondary": "#262727"
+    "primary": "#060819",
+    "secondary": "#eeebff"
   },
   "icons": [
     {

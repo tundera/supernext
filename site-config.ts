@@ -9,8 +9,8 @@ const siteConfig = {
     Twitter: 'https://twitter.com/tunderadev',
   },
   themeColor: {
-    primary: '#c7e3eb',
-    secondary: '#262727',
+    primary: '#060819',
+    secondary: '#eeebff',
   },
 }
 
