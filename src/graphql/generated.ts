@@ -1,6 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
 import { useQuery, UseQueryOptions } from 'react-query'
-
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
