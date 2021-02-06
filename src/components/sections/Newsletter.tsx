@@ -41,4 +41,6 @@ const Newsletter = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
   )
 })
 
+Newsletter.displayName = 'Newsletter'
+
 export default Newsletter

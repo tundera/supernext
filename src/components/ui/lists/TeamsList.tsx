@@ -11,7 +11,7 @@ function TeamsList({ teams }) {
           const [colors] = team.colorScheme
           const bg = `linear-gradient(108deg, ${colors?.secondary ?? ''} 0%, ${colors?.primary ?? ''} 65%)`
           return (
-            <ListItem py="4">
+            <ListItem py="4" key={team.slug}>
               <TeamCard
                 key={team.slug}
                 name={team.name}

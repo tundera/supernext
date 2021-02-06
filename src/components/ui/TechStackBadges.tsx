@@ -20,7 +20,7 @@ const TechStackBadges: FC<Props> = ({ technologies }) => {
   return (
     <Wrap>
       {technologies.map((item) => (
-        <WrapItem bg={bg}>
+        <WrapItem bg={bg} key={item.name}>
           <TechBadge key={paramCase(item.name)} name={item.name} src={item.image} />
         </WrapItem>
       ))}

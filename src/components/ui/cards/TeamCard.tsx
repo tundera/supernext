@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Button, Heading, Flex, Box, Spacer, VStack, Text, useColorModeValue, Stack } from '@chakra-ui/react'
+import { Flex, Box, Spacer, VStack, Text, useColorModeValue, Stack } from '@chakra-ui/react'
 
 import { Image, Transformation } from 'cloudinary-react'
 // import Image from 'next/image'
@@ -16,7 +16,6 @@ type Props = {
 const TeamCard: FC<Props> = ({ name, city, slug, logo, background }: Props) => {
   const bg = useColorModeValue('whiteAlpha.900', 'stone.900')
   const bgGray = useColorModeValue('gray.200', 'gray.700')
-  const colorInverse = useColorModeValue('gray.800', 'white')
 
   return (
     <article>
