@@ -87,7 +87,7 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
     <>
       <NextSeo
         openGraph={{
-          title: `Next Goat | ${frontMatter.title}`,
+          title: `Tundera Dev | ${frontMatter.title}`,
           description: frontMatter.description,
           url: articleUrl,
           type: 'article',

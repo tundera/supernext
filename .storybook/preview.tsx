@@ -73,7 +73,7 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'App', // Should be first
-        'Next Goat', // Should be second, if kept around
+        'Tundera Dev', // Should be second, if kept around
         'Storybook Examples', // Should be last, if kept around
       ],
     },

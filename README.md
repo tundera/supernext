@@ -1,6 +1,6 @@
-<h1 align="center">Next Goat</h1>
+<h1 align="center">tundera.dev</h1>
 
-<p align="center">Next.js starter template made for goats 🐐</p>
+<p align="center">The undev space ☀️</p>
 
 ![goats](https://user-images.githubusercontent.com/61833561/104053556-b5b7a880-51a8-11eb-8530-bc10e78ab616.jpg)
 
