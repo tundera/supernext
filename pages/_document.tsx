@@ -15,7 +15,14 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script
+            async
+            defer
+            data-website-id="6453036e-7d4b-4ec5-a0b2-768110a25194"
+            src="https://metrics.tundera.dev/umami.js"
+          />
+        </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
