@@ -3,7 +3,6 @@ import { Box, Heading } from '@chakra-ui/react'
 // import { usePlayersQuery } from '@hooks/queries/usePlayersQuery'
 import { usePlayersByTeamQuery } from 'src/graphql/generated'
 import client from 'src/lib/graphql/client'
-import Suspense from '@components/utility/suspense/QuerySuspense'
 
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 
