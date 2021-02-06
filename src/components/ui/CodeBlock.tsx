@@ -20,7 +20,7 @@ const Wrapper = (props) => <div style={{ position: 'relative' }} {...props} />
 
 const ConfettiWrapper = (props) => <div style={{ position: 'absolute', top: 0, right: 0 }} {...props} />
 
-const CodeBlock: FC<Props> = ({ codeString, language, children, ...props }) => {
+const CodeBlock: FC<Props> = ({ codeString, language, ...props }) => {
   const [isCopied, setIsCopied] = useState(false)
 
   // eslint-disable-next-line react/destructuring-assignment

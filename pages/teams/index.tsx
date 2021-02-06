@@ -5,7 +5,7 @@ import { dehydrate } from 'react-query/hydration'
 import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
-import TeamsList from '@components/ui/lists/TeamsList'
+import TeamsGrid from '@components/ui/lists/TeamsList'
 import { getAllTeams } from '@lib/graphql/teams'
 import client from '@lib/graphql/client'
 import { useTeamsQuery } from 'src/graphql/generated'
@@ -34,9 +34,7 @@ const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) 
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Teams
           </Heading>
-          <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-            {data && <TeamsList teams={data.teams} />}
-          </SimpleGrid>
+          {data && <TeamsGrid teams={data.teams} />}
         </Stack>
       </PageLayout>
     </>

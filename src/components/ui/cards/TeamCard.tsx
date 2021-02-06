@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Flex, Box, Spacer, VStack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Box, Spacer, Text, useColorModeValue } from '@chakra-ui/react'
 
 import { Image, Transformation } from 'cloudinary-react'
 // import Image from 'next/image'
@@ -18,30 +18,29 @@ const TeamCard: FC<Props> = ({ name, city, slug, logo, background }: Props) => {
 
   return (
     <article>
-      <Flex direction="column" maxW="sm" mx="auto" as="a" href={`teams/${slug}`}>
-        <VStack
-          spacing={2}
-          mx="auto"
-          alignItems="center"
-          justify="center"
-          maxH="350px"
-          bg={background}
-          w={{ base: 56, md: 64 }}
-          rounded="lg"
-          shadow="lg"
-          overflow="hidden"
-        >
-          <Box p="4" minH="200px">
-            <Image publicId={`/nba-logos/${logo}`}>
-              <Transformation gravity="center" crop="fill" />
-            </Image>
-          </Box>
-          <Box w="full" bg={bg}>
-            <Text fontWeight="bold" color="stone.700" textAlign="center">
-              {city} {name}
-            </Text>
-          </Box>
-        </VStack>
+      <Flex
+        direction="column"
+        mx="auto"
+        justify="center"
+        bg={background}
+        minW={{ base: 56, md: 64 }}
+        rounded="lg"
+        shadow="lg"
+        overflow="hidden"
+        as="a"
+        href={`teams/${slug}`}
+      >
+        <Box p="4" height="250px">
+          <Image publicId={`/nba-logos/${logo}`}>
+            <Transformation gravity="center" crop="fill" />
+          </Image>
+        </Box>
+        <Spacer />
+        <Box minH="10px" bg={bg}>
+          <Text fontWeight="bold" color="stone.700" textAlign="center">
+            {city} {name}
+          </Text>
+        </Box>
       </Flex>
     </article>
   )
