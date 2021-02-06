@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { preToCodeBlock } from 'mdx-utils'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -42,4 +43,6 @@ const components = {
   Layout,
 }
 
-export default ({ children }) => <MDXProvider components={components}>{children}</MDXProvider>
+const CustomMdxProvider = ({ children }) => <MDXProvider components={components}>{children}</MDXProvider>
+
+export default CustomMdxProvider
