@@ -1,17 +1,17 @@
 #!/usr/bin/env ts-node-script
 
-import fs from 'fs'
-import path from 'path'
-import favicons from 'favicons'
+import fs from "fs"
+import path from "path"
+import favicons from "favicons"
 
-import siteConfig from 'site-config'
+import siteConfig from "site-config"
 
 const generateFavicons = async () => {
   return new Promise<void>((resolve, reject) => {
     favicons(
-      path.resolve(process.cwd(), 'src', 'public/images/favicons', 'favicon.png'),
+      path.resolve(process.cwd(), "src", "public/images/favicons", "favicon.png"),
       {
-        path: '/',
+        path: "/",
         appName: siteConfig.title,
         appShortName: siteConfig.title,
         appDescription: siteConfig.description,
@@ -38,7 +38,7 @@ const generateFavicons = async () => {
 
         await Promise.all(
           [...images, ...files].map(async ({ name, contents }) => {
-            fs.writeFile(path.resolve(process.cwd(), 'public/static/favicons', name), contents, reject)
+            fs.writeFile(path.resolve(process.cwd(), "public/static/favicons", name), contents, reject)
           }),
         )
 
@@ -53,5 +53,5 @@ const main = async () => {
 }
 
 main().finally(() => {
-  console.log('Successfully generated favicons ✅')
+  console.log("Successfully generated favicons ✅")
 })
