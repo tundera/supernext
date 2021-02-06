@@ -9,7 +9,7 @@ function TeamsList({ teams }) {
       <List spacing={3}>
         {teams.map((team) => {
           const [{ primary, secondary }] = team.colorScheme
-          const bg = `linear-gradient(108deg, ${secondary} 0%, ${primary} 65%)`
+          const bg = `linear-gradient(108deg, ${secondary ?? ''} 0%, ${primary ?? ''} 65%)`
           return (
             <ListItem py="4">
               <TeamCard
