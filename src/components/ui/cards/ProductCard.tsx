@@ -7,6 +7,7 @@ type Props = {
   name: string
   description: string
   image: string
+  price: number
 }
 
 const ProductCard: FC<Props> = ({ name, description, image, price }) => {
