@@ -3,7 +3,7 @@ import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue }
 import Arrow from '@components/ui/ArrowIcon'
 
 function LandingHero() {
-  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const color = useColorModeValue('brand.500', 'whiteAlpha.900')
   const altColor = useColorModeValue('stone.500', 'whiteAlpha.700')
 
   return (

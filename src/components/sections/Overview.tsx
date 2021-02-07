@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Overview = ({ features }: Props) => {
-  const bg = useColorModeValue('whiteAlpha.900', 'stone.700')
+  const bg = useColorModeValue('whiteAlpha.900', 'brand.500')
 
   return (
     <Box bg={bg} p={8} rounded="md" boxShadow="xl">

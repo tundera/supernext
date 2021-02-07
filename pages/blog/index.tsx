@@ -9,6 +9,7 @@ import { usePreviewSubscription } from '@lib/sanity'
 import { PostsQuery } from 'services/sanity/posts'
 import sanity from '@lib/sanity/client'
 import { getPosts } from '@lib/content/posts'
+import Pagination from '@components/utility/Pagination'
 
 export const getStaticProps = async ({ preview = false }) => {
   sanity.setPreviewMode(preview)
@@ -39,6 +40,7 @@ const PostsPage = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticP
           <Text>View any of these pages to see it in action:</Text>
           <PostsList posts={data} />
         </Stack>
+        <Pagination />
       </PageLayout>
     </>
   )

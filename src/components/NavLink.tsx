@@ -8,8 +8,8 @@ type Props = {
 }
 
 const NavLink: FC<Props> = ({ to, children }) => {
-  const color = useColorModeValue('whiteAlpha.900', 'stone.700')
-  const hoverColor = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const color = useColorModeValue('whiteAlpha.900', 'brand.500')
+  const hoverColor = useColorModeValue('brand.500', 'whiteAlpha.900')
   const hoverBg = useColorModeValue('whiteAlpha.500', 'stone.300')
 
   return (

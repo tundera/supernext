@@ -4,8 +4,8 @@ import Emoji from 'a11y-react-emoji'
 import MediaIconLink from '@components/MediaIconLink'
 
 function Footer() {
-  const bg = useColorModeValue('stone.700', 'whiteAlpha.900')
-  const color = useColorModeValue('whiteAlpha.900', 'stone.700')
+  const bg = useColorModeValue('brand.500', 'whiteAlpha.900')
+  const color = useColorModeValue('whiteAlpha.900', 'brand.500')
 
   return (
     <Flex bottom="0" align="center" direction="column" bg={bg} color={color} w="100%" minHeight="5vh">
@@ -19,7 +19,7 @@ function Footer() {
         />
         <MediaIconLink href="mailto:me@blog.tundera.dev" title="Email" icon={<FaEnvelope />} />
       </Box>
-      <Text mt={2} mb={4} fontWeight="bold" fontFamily="mono">
+      <Text mt={2} mb={4} fontWeight="bold">
         Made with <Emoji symbol="🔥" label="Fire emoji" /> in Colorado
       </Text>
     </Flex>

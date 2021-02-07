@@ -10,7 +10,7 @@ type Props = {
 }
 
 const HeaderItem: FC<Props> = ({ to = '/', isLast, children, ...props }) => {
-  const color = useColorModeValue('stone.700', 'whiteAlpha.900')
+  const color = useColorModeValue('brand.500', 'whiteAlpha.900')
 
   return (
     <Text

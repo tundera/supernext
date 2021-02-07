@@ -113,7 +113,7 @@ function Header({ ...props }) {
   const toggleMenu = () => setShow(!show)
 
   const theme = useTheme()
-  const bg = useColorModeValue('stone.700', 'whiteAlpha.700')
+  const bg = useColorModeValue('brand.500', 'whiteAlpha.700')
   const iconColor = useColorModeValue(theme.colors.whiteAlpha['900'], theme.colors.stone['700'])
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)

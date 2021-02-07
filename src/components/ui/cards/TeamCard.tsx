@@ -37,7 +37,7 @@ const TeamCard: FC<Props> = ({ name, city, slug, logo, background }: Props) => {
         </Box>
         <Spacer />
         <Box minH="10px" bg={bg}>
-          <Text fontWeight="bold" color="stone.700" textAlign="center">
+          <Text fontWeight="bold" color="brand.500" textAlign="center">
             {city} {name}
           </Text>
         </Box>

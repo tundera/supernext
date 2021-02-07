@@ -85,14 +85,14 @@ export default {
   },
   bgColor: {
     light: 'gold.50',
-    dark: 'stone.700',
+    dark: 'brand.500',
   },
   secondaryBgColor: {
     light: 'whiteAlpha.700',
     dark: 'stone.500',
   },
   primaryTextColor: {
-    light: 'stone.700',
+    light: 'brand.500',
     dark: 'whiteAlpha.900',
   },
   secondaryTextColor: {

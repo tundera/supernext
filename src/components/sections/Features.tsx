@@ -11,7 +11,7 @@ function Features() {
             h={12}
             w={12}
             borderRadius="md"
-            bg={useColorModeValue('brand.500')}
+            bg="brand.500"
             color="white"
           >
             <Icon boxSize={6} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -20,7 +20,7 @@ function Features() {
           </Flex>
         </Flex>
         <Box ml={4}>
-          <chakra.dt fontSize="lg" fontWeight="medium" lineHeight="6" color={useColorModeValue('gray.900')}>
+          <chakra.dt fontSize="lg" fontWeight="medium" lineHeight="6" color="gray.900">
             {props.title}
           </chakra.dt>
           <chakra.dd mt={2} color={useColorModeValue('gray.500', 'gray.400')}>
@@ -35,12 +35,7 @@ function Features() {
       <Box py={12} bg={useColorModeValue('white', 'gray.800')} borderRadius="xl">
         <Box maxW="7xl" mx="auto" px={{ base: 4, lg: 8 }}>
           <Box textAlign={{ lg: 'center' }}>
-            <chakra.h2
-              color={useColorModeValue('brand.600')}
-              fontWeight="semibold"
-              textTransform="uppercase"
-              letterSpacing="wide"
-            >
+            <chakra.h2 color="brand.600" fontWeight="semibold" textTransform="uppercase" letterSpacing="wide">
               Transactions
             </chakra.h2>
             <chakra.p
@@ -49,7 +44,7 @@ function Features() {
               lineHeight="8"
               fontWeight="extrabold"
               letterSpacing="tight"
-              color={useColorModeValue('gray.900')}
+              color="gray.900"
             >
               A better way to send money
             </chakra.p>
