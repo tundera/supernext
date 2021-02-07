@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { paramCase } from 'change-case'
 import { useColorModeValue, Wrap, WrapItem } from '@chakra-ui/react'
 
-import TechBadge from '@components/ui/TechBadge'
+import TechBadge from '@components/ui/badges/TechBadge'
 
 type Technology = {
   name: string

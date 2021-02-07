@@ -5,8 +5,8 @@ import { MDXProvider } from '@mdx-js/react'
 import { Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
 import Layout from '@components/layouts/MdxLayout'
-import Header from '@components/sections/Header'
-import CodeBlock from '@components/ui/CodeBlock'
+import Header from '@components/sections/headers/Header'
+import CodeBlock from '@components/ui/snippets/CodeBlock'
 
 const components = {
   pre: (preProps) => {

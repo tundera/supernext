@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import NProgress from 'next-nprogress-emotion'
 import { useColorModeValue, Flex } from '@chakra-ui/react'
 
-import Navbar from '@components/sections/Navbar'
+import Navbar from '@components/sections/headers/Navbar'
 import Footer from '@components/sections/Footer'
 import Container from '@components/sections/Container'
 import PreviewBanner from '@components/sections/PreviewBanner'

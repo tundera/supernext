@@ -1,7 +1,7 @@
 import { useColorModeValue, Box, Text, List, ListItem, ListIcon, SimpleGrid } from '@chakra-ui/react'
 import { MdDone } from 'react-icons/md'
 
-import SectionHeadline from '@components/ui/SectionHeadline'
+import SectionHeadline from '@components/sections/headers/SectionHeader'
 
 type Feature = {
   category: string

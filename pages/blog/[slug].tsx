@@ -9,7 +9,7 @@ import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
 
 import sanity from '@lib/sanity/client'
 import { getPostBySlug } from '@lib/content/posts'
-import CodeBlock from '@components/ui/CodeBlock'
+import CodeBlock from '@components/ui/snippets/CodeBlock'
 import PageLayout from '@components/layouts/PageLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { createImageUrl } from 'src/utils/sanity'
