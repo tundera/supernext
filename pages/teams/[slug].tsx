@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
-import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
+import { Flex, Heading, SimpleGrid } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import { getTeamBySlug, getAllTeams } from '@lib/graphql/teams'
@@ -54,14 +54,14 @@ const TeamPage = ({ slug, preview }) => {
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <Stack>
+          <Flex flexDir="column" alignItems="center">
             <Heading as="h1" size="xl" py={8} textAlign="center">
               {data?.team?.name}
             </Heading>
             <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
               <PlayersList players={data?.team?.players ?? []} />
             </SimpleGrid>
-          </Stack>
+          </Flex>
         )}
       </PageLayout>
     </>

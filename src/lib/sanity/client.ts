@@ -13,7 +13,7 @@ export default createClient<Documents>({
   // (optional) if true, the client will prefer drafts over the published versions
   previewMode: true,
   // (optional) only required if your dataset is private or if you want to use preview mode
-  token: process.env.NEXT_SANITY_API_TOKEN,
+  token: process.env.SANITY_API_TOKEN,
 
   // by default sanity-codegen caches responses in memory. this can be disabled if desired
   // disabledCache: true,

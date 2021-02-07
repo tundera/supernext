@@ -49,7 +49,7 @@ function PreviewButton() {
   return (
     <>
       <Button
-        // href={`/api/preview?secret=${process.env.NEXT_SANITY_PREVIEW_SECRET}`}
+        // href={`/api/preview?secret=${process.env.SANITY_API_PREVIEW_SECRET}`}
         onClick={onOpen}
         iconSpacing={4}
         rightIcon={<BsCircleFill size="12px" color="orange" />}

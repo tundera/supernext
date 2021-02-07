@@ -2,7 +2,7 @@ import type { InferGetStaticPropsType } from 'next'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
-import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import TeamsGrid from '@components/ui/lists/TeamsList'
@@ -30,12 +30,12 @@ const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) 
   return (
     <>
       <PageLayout preview={preview}>
-        <Stack>
+        <Flex flexDir="column" alignItems="center">
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Teams
           </Heading>
           {data && <TeamsGrid teams={data.teams} />}
-        </Stack>
+        </Flex>
       </PageLayout>
     </>
   )

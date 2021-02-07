@@ -7,7 +7,7 @@
           "app": "mailchimp",
           "type": "addOrUpdateContact",
           "audience": "tundera.dev",
-          "apiKey": "$NEXT_FORMSPREE_MAILCHIMP_API_KEY"
+          "apiKey": "$FORMSPREE_MAILCHIMP_API_KEY"
         }
       ]
     }
