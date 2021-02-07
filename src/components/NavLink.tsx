@@ -10,7 +10,7 @@ type Props = {
 const NavLink: FC<Props> = ({ to, children }) => {
   const color = useColorModeValue('whiteAlpha.900', 'brand.500')
   const hoverColor = useColorModeValue('brand.500', 'whiteAlpha.900')
-  const hoverBg = useColorModeValue('whiteAlpha.500', 'stone.300')
+  const hoverBg = useColorModeValue('whiteAlpha.500', 'brand.300')
 
   return (
     <NextLink href={to} passHref>

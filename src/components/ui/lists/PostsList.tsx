@@ -16,7 +16,7 @@ const BlogPost = ({ slug, author, date, title }) => {
         maxW="2xl"
       >
         <Flex justifyContent="space-between" alignItems="center">
-          <chakra.span fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')} pb={2}>
+          <chakra.span fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')} p>
             <TimeAgo datetime={date} locale="en_US" />
           </chakra.span>
           <Link

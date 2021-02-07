@@ -114,7 +114,7 @@ function Header({ ...props }) {
 
   const theme = useTheme()
   const bg = useColorModeValue('brand.500', 'whiteAlpha.700')
-  const iconColor = useColorModeValue(theme.colors.whiteAlpha['900'], theme.colors.stone['700'])
+  const iconColor = useColorModeValue(theme.colors.whiteAlpha['900'], theme.colors.brand['500'])
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 

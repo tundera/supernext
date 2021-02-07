@@ -27,10 +27,9 @@ const PageLayout: FC<Props> = ({ preview = false, children, ...props }) => {
   }, [router.pathname])
 
   return (
-    <Flex direction="column" align="center" flexDirection="column" m="0 auto" {...props}>
+    <Flex direction="column" align="center" flexDirection="column" {...props}>
       <NProgress color={color} options={{ trickleSpeed: 50 }} showAfterMs={300} spinner />
       {process.env.NODE_ENV === 'development' && isBlogRoute && <PreviewBanner preview={preview} />}
-      {/* <Header /> */}
       <Navbar />
       <Container>{children}</Container>
       <Footer />

@@ -4,7 +4,7 @@ import Arrow from '@components/ui/ArrowIcon'
 
 function LandingHero() {
   const color = useColorModeValue('brand.500', 'whiteAlpha.900')
-  const altColor = useColorModeValue('stone.500', 'whiteAlpha.700')
+  const altColor = useColorModeValue('brand.500', 'whiteAlpha.700')
 
   return (
     <>

@@ -11,18 +11,6 @@ export default {
     800: '#181c37',
     900: '#080819',
   },
-  stone: {
-    50: '#f2f2f2',
-    100: '#d9d9d9',
-    200: '#bfbfbf',
-    300: '#a6a6a6',
-    400: '#8c8c8c',
-    500: '#737373',
-    600: '#595959',
-    700: '#404040',
-    800: '#262626',
-    900: '#0d0d0d',
-  },
   gold: {
     50: '#faf3e4',
     100: '#e4dccb',
@@ -89,18 +77,18 @@ export default {
   },
   secondaryBgColor: {
     light: 'whiteAlpha.700',
-    dark: 'stone.500',
+    dark: 'brand.500',
   },
   primaryTextColor: {
     light: 'brand.500',
     dark: 'whiteAlpha.900',
   },
   secondaryTextColor: {
-    light: 'stone.500',
+    light: 'brand.500',
     dark: 'whiteAlpha.700',
   },
   tertiaryTextColor: {
-    light: 'stone.600',
+    light: 'brand.600',
     dark: 'whiteAlpha.500',
   },
   borderColor: {

@@ -1,6 +1,6 @@
 import type { InferGetStaticPropsType } from 'next'
 
-import { Stack, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading, Text } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
@@ -35,12 +35,12 @@ const PostsPage = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticP
   return (
     <>
       <PageLayout preview={preview}>
-        <Stack>
+        <Flex flexDir="column" alignItems="center">
           <Heading>This Site Loads MDX From Sanity.io</Heading>
           <Text>View any of these pages to see it in action:</Text>
           <PostsList posts={data} />
-        </Stack>
-        <Pagination />
+          <Pagination />
+        </Flex>
       </PageLayout>
     </>
   )

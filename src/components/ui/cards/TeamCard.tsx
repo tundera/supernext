@@ -14,7 +14,7 @@ type Props = {
 }
 
 const TeamCard: FC<Props> = ({ name, city, slug, logo, background }: Props) => {
-  const bg = useColorModeValue('whiteAlpha.900', 'stone.900')
+  const bg = useColorModeValue('whiteAlpha.900', 'brand.500')
 
   return (
     <article>

@@ -7,16 +7,7 @@ const Container: FC = ({ children }) => {
   const color = useColorModeValue('brand.700', 'whiteAlpha.900')
 
   return (
-    <Flex
-      as="main"
-      justify="center"
-      flexDirection="column"
-      bg={bg}
-      color={color}
-      w="100%"
-      minW={[768, 1050, 1150]}
-      minHeight="95vh"
-    >
+    <Flex as="main" justify="center" flexDirection="column" bg={bg} color={color} w="100%" minHeight="95vh">
       {children}
     </Flex>
   )

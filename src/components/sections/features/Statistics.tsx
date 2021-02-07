@@ -54,7 +54,7 @@ function StatsGrid() {
       direction="column"
       mx={[0, 4, 12]}
       px={16}
-      bg="stone.900"
+      bg="brand.900"
       position="relative"
       boxShadow="dark-lg"
       borderRadius={8}
