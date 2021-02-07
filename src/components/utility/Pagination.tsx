@@ -6,7 +6,7 @@ import PageButton from '@components/utility/PageButton'
 
 const Pagination: FC = () => {
   return (
-    <Flex bg="gray.600" p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex bg="whiteAlpha.700" p={50} w="full" alignItems="center" justifyContent="center">
       <Flex>
         <PageButton>
           <Icon as={IoIosArrowBack} color={useColorModeValue('gray.700', 'gray.200')} boxSize={4} />

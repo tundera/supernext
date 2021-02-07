@@ -106,6 +106,7 @@ const Navbar: FC = ({ ...props }) => {
 
               <NavButton to="/">Home</NavButton>
               <NavButton to="/about">About</NavButton>
+              <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/work">Work</NavButton>
               <NavButton to="/store">Store</NavButton>
               <Button w="100%" varint="ghost">

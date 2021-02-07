@@ -16,7 +16,7 @@ const BlogPost = ({ slug, author, date, title }) => {
         maxW="2xl"
       >
         <Flex justifyContent="space-between" alignItems="center">
-          <chakra.span fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')} p>
+          <chakra.span fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
             <TimeAgo datetime={date} locale="en_US" />
           </chakra.span>
           <Link
@@ -54,16 +54,6 @@ const BlogPost = ({ slug, author, date, title }) => {
             doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi
             ratione libero!
           </chakra.p>
-          {/* <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            mt="4"
-          >
-            <TimeAgo datetime={date} locale="en_US" />
-          </Box> */}
         </Box>
 
         <Flex justifyContent="space-between" alignItems="center" mt={4}>
