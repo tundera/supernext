@@ -21,7 +21,7 @@ import mdxComponents from '@components/mdx/article'
 import { getArticle } from '@lib/content/articles'
 
 type Props = {
-  article: MdxRemote.Source
+  article: any
   frontMatter: FrontMatter
   preview: boolean
 }
