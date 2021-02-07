@@ -5,7 +5,7 @@ import Confetti from 'react-dom-confetti'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import palenight from 'prism-react-renderer/themes/palenight'
-import { chakra } from '@chakra-ui/react'
+import { chakra, Flex, Text } from '@chakra-ui/react'
 
 import CopyButton from '@components/ui/buttons/CopyButton'
 import { copyToClipboard } from 'src/utils/copyToClipboard'
@@ -56,11 +56,11 @@ const CodeBlock: FC<Props> = ({ codeString, language, ...props }) => {
               {isCopied ? '🎉 Copied!' : 'Copy'}
             </CopyButton>
             {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })} style={style} key={i}>
+              <Flex {...getLineProps({ line, key: i })} style={style} key={i} wrap="wrap">
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} key={key} />
+                  <Text {...getTokenProps({ token, key })} key={key} overflowX="scroll" />
                 ))}
-              </div>
+              </Flex>
             ))}
           </chakra.pre>
         )}

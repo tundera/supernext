@@ -5,7 +5,7 @@ import Image from 'next/image'
 import hydrate from 'next-mdx-remote/hydrate'
 import { useRouter } from 'next/router'
 import { Suspense } from 'react'
-import { Flex, Box, Container, Heading, Text } from '@chakra-ui/react'
+import { Flex, Box, Heading, Text } from '@chakra-ui/react'
 
 import sanity from '@lib/sanity/client'
 import { getPostBySlug } from '@lib/content/posts'
@@ -16,6 +16,9 @@ import { createImageUrl } from 'src/utils/sanity'
 
 import { usePreviewSubscription } from '@lib/sanity'
 import { PostBySlugQuery } from 'services/sanity/posts'
+import MdxLayout from '@components/layouts/MdxLayout'
+import { useNextSanityImage } from 'next-sanity-image'
+import { Post } from 'services/sanity/generated/types'
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   sanity.setPreviewMode(preview)
@@ -55,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
 
@@ -68,7 +71,7 @@ const PostPage = ({ post, preview }) => {
     enabled: preview,
   })
 
-  const renderedContent = hydrate(data.content ?? '', {
+  const renderedContent = hydrate(data?.content ?? '', {
     components: {
       CodeBlock,
     },
@@ -81,24 +84,20 @@ const PostPage = ({ post, preview }) => {
   return (
     <>
       <PageLayout preview={preview}>
-        <Flex bg="gray.500" minHeight="100vh" justifyContent="center" mx="150px" py={8}>
-          <Container maxW="4xl" centerContent>
-            <Box padding="4" bg="gray.100">
-              <Heading>{data.title}</Heading>
-              <Flex flexDir="column" w="500" h="300" alignItems="center">
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Image
-                    src={createImageUrl(data.coverImage?.asset._ref as string).url() || ''}
-                    width={500}
-                    height={300}
-                  />
-                </Suspense>
-              </Flex>
-              <Text>{data.author.name}</Text>
-              <Text>{data.date}</Text>
-              {renderedContent}
-            </Box>
-          </Container>
+        <Flex flexDir="column" alignItems="center">
+          <Box padding="4" bg="gray.100" color="brand.500">
+            <Heading>{data?.title}</Heading>
+            <Flex flexDir="column" alignItems="center" position="relative">
+              <Image
+                src={createImageUrl(data?.coverImage?.asset?._ref as string).url() || ''}
+                width={500}
+                height={300}
+              />
+            </Flex>
+            <Text>{data?.author.name}</Text>
+            <Text>{data?.date}</Text>
+            {router.isReady && renderedContent}
+          </Box>
         </Flex>
       </PageLayout>
     </>

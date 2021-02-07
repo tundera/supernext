@@ -10,7 +10,6 @@ import { useTeamBySlugQuery } from 'src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import PlayersList from '@components/ui/lists/PlayersList'
-import { getPlayersByTeam } from '@lib/graphql/players'
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 const client = new GraphQLClient(endpoint)

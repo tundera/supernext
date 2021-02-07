@@ -103,7 +103,7 @@ const PostsList = ({ posts }) => {
       )}
 
       {posts?.map((post) => (
-        <BlogPost key={post.slug} slug={post.slug} author={post.author} date={post.date} title={post.title} />
+        <BlogPost key={post.slug.current} slug={post.slug} author={post.author} date={post.date} title={post.title} />
       ))}
     </Flex>
   )

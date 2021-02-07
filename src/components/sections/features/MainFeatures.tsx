@@ -26,7 +26,7 @@ function FeatureSummaries() {
   }
 
   return (
-    <Flex bg="brand.500" p={20} width="auto" justifyContent="center" alignItems="center">
+    <Flex bg="brand.500" p={{ sm: 20 }} width="auto" justifyContent="center" alignItems="center">
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3 }}
         spacing={20}

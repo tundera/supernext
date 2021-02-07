@@ -4657,6 +4657,11 @@
   dependencies:
     "@sanity/client" "^1.149.13"
 
+"@sanity/image-url@^0.140.19":
+  version "0.140.22"
+  resolved "https://registry.npmjs.org/@sanity/image-url/-/image-url-0.140.22.tgz#7a65f56bb751f7b1c5dfacfadd34ee10fc4f0fde"
+  integrity sha512-CAmQZnj+KM7FSEYiWlIGDit072syicYuAw0w7R2ctMzHiZ4p9mE/g6dBnYqrqFUrw2J+GpJgPt+RVspKP8vdqA==
+
 "@sanity/observable@1.150.1":
   version "1.150.1"
   resolved "https://registry.npmjs.org/@sanity/observable/-/observable-1.150.1.tgz#e077a7da3d85a863b80023bcc1a13470dba2ac11"
@@ -16880,6 +16885,13 @@ next-nprogress-emotion@^2.0.0:
   integrity sha512-SZpQ1BiLM6Piillmdr5lyhmcOpzRTvJ5JNOHscfNDAdDCxPCRLcK1ASzTq8oOF/m81uE8Qnqh+KlA5ufDMyJXg==
   dependencies:
     nprogress "^0.2.0"
+
+next-sanity-image@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/next-sanity-image/-/next-sanity-image-1.0.1.tgz#401cd42d7de36eaddfe5bd03391da4b9aef79611"
+  integrity sha512-lGaatEBBtR3eSWeGODByboEPKq4zWvo49XgZ3MZg5nlOYj8PH0Y486HONAnEM454l+HUGEN85J3XZUs3wYs9lQ==
+  dependencies:
+    "@sanity/image-url" "^0.140.19"
 
 next-sanity@^0.1.8:
   version "0.1.8"

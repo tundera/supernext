@@ -31,7 +31,7 @@ function Features() {
     )
   }
   return (
-    <Flex bg="gray.600" p={20} width="auto" justifyContent="center" alignItems="center">
+    <Flex bg="gray.600" p={{ sm: 20 }} width="auto" justifyContent="center" alignItems="center">
       <Box py={12} bg={useColorModeValue('white', 'gray.800')} borderRadius="xl">
         <Box maxW="7xl" mx="auto" px={{ base: 4, lg: 8 }}>
           <Box textAlign={{ lg: 'center' }}>
