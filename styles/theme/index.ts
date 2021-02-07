@@ -9,9 +9,9 @@ import fonts from './fonts'
 // import borders from './foundations/borders'
 
 // Component style overrides
-import Button from './components/button'
-import Menu from './components/menu'
-import Badge from './components/badge'
+// import Button from './components/button'
+// import Menu from './components/menu'
+// import Badge from './components/badge'
 
 const overrides = {
   config,
@@ -19,9 +19,9 @@ const overrides = {
   fonts,
   colors,
   components: {
-    Button,
-    Menu,
-    Badge,
+    // Button,
+    // Menu,
+    // Badge,
   },
 }
 

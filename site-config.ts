@@ -8,10 +8,7 @@ const siteConfig = {
     GitHub: 'https://github.com/tundera',
     Twitter: 'https://twitter.com/tunderadev',
   },
-  themeColor: {
-    primary: '#060819',
-    secondary: '#eeebff',
-  },
+  themeColor: '#060819',
 }
 
 export default siteConfig

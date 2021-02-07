@@ -7,6 +7,7 @@ import CallToActionWithAnnotation from '@components/sections/LandingHero'
 
 import { features } from 'src/utils/constants'
 import StatsGrid from '@components/sections/StatsGrid'
+import NewsletterHero from '@components/sections/heros/NewsletterSignup'
 
 const Home = () => {
   const theme = useTheme()
@@ -24,6 +25,7 @@ const Home = () => {
           </Flex>
           <Overview features={features} />
         </Flex>
+        <NewsletterHero />
       </PageLayout>
     </>
   )

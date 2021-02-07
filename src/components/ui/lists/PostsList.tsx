@@ -1,49 +1,105 @@
 import TimeAgo from 'timeago-react'
-import { Flex, Box, Avatar, Badge, Text } from '@chakra-ui/react'
-import { paramCase } from 'change-case'
+import { chakra, Box, Image, Flex, useColorModeValue, Link, Avatar, Badge, Text } from '@chakra-ui/react'
 import { createImageUrl } from 'src/utils/sanity'
+import NextLink from 'next/link'
 
-function PostCard({ slug, author, date, title }) {
+const BlogPost = ({ slug, author, date, title }) => {
   return (
-    <Box
-      key={slug?.current}
-      maxW="sm"
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      bgColor="gray.300"
-      as="a"
-      href={`/blog/${slug.current || slug}`}
-    >
-      <Box p="6">
-        <Box d="flex" alignItems="baseline">
-          <Box
+    <Flex bg="gray.600" p={50} w="full" alignItems="center" justifyContent="center">
+      <Box
+        mx="auto"
+        px={8}
+        py={4}
+        borderRadius="lg"
+        boxShadow="lg"
+        bg={useColorModeValue('white', 'gray.800')}
+        maxW="2xl"
+      >
+        <Flex justifyContent="space-between" alignItems="center">
+          <chakra.span fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')} pb={2}>
+            <TimeAgo datetime={date} locale="en_US" />
+          </chakra.span>
+          <Link
+            px={3}
+            py={1}
+            bg="gray.600"
+            color="gray.100"
+            fontSize="sm"
+            fontWeight="700"
+            borderRadius="md"
+            _hover={{ bg: 'gray.500' }}
+            as={NextLink}
+            href="#"
+          >
+            Category
+          </Link>
+        </Flex>
+
+        <Box mt={2}>
+          <Link
+            fontSize="2xl"
+            color={useColorModeValue('gray.700', 'white')}
+            fontWeight="700"
+            _hover={{
+              color: useColorModeValue('gray.600', 'gray.200'),
+              textDecor: 'underline',
+            }}
+            as={NextLink}
+            href={`/blog/${slug.current || slug}`}
+          >
+            {title}
+          </Link>
+          <chakra.p mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur
+            doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi
+            ratione libero!
+          </chakra.p>
+          {/* <Box
             color="gray.500"
             fontWeight="semibold"
             letterSpacing="wide"
             fontSize="xs"
             textTransform="uppercase"
-            ml="2"
+            mt="4"
           >
             <TimeAgo datetime={date} locale="en_US" />
-          </Box>
+          </Box> */}
         </Box>
 
-        <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-          {title}
-        </Box>
-        <Flex mt="1" as="h6" lineHeight="tight" isTruncated>
-          <Avatar
-            size="xs"
-            name={author?.name || ''}
-            src={createImageUrl(author?.avatar?.asset?._ref as string).url() || ''}
-          />
-          <Badge borderRadius="full" px="2">
-            {author?.name}
-          </Badge>
+        <Flex justifyContent="space-between" alignItems="center" mt={4}>
+          <Text
+            color={useColorModeValue('brand.600', 'brand.400')}
+            _hover={{ textDecor: 'underline' }}
+            href="#"
+            as={NextLink}
+          >
+            Read more
+          </Text>
+
+          <Flex alignItems="center">
+            <Image
+              mx={4}
+              w={10}
+              h={10}
+              objectFit="cover"
+              borderRadius="full"
+              display={{ base: 'none', sm: 'block' }}
+              src={createImageUrl(author?.avatar?.asset?._ref as string).url() || ''}
+              alt="avatar"
+            />
+            <Link
+              color={useColorModeValue('gray.700', 'gray.200')}
+              fontWeight="700"
+              cursor="pointer"
+              as={NextLink}
+              href="#"
+            >
+              {author.name}
+            </Link>
+          </Flex>
         </Flex>
       </Box>
-    </Box>
+    </Flex>
   )
 }
 
@@ -57,13 +113,7 @@ const PostsList = ({ posts }) => {
       )}
 
       {posts?.map((post) => (
-        <PostCard
-          key={paramCase(post.title)}
-          slug={post.slug}
-          author={post.author}
-          date={post.date}
-          title={post.title}
-        />
+        <BlogPost key={post.slug} slug={post.slug} author={post.author} date={post.date} title={post.title} />
       ))}
     </Flex>
   )
