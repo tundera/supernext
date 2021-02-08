@@ -5,3 +5,8 @@ declare module '*.graphql' {
 
   export = Schema
 }
+
+declare module '*.svg' {
+  const content: any
+  export default content
+}

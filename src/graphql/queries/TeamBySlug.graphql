@@ -1,23 +1,23 @@
 query TeamBySlug($slug: String!) {
-    team(slug: $slug) {
-        id
-        name
-        city
-        established
-        logo
-        logoSlug
-        colorScheme {
-            primary
-            secondary
-        }
-        players {
-            id
-            name
-            slug
-            number
-            position
-            height
-            weight
-        }
+  team(slug: $slug) {
+    id
+    name
+    city
+    established
+    logo
+    logoSlug
+    colorScheme {
+      primary
+      secondary
     }
+    players {
+      id
+      name
+      slug
+      number
+      position
+      height
+      weight
+    }
+  }
 }

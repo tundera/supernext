@@ -12,17 +12,17 @@ function ScreenshotHero() {
           letterSpacing={{ base: 'normal', md: 'tight' }}
           color={useColorModeValue('gray.900', 'gray.100')}
         >
-          All your{' '}
+          The learning platform for{' '}
           <Text
             display={{ base: 'block', lg: 'inline' }}
             w="100%"
             bgClip="text"
-            bgGradient="linear(to-r, green.400,purple.500)"
+            bgGradient="linear(to-r, spark.400,deep.500)"
             fontWeight="extrabold"
           >
-            customer feedback
+            seriously fast
           </Text>{' '}
-          in one single place.
+          JAMStack development.
         </chakra.h1>
         <chakra.p
           px={{ base: 0, lg: 24 }}
@@ -87,8 +87,8 @@ function ScreenshotHero() {
           w="100%"
           borderRadius="lg"
           boxShadow="2xl"
-          src="https://kutty.netlify.app/hero.jpg"
-          alt="Hellonext feedback boards software screenshot"
+          src="/static/images/tunderadev-vscode-screenshot.png"
+          alt="Tundera.dev vscode screenshot"
         />
       </Box>
     </Box>
