@@ -18,24 +18,24 @@ function MainFeatures() {
         bg={useColorModeValue('white', 'gray.800')}
         boxShadow="xl"
       >
-        <FeatureSummary title="Everything in TypeScript" icon={TypeScriptLogo}>
-          Love it or hate it, TypeScript is definitely here to stay. Chances are you've worked in TypeScript to some
-          degree, but aren't totally confident you're doing it well. In this course you'll gain that confidence and
-          learn to write your frontend and backend with next-level type safety.
-        </FeatureSummary>
-        <FeatureSummary title="React for Frontend" icon={ReactLogo}>
-          Manage all your online and offline sales in one place with a single integration, simplifying reporting and
-          reconciliation. Terminal works seamlessly with Payments, Connect, and Billing.
+        <FeatureSummary title="React" icon={ReactLogo}>
+          Learn the makings of beautiful user interfaces with libraries like Chakra UI and Tailwind, all while cutting
+          down development time by wrting your own custom component generators.
         </FeatureSummary>
 
-        <FeatureSummary title="Node.js for Serverless" icon={NodeJsLogo}>
+        <FeatureSummary title="Node.js" icon={NodeJsLogo}>
           Build services as deployable functions to providers like Vercel and Netlify without having to learn another
-          language. Welcome to the serverless era, it's here to stay.
+          language. Welcome to the serverless era.
         </FeatureSummary>
 
         <FeatureSummary title="GraphQL" icon={GraphQlLogo}>
-          Add in-person payments to your platform or marketplace. Using Terminal with Connect, you can onboard users for
-          online and in-person payments, and unify their payouts across channels.
+          Fetch data for your apps with syntax that actually makes sense. Stop trying to parse apart complex API calls
+          in your code and focus on your content instead. Integrate flawlessly with SQL and CMS data layers and
+          subscribe to real-time data streams to create powerful user experiences.
+        </FeatureSummary>
+        <FeatureSummary title="TypeScript" icon={TypeScriptLogo}>
+          Add type safety to your stack and never look back. Learn how to leverage TypeScript in development for faster
+          iteration and boost your confidence when shipping your apps to production.
         </FeatureSummary>
       </SimpleGrid>
     </Flex>

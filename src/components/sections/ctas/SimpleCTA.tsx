@@ -7,7 +7,7 @@ import { chakra, Box, Stack, Flex, useColorModeValue, Link } from '@chakra-ui/re
 const SimpleCTA: FC = () => {
   return (
     <Flex bg="gray.600" p={50} w="full" alignItems="center" justifyContent="center">
-      <Box bg={useColorModeValue('white', 'gray.800')} w="100%">
+      <Box bg={useColorModeValue('white', 'brand.500')} w="100%">
         <Box
           w={{ base: '100%', md: 3 / 4, lg: 2 / 4 }}
           px={4}
