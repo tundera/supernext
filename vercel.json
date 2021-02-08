@@ -14,13 +14,14 @@
       "SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
       "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
       "DATABASE_URL": "@tunderadev_database_url",
-      "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key"
+      "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key",
+      "SESSION_SECRET_KEY": "@tunderadev_session_secret_key"
     }
   },
   "redirects": [
-    { 
-      "source": "/metrics", 
-      "destination": "https://metrics.tundera.dev" 
+    {
+      "source": "/metrics",
+      "destination": "https://metrics.tundera.dev"
     }
   ]
 }

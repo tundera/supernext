@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import type { NextPage } from 'next'
+
 import { Flex } from '@chakra-ui/react'
 
 import PageLayout from '@components/layouts/PageLayout'
@@ -6,7 +7,7 @@ import PageLayout from '@components/layouts/PageLayout'
 import NewsletterHero from '@components/sections/heros/NewsletterSignup'
 import FeatureSummaries from '@components/sections/features/MainFeatures'
 
-const Home = () => {
+const HomePage: NextPage = () => {
   return (
     <>
       <PageLayout>
@@ -19,4 +20,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

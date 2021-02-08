@@ -52,6 +52,7 @@ CREATE TABLE "Team" (
     "city" TEXT NOT NULL,
     "abbreviation" TEXT NOT NULL,
     "logo" TEXT NOT NULL,
+    "logoSlug" TEXT NOT NULL,
     "wins" INTEGER,
     "losses" INTEGER,
     "winPercentage" DECIMAL(65,30),
@@ -93,6 +94,9 @@ CREATE UNIQUE INDEX "Team.abbreviation_unique" ON "Team"("abbreviation");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Team.logo_unique" ON "Team"("logo");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Team.logoSlug_unique" ON "Team"("logoSlug");
 
 -- AddForeignKey
 ALTER TABLE "Coach" ADD FOREIGN KEY ("teamId") REFERENCES "Team"("id") ON DELETE SET NULL ON UPDATE CASCADE;

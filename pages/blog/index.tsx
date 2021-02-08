@@ -1,4 +1,5 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
+import type { Post } from 'services/sanity/generated/types'
 
 import { Flex, Heading, Text } from '@chakra-ui/react'
 
@@ -11,7 +12,12 @@ import sanity from '@lib/sanity/client'
 import { getPosts } from '@lib/content/posts'
 import Pagination from '@components/utility/Pagination'
 
-export const getStaticProps = async ({ preview = false }) => {
+type Props = {
+  posts: Post[]
+  preview: boolean
+}
+
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   sanity.setPreviewMode(preview)
 
   const posts = await getPosts()
@@ -25,7 +31,7 @@ export const getStaticProps = async ({ preview = false }) => {
   }
 }
 
-const PostsPage = ({ posts, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const PostsPage: NextPage<Props> = ({ posts, preview }) => {
   const { data } = usePreviewSubscription(PostsQuery, {
     params: { count: POSTS_PER_PAGE },
     initialData: posts,

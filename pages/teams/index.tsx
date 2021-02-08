@@ -1,4 +1,4 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
@@ -10,7 +10,11 @@ import { getAllTeams } from '@lib/graphql/teams'
 import client from '@lib/graphql/client'
 import { useTeamsQuery } from 'src/graphql/generated'
 
-export const getStaticProps = async ({ preview = false }) => {
+type Props = {
+  preview: boolean
+}
+
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery('Teams', getAllTeams)
@@ -24,7 +28,7 @@ export const getStaticProps = async ({ preview = false }) => {
   }
 }
 
-const TeamsPage = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const TeamsPage: NextPage<Props> = ({ preview }) => {
   const { data } = useTeamsQuery(client, undefined, { suspense: false })
 
   return (

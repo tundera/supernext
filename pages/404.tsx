@@ -1,8 +1,10 @@
+import type { NextPage } from 'next'
+
 import { Flex, Image, Box, Heading, Text, Button } from '@chakra-ui/react'
 import Router from 'next/router'
 import Layout from '@components/layouts/PageLayout'
 
-const Error404Page = () => {
+const Error404Page: NextPage = () => {
   const redirectToHome = () => {
     Router.push('/')
   }

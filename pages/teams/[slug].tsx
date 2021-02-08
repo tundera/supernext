@@ -1,4 +1,4 @@
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
@@ -13,6 +13,11 @@ import PlayersList from '@components/ui/lists/PlayersList'
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 const client = new GraphQLClient(endpoint)
+
+type Props = {
+  slug: string
+  preview: boolean
+}
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const pageSlug = params?.slug as string
@@ -40,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const TeamPage = ({ slug, preview }) => {
+const TeamPage: NextPage<Props> = ({ slug, preview }) => {
   const { data, isLoading, isError, error } = useTeamBySlugQuery(client, { slug }, { suspense: false })
 
   if (isError) {

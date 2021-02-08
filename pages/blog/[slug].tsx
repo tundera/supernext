@@ -1,10 +1,9 @@
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
 import renderToString from 'next-mdx-remote/render-to-string'
 import Image from 'next/image'
 import hydrate from 'next-mdx-remote/hydrate'
 import { useRouter } from 'next/router'
-import { Suspense } from 'react'
 import { Flex, Box, Heading, Text } from '@chakra-ui/react'
 
 import sanity from '@lib/sanity/client'
@@ -16,10 +15,12 @@ import { createImageUrl } from 'src/utils/sanity'
 
 import { usePreviewSubscription } from '@lib/sanity'
 import { PostBySlugQuery } from 'services/sanity/posts'
-import MdxLayout from '@components/layouts/MdxLayout'
-import { useNextSanityImage } from 'next-sanity-image'
-import { Post } from 'services/sanity/generated/types'
+import { PromiseReturnType } from 'blitz'
 
+type Props = {
+  post: PromiseReturnType<typeof getPostBySlug>
+  preview: boolean
+}
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   sanity.setPreviewMode(preview)
 
@@ -62,7 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const PostPage = ({ post, preview }) => {
+const PostPage: NextPage<Props> = ({ post, preview }) => {
   const router = useRouter()
 
   const { data } = usePreviewSubscription(PostBySlugQuery, {

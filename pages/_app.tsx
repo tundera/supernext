@@ -1,6 +1,5 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
-import { useRouter } from 'next/router'
 import { QueryClient, QueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -18,12 +17,10 @@ const queryClient = new QueryClient({
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
-        <ErrorBoundary FallbackComponent={RootErrorFallback} resetKeys={[router.asPath]} onReset={reset}>
+        <ErrorBoundary FallbackComponent={RootErrorFallback} onReset={reset}>
           <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
             <FormProvider>
               <ThemeProvider>

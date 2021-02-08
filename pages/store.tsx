@@ -1,4 +1,4 @@
-import type { GetServerSideProps } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 
 import { paramCase } from 'change-case'
 import { Flex, Heading, List, ListItem, SimpleGrid, Text } from '@chakra-ui/react'
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-const StorePage = ({ prices }: Props) => {
+const StorePage: NextPage<Props> = ({ prices }: Props) => {
   const products = []
   return (
     <>
