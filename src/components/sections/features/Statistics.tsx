@@ -1,6 +1,6 @@
 import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid } from '@chakra-ui/react'
 
-import { useColors } from '@hooks/useColors'
+import { useColors } from '@hooks/styles/useColors'
 
 const StatsText = ({ children }) => {
   const { primaryTextColor } = useColors()
