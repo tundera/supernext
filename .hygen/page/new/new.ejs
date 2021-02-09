@@ -4,61 +4,26 @@ to: pages/<%= name %>.tsx
 <% formattedPath = h.camelizedPathName(name).replace('/','') -%>
 <% pageName = `${formattedPath}Page` -%>
 <% base = h.camelizedBaseName(name) -%>
-import type { InferGetStaticPropsType } from 'next'
+import type { NextPage } from 'next'
 
-import { QueryClient } from 'react-query'
-import { dehydrate } from 'react-query/hydration'
-import { Stack, Heading, SimpleGrid } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
+// import { useQuery } from 'react-query'
 
-function <%= pageName %>() {
+import PageLayout from '@components/layouts/PageLayout'
+// import { getQueryData } from '@lib/data'
+
+const <%= pageName %>: NextPage = () => {
+  // const { data, isLoading, isError, error } = useQuery('key', getData)
+
   return (
     <>
-      <PageLayout preview={preview}>
-        <Stack>
-          <Heading as="h1" size="xl" py={8} textAlign="center">
-            Teams
-          </Heading>
-          <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-            {data &&
-              data.teams?.map((team) =>
-                team ? <TeamCard key={team.name} name={team.name} logo={team.logo} /> : null,
-              )}
-            <QuerySuspense fallback={<LoadingSpinner />}>
-              <PlayersList title="NBA Players" />
-            </QuerySuspense>
-          </SimpleGrid>
-        </Stack>
+      <PageLayout>
+        <Flex flexDir="column" alignItems="center">
+          <Heading as="h1"><%= formattedPath %> Page</Heading>
+        </Flex>
       </PageLayout>
     </>
   )
 }
 
-const Teams = ({ preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data } = useAllTeamsQuery(client, {}, { suspense: false })
-
-  return (
-    <>
-      <PageLayout preview={preview}>
-        <Stack>
-          <Heading as="h1" size="xl" py={8} textAlign="center">
-            Teams
-          </Heading>
-          <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-            {data &&
-              data.teams?.map((team) =>
-                team ? <TeamCard key={team.name} name={team.name} logo={team.logo} /> : null,
-              )}
-            <QuerySuspense fallback={<LoadingSpinner />}>
-              <PlayersList title="NBA Players" />
-            </QuerySuspense>
-          </SimpleGrid>
-        </Stack>
-      </PageLayout>
-    </>
-  )
-}
-
-export default Teams
-
-
-export default <%= pageName %>;
+export default <%= pageName %>

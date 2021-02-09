@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 
+import NextLink from 'next/link'
 import {
   chakra,
   Box,
@@ -72,9 +73,11 @@ const Navbar: FC = ({ ...props }) => {
             <DarkModeToggle />
             <LocaleButton />
           </HStack>
-          <Button colorScheme="brand" size="sm">
-            Sign In
-          </Button>
+          <NextLink href="/login" passHref>
+            <Button as="a" colorScheme="brand" size="sm">
+              Sign In
+            </Button>
+          </NextLink>
 
           <Box display={{ base: 'inline-flex', md: 'none' }}>
             <IconButton

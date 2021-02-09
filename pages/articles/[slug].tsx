@@ -10,7 +10,7 @@ import NextLink from 'next/link'
 import Emoji from 'a11y-react-emoji'
 
 import { useRouter } from 'next/router'
-import { Heading, Text, Box } from '@chakra-ui/react'
+import { Heading, Text, Box, Flex } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import { MdxRemote } from 'next-mdx-remote/types'
 
@@ -80,7 +80,13 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
   const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${router.pathname}`
 
   if (router.isFallback) {
-    return <LoadingSpinner />
+    return (
+      <PageLayout preview={preview}>
+        <Flex flexDir="column" alignItems="center">
+          <LoadingSpinner />
+        </Flex>
+      </PageLayout>
+    )
   }
 
   return (

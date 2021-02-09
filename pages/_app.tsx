@@ -1,5 +1,7 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
 
+import { Auth } from '@supabase/ui'
+import { supabase } from '@lib/supabase'
 import { QueryClient, QueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -11,7 +13,7 @@ import RootErrorFallback from '@components/utility/RootErrorFallback'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      suspense: true,
+      suspense: false,
     },
   },
 })
@@ -21,13 +23,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryErrorResetBoundary>
       {({ reset }) => (
         <ErrorBoundary FallbackComponent={RootErrorFallback} onReset={reset}>
-          <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
+          <Auth.UserContextProvider supabaseClient={supabase}>
             <FormProvider>
               <ThemeProvider>
-                <Component {...pageProps} />
+                <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
+                  <Component {...pageProps} />
+                </QueryProvider>
               </ThemeProvider>
             </FormProvider>
-          </QueryProvider>
+          </Auth.UserContextProvider>
         </ErrorBoundary>
       )}
     </QueryErrorResetBoundary>

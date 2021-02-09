@@ -1,6 +1,6 @@
 import { chakra, Box, useColorModeValue, Button, Stack, Image, Text, Icon } from '@chakra-ui/react'
 
-function ScreenshotHero() {
+function LandingHero() {
   return (
     <Box px={8} py={24} mx="auto">
       <Box w={{ base: '100%', md: 11 / 12, xl: 9 / 12 }} mx="auto" textAlign={{ base: 'left', md: 'center' }}>
@@ -106,4 +106,4 @@ function ScreenshotHero() {
   )
 }
 
-export default ScreenshotHero
+export default LandingHero

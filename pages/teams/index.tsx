@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 }
 
 const TeamsPage: NextPage<Props> = ({ preview }) => {
-  const { data } = useTeamsQuery(client, undefined, { suspense: false })
+  const { data } = useTeamsQuery(client)
 
   return (
     <>

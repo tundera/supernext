@@ -46,7 +46,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const TeamPage: NextPage<Props> = ({ slug, preview }) => {
-  const { data, isLoading, isError, error } = useTeamBySlugQuery(client, { slug }, { suspense: false })
+  const { data, isLoading, isError, error } = useTeamBySlugQuery(client, { slug })
 
   if (isError) {
     const { message } = error as Error

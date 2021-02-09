@@ -79,7 +79,13 @@ const PostPage: NextPage<Props> = ({ post, preview }) => {
   })
 
   if (router.isFallback) {
-    return <LoadingSpinner />
+    return (
+      <PageLayout preview={preview}>
+        <Flex flexDir="column" alignItems="center">
+          <LoadingSpinner />
+        </Flex>
+      </PageLayout>
+    )
   }
 
   return (

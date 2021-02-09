@@ -5,14 +5,14 @@ import { Flex } from '@chakra-ui/react'
 import PageLayout from '@components/layouts/PageLayout'
 import Features from '@components/sections/features/CourseFeatures'
 
-import ScreenshotHero from '@components/sections/heros/ScreenshotHero'
+import LandingHero from '@components/sections/heros/ScreenshotHero'
 
 const About: NextPage = () => {
   return (
     <>
       <PageLayout>
         <Flex flexDir="column" alignItems="center">
-          <ScreenshotHero />
+          <LandingHero />
         </Flex>
         <Features />
       </PageLayout>
