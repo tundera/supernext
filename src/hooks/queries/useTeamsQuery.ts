@@ -1,4 +1,4 @@
-import type { Team } from 'db'
+import type { Team } from '@prisma/client'
 
 import { useQuery, UseQueryOptions } from 'react-query'
 

@@ -1,5 +1,6 @@
-import { Coach, Player } from 'db'
+import type { Coach, Player } from '@prisma/client'
 
+import db from 'db'
 import NBA from 'nba'
 import nbaTeams from 'nba/data/teams.json'
 

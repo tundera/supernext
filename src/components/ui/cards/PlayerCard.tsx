@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { Player } from 'db'
+import type { Player } from '@prisma/client'
 
 import { Image } from 'cloudinary-react'
 

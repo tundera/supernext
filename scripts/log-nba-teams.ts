@@ -1,7 +1,8 @@
 #!/usr/bin/env ts-node-script
 
+import type { Team } from '@prisma/client'
 import { paramCase } from 'change-case'
-import db, { Team } from '../db'
+import db from '../db'
 
 const logTeam = async (team: Team) => {
   console.dir(team, { colors: true, depth: null })
