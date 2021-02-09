@@ -1,4 +1,4 @@
-import { chakra, Box, SimpleGrid, Flex, useColorModeValue } from '@chakra-ui/react'
+import { chakra, SimpleGrid, Flex, useColorModeValue } from '@chakra-ui/react'
 
 import FeatureSummary from '@components/sections/features/MainFeatures/FeatureSummary'
 import ReactLogo from 'assets/images/logos/react.svg'
@@ -8,7 +8,7 @@ import GraphQlLogo from 'assets/images/logos/graphql.svg'
 
 function MainFeatures() {
   return (
-    <Flex bg="brand.500" p={{ sm: 20 }} width="auto" justifyContent="center" alignItems="center">
+    <Flex p={{ sm: 20 }} width="auto" direction="column" justifyContent="center" alignItems="center">
       <SimpleGrid
         columns={{ base: 1, md: 2 }}
         spacing={20}

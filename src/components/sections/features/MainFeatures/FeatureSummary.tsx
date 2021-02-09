@@ -16,7 +16,7 @@ const FeatureSummary: FC<Props> = ({ icon, title, children }) => {
         fontSize={{ base: 'lg', sm: 'xl', lg: '2xl' }}
         lineHeight="shorter"
         fontWeight="bold"
-        color="gray.900"
+        color={useColorModeValue('gray.600', 'gray.400')}
       >
         {title}
       </Heading>

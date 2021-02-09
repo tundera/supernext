@@ -12,7 +12,7 @@ function ScreenshotHero() {
           letterSpacing={{ base: 'normal', md: 'tight' }}
           color={useColorModeValue('gray.900', 'gray.100')}
         >
-          The learning platform for{' '}
+          The open-source learning platform for{' '}
           <Text
             display={{ base: 'block', lg: 'inline' }}
             w="100%"
@@ -20,7 +20,7 @@ function ScreenshotHero() {
             bgGradient="linear(to-r, spark.400,deep.500)"
             fontWeight="extrabold"
           >
-            seriously fast
+            next level
           </Text>{' '}
           JAMStack development.
         </chakra.h1>
@@ -30,8 +30,18 @@ function ScreenshotHero() {
           fontSize={{ base: 'lg', md: 'xl' }}
           color={useColorModeValue('gray.600', 'gray.300')}
         >
-          Hellonext is a feature voting software where you can allow your users to vote on features, publish roadmap,
-          and complete your customer feedback loop.
+          Get the skills and confidence to write seriously performant web apps using the best of what's around. Learn
+          accelerated modern web development with high-quality course content, all delivered in bite-sized, accesible
+          video lectures. Oh, and it's <Text as="b">completely free.</Text>
+        </chakra.p>
+        <chakra.p
+          px={{ base: 0, lg: 24 }}
+          mb={6}
+          fontWeight="bold"
+          fontSize={{ base: 'xl', md: '2xl' }}
+          color={useColorModeValue('gray.600', 'gray.300')}
+        >
+          Sign up today and learn something new.
         </chakra.p>
         <Stack
           direction={{ base: 'column', sm: 'row' }}
@@ -65,13 +75,14 @@ function ScreenshotHero() {
             colorScheme="gray"
             display="inline-flex"
             alignItems="center"
+            color="brand.500"
             justifyContent="center"
             w={{ base: '100%', sm: 'auto' }}
             mb={{ base: 2, sm: 0 }}
             href="#"
             size="lg"
           >
-            Book a Demo
+            Learn More
             <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
