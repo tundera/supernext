@@ -2,8 +2,6 @@
 
 import { PrismaClient } from '@prisma/client'
 
-// export * from '@prisma/client'
-
 let db: PrismaClient
 
 if (process.env.NODE_ENV !== 'development') {
