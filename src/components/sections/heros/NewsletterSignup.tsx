@@ -11,8 +11,9 @@ import {
   Stack,
   Icon,
 } from '@chakra-ui/react'
+import Emoji from 'a11y-react-emoji'
 
-function NewsletterHero() {
+function NewsletterSignup() {
   const Feature = (props) => (
     <Flex alignItems="center" color={useColorModeValue('gray.600', 'white')}>
       <Icon boxSize={4} mr={1} color="green.600" viewBox="0 0 20 20" fill="currentColor">
@@ -25,6 +26,7 @@ function NewsletterHero() {
       {props.children}
     </Flex>
   )
+
   return (
     <Box px={4} py={32} mx="auto">
       <Box width={{ base: '100%', md: 11 / 12, xl: 8 / 12 }} textAlign={{ base: 'left', md: 'center' }} mx="auto">
@@ -35,11 +37,14 @@ function NewsletterHero() {
           color={useColorModeValue('gray.900', 'gray.100')}
           lineHeight="shorter"
         >
-          A secure, faster way to transfer.
+          Our Mission
         </chakra.h1>
         <chakra.p mb={6} fontSize={{ base: 'lg', md: 'xl' }} color="gray.500" lineHeight="base">
-          We’re on a mission to bring transparency to finance. We charge as little as possible, and we always show you
-          upfront. No hidden fees. No bad exchange rates. No surprises.
+          We’re leading a effort to bring greater opportunities in tech to underserved communities by providing
+          high-quality, accessible online educational content for free. We charge individuals absolutely nothing for our
+          services, and depend solely on donations from individuals and organizations who benefit from the vibrant
+          ecosystem of open-source technologies powering the modern web. Subscribe to our newsletter to learn more about
+          our work and ways to get involved.
         </chakra.p>
         <SimpleGrid
           as="form"
@@ -63,7 +68,7 @@ function NewsletterHero() {
             type="submit"
             colorScheme="brand"
           >
-            Get Started
+            Submit
           </Button>
         </SimpleGrid>
         <Stack
@@ -75,13 +80,15 @@ function NewsletterHero() {
           fontSize="xs"
           color="gray.600"
         >
-          <Feature>No credit card required</Feature>
-          <Feature>14 days free</Feature>
-          <Feature>Cancel anytime</Feature>
+          <Feature>Courses teaching the latest and greatest tech in web development</Feature>
+          <Feature>
+            Content is 100% free, in the spirit of open-source development <Emoji label="Rocket emoji" symbol="🚀" />
+          </Feature>
+          <Feature>All proceeds benefit underprivileged communities</Feature>
         </Stack>
       </Box>
     </Box>
   )
 }
 
-export default NewsletterHero
+export default NewsletterSignup

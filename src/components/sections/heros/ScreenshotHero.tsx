@@ -12,7 +12,7 @@ function LandingHero() {
           letterSpacing={{ base: 'normal', md: 'tight' }}
           color={useColorModeValue('gray.900', 'gray.100')}
         >
-          The open-source learning platform for{' '}
+          The learning platform for{' '}
           <Text
             display={{ base: 'block', lg: 'inline' }}
             w="100%"

@@ -112,7 +112,7 @@ const Navbar: FC = ({ ...props }) => {
               <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/work">Work</NavButton>
               <NavButton to="/store">Store</NavButton>
-              <Button w="100%" varint="ghost">
+              <Button w="100%" varint="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
                 Sign in
               </Button>
 
