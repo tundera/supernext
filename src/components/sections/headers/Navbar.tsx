@@ -30,10 +30,10 @@ const StickyHeader = styled(chakra.header)`
 `
 
 const Navbar: FC = ({ ...props }) => {
-  const bg = useColorModeValue('white', 'gray.800')
+  const bg = useColorModeValue('white', 'brand.700')
   const mobileNav = useDisclosure()
 
-  const iconColor = useColorModeValue('gray.800', 'white')
+  const iconColor = useColorModeValue('brand.500', 'white')
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
@@ -64,7 +64,12 @@ const Navbar: FC = ({ ...props }) => {
           </chakra.h1>
         </Flex>
         <HStack display="flex" alignItems="center" spacing={1}>
-          <HStack spacing={1} mr={1} color="brand.500" display={{ base: 'none', md: 'inline-flex' }}>
+          <HStack
+            spacing={1}
+            mr={1}
+            color={useColorModeValue('brand.500', 'whiteAlpha.900')}
+            display={{ base: 'none', md: 'inline-flex' }}
+          >
             <NavButton to="/">Home</NavButton>
             <NavButton to="/about">About</NavButton>
             <NavButton to="/blog">Blog</NavButton>
@@ -74,7 +79,12 @@ const Navbar: FC = ({ ...props }) => {
             <LocaleButton />
           </HStack>
           <NextLink href="/login" passHref>
-            <Button as="a" colorScheme="brand" size="sm">
+            <Button
+              as="a"
+              color={useColorModeValue('whiteAlpha.900', 'brand.500')}
+              colorScheme={useColorModeValue('brand', 'gray')}
+              size="sm"
+            >
               Sign In
             </Button>
           </NextLink>
