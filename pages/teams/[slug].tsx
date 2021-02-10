@@ -4,7 +4,7 @@ import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import { getTeamBySlug, getAllTeams } from '@lib/graphql/teams'
 import { useTeamBySlugQuery } from 'src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
@@ -55,7 +55,7 @@ const TeamPage: NextPage<Props> = ({ slug, preview }) => {
 
   return (
     <>
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
@@ -68,7 +68,7 @@ const TeamPage: NextPage<Props> = ({ slug, preview }) => {
             </SimpleGrid>
           </Flex>
         )}
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { Card, Typography, Space } from '@supabase/ui'
 import { supabase } from '@lib/supabase'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 
 type Props = {
   user: User
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 const ProfilePage: NextPage<Props> = ({ user }) => {
   return (
     <>
-      <PageLayout>
+      <SiteLayout>
         <Flex flexDir="column" alignItems="center">
           <Heading as="h1">Profile Page</Heading>
           <Card>
@@ -51,7 +51,7 @@ const ProfilePage: NextPage<Props> = ({ user }) => {
             </Space>
           </Card>
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

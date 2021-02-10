@@ -1,18 +1,18 @@
-import type { PageLayoutProps } from '@components/layouts/PageLayout'
+import type { SiteLayoutProps } from '@components/layouts/SiteLayout'
 
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import * as HeaderStories from './Header.stories'
 import * as ContainerStories from './Container.stories'
 
 export default {
-  title: 'PageLayout',
-  component: PageLayout,
+  title: 'SiteLayout',
+  component: SiteLayout,
 } as Meta
 
-const Template: Story<PageLayoutProps> = (args) => <PageLayout {...args} />
+const Template: Story<SiteLayoutProps> = (args) => <SiteLayout {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

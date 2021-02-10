@@ -9,7 +9,7 @@ import type { NextPage } from 'next'
 import { Flex, Heading } from '@chakra-ui/react'
 // import { useQuery } from 'react-query'
 
-import PageLayout from '@components/layouts/PageLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 // import { getQueryData } from '@lib/data'
 
 const <%= pageName %>: NextPage = () => {
@@ -17,11 +17,11 @@ const <%= pageName %>: NextPage = () => {
 
   return (
     <>
-      <PageLayout>
+      <SiteLayout>
         <Flex flexDir="column" alignItems="center">
           <Heading as="h1"><%= formattedPath %> Page</Heading>
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

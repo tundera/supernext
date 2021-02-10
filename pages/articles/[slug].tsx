@@ -15,7 +15,7 @@ import { NextSeo } from 'next-seo'
 import { MdxRemote } from 'next-mdx-remote/types'
 
 import MdxLayout from '@components/layouts/MdxLayout'
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
 import { getArticle } from '@lib/content/articles'
@@ -81,11 +81,11 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
 
   if (router.isFallback) {
     return (
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <Flex flexDir="column" alignItems="center">
           <LoadingSpinner />
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     )
   }
 
@@ -112,7 +112,7 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
           ],
         }}
       />
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <MdxLayout>
           <Heading>
             <nav>
@@ -129,7 +129,7 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
           </Box>
           {renderedContent}
         </MdxLayout>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

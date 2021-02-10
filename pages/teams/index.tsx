@@ -4,7 +4,7 @@ import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Flex, Heading } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import TeamsGrid from '@components/ui/lists/TeamsList'
 import { getAllTeams } from '@lib/graphql/teams'
 import client from '@lib/graphql/client'
@@ -33,14 +33,14 @@ const TeamsPage: NextPage<Props> = ({ preview }) => {
 
   return (
     <>
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <Flex flexDir="column" alignItems="center">
           <Heading as="h1" size="xl" py={8} textAlign="center">
             Teams
           </Heading>
           {data && <TeamsGrid teams={data.teams} />}
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

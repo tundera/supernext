@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 
 import { Heading, Flex } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import Features from '@components/sections/features/CourseFeatures'
 import Button from '@components/ui/buttons/Button'
 import SimpleAlert from '@components/ui/alerts/SimpleAlert'
@@ -10,7 +10,7 @@ import SimpleAlert from '@components/ui/alerts/SimpleAlert'
 const Work: NextPage = () => {
   return (
     <>
-      <PageLayout>
+      <SiteLayout>
         <SimpleAlert type="success" message="Successfully submitted!" />
         <Flex flexDir="column" alignItems="center">
           <Heading as="h1" size="4xl" mt={8} p={2}>
@@ -21,7 +21,7 @@ const Work: NextPage = () => {
             Custom Button
           </Button>
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

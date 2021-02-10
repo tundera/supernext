@@ -1,6 +1,8 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import { Flex, Container } from '@chakra-ui/react'
+
+import { getLayout as getSiteLayout } from '@components/layouts/SiteLayout'
 
 const MdxLayout: FC = ({ children }) => {
   return (
@@ -11,3 +13,6 @@ const MdxLayout: FC = ({ children }) => {
 }
 
 export default MdxLayout
+
+export const getMdxLayout = (page: ReactNode, preview: boolean = false) =>
+  getSiteLayout(<MdxLayout>{page}</MdxLayout>, preview)

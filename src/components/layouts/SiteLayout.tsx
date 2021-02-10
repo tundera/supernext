@@ -1,10 +1,12 @@
-import { FC, useEffect, useState } from 'react'
+import type { FC, ReactNode } from 'react'
+
+import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 import NProgress from 'next-nprogress-emotion'
 import { useColorModeValue, Flex } from '@chakra-ui/react'
 
-import Navbar from '@components/sections/headers/Navbar'
+import Header from '@components/sections/headers/Header'
 import Footer from '@components/sections/Footer'
 import Container from '@components/sections/Container'
 import PreviewBanner from '@components/sections/PreviewBanner'
@@ -13,7 +15,7 @@ type Props = {
   preview?: boolean
 }
 
-const PageLayout: FC<Props> = ({ preview = false, children, ...props }) => {
+const SiteLayout: FC<Props> = ({ preview = false, children, ...props }) => {
   const router = useRouter()
 
   const color = useColorModeValue('whiteAlpha.900', 'brand.500')
@@ -30,13 +32,17 @@ const PageLayout: FC<Props> = ({ preview = false, children, ...props }) => {
     <Flex direction="column" align="center" flexDirection="column" {...props}>
       <NProgress color={color} options={{ trickleSpeed: 50 }} showAfterMs={300} spinner />
       {process.env.NODE_ENV === 'development' && isBlogRoute && <PreviewBanner preview={preview} />}
-      <Navbar />
+      <Header />
       <Container>{children}</Container>
       <Footer />
     </Flex>
   )
 }
 
-export default PageLayout
+export default SiteLayout
 
-export type { Props as PageLayoutProps }
+export type { Props as SiteLayoutProps }
+
+export const getLayout = (page: ReactNode, preview: boolean = false) => (
+  <SiteLayout preview={preview}>{page}</SiteLayout>
+)

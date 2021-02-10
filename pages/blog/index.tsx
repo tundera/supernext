@@ -3,7 +3,7 @@ import type { Post } from 'services/sanity/generated/types'
 
 import { Flex, Heading, Text } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
 import PostsList from '@components/ui/lists/PostsList'
 import { usePreviewSubscription } from '@lib/sanity'
@@ -40,14 +40,14 @@ const PostsPage: NextPage<Props> = ({ posts, preview }) => {
 
   return (
     <>
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <Flex flexDir="column" alignItems="center">
           <Heading>This Site Loads MDX From Sanity.io</Heading>
           <Text>View any of these pages to see it in action:</Text>
           <PostsList posts={data} />
           <Pagination />
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

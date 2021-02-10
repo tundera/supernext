@@ -9,7 +9,7 @@ import { Flex, Box, Heading, Text } from '@chakra-ui/react'
 import sanity from '@lib/sanity/client'
 import { getPostBySlug } from '@lib/content/posts'
 import CodeBlock from '@components/ui/snippets/CodeBlock'
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { createImageUrl } from 'src/utils/sanity'
 
@@ -80,17 +80,17 @@ const PostPage: NextPage<Props> = ({ post, preview }) => {
 
   if (router.isFallback) {
     return (
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <Flex flexDir="column" alignItems="center">
           <LoadingSpinner />
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     )
   }
 
   return (
     <>
-      <PageLayout preview={preview}>
+      <SiteLayout preview={preview}>
         <Flex flexDir="column" alignItems="center">
           <Box padding="4" bg="gray.100" color="brand.500">
             <Heading>{data?.title}</Heading>
@@ -106,7 +106,7 @@ const PostPage: NextPage<Props> = ({ post, preview }) => {
             {router.isReady && renderedContent}
           </Box>
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

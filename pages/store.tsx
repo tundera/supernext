@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import Stripe from 'stripe'
 import { createCheckoutSession } from 'next-stripe/client'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import ProductCard from '@components/ui/cards/products/ProductCard'
 
 interface Price extends Stripe.Price {
@@ -37,7 +37,7 @@ const StorePage: NextPage<Props> = ({ prices }: Props) => {
   const products = []
   return (
     <>
-      <PageLayout>
+      <SiteLayout>
         <Flex flexDir="column" alignItems="center">
           <Heading as="h1" size="4xl" py={8} mb="20px" textAlign="center">
             Store
@@ -53,7 +53,7 @@ const StorePage: NextPage<Props> = ({ prices }: Props) => {
           </List>
           <ProductsGrid products={products} />
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }

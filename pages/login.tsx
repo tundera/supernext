@@ -9,7 +9,7 @@ import { supabase } from '@lib/supabase'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useColorModeValue, Text, VStack, chakra, HStack } from '@chakra-ui/react'
 
-import PageLayout from '@components/layouts/PageLayout'
+import SiteLayout from '@components/layouts/SiteLayout'
 import { useSupabaseAuth } from '@hooks/data/useSupabaseAuth'
 
 const LoginCard = chakra(Card)
@@ -97,9 +97,9 @@ const LoginPage: NextPage = () => {
 
   return (
     <>
-      <PageLayout>
+      <SiteLayout>
         <Flex flexDir="column" alignItems="center">
-          <LoginCard py="2">
+          <LoginCard py="2" bgColor="gray.200">
             <LoginForm />
           </LoginCard>
           <VStack spacing={3} py="8">
@@ -111,7 +111,7 @@ const LoginPage: NextPage = () => {
             </chakra.span>
           </VStack>
         </Flex>
-      </PageLayout>
+      </SiteLayout>
     </>
   )
 }
