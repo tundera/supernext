@@ -17,9 +17,10 @@ import {
 import { AiOutlineMenu } from 'react-icons/ai'
 import styled from '@emotion/styled'
 
-import NavButton from 'src/components/NavButton'
-import DarkModeToggle from 'src/components/utility/DarkModeToggle'
+import NavButton from '@components/NavButton'
+import DarkModeToggle from '@components/utility/DarkModeToggle'
 import LocaleButton from '@components/utility/LocaleButton'
+import LoginButton from '@components/ui/buttons/LoginButton'
 
 import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
@@ -120,9 +121,7 @@ const Header: FC = ({ ...props }) => {
               <NavButton to="/about">About</NavButton>
               <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/store">Store</NavButton>
-              <Button w="100%" varint="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
-                Sign in
-              </Button>
+              <LoginButton />
 
               <HStack>
                 <DarkModeToggle />
