@@ -1,52 +1,69 @@
 export default {
   'i18n-code': {
     en: 'en-US',
+    es: 'es-419',
     de: 'de-DE',
   },
   'coc-redirecting': {
     en: 'Redirecting to code of conduct page...',
+    es: 'Redirecting to code of conduct page...',
     de: 'Mengarahkan pada laman kode etika...',
   },
   flag: {
     en: '🇺🇸',
+    es: '🇪🇸',
     de: '🇩🇪',
   },
   'home-title': {
     en: 'tundera.dev',
+    es: 'tundera.dev',
     de: 'tundera.dev',
   },
   'home-subtitle': {
     en:
+      'Come and meet other developers interested in JavaScript and its ecosystem in Surabaya. Join our community and stay tuned for future events.',
+    es:
       'Come and meet other developers interested in JavaScript and its ecosystem in Surabaya. Join our community and stay tuned for future events.',
     de:
       'Datang dan temui developer lain yang tertarik dengan JavaScript dan ekosistemnya di Surabaya. Bergabunglah dengan komunitas kami dan nantikan acara mendatang.',
   },
   'home-revents-title': {
     en: 'Recent Events',
+    es: 'Recent Events',
     de: 'Neueste Ereignisse',
   },
   'home-revents-subtitle': {
     en: <>View more posts on the blog page.</>,
+    es: <>View more posts on the blog page.</>,
     de: <>Weitere Einträge anzeigen auf der Blogpage.</>,
   },
   'home-revents-more': {
     en: 'View more events',
+    es: 'View more events',
     de: 'Lihat kegiatan lainnya',
   },
   'home-saps-title': {
     en: 'Our Sponsors and Partners',
+    es: 'Our Sponsors and Partners',
     de: 'Sponsor dan Partner Kami',
   },
   'home-saps-subtitle': {
     en: 'We are thankful for the support from our friends below.',
+    es: 'We are thankful for the support from our friends below.',
     de: 'Kami berterima kasih atas dukungan dari teman-teman kami di bawah ini.',
   },
   'events-title': {
     en: 'Meetups and Workshops',
+    es: 'Meetups and Workshops',
     de: 'Meetup dan Workshop',
   },
   'events-subtitle': {
     en: (
+      <>
+        Here are our recent events. Public API is available at <code>/api/events</code>.
+      </>
+    ),
+    es: (
       <>
         Here are our recent events. Public API is available at <code>/api/events</code>.
       </>
@@ -59,14 +76,17 @@ export default {
   },
   '404-title': {
     en: 'Four Oh Four!',
+    es: 'Quatro Oh Quatro!',
     de: 'Empat Nol Empat!',
   },
   '404-subtitle': {
     en: 'The page you requested does not exist or may have been moved.',
+    es: 'The page you requested does not exist or may have been moved.',
     de: 'Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.',
   },
   '404-button': {
     en: 'Back to home page',
+    es: 'Back to home page',
     de: 'Kembali ke Beranda',
   },
 }

@@ -14,5 +14,4 @@ const MdxLayout: FC = ({ children }) => {
 
 export default MdxLayout
 
-export const getMdxLayout = (page: ReactNode, preview: boolean = false) =>
-  getSiteLayout(<MdxLayout>{page}</MdxLayout>, preview)
+export const getMdxLayout = (page: ReactNode) => getSiteLayout(<MdxLayout>{page}</MdxLayout>)

@@ -1,4 +1,5 @@
-import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { NextPage } from 'types'
 
 import renderToString from 'next-mdx-remote/render-to-string'
 import Image from 'next/image'
@@ -9,10 +10,10 @@ import { Flex, Box, Heading, Text } from '@chakra-ui/react'
 import sanity from '@lib/sanity/client'
 import { getPostBySlug } from '@lib/content/posts'
 import CodeBlock from '@components/ui/snippets/CodeBlock'
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { createImageUrl } from 'src/utils/sanity'
-
+import PreviewBanner from '@components/sections/PreviewBanner'
 import { usePreviewSubscription } from '@lib/sanity'
 import { PostBySlugQuery } from 'services/sanity/posts'
 import { PromiseReturnType } from 'blitz'
@@ -21,6 +22,7 @@ type Props = {
   post: PromiseReturnType<typeof getPostBySlug>
   preview: boolean
 }
+
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   sanity.setPreviewMode(preview)
 
@@ -80,35 +82,33 @@ const PostPage: NextPage<Props> = ({ post, preview }) => {
 
   if (router.isFallback) {
     return (
-      <SiteLayout preview={preview}>
+      <>
         <Flex flexDir="column" alignItems="center">
           <LoadingSpinner />
         </Flex>
-      </SiteLayout>
+      </>
     )
   }
 
   return (
     <>
-      <SiteLayout preview={preview}>
-        <Flex flexDir="column" alignItems="center">
-          <Box padding="4" bg="gray.100" color="brand.500">
-            <Heading>{data?.title}</Heading>
-            <Flex flexDir="column" alignItems="center" position="relative">
-              <Image
-                src={createImageUrl(data?.coverImage?.asset?._ref as string).url() || ''}
-                width={500}
-                height={300}
-              />
-            </Flex>
-            <Text>{data?.author.name}</Text>
-            <Text>{data?.date}</Text>
-            {router.isReady && renderedContent}
-          </Box>
-        </Flex>
-      </SiteLayout>
+      {process.env.NODE_ENV === 'development' && <PreviewBanner preview={preview} />}
+
+      <Flex flexDir="column" alignItems="center">
+        <Box padding="4" bg="gray.100" color="brand.500">
+          <Heading>{data?.title}</Heading>
+          <Flex flexDir="column" alignItems="center" position="relative">
+            <Image src={createImageUrl(data?.coverImage?.asset?._ref as string).url() || ''} width={500} height={300} />
+          </Flex>
+          <Text>{data?.author.name}</Text>
+          <Text>{data?.date}</Text>
+          {router.isReady && renderedContent}
+        </Box>
+      </Flex>
     </>
   )
 }
+
+PostPage.getLayout = getLayout
 
 export default PostPage

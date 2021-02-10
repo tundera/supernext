@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
 })
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const getLayout = Component.getLayout || ((page) => <SiteLayout>{page}</SiteLayout>)
+  const getLayout = Component.getLayout || ((page) => page)
 
   return (
     <QueryErrorResetBoundary>

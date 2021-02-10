@@ -1,10 +1,11 @@
-import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { NextPage } from 'types'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react'
 
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import { getTeamBySlug, getAllTeams } from '@lib/graphql/teams'
 import { useTeamBySlugQuery } from 'src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
@@ -19,7 +20,7 @@ type Props = {
   preview: boolean
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageSlug = params?.slug as string
 
   const queryClient = new QueryClient()
@@ -29,7 +30,6 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     props: {
       dehydratedState: dehydrate(queryClient),
       slug: pageSlug,
-      preview,
     },
     revalidate: 1,
   }
@@ -55,22 +55,22 @@ const TeamPage: NextPage<Props> = ({ slug, preview }) => {
 
   return (
     <>
-      <SiteLayout preview={preview}>
-        {isLoading ? (
-          <LoadingSpinner />
-        ) : (
-          <Flex flexDir="column" alignItems="center">
-            <Heading as="h1" size="xl" py={8} textAlign="center">
-              {data?.team?.name}
-            </Heading>
-            <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
-              <PlayersList players={data?.team?.players ?? []} />
-            </SimpleGrid>
-          </Flex>
-        )}
-      </SiteLayout>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <Flex flexDir="column" alignItems="center">
+          <Heading as="h1" size="xl" py={8} textAlign="center">
+            {data?.team?.name}
+          </Heading>
+          <SimpleGrid minChildWidth="120px" spacing="40px" mb={8}>
+            <PlayersList players={data?.team?.players ?? []} />
+          </SimpleGrid>
+        </Flex>
+      )}
     </>
   )
 }
+
+TeamPage.getLayout = getLayout
 
 export default TeamPage

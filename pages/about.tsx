@@ -1,25 +1,25 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'types'
 
 import { Flex } from '@chakra-ui/react'
 
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import Features from '@components/sections/features/CourseFeatures'
 
 import LandingHero from '@components/sections/heros/ScreenshotHero'
 import NewsletterSignup from '@components/sections/heros/NewsletterSignup'
 
-const About: NextPage = () => {
+const AboutPage: NextPage = () => {
   return (
     <>
-      <SiteLayout>
-        <NewsletterSignup />
-        <Flex flexDir="column" alignItems="center">
-          <LandingHero />
-        </Flex>
-        <Features />
-      </SiteLayout>
+      <NewsletterSignup />
+      <Flex flexDir="column" alignItems="center">
+        <LandingHero />
+      </Flex>
+      <Features />
     </>
   )
 }
 
-export default About
+AboutPage.getLayout = getLayout
+
+export default AboutPage

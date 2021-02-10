@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'types'
 
 import { Flex } from '@chakra-ui/react'
 
@@ -17,5 +17,7 @@ const HomePage: NextPage = () => {
     </>
   )
 }
+
+HomePage.getLayout = getLayout
 
 export default HomePage

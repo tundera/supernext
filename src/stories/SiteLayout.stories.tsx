@@ -1,5 +1,3 @@
-import type { SiteLayoutProps } from '@components/layouts/SiteLayout'
-
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
@@ -12,7 +10,7 @@ export default {
   component: SiteLayout,
 } as Meta
 
-const Template: Story<SiteLayoutProps> = (args) => <SiteLayout {...args} />
+const Template: Story = (args) => <SiteLayout {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

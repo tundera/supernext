@@ -1,4 +1,14 @@
-import { chakra, Button, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Tooltip } from '@chakra-ui/react'
+import {
+  chakra,
+  useColorModeValue,
+  Button,
+  Menu,
+  MenuButton,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  Tooltip,
+} from '@chakra-ui/react'
 
 import i18n from 'src/i18n'
 import { useRouter } from 'next/router'
@@ -10,6 +20,10 @@ function LocaleButton() {
   const router = useRouter()
   const { asPath, locale, replace, route } = router
 
+  const bg = useColorModeValue('whiteAlpha.900', 'brand.800')
+  const hoverColor = useColorModeValue('whiteAlpha.900', 'brand.800')
+  const hoverBg = useColorModeValue('brand.800', 'whiteAlpha.900')
+
   function change(code: string) {
     replace(route, asPath, { locale: code })
   }
@@ -18,14 +32,33 @@ function LocaleButton() {
     <Menu>
       <Tooltip hasArrow label="Select language ✨">
         <MenuButton as={Button} variant="ghost" mx="2">
-          <LocaleEmoji fontSize="1rem" symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
+          <LocaleEmoji fontSize="1.25rem" symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
         </MenuButton>
       </Tooltip>
 
-      <MenuList>
-        <MenuGroup title="Language/Sprache">
-          <MenuItem onClick={() => change('en')}>English (US)</MenuItem>
-          <MenuItem onClick={() => change('de')}>German (DE)</MenuItem>
+      <MenuList bg={bg}>
+        <MenuGroup title="Language">
+          <MenuItem
+            onClick={() => change('en')}
+            _focus={{ color: hoverColor, bg: hoverBg }}
+            _hover={{ color: hoverColor, bg: hoverBg }}
+          >
+            English
+          </MenuItem>
+          <MenuItem
+            onClick={() => change('es')}
+            _focus={{ color: hoverColor, bg: hoverBg }}
+            _hover={{ color: hoverColor, bg: hoverBg }}
+          >
+            Spanish
+          </MenuItem>
+          <MenuItem
+            onClick={() => change('de')}
+            _focus={{ color: hoverColor, bg: hoverBg }}
+            _hover={{ color: hoverColor, bg: hoverBg }}
+          >
+            German
+          </MenuItem>
         </MenuGroup>
       </MenuList>
     </Menu>

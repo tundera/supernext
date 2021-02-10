@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import type { NextPage } from 'next'
+import type { NextPage } from 'types'
 
 import Image from 'next/image'
 import NextLink from 'next/link'
@@ -9,7 +9,7 @@ import { supabase } from '@lib/supabase'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useColorModeValue, Text, VStack, chakra, HStack } from '@chakra-ui/react'
 
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import { useSupabaseAuth } from '@hooks/data/useSupabaseAuth'
 
 const LoginCard = chakra(Card)
@@ -97,23 +97,23 @@ const LoginPage: NextPage = () => {
 
   return (
     <>
-      <SiteLayout>
-        <Flex flexDir="column" alignItems="center">
-          <LoginCard py="2" bgColor="gray.200">
-            <LoginForm />
-          </LoginCard>
-          <VStack spacing={3} py="8">
-            <chakra.span alignSelf="center" fontSize="md" color={bg}>
-              Authentication powered by
-            </chakra.span>
-            <chakra.span fontWeight="bold" fontSize="6xl" textShadow="2px 0 currentcolor">
-              <img src="https://app.supabase.io/img/supabase-dark.svg" width="128" alt="Dark themed supabase logo" />
-            </chakra.span>
-          </VStack>
-        </Flex>
-      </SiteLayout>
+      <Flex flexDir="column" alignItems="center">
+        <LoginCard py="2" bgColor="gray.200">
+          <LoginForm />
+        </LoginCard>
+        <VStack spacing={3} py="8">
+          <chakra.span alignSelf="center" fontSize="md" color={bg}>
+            Authentication powered by
+          </chakra.span>
+          <chakra.span fontWeight="bold" fontSize="6xl" textShadow="2px 0 currentcolor">
+            <img src="https://app.supabase.io/img/supabase-dark.svg" width="128" alt="Dark themed supabase logo" />
+          </chakra.span>
+        </VStack>
+      </Flex>
     </>
   )
 }
+
+LoginPage.getLayout = getLayout
 
 export default LoginPage

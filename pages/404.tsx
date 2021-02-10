@@ -1,15 +1,16 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'types'
 
 import { Flex, Image, Box, Heading, Text, Button } from '@chakra-ui/react'
 import Router from 'next/router'
-import Layout from '@components/layouts/SiteLayout'
+
+import { getLayout } from '@components/layouts/SiteLayout'
 
 const Error404Page: NextPage = () => {
   const redirectToHome = () => {
     Router.push('/')
   }
   return (
-    <Layout>
+    <>
       <Flex
         flexDirection={['column', 'column', 'row', 'row']}
         justifyContent="center"
@@ -29,8 +30,10 @@ const Error404Page: NextPage = () => {
           <Button onClick={redirectToHome}>Go to Home</Button>
         </Box>
       </Flex>
-    </Layout>
+    </>
   )
 }
+
+Error404Page.getLayout = getLayout
 
 export default Error404Page
