@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import type { FrontMatter } from 'services/content/types'
+import type { NextPage } from 'types'
 
 import fs from 'fs'
 import path from 'path'
@@ -12,10 +13,8 @@ import Emoji from 'a11y-react-emoji'
 import { useRouter } from 'next/router'
 import { Heading, Text, Box, Flex } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
-import { MdxRemote } from 'next-mdx-remote/types'
 
-import MdxLayout from '@components/layouts/MdxLayout'
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getMdxLayout } from '@components/layouts/MdxLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
 import { getArticle } from '@lib/content/articles'
@@ -23,12 +22,11 @@ import { getArticle } from '@lib/content/articles'
 type Props = {
   article: any
   frontMatter: FrontMatter
-  preview: boolean
 }
 
 const cwd = process.cwd()
 
-export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageSlug = params?.slug as string
   const { slug, content, frontMatter } = await getArticle(params?.slug as string)
 
@@ -57,7 +55,6 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     props: {
       article,
       frontMatter,
-      preview,
     },
   }
 }
@@ -73,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const ArticlePage = ({ article, frontMatter, preview }: Props) => {
+const ArticlePage: NextPage<Props> = ({ article, frontMatter }) => {
   const router = useRouter()
 
   const renderedContent = hydrate(article ?? '', { components: mdxComponents })
@@ -81,11 +78,11 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
 
   if (router.isFallback) {
     return (
-      <SiteLayout preview={preview}>
+      <>
         <Flex flexDir="column" alignItems="center">
           <LoadingSpinner />
         </Flex>
-      </SiteLayout>
+      </>
     )
   }
 
@@ -112,26 +109,24 @@ const ArticlePage = ({ article, frontMatter, preview }: Props) => {
           ],
         }}
       />
-      <SiteLayout preview={preview}>
-        <MdxLayout>
-          <Heading>
-            <nav>
-              <NextLink href="/">
-                <a>
-                  <Emoji label="Home link emoji" symbol="👈" /> Go back home
-                </a>
-              </NextLink>
-            </nav>
-          </Heading>
-          <Box mb={2}>
-            <Heading>{frontMatter.title}</Heading>
-            {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
-          </Box>
-          {renderedContent}
-        </MdxLayout>
-      </SiteLayout>
+      <Heading>
+        <nav>
+          <NextLink href="/">
+            <a>
+              <Emoji label="Home link emoji" symbol="👈" /> Go back home
+            </a>
+          </NextLink>
+        </nav>
+      </Heading>
+      <Box mb={2}>
+        <Heading>{frontMatter.title}</Heading>
+        {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
+      </Box>
+      {renderedContent}
     </>
   )
 }
+
+ArticlePage.getLayout = getMdxLayout
 
 export default ArticlePage

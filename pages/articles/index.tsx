@@ -1,36 +1,40 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { GetStaticProps } from 'next'
+import type { NextPage } from 'types'
 
 import { Stack, Heading } from '@chakra-ui/react'
 
-import SiteLayout from '@components/layouts/SiteLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getAllArticles } from '@lib/content/articles'
+import { PromiseReturnType } from 'blitz'
 
-export const getStaticProps = async ({ preview = false }) => {
+type Props = {
+  articles: PromiseReturnType<typeof getAllArticles>
+}
+export const getStaticProps: GetStaticProps = async () => {
   const articles = await getAllArticles()
 
   return {
     props: {
       articles,
-      preview,
     },
     revalidate: 1,
   }
 }
 
-const ArticlesPage = ({ articles, preview }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const ArticlesPage: NextPage<Props> = ({ articles }) => {
   return (
     <>
-      <SiteLayout preview={preview}>
-        <Stack spacing={8}>
-          <Heading as="h1" size="xl">
-            Articles
-          </Heading>
-          <ArticlesList title="Recent Articles" articles={articles} />
-        </Stack>
-      </SiteLayout>
+      <Stack spacing={8}>
+        <Heading as="h1" size="xl">
+          Articles
+        </Heading>
+        <ArticlesList title="Recent Articles" articles={articles} />
+      </Stack>
     </>
   )
 }
+
+ArticlesPage.getLayout = getLayout
 
 export default ArticlesPage
