@@ -4,7 +4,7 @@ to: pages/<%= name %>.tsx
 <% formattedPath = h.camelizedPathName(name).replace('/','') -%>
 <% pageName = `${formattedPath}Page` -%>
 <% base = h.camelizedBaseName(name) -%>
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import { Flex, Heading } from '@chakra-ui/react'
 // import { useQuery } from 'react-query'

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import type { FrontMatter } from 'services/content/types'
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import fs from 'fs'
 import path from 'path'

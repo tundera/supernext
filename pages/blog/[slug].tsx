@@ -1,5 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import renderToString from 'next-mdx-remote/render-to-string'
 import Image from 'next/image'

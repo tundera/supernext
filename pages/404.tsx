@@ -1,4 +1,4 @@
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import { Flex, Image, Box, Heading, Text, Button } from '@chakra-ui/react'
 import Router from 'next/router'

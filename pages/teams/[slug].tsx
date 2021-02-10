@@ -1,5 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'

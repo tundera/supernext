@@ -1,5 +1,5 @@
 import type { GetStaticProps } from 'next'
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 import type { Post } from 'services/sanity/generated/types'
 
 import { Flex, Heading, Text } from '@chakra-ui/react'

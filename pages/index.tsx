@@ -1,4 +1,4 @@
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import { Flex } from '@chakra-ui/react'
 

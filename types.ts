@@ -1,14 +1,14 @@
-import type { NextPage as DefaultNextPage, NextComponentType as DefaultNextComponentType, NextPageContext } from 'next'
-import type { AppProps as NextAppProps } from 'next/app'
+import type { NextPage, NextComponentType, NextPageContext } from 'next'
+import type { AppProps } from 'next/app'
 
-export declare type NextComponentType<C = NextPageContext, IP = {}, P = {}> = DefaultNextComponentType<C, IP, P>
+export declare type CustomNextComponentType<C = NextPageContext, IP = {}, P = {}> = NextComponentType<C, IP, P>
 
-export interface AppProps<P = {}> extends NextAppProps<P> {
+export interface CustomAppProps<P = {}> extends AppProps<P> {
   Component: NextComponentType<NextPageContext, any, P> & {
     getLayout?: (component: JSX.Element) => JSX.Element
   }
 }
 
-export declare type NextPage<P = {}, IP = P> = DefaultNextPage<P, IP> & {
+export declare type CustomNextPage<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (component: JSX.Element) => JSX.Element
 }

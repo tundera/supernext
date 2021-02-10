@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from 'next'
-import type { NextPage } from 'types'
+import type { CustomNextPage as NextPage } from 'types'
 
 import { Flex, Heading, List, ListItem, Text } from '@chakra-ui/react'
 import { loadStripe } from '@stripe/stripe-js'
