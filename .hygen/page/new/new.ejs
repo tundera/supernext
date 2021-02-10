@@ -4,7 +4,7 @@ to: pages/<%= name %>.tsx
 <% formattedPath = h.camelizedPathName(name).replace('/','') -%>
 <% pageName = `${formattedPath}Page` -%>
 <% base = h.camelizedBaseName(name) -%>
-import type { NextPage } from 'next'
+import type { NextPage } from 'types'
 
 import { Flex, Heading } from '@chakra-ui/react'
 // import { useQuery } from 'react-query'
@@ -17,13 +17,13 @@ const <%= pageName %>: NextPage = () => {
 
   return (
     <>
-      <SiteLayout>
-        <Flex flexDir="column" alignItems="center">
-          <Heading as="h1"><%= formattedPath %> Page</Heading>
-        </Flex>
-      </SiteLayout>
+      <Flex flexDir="column" alignItems="center">
+        <Heading as="h1"><%= formattedPath %> Page</Heading>
+      </Flex>
     </>
   )
 }
+
+<%= pageName %>.getLayout = getLayout
 
 export default <%= pageName %>

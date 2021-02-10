@@ -1,6 +1,6 @@
 import { chakra, Box, useColorModeValue, Button, Stack, Image, Text, Icon } from '@chakra-ui/react'
 
-function LandingHero() {
+function ScreenshotHero() {
   return (
     <Box px={8} py={24} mx="auto">
       <Box w={{ base: '100%', md: 11 / 12, xl: 9 / 12 }} mx="auto" textAlign={{ base: 'left', md: 'center' }}>
@@ -17,7 +17,7 @@ function LandingHero() {
             display={{ base: 'block', lg: 'inline' }}
             w="100%"
             bgClip="text"
-            bgGradient="linear(to-r, spark.400,deep.500)"
+            bgGradient="linear(to-r, spark.400, deep.500)"
             fontWeight="extrabold"
           >
             next level
@@ -93,7 +93,15 @@ function LandingHero() {
           </Button>
         </Stack>
       </Box>
-      <Box w={{ base: '100%', md: 10 / 12 }} mx="auto" mt={20} textAlign="center">
+      <Box
+        w={{ base: '100%', md: 10 / 12 }}
+        mx="auto"
+        mt={20}
+        textAlign="center"
+        borderRadius={4}
+        boxShadow="2xl"
+        bg={useColorModeValue('whiteAlpha.700', 'brand.700')}
+      >
         <Image
           w="100%"
           borderRadius="lg"
@@ -106,4 +114,4 @@ function LandingHero() {
   )
 }
 
-export default LandingHero
+export default ScreenshotHero
