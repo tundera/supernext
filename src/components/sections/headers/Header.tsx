@@ -78,16 +78,7 @@ const Header: FC = ({ ...props }) => {
             <DarkModeToggle />
             <LocaleButton />
           </HStack>
-          <NextLink href="/login" passHref>
-            <Button
-              as="a"
-              color={useColorModeValue('whiteAlpha.900', 'brand.500')}
-              colorScheme={useColorModeValue('brand', 'gray')}
-              size="sm"
-            >
-              Sign In
-            </Button>
-          </NextLink>
+          <LoginButton />
 
           <Box display={{ base: 'inline-flex', md: 'none' }}>
             <IconButton

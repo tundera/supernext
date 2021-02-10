@@ -7,6 +7,8 @@ import QueryProvider from '@providers/QueryProvider'
 import FormProvider from '@providers/FormProvider'
 import ThemeProvider from '@providers/ThemeProvider'
 import RootErrorFallback from '@components/utility/RootErrorFallback'
+import { Auth } from '@supabase/ui'
+import { supabase } from '@lib/supabase'
 
 const queryClient = new QueryClient()
 
@@ -20,7 +22,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           <FormProvider>
             <ThemeProvider>
               <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
-                {getLayout(<Component {...pageProps} />)}
+                <Auth.UserContextProvider supabaseClient={supabase}>
+                  {getLayout(<Component {...pageProps} />)}
+                </Auth.UserContextProvider>
               </QueryProvider>
             </ThemeProvider>
           </FormProvider>

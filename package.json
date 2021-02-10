@@ -137,6 +137,7 @@
     "sanity-codegen": "^0.8.3",
     "stripe": "^8.134.0",
     "superjson": "^1.6.1",
+    "swr": "^0.4.2",
     "timeago-react": "^3.0.2",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
