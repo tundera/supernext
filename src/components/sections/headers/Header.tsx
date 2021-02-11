@@ -20,7 +20,6 @@ import styled from '@emotion/styled'
 import NavButton from '@components/NavButton'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 import LocaleButton from '@components/utility/LocaleButton'
-import LoginButton from '@components/ui/buttons/LoginButton'
 
 import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
@@ -56,7 +55,7 @@ const Header: FC = ({ ...props }) => {
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <Flex align="center">
-          <chakra.a href="/" title="Choc Home Page" display="flex" alignItems="center">
+          <chakra.a href="/" title="Tundera Dev Home Page" display="flex" alignItems="center">
             <BrandLogoIcon w="16" h="16" />
             <VisuallyHidden>tundera.dev</VisuallyHidden>
           </chakra.a>
@@ -78,7 +77,16 @@ const Header: FC = ({ ...props }) => {
             <DarkModeToggle />
             <LocaleButton />
           </HStack>
-          <LoginButton />
+          <NextLink href="/login" passHref>
+            <Button
+              as="a"
+              color={useColorModeValue('whiteAlpha.900', 'brand.500')}
+              colorScheme={useColorModeValue('brand', 'gray')}
+              size="sm"
+            >
+              Sign In
+            </Button>
+          </NextLink>
 
           <Box display={{ base: 'inline-flex', md: 'none' }}>
             <IconButton
@@ -98,9 +106,8 @@ const Header: FC = ({ ...props }) => {
               right={0}
               display={mobileNav.isOpen ? 'flex' : 'none'}
               flexDirection="column"
-              p={2}
-              pb={4}
-              m={2}
+              py={4}
+              px={8}
               bg={bg}
               spacing={3}
               borderRadius="sm"
@@ -112,7 +119,11 @@ const Header: FC = ({ ...props }) => {
               <NavButton to="/about">About</NavButton>
               <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/store">Store</NavButton>
-              <LoginButton />
+              <NextLink href="/login" passHref>
+                <Button as="a" w="100%" varint="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
+                  Sign in
+                </Button>
+              </NextLink>
 
               <HStack>
                 <DarkModeToggle />

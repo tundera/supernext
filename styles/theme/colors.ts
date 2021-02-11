@@ -101,7 +101,7 @@ export default {
   },
   tertiaryTextColor: {
     light: 'brand.600',
-    dark: 'whiteAlpha.500',
+    dark: 'whiteAlpha.900',
   },
   borderColor: {
     light: 'haze.200',

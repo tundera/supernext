@@ -1,30 +1,54 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { FC } from 'react'
 
-import useSWR from 'swr'
+import Image from 'next/image'
+// import useSWR from 'swr'
+import { useQuery } from 'react-query'
+
 import { useEffect, useState } from 'react'
 import NextLink from 'next/link'
-import { Auth, Card, Typography, Space, Button, Icon } from '@supabase/ui'
-import { useColorModeValue, Box } from '@chakra-ui/react'
-import { FaArrowLeft } from 'react-icons/fa'
+import { Auth } from '@supabase/ui'
+import {
+  useColorModeValue,
+  chakra,
+  Divider,
+  Heading,
+  VStack,
+  Box,
+  Flex,
+  Text,
+  Button,
+  DarkMode,
+} from '@chakra-ui/react'
+import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
 import { supabase } from '@lib/supabase'
+import Emoji from 'a11y-react-emoji'
 
 type AuthView = 'sign_in' | 'sign_up' | 'forgotten_password' | 'magic_link'
 
-const fetcher = (url, token) =>
+const getUserData = (url, token) =>
   fetch(url, {
     method: 'GET',
     headers: new Headers({ 'Content-Type': 'application/json', token }),
     credentials: 'same-origin',
   }).then((res) => res.json())
 
+const Authentication = chakra(Auth)
+
+const BrandLogo = createBrandLogoIcon('#FFFFFF')
+
 const LoginForm: FC = () => {
-  const bg = useColorModeValue('brand.500', 'whiteAlpha.500')
-  const color = useColorModeValue('whiteAlpha.500', 'brand.500')
+  const color = useColorModeValue('brand.500', 'whiteAlpha.900')
+  const bg = useColorModeValue('gray.800', 'whiteAlpha.900')
+  // const bg = useColorModeValue('gray.800', 'whiteAlpha.900')
+  const buttonBg = useColorModeValue('brand.500', 'whiteAlpha.900')
+  const buttonColor = useColorModeValue('whiteAlpha.900', 'brand.500')
 
   const { user, session } = Auth.useUser()
-  const { data, error } = useSWR(session ? ['/api/getUser', session.access_token] : null, fetcher)
+  const { data, error } = useQuery(['Session', session ? session.access_token : null], () =>
+    getUserData('/api/getUser', session.access_token),
+  )
   const [authView, setAuthView] = useState<AuthView>('sign_in')
 
   useEffect(() => {
@@ -46,59 +70,73 @@ const LoginForm: FC = () => {
     }
   }, [])
 
-  if (!user)
-    return (
-      <Space direction="vertical" size={8}>
-        <Auth
-          supabaseClient={supabase}
-          providers={['google', 'github']}
-          view={authView}
-          socialLayout="horizontal"
-          socialButtonSize="xlarge"
-        />
-      </Space>
-    )
-
   return (
-    <Box maxWidth="420px" margin="96px auto">
-      <Card>
-        <Space direction="vertical" size={6}>
+    <Flex
+      direction="column"
+      maxW="420px"
+      align="center"
+      bg="gray.800"
+      borderRadius={{ base: 0, md: 8 }}
+      boxShadow="2xl"
+    >
+      {user ? (
+        <VStack m="4rem" color="whiteAlpha.900" fontWeight="bold" spacing="8">
           {authView === 'forgotten_password' && <Auth.UpdatePassword supabaseClient={supabase} />}
           {user && (
             <>
-              <Typography.Text>You're signed in</Typography.Text>
-              <Typography.Text strong>Email: {user.email}</Typography.Text>
+              <Heading as="h2">Sign In</Heading>
+              <BrandLogo w="48" h="48" />
+              <Text>You're signed in</Text>
+              <Text strong>Currently signed in as {user.id}</Text>
 
-              <Button
-                icon={<Icon src={FaArrowLeft} type="LogOut" />}
-                type="outline"
-                onClick={() => supabase.auth.signOut()}
-              >
+              <Button bg={buttonBg} color={buttonColor} onClick={() => supabase.auth.signOut()}>
                 Log out
               </Button>
-              {error && <Typography.Text type="danger">Failed to fetch user!</Typography.Text>}
+              {error && <Text color="red.500">Failed to fetch user!</Text>}
               {data && !error ? (
-                <>
-                  <Typography.Text type="success">User data retrieved server-side (in API route):</Typography.Text>
-
-                  <Typography.Text>
-                    <pre>{JSON.stringify(data, null, 2)}</pre>
-                  </Typography.Text>
-                </>
+                <Flex direction="column" align="center">
+                  <Text overflow="auto" color="green.500">
+                    Logged in
+                  </Text>
+                  <Text></Text>
+                </Flex>
               ) : (
                 <div>Loading...</div>
               )}
 
-              <Typography.Text>
+              <Text fontWeight="bold" _hover={{ textDecoration: 'underline' }}>
                 <NextLink href="/profile">
                   <a>SSR example with getServerSideProps</a>
                 </NextLink>
-              </Typography.Text>
+              </Text>
             </>
           )}
-        </Space>
-      </Card>
-    </Box>
+        </VStack>
+      ) : (
+        <VStack m="4rem">
+          <Heading as="h2">Sign In</Heading>
+          <Authentication
+            borderRadius="xl"
+            textAlign="center"
+            padding="8"
+            bgColor="gray.100"
+            color="black"
+            supabaseClient={supabase}
+            providers={['google', 'github']}
+            view={authView}
+            socialLayout="horizontal"
+            socialButtonSize="xlarge"
+          />
+        </VStack>
+      )}
+      <Divider />
+      <Flex align="center" w="100%" justify="center" direction="column" color={color}>
+        <Text mt="12" mb="-8" color="white">
+          Powered By
+        </Text>
+        <Image src="/static/images/supabase-dark-logo.svg" width="128" height="128" alt="Supabase logo" />
+      </Flex>
+    </Flex>
   )
 }
 

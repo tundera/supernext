@@ -15,7 +15,7 @@ type Props = {
 }
 
 const TechStackBadges: FC<Props> = ({ technologies }) => {
-  const bg = useColorModeValue('brand.500', 'whiteAlpha.500')
+  const bg = useColorModeValue('brand.500', 'whiteAlpha.900')
 
   return (
     <Wrap>

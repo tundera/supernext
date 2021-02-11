@@ -2,9 +2,9 @@
 import type { CustomNextPage as NextPage } from 'types'
 import type { User } from '@supabase/supabase-js'
 
-import { Flex, Heading, Box } from '@chakra-ui/react'
+import { Flex, Heading, Box, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { Card, Typography, Space } from '@supabase/ui'
+import { Card, Space } from '@supabase/ui'
 import { supabase } from '@lib/supabase'
 // import { useQuery } from 'react-query'
 
@@ -34,21 +34,19 @@ const ProfilePage: NextPage<Props> = ({ user }) => {
         <Box maxWidth="420px" margin="96px auto">
           <Card>
             <Space direction="vertical" size={6}>
-              <Typography.Text>You're signed in</Typography.Text>
-              <Typography.Text strong>Email: {user.email}</Typography.Text>
-              <Typography.Text type="success">
-                User data retrieved server-side (from Cookie in getServerSideProps):
-              </Typography.Text>
+              <Text>You're signed in</Text>
+              <Text as="strong">Email: {user.email}</Text>
+              <Text type="success">User data retrieved server-side (from Cookie in getServerSideProps):</Text>
 
-              <Typography.Text>
+              <Text>
                 <pre>{JSON.stringify(user, null, 2)}</pre>
-              </Typography.Text>
+              </Text>
 
-              <Typography.Text>
+              <Text>
                 <NextLink href="/">
                   <a>Static example with useSWR</a>
                 </NextLink>
-              </Typography.Text>
+              </Text>
             </Space>
           </Card>
         </Box>
