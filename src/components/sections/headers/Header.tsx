@@ -120,7 +120,7 @@ const Header: FC = ({ ...props }) => {
               <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/store">Store</NavButton>
               <NextLink href="/login" passHref>
-                <Button as="a" w="100%" varint="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
+                <Button as="a" w="100%" variant="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
                   Sign in
                 </Button>
               </NextLink>

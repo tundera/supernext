@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import type { FC } from 'react'
 import { Box, Heading, Container, Text, Button, Icon, Stack, useColorModeValue } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 import Arrow from '@components/ui/ArrowIcon'
 
-function LandingHero() {
+const LandingHero: FC = () => {
   const color = useColorModeValue('brand.500', 'whiteAlpha.900')
   const altColor = useColorModeValue('brand.500', 'whiteAlpha.700')
 
@@ -32,9 +35,11 @@ function LandingHero() {
             >
               Get Started
             </Button>
-            <Button variant="link" colorScheme="blue" size="sm">
-              Learn more
-            </Button>
+            <NextLink href="/about" passHref>
+              <Button variant="link" colorScheme="blue" size="sm">
+                <a>Learn more</a>
+              </Button>
+            </NextLink>
             <Box>
               <Icon
                 as={Arrow}
