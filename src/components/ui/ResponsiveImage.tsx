@@ -1,7 +1,7 @@
 import { useBreakpointValue, chakra } from '@chakra-ui/react'
 import NextImage from 'next/image'
 
-type Props = {
+interface Props {
   src: string
   width: string[]
   height: string[]

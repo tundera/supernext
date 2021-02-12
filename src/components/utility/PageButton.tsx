@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { chakra, useColorModeValue } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   p?: boolean
   disabled?: boolean
   active?: boolean

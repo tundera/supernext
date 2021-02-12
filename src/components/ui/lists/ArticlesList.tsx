@@ -5,7 +5,7 @@ import { Box, Text, Heading, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdBookmark } from 'react-icons/md'
 import NextLink from 'next/link'
 
-type Props = {
+interface Props {
   title: string
   articles?: Article[]
 }

@@ -18,7 +18,7 @@ import { usePreviewSubscription } from '@lib/sanity'
 import { PostBySlugQuery } from 'services/sanity/posts'
 import { PromiseReturnType } from 'blitz'
 
-type Props = {
+interface Props {
   post: PromiseReturnType<typeof getPostBySlug>
   preview: boolean
 }

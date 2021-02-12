@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 
 import PreviewButton from '@components/utility/PreviewButton'
 
-type Props = {
+interface Props {
   preview: boolean
 }
 

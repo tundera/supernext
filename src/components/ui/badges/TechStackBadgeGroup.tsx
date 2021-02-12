@@ -10,7 +10,7 @@ type Technology = {
   image: string
 }
 
-type Props = {
+interface Props {
   technologies: Technology[]
 }
 

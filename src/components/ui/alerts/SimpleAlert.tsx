@@ -6,7 +6,7 @@ import { chakra, Box, Icon, Flex, useColorModeValue } from '@chakra-ui/react'
 import { IoMdAlert, IoMdCheckmarkCircle } from 'react-icons/io'
 import { BsLightningFill } from 'react-icons/bs'
 
-type Props = {
+interface Props {
   type: 'success' | 'error' | 'warning' | 'info'
   message: string
 }

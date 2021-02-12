@@ -3,7 +3,7 @@ import { QueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Box, Button } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   fallback: NonNullable<React.ReactNode> | null
 }
 

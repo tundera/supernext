@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 import { capitalCase } from 'change-case'
 import { useColorModeValue, chakra, Box, Image, Flex, Link } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   name: string
   position: string
 }

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { useColorModeValue, Button } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-type Props = {
+interface Props {
   to: string
 }
 

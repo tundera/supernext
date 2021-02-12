@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { chakra, Box, Flex, useColorModeValue } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   name: string
   price: string
   image: string

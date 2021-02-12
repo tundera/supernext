@@ -19,7 +19,7 @@ import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import mdxComponents from '@components/mdx/article'
 import { getArticle } from '@lib/content/articles'
 
-type Props = {
+interface Props {
   article: any
   frontMatter: FrontMatter
 }

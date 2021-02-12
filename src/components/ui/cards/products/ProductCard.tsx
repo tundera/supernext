@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import { chakra, Box, Flex, useColorModeValue } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   name: string
   description: string
   image: string

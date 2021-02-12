@@ -14,7 +14,7 @@ import { getPosts } from '@lib/content/posts'
 import Pagination from '@components/utility/Pagination'
 import PreviewBanner from '@components/sections/PreviewBanner'
 
-type Props = {
+interface Props {
   posts: Post[]
   preview: boolean
 }

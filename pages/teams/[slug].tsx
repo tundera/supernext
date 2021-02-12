@@ -15,7 +15,7 @@ import PlayersList from '@components/ui/lists/PlayersList'
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 const client = new GraphQLClient(endpoint)
 
-type Props = {
+interface Props {
   slug: string
   preview: boolean
 }

@@ -4,7 +4,7 @@ import { Text, useColorModeValue } from '@chakra-ui/react'
 
 import NavLink from '@components/NavLink'
 
-type Props = {
+interface Props {
   to: string
   isLast?: boolean
 }

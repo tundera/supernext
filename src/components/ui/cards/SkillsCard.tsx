@@ -8,7 +8,7 @@ type Feature = {
   items: string[]
 }
 
-type Props = {
+interface Props {
   features: Feature[]
 }
 

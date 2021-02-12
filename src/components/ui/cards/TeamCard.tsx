@@ -5,7 +5,7 @@ import { Flex, Box, Spacer, Text, useColorModeValue } from '@chakra-ui/react'
 import { Image, Transformation } from 'cloudinary-react'
 // import Image from 'next/image'
 
-type Props = {
+interface Props {
   name: string
   city: string
   slug: string

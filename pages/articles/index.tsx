@@ -8,7 +8,7 @@ import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getAllArticles } from '@lib/content/articles'
 import { PromiseReturnType } from 'blitz'
 
-type Props = {
+interface Props {
   articles: PromiseReturnType<typeof getAllArticles>
 }
 export const getStaticProps: GetStaticProps = async () => {

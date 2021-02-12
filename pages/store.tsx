@@ -13,7 +13,7 @@ interface Price extends Stripe.Price {
   product: Stripe.Product
 }
 
-type Props = {
+interface Props {
   prices: Price[]
 }
 

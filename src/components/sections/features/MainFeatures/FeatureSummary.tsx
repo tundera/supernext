@@ -2,7 +2,7 @@ import type { ElementType, FC } from 'react'
 
 import { chakra, Heading, Flex, Icon, useColorModeValue } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   icon: ElementType<any>
   title: string
 }

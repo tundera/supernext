@@ -11,7 +11,7 @@ import CopyButton from '@components/ui/buttons/CopyButton'
 import { copyToClipboard } from 'src/utils/copyToClipboard'
 import confetti from 'styles/animations/confetti'
 
-type Props = {
+interface Props {
   codeString: string
   language: Language
 }

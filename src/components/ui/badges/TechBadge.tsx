@@ -1,6 +1,6 @@
 import { Avatar } from '@chakra-ui/react'
 
-type Props = {
+interface Props {
   name: string
   src: string
 }
