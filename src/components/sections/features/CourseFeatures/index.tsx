@@ -1,43 +1,18 @@
-import { chakra, Box, Flex, useColorModeValue, Icon, Stack } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-function Features() {
-  const Feature = (props) => {
-    return (
-      <Flex>
-        <Flex shrink={0}>
-          <Flex
-            alignItems="center"
-            justifyContent="center"
-            h={12}
-            w={12}
-            borderRadius="md"
-            bg="brand.500"
-            color="white"
-          >
-            <Icon boxSize={6} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              {props.icon}
-            </Icon>
-          </Flex>
-        </Flex>
-        <Box ml={4}>
-          <chakra.dt fontSize="lg" fontWeight="medium" lineHeight="6" color="gray.900">
-            {props.title}
-          </chakra.dt>
-          <chakra.dd mt={2} color={useColorModeValue('gray.500', 'gray.400')}>
-            {props.children}
-          </chakra.dd>
-        </Box>
-      </Flex>
-    )
-  }
+import { chakra, Heading, Box, Flex, useColorModeValue, Stack } from '@chakra-ui/react'
+
+import CourseDetail from '@components/sections/features/CourseFeatures/CourseDetail'
+
+const Features: FC = () => {
   return (
-    <Flex bg="brand.600" p={{ sm: 20 }} width="auto" justifyContent="center" alignItems="center">
+    <Flex bg="brand.800" p={{ sm: 20 }} width="auto" justifyContent="center" alignItems="center">
       <Box py={12} bg={useColorModeValue('white', 'gray.800')} borderRadius="xl">
         <Box maxW="7xl" mx="auto" px={{ base: 4, lg: 8 }}>
           <Box textAlign={{ lg: 'center' }}>
-            <chakra.h2 color="brand.600" fontWeight="semibold" textTransform="uppercase" letterSpacing="wide">
+            <Heading as="h2" color="brand.600" fontWeight="semibold" textTransform="uppercase" letterSpacing="wide">
               Transactions
-            </chakra.h2>
+            </Heading>
             <chakra.p
               mt={2}
               fontSize={{ base: '3xl', sm: '4xl' }}
@@ -68,7 +43,7 @@ function Features() {
               gridColumnGap={{ md: 8 }}
               gridRowGap={{ md: 10 }}
             >
-              <Feature
+              <CourseDetail
                 title="Competitive exchange rates"
                 icon={
                   <path
@@ -81,11 +56,11 @@ function Features() {
               >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                 iste dolor cupiditate blanditiis ratione.
-              </Feature>
+              </CourseDetail>
 
-              <Feature
-                title=" No hidden fees"
-                description={
+              <CourseDetail
+                title="No hidden fees"
+                icon={
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -96,9 +71,9 @@ function Features() {
               >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                 iste dolor cupiditate blanditiis ratione.
-              </Feature>
+              </CourseDetail>
 
-              <Feature
+              <CourseDetail
                 title="Transfers are instant"
                 icon={
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -106,11 +81,11 @@ function Features() {
               >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                 iste dolor cupiditate blanditiis ratione.
-              </Feature>
+              </CourseDetail>
 
-              <Feature
+              <CourseDetail
                 title="Mobile notifications"
-                description={
+                icon={
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -121,7 +96,7 @@ function Features() {
               >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                 iste dolor cupiditate blanditiis ratione.
-              </Feature>
+              </CourseDetail>
             </Stack>
           </Box>
         </Box>

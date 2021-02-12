@@ -40,11 +40,11 @@ function NewsletterSignup() {
           Our Mission
         </chakra.h1>
         <chakra.p mb={6} fontSize={{ base: 'lg', md: 'xl' }} color="gray.500" lineHeight="base">
-          We’re leading a effort to bring greater opportunities in tech to underserved communities by providing
-          high-quality, accessible online educational content for free. We charge individuals absolutely nothing for our
-          services, and depend solely on donations from individuals and organizations who benefit from the vibrant
-          ecosystem of open-source technologies powering the modern web. Subscribe to our newsletter to learn more about
-          our work and ways to get involved.
+          We’re leading a effort to create high-quality online educational content for web developers. The courses and
+          content available on this site are absolutely free of charge for individual users. Funding for this site
+          depends solely on donations from individuals and organizations who benefit from the vibrant ecosystem of
+          open-source technologies powering the modern web. Subscribe to our newsletter to learn more about our work and
+          ways you can get involved today!
         </chakra.p>
         <SimpleGrid
           as="form"
@@ -80,9 +80,18 @@ function NewsletterSignup() {
           fontSize="xs"
           color="gray.600"
         >
-          <Feature>Courses teaching the latest and greatest tech in web development</Feature>
+          <Feature>High-quality video content from pros</Feature>
           <Feature>
-            Content is 100% free, in the spirit of open-source development <Emoji label="Rocket emoji" symbol="🚀" />
+            Full source code for all courses available on GitHub
+            <Emoji label="Rocket emoji" symbol="🤩" />
+          </Feature>
+          <Feature>
+            Absolutely free of charge for individual use
+            <Emoji label="Rocket emoji" symbol="🙌" />
+          </Feature>
+          <Feature>
+            Organzational plans starting at $49/year
+            <Emoji label="Rocket emoji" symbol="🚀" />
           </Feature>
           <Feature>All proceeds benefit underprivileged communities</Feature>
         </Stack>
