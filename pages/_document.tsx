@@ -1,4 +1,4 @@
-// import type { DocumentContext } from 'next/document'
+import type { DocumentContext } from 'next/document'
 
 import { ColorModeScript } from '@chakra-ui/react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
@@ -6,11 +6,11 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import theme from 'styles/theme'
 
 export default class CustomDocument extends Document {
-  // static async getInitialProps(ctx: DocumentContext) {
-  //   const initialProps = await Document.getInitialProps(ctx)
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx)
 
-  //   return initialProps
-  // }
+    return initialProps
+  }
 
   render() {
     return (

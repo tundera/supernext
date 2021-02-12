@@ -8,9 +8,11 @@ interface Props {
 }
 
 const FeatureSummary: FC<Props> = ({ icon, title, children }) => {
+  const bg = useColorModeValue('whiteAlpha.900', 'brand.800')
+
   return (
-    <Flex direction="column" align="center">
-      <Icon as={icon} w={{ base: '32', sm: '48', lg: '64' }} h={{ base: '32', sm: '48', lg: '64' }} pb="4" />
+    <Flex direction="column" align="center" boxShadow="xl" bg={bg} py="8" px="6" borderRadius={8}>
+      <Icon as={icon} w={{ base: '32', sm: '48', lg: '64' }} h={{ base: '32', sm: '48', lg: '64' }} py="4" />
       <Heading
         my={3}
         fontSize={{ base: 'lg', sm: 'xl', lg: '2xl' }}

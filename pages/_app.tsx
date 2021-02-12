@@ -1,4 +1,4 @@
-import type { CustomAppProps as AppProps } from 'types'
+import type { EnhancedAppProps } from 'types'
 // import type { AppContext } from 'next/app'
 
 import { QueryClient, QueryErrorResetBoundary } from 'react-query'
@@ -12,7 +12,7 @@ import RootErrorFallback from '@components/utility/RootErrorFallback'
 
 const queryClient = new QueryClient()
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps, router, cookies }: EnhancedAppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       {({ reset }) => (
         <ErrorBoundary FallbackComponent={RootErrorFallback} resetKeys={[router.asPath]} onReset={reset}>
           <FormProvider>
-            <ThemeProvider>
+            <ThemeProvider cookies={cookies}>
               <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
                 <AuthProvider session={pageProps.session}>{getLayout(<Component {...pageProps} />)}</AuthProvider>
               </QueryProvider>
@@ -33,3 +33,5 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 }
 
 export default MyApp
+
+export { getServerSideProps } from '@providers/ThemeProvider'

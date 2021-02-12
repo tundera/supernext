@@ -18,7 +18,7 @@ const ScreenshotHero: FC = () => {
           letterSpacing={{ base: 'normal', md: 'tight' }}
           color={useColorModeValue('gray.900', 'gray.100')}
         >
-          The learning platform for{' '}
+          The space for{' '}
           <Text
             display={{ base: 'block', lg: 'inline' }}
             w="100%"

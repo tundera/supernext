@@ -26,7 +26,7 @@ const SiteHeader: FC = ({ ...props }) => {
     <StickyFlex
       bg={bg}
       w="100%"
-      px={{ base: 2, sm: 4 }}
+      px={{ base: 2, sm: 4, lg: 8 }}
       py={4}
       boxShadow="md"
       zIndex={20}

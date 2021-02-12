@@ -12,38 +12,24 @@ const MainFeatures: FC = () => {
   const color = useColorModeValue('gray.800', 'whiteAlpha.900')
 
   return (
-    <Flex
-      p={{ sm: 20 }}
-      width="auto"
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      bg={useColorModeValue('white', 'gray.800')}
-    >
-      <Box textAlign={{ lg: 'center' }}>
+    <Flex p={{ sm: 20 }} width="auto" direction="column" justifyContent="center" alignItems="center">
+      <Box textAlign="center">
         <Heading
           as="h3"
           mt={2}
-          fontSize={{ base: '3xl', sm: '4xl' }}
+          fontSize={{ base: '4xl', sm: '5xl' }}
           lineHeight="8"
           fontWeight="extrabold"
           letterSpacing="tight"
           color={color}
         >
-          Powerful Tech Stack
+          Stack du Jour
         </Heading>
         <chakra.p mt={4} maxW="2xl" fontSize="xl" mx={{ lg: 'auto' }} color={useColorModeValue('gray.500', 'gray.400')}>
           Get insights to dig down into what's powering your growth the most.
         </chakra.p>
       </Box>
-      <SimpleGrid
-        columns={{ base: 1, md: 2 }}
-        spacing={20}
-        px={{ base: 4, lg: 16, xl: 24 }}
-        py={20}
-        mx="auto"
-        boxShadow="xl"
-      >
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} px={{ base: 4, lg: 16, xl: 24 }} py={20} mx="auto">
         <FeatureSummary title="React" icon={ReactLogo}>
           Learn the makings of beautiful user interfaces with libraries like Chakra UI and Tailwind, all while cutting
           down development time by wrting your own custom component generators.
