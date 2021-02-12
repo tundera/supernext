@@ -23,6 +23,8 @@
       "SESSION_SECRET_KEY": "@tunderadev_session_secret_key",
       "GITHUB_CLIENT_ID": "@tunderadev_github_client_id",
       "GITHUB_CLIENT_SECRET": "@tunderadev_github_client_secret",
+      "SMTP_USER": "@tunderadev_smtp_user",
+      "SMTP_PASSWORD": "@tunderadev_smtp_password",
       "PRISMA_SECRET": "@tunderadev_prisma_secret"
     }
   },
