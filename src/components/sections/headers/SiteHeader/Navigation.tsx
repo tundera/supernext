@@ -3,11 +3,11 @@ import type { Session } from 'next-auth/client'
 
 import NextLink from 'next/link'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { signIn, signOut } from 'next-auth/client'
+
 import {
   useColorModeValue,
-  HStack,
   useDisclosure,
+  HStack,
   Box,
   IconButton,
   Button,
@@ -26,8 +26,6 @@ interface Props {
 
 const Navigation: FC<Props> = ({ session, disclosure }) => {
   const bg = useColorModeValue('white', 'brand.700')
-  const color = useColorModeValue('whiteAlpha.900', 'brand.500')
-  const scheme = useColorModeValue('brand', 'gray')
   const iconColor = useColorModeValue('gray.800', 'inherit')
 
   return (
@@ -44,16 +42,8 @@ const Navigation: FC<Props> = ({ session, disclosure }) => {
         <NavButton to="/store">Store</NavButton>
         <DarkModeToggle />
         <LocaleButton />
-      </HStack>{' '}
-      {session ? (
-        <Button onClick={() => signOut()} color={color} colorScheme={scheme} size="sm">
-          Sign Out
-        </Button>
-      ) : (
-        <Button onClick={() => signIn()} color={color} colorScheme={scheme} size="sm">
-          Sign In
-        </Button>
-      )}
+      </HStack>
+
       <Box display={{ base: 'inline-flex', md: 'none' }}>
         <IconButton
           display={{ base: 'flex', md: 'none' }}

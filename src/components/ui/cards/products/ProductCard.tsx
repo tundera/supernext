@@ -11,6 +11,7 @@ interface Props {
 }
 
 const ProductCard: FC<Props> = ({ name, description, image, price }) => {
+  const bg = useColorModeValue('brand.500', 'whiteAlpha.900')
   return (
     <Flex bg="gray.600" p={50} w="full" alignItems="center" justifyContent="center">
       <Box maxW="xs" mx="auto" bg={useColorModeValue('white', 'gray.800')} boxShadow="lg" borderRadius="lg">
@@ -28,13 +29,13 @@ const ProductCard: FC<Props> = ({ name, description, image, price }) => {
           </chakra.p>
         </Box>
 
-        <Box mt={2}>
-          <Image width="100%" height={48} layout="responsive" objectFit="cover" src={image} alt="NIKE AIR" />
+        <Box mt={2} opacity="65%" bg={bg}>
+          <Image width={150} height={100} layout="responsive" objectFit="cover" src={image} alt={description} />
         </Box>
 
         <Flex alignItems="center" justifyContent="space-between" px={4} py={2} bg="gray.900" borderBottomRadius="lg">
           <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-            {price}
+            ${((price as number) / 100).toFixed(2)}
           </chakra.h1>
           <chakra.button
             px={2}

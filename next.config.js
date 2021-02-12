@@ -12,7 +12,7 @@ module.exports = {
     locales: ['en', 'es-419'],
   },
   images: {
-    domains: ['cdn.sanity.io'],
+    domains: ['cdn.sanity.io', 'files.stripe.com'],
   },
   webpack: (config) => {
     config.module.rules.push({

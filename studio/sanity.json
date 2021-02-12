@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "Next Goat"
+    "name": "tundera.dev"
   },
   "api": {
     "projectId": "56u545lj",
@@ -21,9 +21,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

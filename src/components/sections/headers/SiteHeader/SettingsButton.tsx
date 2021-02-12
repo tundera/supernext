@@ -1,7 +1,9 @@
+import type { FC } from 'react'
+
 import {
-  chakra,
   useColorModeValue,
   Button,
+  IconButton,
   Menu,
   MenuButton,
   MenuGroup,
@@ -10,47 +12,47 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 
-import i18n from 'src/i18n'
 import { useRouter } from 'next/router'
-import Emoji from 'a11y-react-emoji'
+import { Settings } from 'react-feather'
 
-const LocaleEmoji = chakra(Emoji)
-
-function LocaleButton() {
+const SettingsButton: FC = () => {
   const router = useRouter()
-  const { asPath, locale, replace, route } = router
 
+  const color = useColorModeValue('brand.500', 'whiteAlpha.900')
   const bg = useColorModeValue('whiteAlpha.900', 'brand.800')
   const hoverColor = useColorModeValue('whiteAlpha.900', 'brand.800')
   const hoverBg = useColorModeValue('brand.800', 'whiteAlpha.900')
 
-  function change(code: string) {
-    replace(route, asPath, { locale: code })
-  }
-
   return (
     <Menu>
-      <Tooltip hasArrow label="Select language ✨">
+      <Tooltip hasArrow label="Settings ⚙️">
         <MenuButton as={Button} variant="ghost" mx="2">
-          <LocaleEmoji fontSize="1.25rem" symbol={i18n.flag[locale ?? '']} label="Locale flag emoji" />
+          <IconButton
+            aria-label={'Settings icon dropdown'}
+            icon={<Settings />}
+            size="lg"
+            color={color}
+            _hover={{ bgBlendMode: 'difference', bgColor: 'gray.300', color: hoverColor }}
+            variant="ghost"
+          />
         </MenuButton>
       </Tooltip>
 
       <MenuList bg={bg}>
-        <MenuGroup title="Language">
+        <MenuGroup title="Settings">
           <MenuItem
-            onClick={() => change('en')}
+            onClick={() => router.push('/dashboard')}
             _focus={{ color: hoverColor, bg: hoverBg }}
             _hover={{ color: hoverColor, bg: hoverBg }}
           >
-            English
+            Dashboard
           </MenuItem>
           <MenuItem
-            onClick={() => change('es')}
+            onClick={() => router.push('/account')}
             _focus={{ color: hoverColor, bg: hoverBg }}
             _hover={{ color: hoverColor, bg: hoverBg }}
           >
-            Spanish
+            Account
           </MenuItem>
         </MenuGroup>
       </MenuList>
@@ -58,4 +60,4 @@ function LocaleButton() {
   )
 }
 
-export default LocaleButton
+export default SettingsButton

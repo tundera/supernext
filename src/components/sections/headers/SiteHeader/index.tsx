@@ -40,7 +40,7 @@ const SiteHeader: FC = ({ ...props }) => {
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <Flex align="center">
-          <chakra.a href="/" title="Tundera Dev Home Page" display="flex" alignItems="center">
+          <chakra.a href="/" title="Home Page" display="flex" alignItems="center">
             <BrandLogoIcon w="16" h="16" />
             <VisuallyHidden>tundera.dev</VisuallyHidden>
           </chakra.a>
