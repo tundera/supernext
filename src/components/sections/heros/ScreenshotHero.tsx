@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { FC } from 'react'
 
-import { chakra, Box, useColorModeValue, Button, Stack, Image, Text, Icon } from '@chakra-ui/react'
+import Image from 'next/image'
+
+import { chakra, Box, useColorModeValue, Button, Stack, Text, Icon } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 const ScreenshotHero: FC = () => {
@@ -107,11 +109,11 @@ const ScreenshotHero: FC = () => {
         bg={useColorModeValue('whiteAlpha.700', 'brand.700')}
       >
         <Image
-          w="100%"
-          borderRadius="lg"
-          boxShadow="2xl"
+          width="3808 px"
+          height=" 2418px"
+          layout="responsive"
           src="/static/images/tunderadev-vscode-screenshot.png"
-          alt="Tundera.dev vscode screenshot"
+          alt="Tundera.dev VSCode screenshot hero"
         />
       </Box>
     </Box>
