@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "chromeWebSecurity": false,
+  "supportFile": "cypress/support/index.ts",
+  "experimentalComponentTesting": true
+}

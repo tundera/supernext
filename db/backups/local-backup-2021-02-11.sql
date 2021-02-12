@@ -155,6 +155,7 @@ CREATE TABLE public."Team" (
     city text NOT NULL,
     abbreviation text NOT NULL,
     logo text NOT NULL,
+    "logoSlug" text NOT NULL,
     wins integer,
     losses integer,
     "winPercentage" numeric(65,30),
@@ -162,8 +163,7 @@ CREATE TABLE public."Team" (
     division text NOT NULL,
     established text NOT NULL,
     "primaryColor" text NOT NULL,
-    "secondaryColor" text NOT NULL,
-    "logoSlug" text NOT NULL
+    "secondaryColor" text NOT NULL
 );
 
 
@@ -192,6 +192,183 @@ ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public._prisma_migrations (
+    id character varying(36) NOT NULL,
+    checksum character varying(64) NOT NULL,
+    finished_at timestamp with time zone,
+    migration_name character varying(255) NOT NULL,
+    logs text,
+    rolled_back_at timestamp with time zone,
+    started_at timestamp with time zone DEFAULT now() NOT NULL,
+    applied_steps_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public._prisma_migrations OWNER TO postgres;
+
+--
+-- Name: accounts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.accounts (
+    id integer NOT NULL,
+    compound_id text NOT NULL,
+    user_id integer NOT NULL,
+    provider_type text NOT NULL,
+    provider_id text NOT NULL,
+    provider_account_id text NOT NULL,
+    refresh_token text,
+    access_token text,
+    access_token_expires timestamp(3) without time zone,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.accounts OWNER TO postgres;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.accounts_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.accounts_id_seq OWNER TO postgres;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
+
+
+--
+-- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sessions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    expires timestamp(3) without time zone NOT NULL,
+    session_token text NOT NULL,
+    access_token text NOT NULL,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.sessions OWNER TO postgres;
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.sessions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sessions_id_seq OWNER TO postgres;
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name text,
+    email text,
+    email_verified timestamp(3) without time zone,
+    image text,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: verification_requests; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.verification_requests (
+    id integer NOT NULL,
+    identifier text NOT NULL,
+    token text NOT NULL,
+    expires timestamp(3) without time zone NOT NULL,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.verification_requests OWNER TO postgres;
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.verification_requests_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.verification_requests_id_seq OWNER TO postgres;
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.verification_requests_id_seq OWNED BY public.verification_requests.id;
+
+
+--
 -- Name: Coach id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -217,6 +394,34 @@ ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Pl
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
+
+
+--
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
+
+
+--
+-- Name: sessions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: verification_requests id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.verification_requests ALTER COLUMN id SET DEFAULT nextval('public.verification_requests_id_seq'::regclass);
 
 
 --
@@ -1018,37 +1223,78 @@ COPY public."Player" (id, "createdAt", "updatedAt", handle, name, slug, "teamId"
 -- Data for Name: Team; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, logo, wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor", "logoSlug") FROM stdin;
-30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/washington-wizards-logo.png	25	47	0.347000000000000000000000000000	East	Southeast	1961	# 002B5C	#E31837	washington-wizards-logo
-29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/utah-jazz-logo.png	44	28	0.611000000000000000000000000000	West	Northwest	1974	#002B5C	#F9A01B	utah-jazz-logo
-24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/phoenix-suns-logo.png	34	39	0.466000000000000000000000000000	West	Pacific	1968	#1D1160	#E56020	phoenix-suns-logo
-27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/san-antonio-spurs-logo.png	32	39	0.451000000000000000000000000000	West	Southwest	1976	#C4CED4	#000000	san-antonio-spurs-logo
-16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/miami-heat-logo.png	44	29	0.603000000000000000000000000000	East	Southeast	1988	#98002E	#000000	miami-heat-logo
-26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/sacramento-kings-logo.png	31	41	0.431000000000000000000000000000	West	Pacific	1948	#5A2D81	#63727A	sacramento-kings-logo
-15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/memphis-grizzlies-logo.png	34	39	0.466000000000000000000000000000	West	Southwest	1995	#5D76A9	#12173F	memphis-grizzlies-logo
-21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/oklahoma-city-thunder-logo.png	44	28	0.611000000000000000000000000000	West	Northwest	1967	#007AC1	#EF3B24	oklahoma-city-thunder-logo
-7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/dallas-mavericks-logo.png	43	32	0.573000000000000000000000000000	West	Southwest	1980	#00538C	#B8C4CA	dallas-mavericks-logo
-20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/new-york-knicks-logo.png	21	45	0.318000000000000000000000000000	East	Atlantic	1946	#006BB6	#F58426	new-york-knicks-logo
-13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	Los Angeles	LAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-clippers-logo.png	49	23	0.681000000000000000000000000000	West	Pacific	1970	#C8102E	#1D428A	los-angeles-clippers-logo
-19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/new-orleans-pelicans-logo.png	30	42	0.417000000000000000000000000000	West	Southwest	2002	#0C2340	#C8102E	new-orleans-pelicans-logo
-8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/denver-nuggets-logo.png	46	27	0.630000000000000000000000000000	West	Northwest	1976	#0E2240	#FEC524	denver-nuggets-logo
-12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/indiana-pacers-logo.png	45	28	0.616000000000000000000000000000	East	Central	1976	#002D62	#FDBB30	indiana-pacers-logo
-4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/charlotte-hornets-logo.png	23	42	0.354000000000000000000000000000	East	Southeast	1988	#1D1160	#00788C	charlotte-hornets-logo
-9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/detroit-pistons-logo.png	20	46	0.303000000000000000000000000000	East	Central	1948	#C8102E	#1D42BA	detroit-pistons-logo
-10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/golden-state-warriors-logo.png	15	50	0.231000000000000000000000000000	West	Pacific	1946	#1D428A	#FFC72C	golden-state-warriors-logo
-5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/chicago-bulls-logo.png	22	43	0.338000000000000000000000000000	East	Central	1966	#CE1141	#000000	chicago-bulls-logo
-1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/atlanta-hawks-logo.png	20	47	0.299000000000000000000000000000	East	Southeast	1949	#E03A3E	#C1D32F	atlanta-hawks-logo
-3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/brooklyn-nets-logo.png	35	37	0.486000000000000000000000000000	East	Atlantic	1976	#000000	#FFFFFF	brooklyn-nets-logo
-18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/minnesota-timberwolves-logo.png	19	45	0.297000000000000000000000000000	West	Northwest	1989	#0C2340	#236192	minnesota-timberwolves-logo
-6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/cleveland-cavaliers-logo.png	19	46	0.292000000000000000000000000000	East	Central	1970	#860038	#041E42	cleveland-cavaliers-logo
-2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/boston-celtics-logo.png	48	24	0.667000000000000000000000000000	East	Atlantic	1946	#007A33	#BA9653	boston-celtics-logo
-25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/portland-trail-blazers-logo.png	35	39	0.473000000000000000000000000000	West	Northwest	1970	#E03A3E	#000000	portland-trail-blazers-logo
-17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/milwaukee-bucks-logo.png	56	17	0.767000000000000000000000000000	East	Central	1968	#00471B	#EEE1C6	milwaukee-bucks-logo
-14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-lakers-logo.png	52	19	0.732000000000000000000000000000	West	Pacific	1948	#552583	#FDB927	los-angeles-lakers-logo
-22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/orlando-magic-logo.png	33	40	0.452000000000000000000000000000	East	Southeast	1989	#0077C0	#C4CED4	orlando-magic-logo
-11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/houston-rockets-logo.png	44	28	0.611000000000000000000000000000	West	Southwest	1967	#CE1141	#000000	houston-rockets-logo
-28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/toronto-raptors-logo.png	53	19	0.736000000000000000000000000000	East	Atlantic	1995	#CE1141	#000000	toronto-raptors-logo
-23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/philadelphia-76ers-logo.png	43	30	0.589000000000000000000000000000	East	Atlantic	1949	#006BB6	#D50032	philadelphia-76ers-logo
+COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbreviation, logo, "logoSlug", wins, losses, "winPercentage", conference, division, established, "primaryColor", "secondaryColor") FROM stdin;
+30	2020-11-03 19:18:10.935	2020-11-03 19:18:10.935	1610612764	Wizards	wizards	Washington	WAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/washington-wizards-logo.png	washington-wizards-logo	25	47	0.347000000000000000000000000000	East	Southeast	1961	# 002B5C	#E31837
+29	2020-11-03 19:18:09.482	2020-11-03 19:18:09.483	1610612762	Jazz	jazz	Utah	UTA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/utah-jazz-logo.png	utah-jazz-logo	44	28	0.611000000000000000000000000000	West	Northwest	1974	#002B5C	#F9A01B
+24	2020-11-03 19:18:00.913	2020-11-03 19:18:00.913	1610612756	Suns	suns	Phoenix	PHX	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/phoenix-suns-logo.png	phoenix-suns-logo	34	39	0.466000000000000000000000000000	West	Pacific	1968	#1D1160	#E56020
+27	2020-11-03 19:18:06.306	2020-11-03 19:18:06.307	1610612759	Spurs	spurs	San Antonio	SAS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/san-antonio-spurs-logo.png	san-antonio-spurs-logo	32	39	0.451000000000000000000000000000	West	Southwest	1976	#C4CED4	#000000
+16	2020-11-03 19:17:43.929	2020-11-03 19:17:43.93	1610612748	Heat	heat	Miami	MIA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/miami-heat-logo.png	miami-heat-logo	44	29	0.603000000000000000000000000000	East	Southeast	1988	#98002E	#000000
+26	2020-11-03 19:18:04.693	2020-11-03 19:18:04.693	1610612758	Kings	kings	Sacramento	SAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/sacramento-kings-logo.png	sacramento-kings-logo	31	41	0.431000000000000000000000000000	West	Pacific	1948	#5A2D81	#63727A
+15	2020-11-03 19:17:42.511	2020-11-03 19:17:42.512	1610612763	Grizzlies	grizzlies	Memphis	MEM	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/memphis-grizzlies-logo.png	memphis-grizzlies-logo	34	39	0.466000000000000000000000000000	West	Southwest	1995	#5D76A9	#12173F
+21	2020-11-03 19:17:55.754	2020-11-03 19:17:55.755	1610612760	Thunder	thunder	Oklahoma City	OKC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/oklahoma-city-thunder-logo.png	oklahoma-city-thunder-logo	44	28	0.611000000000000000000000000000	West	Northwest	1967	#007AC1	#EF3B24
+7	2020-11-03 19:17:26.866	2020-11-03 19:17:26.867	1610612742	Mavericks	mavericks	Dallas	DAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/dallas-mavericks-logo.png	dallas-mavericks-logo	43	32	0.573000000000000000000000000000	West	Southwest	1980	#00538C	#B8C4CA
+20	2020-11-03 19:17:53.761	2020-11-03 19:17:53.761	1610612752	Knicks	knicks	New York	NYK	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/new-york-knicks-logo.png	new-york-knicks-logo	21	45	0.318000000000000000000000000000	East	Atlantic	1946	#006BB6	#F58426
+13	2020-11-03 19:17:38.262	2020-11-03 19:17:38.262	1610612746	Clippers	clippers	Los Angeles	LAC	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-clippers-logo.png	los-angeles-clippers-logo	49	23	0.681000000000000000000000000000	West	Pacific	1970	#C8102E	#1D428A
+19	2020-11-03 19:17:51.797	2020-11-03 19:17:51.798	1610612740	Pelicans	pelicans	New Orleans	NOP	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/new-orleans-pelicans-logo.png	new-orleans-pelicans-logo	30	42	0.417000000000000000000000000000	West	Southwest	2002	#0C2340	#C8102E
+8	2020-11-03 19:17:28.724	2020-11-03 19:17:28.724	1610612743	Nuggets	nuggets	Denver	DEN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/denver-nuggets-logo.png	denver-nuggets-logo	46	27	0.630000000000000000000000000000	West	Northwest	1976	#0E2240	#FEC524
+12	2020-11-03 19:17:36.466	2020-11-03 19:17:36.466	1610612754	Pacers	pacers	Indiana	IND	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/indiana-pacers-logo.png	indiana-pacers-logo	45	28	0.616000000000000000000000000000	East	Central	1976	#002D62	#FDBB30
+4	2020-11-03 19:17:19.596	2020-11-03 19:17:19.597	1610612766	Hornets	hornets	Charlotte	CHA	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/charlotte-hornets-logo.png	charlotte-hornets-logo	23	42	0.354000000000000000000000000000	East	Southeast	1988	#1D1160	#00788C
+9	2020-11-03 19:17:30.578	2020-11-03 19:17:30.579	1610612765	Pistons	pistons	Detroit	DET	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/detroit-pistons-logo.png	detroit-pistons-logo	20	46	0.303000000000000000000000000000	East	Central	1948	#C8102E	#1D42BA
+10	2020-11-03 19:17:32.679	2020-11-03 19:17:32.68	1610612744	Warriors	warriors	Golden State	GSW	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/golden-state-warriors-logo.png	golden-state-warriors-logo	15	50	0.231000000000000000000000000000	West	Pacific	1946	#1D428A	#FFC72C
+5	2020-11-03 19:17:21.802	2020-11-03 19:17:21.803	1610612741	Bulls	bulls	Chicago	CHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/chicago-bulls-logo.png	chicago-bulls-logo	22	43	0.338000000000000000000000000000	East	Central	1966	#CE1141	#000000
+1	2020-11-03 19:17:13.431	2020-11-03 19:17:13.431	1610612737	Hawks	hawks	Atlanta	ATL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/atlanta-hawks-logo.png	atlanta-hawks-logo	20	47	0.299000000000000000000000000000	East	Southeast	1949	#E03A3E	#C1D32F
+3	2020-11-03 19:17:17.435	2020-11-03 19:17:17.435	1610612751	Nets	nets	Brooklyn	BKN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/brooklyn-nets-logo.png	brooklyn-nets-logo	35	37	0.486000000000000000000000000000	East	Atlantic	1976	#000000	#FFFFFF
+18	2020-11-03 19:17:49.664	2020-11-03 19:17:49.665	1610612750	Timberwolves	timberwolves	Minnesota	MIN	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/minnesota-timberwolves-logo.png	minnesota-timberwolves-logo	19	45	0.297000000000000000000000000000	West	Northwest	1989	#0C2340	#236192
+6	2020-11-03 19:17:25.179	2020-11-03 19:17:25.18	1610612739	Cavaliers	cavaliers	Cleveland	CLE	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/cleveland-cavaliers-logo.png	cleveland-cavaliers-logo	19	46	0.292000000000000000000000000000	East	Central	1970	#860038	#041E42
+2	2020-11-03 19:17:15.319	2020-11-03 19:17:15.32	1610612738	Celtics	celtics	Boston	BOS	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526601/nba-logos/boston-celtics-logo.png	boston-celtics-logo	48	24	0.667000000000000000000000000000	East	Atlantic	1946	#007A33	#BA9653
+25	2020-11-03 19:18:03.113	2020-11-03 19:18:03.114	1610612757	Trail Blazers	blazers	Portland	POR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/portland-trail-blazers-logo.png	portland-trail-blazers-logo	35	39	0.473000000000000000000000000000	West	Northwest	1970	#E03A3E	#000000
+17	2020-11-03 19:17:45.363	2020-11-03 19:17:45.364	1610612749	Bucks	bucks	Milwaukee	MIL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/milwaukee-bucks-logo.png	milwaukee-bucks-logo	56	17	0.767000000000000000000000000000	East	Central	1968	#00471B	#EEE1C6
+14	2020-11-03 19:17:40.362	2020-11-03 19:17:40.362	1610612747	Lakers	lakers	Los Angeles	LAL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/los-angeles-lakers-logo.png	los-angeles-lakers-logo	52	19	0.732000000000000000000000000000	West	Pacific	1948	#552583	#FDB927
+22	2020-11-03 19:17:57.257	2020-11-03 19:17:57.258	1610612753	Magic	magic	Orlando	ORL	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/orlando-magic-logo.png	orlando-magic-logo	33	40	0.452000000000000000000000000000	East	Southeast	1989	#0077C0	#C4CED4
+11	2020-11-03 19:17:34.739	2020-11-03 19:17:34.739	1610612745	Rockets	rockets	Houston	HOU	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526602/nba-logos/houston-rockets-logo.png	houston-rockets-logo	44	28	0.611000000000000000000000000000	West	Southwest	1967	#CE1141	#000000
+28	2020-11-03 19:18:07.8	2020-11-03 19:18:07.801	1610612761	Raptors	raptors	Toronto	TOR	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526604/nba-logos/toronto-raptors-logo.png	toronto-raptors-logo	53	19	0.736000000000000000000000000000	East	Atlantic	1995	#CE1141	#000000
+23	2020-11-03 19:17:59.664	2020-11-03 19:17:59.665	1610612755	76ers	sixers	Philadelphia	PHI	https://res.cloudinary.com/dbc3x3s7c/image/upload/v1611526603/nba-logos/philadelphia-76ers-logo.png	philadelphia-76ers-logo	43	30	0.589000000000000000000000000000	East	Atlantic	1949	#006BB6	#D50032
+\.
+
+
+--
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
+33013222-631c-4b53-834e-69bd9216a048	62afe054b89259735f63805a1848b14fe4dd3f1cfc9b0dafb7332e404d52ac	2021-02-11 15:59:45.496523+00	20210211155945_init_migration	\N	\N	2021-02-11 15:59:45.222403+00	1
+\.
+
+
+--
+-- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.accounts (id, compound_id, user_id, provider_type, provider_id, provider_account_id, refresh_token, access_token, access_token_expires, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sessions (id, user_id, expires, session_token, access_token, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, email, email_verified, image, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: verification_requests; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.verification_requests (id, identifier, token, expires, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -1081,6 +1327,34 @@ SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
 
 
 --
+-- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.accounts_id_seq', 1, false);
+
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sessions_id_seq', 1, false);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.verification_requests_id_seq', 1, false);
+
+
+--
 -- Name: Coach Coach_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1110,6 +1384,46 @@ ALTER TABLE ONLY public."Player"
 
 ALTER TABLE ONLY public."Team"
     ADD CONSTRAINT "Team_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public._prisma_migrations
+    ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verification_requests verification_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.verification_requests
+    ADD CONSTRAINT verification_requests_pkey PRIMARY KEY (id);
 
 
 --
@@ -1187,6 +1501,62 @@ CREATE UNIQUE INDEX "Team.name_unique" ON public."Team" USING btree (name);
 --
 
 CREATE UNIQUE INDEX "Team.slug_unique" ON public."Team" USING btree (slug);
+
+
+--
+-- Name: accounts.compound_id_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "accounts.compound_id_unique" ON public.accounts USING btree (compound_id);
+
+
+--
+-- Name: providerAccountId; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "providerAccountId" ON public.accounts USING btree (provider_account_id);
+
+
+--
+-- Name: providerId; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "providerId" ON public.accounts USING btree (provider_id);
+
+
+--
+-- Name: sessions.access_token_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "sessions.access_token_unique" ON public.sessions USING btree (access_token);
+
+
+--
+-- Name: sessions.session_token_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "sessions.session_token_unique" ON public.sessions USING btree (session_token);
+
+
+--
+-- Name: userId; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "userId" ON public.accounts USING btree (user_id);
+
+
+--
+-- Name: users.email_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "users.email_unique" ON public.users USING btree (email);
+
+
+--
+-- Name: verification_requests.token_unique; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX "verification_requests.token_unique" ON public.verification_requests USING btree (token);
 
 
 --

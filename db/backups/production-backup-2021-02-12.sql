@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.1 (Debian 13.1-1.pgdg100+1)
+-- Dumped from database version 12.5
 -- Dumped by pg_dump version 13.1
 
 SET statement_timeout = 0;
@@ -192,6 +192,183 @@ ALTER SEQUENCE public."Team_id_seq" OWNED BY public."Team".id;
 
 
 --
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public._prisma_migrations (
+    id character varying(36) NOT NULL,
+    checksum character varying(64) NOT NULL,
+    finished_at timestamp with time zone,
+    migration_name character varying(255) NOT NULL,
+    logs text,
+    rolled_back_at timestamp with time zone,
+    started_at timestamp with time zone DEFAULT now() NOT NULL,
+    applied_steps_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public._prisma_migrations OWNER TO tundera;
+
+--
+-- Name: accounts; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public.accounts (
+    id integer NOT NULL,
+    compound_id text NOT NULL,
+    user_id integer NOT NULL,
+    provider_type text NOT NULL,
+    provider_id text NOT NULL,
+    provider_account_id text NOT NULL,
+    refresh_token text,
+    access_token text,
+    access_token_expires timestamp(3) without time zone,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.accounts OWNER TO tundera;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public.accounts_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.accounts_id_seq OWNER TO tundera;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
+
+
+--
+-- Name: sessions; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public.sessions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    expires timestamp(3) without time zone NOT NULL,
+    session_token text NOT NULL,
+    access_token text NOT NULL,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.sessions OWNER TO tundera;
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public.sessions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sessions_id_seq OWNER TO tundera;
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name text,
+    email text,
+    email_verified timestamp(3) without time zone,
+    image text,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO tundera;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO tundera;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: verification_requests; Type: TABLE; Schema: public; Owner: tundera
+--
+
+CREATE TABLE public.verification_requests (
+    id integer NOT NULL,
+    identifier text NOT NULL,
+    token text NOT NULL,
+    expires timestamp(3) without time zone NOT NULL,
+    created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.verification_requests OWNER TO tundera;
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: tundera
+--
+
+CREATE SEQUENCE public.verification_requests_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.verification_requests_id_seq OWNER TO tundera;
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: tundera
+--
+
+ALTER SEQUENCE public.verification_requests_id_seq OWNED BY public.verification_requests.id;
+
+
+--
 -- Name: Coach id; Type: DEFAULT; Schema: public; Owner: tundera
 --
 
@@ -217,6 +394,34 @@ ALTER TABLE ONLY public."Player" ALTER COLUMN id SET DEFAULT nextval('public."Pl
 --
 
 ALTER TABLE ONLY public."Team" ALTER COLUMN id SET DEFAULT nextval('public."Team_id_seq"'::regclass);
+
+
+--
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
+
+
+--
+-- Name: sessions id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: verification_requests id; Type: DEFAULT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.verification_requests ALTER COLUMN id SET DEFAULT nextval('public.verification_requests_id_seq'::regclass);
 
 
 --
@@ -1053,6 +1258,47 @@ COPY public."Team" (id, "createdAt", "updatedAt", handle, name, slug, city, abbr
 
 
 --
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
+33013222-631c-4b53-834e-69bd9216a048	62afe054b89259735f63805a1848b14fe4dd3f1cfc9b0dafb7332e404d52ac	2021-02-11 15:59:45.496523+00	20210211155945_init_migration	\N	\N	2021-02-11 15:59:45.222403+00	1
+\.
+
+
+--
+-- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public.accounts (id, compound_id, user_id, provider_type, provider_id, provider_account_id, refresh_token, access_token, access_token_expires, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public.sessions (id, user_id, expires, session_token, access_token, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public.users (id, name, email, email_verified, image, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: verification_requests; Type: TABLE DATA; Schema: public; Owner: tundera
+--
+
+COPY public.verification_requests (id, identifier, token, expires, created_at, updated_at) FROM stdin;
+\.
+
+
+--
 -- Name: Coach_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
 --
 
@@ -1078,6 +1324,34 @@ SELECT pg_catalog.setval('public."Player_id_seq"', 510, true);
 --
 
 SELECT pg_catalog.setval('public."Team_id_seq"', 31, true);
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public.accounts_id_seq', 1, false);
+
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public.sessions_id_seq', 1, false);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+
+
+--
+-- Name: verification_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tundera
+--
+
+SELECT pg_catalog.setval('public.verification_requests_id_seq', 1, false);
 
 
 --
@@ -1110,6 +1384,46 @@ ALTER TABLE ONLY public."Player"
 
 ALTER TABLE ONLY public."Team"
     ADD CONSTRAINT "Team_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public._prisma_migrations
+    ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verification_requests verification_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: tundera
+--
+
+ALTER TABLE ONLY public.verification_requests
+    ADD CONSTRAINT verification_requests_pkey PRIMARY KEY (id);
 
 
 --
@@ -1187,6 +1501,62 @@ CREATE UNIQUE INDEX "Team.name_unique" ON public."Team" USING btree (name);
 --
 
 CREATE UNIQUE INDEX "Team.slug_unique" ON public."Team" USING btree (slug);
+
+
+--
+-- Name: accounts.compound_id_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "accounts.compound_id_unique" ON public.accounts USING btree (compound_id);
+
+
+--
+-- Name: providerAccountId; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE INDEX "providerAccountId" ON public.accounts USING btree (provider_account_id);
+
+
+--
+-- Name: providerId; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE INDEX "providerId" ON public.accounts USING btree (provider_id);
+
+
+--
+-- Name: sessions.access_token_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "sessions.access_token_unique" ON public.sessions USING btree (access_token);
+
+
+--
+-- Name: sessions.session_token_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "sessions.session_token_unique" ON public.sessions USING btree (session_token);
+
+
+--
+-- Name: userId; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE INDEX "userId" ON public.accounts USING btree (user_id);
+
+
+--
+-- Name: users.email_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "users.email_unique" ON public.users USING btree (email);
+
+
+--
+-- Name: verification_requests.token_unique; Type: INDEX; Schema: public; Owner: tundera
+--
+
+CREATE UNIQUE INDEX "verification_requests.token_unique" ON public.verification_requests USING btree (token);
 
 
 --

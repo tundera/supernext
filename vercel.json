@@ -7,7 +7,10 @@
     "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
     "DATABASE_URL": "@tunderadev_database_url",
     "FORMSPREE_MAILCHIMP_API_KEY": "@tunderadev_formspree_mailchimp_api_key",
-    "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key"
+    "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key",
+    "GITHUB_CLIENT_ID": "@tunderadev_github_client_id",
+    "GITHUB_CLIENT_SECRET": "@tunderadev_github_client_secret",
+    "PRISMA_SECRET": "@tunderadev_prisma_secret"
   },
   "build": {
     "env": {
@@ -15,7 +18,10 @@
       "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
       "DATABASE_URL": "@tunderadev_database_url",
       "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key",
-      "SESSION_SECRET_KEY": "@tunderadev_session_secret_key"
+      "SESSION_SECRET_KEY": "@tunderadev_session_secret_key",
+      "GITHUB_CLIENT_ID": "@tunderadev_github_client_id",
+      "GITHUB_CLIENT_SECRET": "@tunderadev_github_client_secret",
+      "PRISMA_SECRET": "@tunderadev_prisma_secret"
     }
   },
   "redirects": [

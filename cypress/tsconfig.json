@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "strict": false,
+    "target": "es5",
+    "isolatedModules": false,
+    "lib": ["es5", "dom"],
+    "types": ["node", "cypress", "cypress-wait-until", "@testing-library/cypress"],
+    "baseUrl": ".",
+    "jsx": "react-jsx"
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "files": ["support/index.d.ts"]
+}

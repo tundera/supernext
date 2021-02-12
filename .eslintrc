@@ -1,14 +1,16 @@
 {
   "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier", "@typescript-eslint", "cypress", "jest", "react", "import"],
   "extends": [
     "plugin:react/recommended",
     "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier/react",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "jest", "react", "import"],
   "env": {
     "es6": true,
     "browser": true,
@@ -70,7 +72,7 @@
     // Allows for the use of imports
     "sourceType": "module",
     // https://blog.geographer.fr/eslint-parser-services, https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
-    "project": "./tsconfig.json",
+    "project": ["./tsconfig.json", "./cypress/tsconfig.json"],
     "extraFileExtensions": [".graphql", ".mdx"]
   }
 }

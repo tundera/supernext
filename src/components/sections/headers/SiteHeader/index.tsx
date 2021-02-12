@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import NextLink from 'next/link'
+import { useSession } from 'next-auth/client'
 import {
   chakra,
   Box,
@@ -20,25 +21,26 @@ import styled from '@emotion/styled'
 import NavButton from '@components/NavButton'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 import LocaleButton from '@components/utility/LocaleButton'
+import AuthButton from '@components/sections/headers/SiteHeader/AuthButton'
 
 import { createBrandLogoIcon } from 'src/utils/createBrandIcons'
 
-const StickyHeader = styled(chakra.header)`
+const StickyFlex = styled(chakra.header)`
   position: sticky;
   backdrop-filter: saturate(180%) blur(20px);
   transition: background-color 0.1 ease-in-out;
 `
 
-const Header: FC = ({ ...props }) => {
+const SiteHeader: FC = ({ ...props }) => {
+  const [session, loading] = useSession()
   const bg = useColorModeValue('white', 'brand.700')
   const mobileNav = useDisclosure()
-
   const iconColor = useColorModeValue('brand.500', 'white')
 
   const BrandLogoIcon = createBrandLogoIcon(iconColor)
 
   return (
-    <StickyHeader
+    <StickyFlex
       bg={bg}
       w="100%"
       px={{ base: 2, sm: 4 }}
@@ -77,16 +79,7 @@ const Header: FC = ({ ...props }) => {
             <DarkModeToggle />
             <LocaleButton />
           </HStack>
-          <NextLink href="/login" passHref>
-            <Button
-              as="a"
-              color={useColorModeValue('whiteAlpha.900', 'brand.500')}
-              colorScheme={useColorModeValue('brand', 'gray')}
-              size="sm"
-            >
-              Sign In
-            </Button>
-          </NextLink>
+          <AuthButton session={session} />
 
           <Box display={{ base: 'inline-flex', md: 'none' }}>
             <IconButton
@@ -119,7 +112,7 @@ const Header: FC = ({ ...props }) => {
               <NavButton to="/about">About</NavButton>
               <NavButton to="/blog">Blog</NavButton>
               <NavButton to="/store">Store</NavButton>
-              <NextLink href="/login" passHref>
+              <NextLink href="#" passHref>
                 <Button as="a" w="100%" variant="ghost" bgGradient="linear(to-r, spark.400,deep.500)">
                   Sign in
                 </Button>
@@ -133,8 +126,8 @@ const Header: FC = ({ ...props }) => {
           </Box>
         </HStack>
       </Flex>
-    </StickyHeader>
+    </StickyFlex>
   )
 }
 
-export default Header
+export default SiteHeader

@@ -34,9 +34,9 @@ const ScreenshotHero: FC = () => {
           fontSize={{ base: 'lg', md: 'xl' }}
           color={useColorModeValue('gray.600', 'gray.300')}
         >
-          Get the skills and confidence to write seriously performant web apps using the best of what's around. Learn
-          accelerated modern web development with high-quality course content, all delivered in bite-sized, accesible
-          video lectures. Oh, and it's <Text as="b">completely free.</Text>
+          Get the skills and confidence to write seriously performant web apps using the best of what&apos;s around.
+          Learn accelerated modern web development with high-quality course content, all delivered in bite-sized,
+          accesible video lectures. Oh, and it&apos;s <Text as="b">completely free.</Text>
         </chakra.p>
         <chakra.p
           px={{ base: 0, lg: 24 }}

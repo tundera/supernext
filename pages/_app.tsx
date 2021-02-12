@@ -3,12 +3,12 @@ import type { CustomAppProps as AppProps } from 'types'
 
 import { QueryClient, QueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
+import { Provider as AuthProvider } from 'next-auth/client'
+
 import QueryProvider from '@providers/QueryProvider'
 import FormProvider from '@providers/FormProvider'
 import ThemeProvider from '@providers/ThemeProvider'
 import RootErrorFallback from '@components/utility/RootErrorFallback'
-import { Auth } from '@supabase/ui'
-import { supabase } from '@lib/supabase'
 
 const queryClient = new QueryClient()
 
@@ -22,9 +22,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           <FormProvider>
             <ThemeProvider>
               <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
-                <Auth.UserContextProvider supabaseClient={supabase}>
-                  {getLayout(<Component {...pageProps} />)}
-                </Auth.UserContextProvider>
+                <AuthProvider session={pageProps.session}>{getLayout(<Component {...pageProps} />)}</AuthProvider>
               </QueryProvider>
             </ThemeProvider>
           </FormProvider>
