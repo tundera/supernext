@@ -1,6 +1,6 @@
 describe('Login page', () => {
   before(() => {
-    cy.log('Visiting https://company.tld')
+    cy.log('Visiting http://localhost:3000')
     cy.visit('/')
   })
   it('Login with GitHub', () => {
@@ -16,7 +16,7 @@ describe('Login page', () => {
       logs: false,
       isPopup: true,
       loginSelector: `a[href="${Cypress.env('SITE_NAME')}/api/auth/signin/github"]`,
-      postLoginSelector: '.unread-count',
+      postLoginSelector: 'button.chakra-button',
     }
 
     return cy.task('GitHubSocialLogin', socialLoginOptions).then(({ cookies }) => {
