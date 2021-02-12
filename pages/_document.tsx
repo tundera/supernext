@@ -16,18 +16,19 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
-            async
-            defer
-            data-website-id="6453036e-7d4b-4ec5-a0b2-768110a25194"
-            src="https://metrics.tundera.dev/umami.js"
-          />
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
           <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
           <link rel="manifest" href="/static/favicons/manifest.json" />
           <link href="/static/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link href="/static/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/static/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
           <link color="#c7e3eb" href="/static/favicons/safari-pinned-tab.svg" rel="mask-icon" />
+          <script
+            async
+            defer
+            data-website-id="6453036e-7d4b-4ec5-a0b2-768110a25194"
+            src="https://metrics.tundera.dev/umami.js"
+          />
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
