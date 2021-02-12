@@ -121,6 +121,7 @@
     "react-dom": "^0.0.0-experimental-a703c3f7e",
     "react-dom-confetti": "^0.2.0",
     "react-error-boundary": "^3.1.0",
+    "react-feather": "^2.0.9",
     "react-hook-form": "^6.15.1",
     "react-icons": "^4.1.0",
     "react-live": "^2.2.3",
