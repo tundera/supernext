@@ -13,7 +13,7 @@ export const createBrandSignatureIcon = (fill: string) => {
   })
 }
 
-export const createBrandLogoIcon = (fill: string = '#000000') => {
+export const createBrandLogoIcon = (fill = '#000000') => {
   return createIcon({
     displayName: 'BrandLogoIcon',
     viewBox: '0 0 567 640',
