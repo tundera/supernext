@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useState, useEffect, useRef, useCallback, Dispatch, SetStateAction } from 'react'
 
 interface ThrottleOptions<T = any> {
