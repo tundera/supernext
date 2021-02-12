@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
 import Layout from '@components/layouts/MdxLayout'
-import Navbar from '@components/sections/headers/Navbar'
+import Header from '@components/sections/headers/SiteHeader'
 import CodeBlock from '@components/ui/snippets/CodeBlock'
 
 const components = {
@@ -39,7 +39,7 @@ const components = {
   ul: ({ children }) => <UnorderedList my={2}>{children}</UnorderedList>,
   li: ({ children }) => <ListItem>{children}</ListItem>,
   p: ({ children }) => <Text my={2}>{children}</Text>,
-  Header: Navbar,
+  Header,
   Layout,
 }
 
