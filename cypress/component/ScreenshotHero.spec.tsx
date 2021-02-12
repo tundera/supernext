@@ -6,3 +6,5 @@ describe('HelloWorld component', () => {
     mount(<ScreenshotHero />)
   })
 })
+
+export {}

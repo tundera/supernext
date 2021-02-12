@@ -12,6 +12,17 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         clientId: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
       }),
+      Providers.Email({
+        server: {
+          host: process.env.SMTP_HOST,
+          port: Number(process.env.SMTP_PORT),
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD,
+          },
+        },
+        from: process.env.SMTP_FROM, // The "from" address that you want to use
+      }),
     ],
     adapter: Adapters.Prisma.Adapter({ prisma: db }),
     secret: process.env.PRISMA_SECRET,

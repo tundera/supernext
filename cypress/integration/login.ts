@@ -44,3 +44,5 @@ describe('Login page', () => {
     })
   })
 })
+
+export {}

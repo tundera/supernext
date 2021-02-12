@@ -13,3 +13,5 @@ describe('should work', () => {
     expect(true)
   })
 })
+
+export {}
