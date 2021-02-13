@@ -3,6 +3,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
+    "DATOCMS_PREVIEW_SECRET": "@tunderadev_datocms_preview_secret",
+    "DATOCMS_API_TOKEN": "@tunderadev_datocms_api_token",
     "SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
     "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
     "DATABASE_URL": "@tunderadev_database_url",
@@ -16,6 +18,8 @@
   },
   "build": {
     "env": {
+      "DATOCMS_PREVIEW_SECRET": "@tunderadev_datocms_preview_secret",
+      "DATOCMS_API_TOKEN": "@tunderadev_datocms_api_token",
       "SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
       "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
       "DATABASE_URL": "@tunderadev_database_url",
