@@ -16,7 +16,7 @@
     "schema": "db/schema.prisma"
   },
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && husky install",
     "dev": "docker-compose up -d && NODE_OPTIONS='--inspect' next",
     "start": "docker-compose up -d && next start",
     "test": "jest --passWithNoTests",
@@ -226,11 +226,5 @@
     "{src,pages,.storybook}/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && docker-compose -f docker-compose.test.yml up -d && yarn test && docker-compose down"
-    }
   }
 }
