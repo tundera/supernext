@@ -1,5 +1,6 @@
 import TimeAgo from 'timeago-react'
-import { chakra, Box, Image, Flex, useColorModeValue, Link, Avatar, Badge, Text } from '@chakra-ui/react'
+import { Image } from 'react-datocms'
+import { chakra, Box, Flex, useColorModeValue, Link, Avatar, Badge, Text } from '@chakra-ui/react'
 import { createImageUrl } from 'src/utils/sanity'
 import NextLink from 'next/link'
 
@@ -67,16 +68,7 @@ const BlogPost = ({ slug, author, date, title }) => {
           </Text>
 
           <Flex alignItems="center">
-            <Image
-              mx={4}
-              w={10}
-              h={10}
-              objectFit="cover"
-              borderRadius="full"
-              display={{ base: 'none', sm: 'block' }}
-              src={createImageUrl(author?.avatar?.asset?._ref as string).url() || ''}
-              alt="avatar"
-            />
+            {/* <Avatar size="sm" src={<Image data={author.picture.responsiveImage} />} /> */}
             <Link
               color={useColorModeValue('gray.700', 'gray.200')}
               fontWeight="700"
@@ -103,7 +95,7 @@ const PostsList = ({ posts }) => {
       )}
 
       {posts?.map((post) => (
-        <BlogPost key={post.slug.current} slug={post.slug} author={post.author} date={post.date} title={post.title} />
+        <BlogPost key={post.slug} slug={post.slug} author={post.author} date={post.date} title={post.title} />
       ))}
     </Flex>
   )
