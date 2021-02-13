@@ -23,13 +23,13 @@ const MainFeatures: FC = () => {
           letterSpacing="tight"
           color={color}
         >
-          Stack du Jour
+          Opinionated Stack
         </Heading>
         <chakra.p mt={4} maxW="2xl" fontSize="xl" mx={{ lg: 'auto' }} color={useColorModeValue('gray.500', 'gray.400')}>
-          Get insights to dig down into what's powering your growth the most.
+          Unopinionated is synonymous with uncool.
         </chakra.p>
       </Box>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} px={{ base: 4, lg: 16, xl: 24 }} py={20} mx="auto">
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} px={{ base: 4, lg: 16, xl: 24 }} py={10} mx="auto">
         <FeatureSummary title="React" icon={ReactLogo}>
           Learn the makings of beautiful user interfaces with libraries like Chakra UI and Tailwind, all while cutting
           down development time by wrting your own custom component generators.

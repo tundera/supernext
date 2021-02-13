@@ -16,7 +16,7 @@ describe('Login page', () => {
       logs: false,
       isPopup: true,
       loginSelector: `a[href="${Cypress.env('SITE_NAME')}/api/auth/signin/github"]`,
-      postLoginSelector: 'button.chakra-button',
+      postLoginSelector: '.chakra-button',
     }
 
     return cy.task('GitHubSocialLogin', socialLoginOptions).then(({ cookies }) => {

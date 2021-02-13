@@ -5,17 +5,18 @@ import {
   Button,
   IconButton,
   Menu,
+  Avatar,
   MenuButton,
   MenuGroup,
   MenuItem,
   MenuList,
   Tooltip,
 } from '@chakra-ui/react'
-
+import { signOut } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { Settings } from 'react-feather'
 
-const SettingsButton: FC = () => {
+const SettingsButton: FC<Props> = () => {
   const router = useRouter()
 
   const color = useColorModeValue('brand.500', 'whiteAlpha.900')
@@ -26,11 +27,11 @@ const SettingsButton: FC = () => {
   return (
     <Menu>
       <Tooltip hasArrow label="Settings ⚙️">
-        <MenuButton as={Button} variant="ghost" mx="2">
+        <MenuButton as={Button} variant="ghost">
           <IconButton
             aria-label={'Settings icon dropdown'}
-            icon={<Settings />}
-            size="lg"
+            icon={<Settings size="16px" />}
+            size="sm"
             color={color}
             _hover={{ bgBlendMode: 'difference', bgColor: 'gray.300', color: hoverColor }}
             variant="ghost"
@@ -53,6 +54,13 @@ const SettingsButton: FC = () => {
             _hover={{ color: hoverColor, bg: hoverBg }}
           >
             Account
+          </MenuItem>
+          <MenuItem
+            onClick={() => signOut()}
+            _focus={{ color: hoverColor, bg: hoverBg }}
+            _hover={{ color: hoverColor, bg: hoverBg }}
+          >
+            Sign Out
           </MenuItem>
         </MenuGroup>
       </MenuList>

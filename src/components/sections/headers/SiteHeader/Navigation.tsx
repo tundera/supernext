@@ -1,24 +1,30 @@
 import type { FC } from 'react'
-import type { Session } from 'next-auth/client'
+import { Session, signOut } from 'next-auth/client'
 
 import NextLink from 'next/link'
-import { signIn, signOut } from 'next-auth/client'
-import { AiOutlineMenu } from 'react-icons/ai'
-
+import { signIn } from 'next-auth/client'
+import { AiOutlineMenu, AiFillBell, AiOutlineSearch } from 'react-icons/ai'
 import {
+  chakra,
   useColorModeValue,
   useDisclosure,
   HStack,
   Box,
+  Avatar,
   IconButton,
   Button,
   VStack,
+  VisuallyHidden,
   CloseButton,
+  InputGroup,
+  Input,
+  InputLeftElement,
 } from '@chakra-ui/react'
 
 import NavButton from '@components/NavButton'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 import LocaleButton from '@components/utility/LocaleButton'
+import SettingsButton from '@components/ui/buttons/SettingsButton'
 
 interface Props {
   session: Session
@@ -54,6 +60,22 @@ const Navigation: FC<Props> = ({ session, disclosure }) => {
         display={{ base: 'none', md: 'inline-flex' }}
       >
         {session ? (
+          // <HStack spacing={3} display={disclosure.isOpen ? 'none' : 'flex'} alignItems="center">
+          //   <InputGroup>
+          //     <InputLeftElement pointerEvents="none">
+          //       <AiOutlineSearch />
+          //     </InputLeftElement>
+          //     <Input type="tel" placeholder="Search..." />
+          //   </InputGroup>
+
+          //   <chakra.a p={3} color={color} rounded="sm" href="#" _hover={{ bg: color, color: bg }}>
+          //     <AiFillBell />
+          //     <VisuallyHidden>Notifications</VisuallyHidden>
+          //   </chakra.a>
+
+          //   <Avatar size="sm" name={session.user.name} src={session.user.image} />
+          //   <SettingsButton />
+          // </HStack>
           <Button onClick={() => signOut()} color={color} colorScheme={scheme} size="sm">
             Sign Out
           </Button>

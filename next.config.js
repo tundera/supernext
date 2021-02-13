@@ -9,7 +9,7 @@ module.exports = {
   target: 'experimental-serverless-trace',
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es-419'],
+    locales: ['en', 'es'],
   },
   images: {
     domains: ['cdn.sanity.io', 'files.stripe.com'],
