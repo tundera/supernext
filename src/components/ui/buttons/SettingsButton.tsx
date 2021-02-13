@@ -16,7 +16,7 @@ import { signOut } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { Settings } from 'react-feather'
 
-const SettingsButton: FC<Props> = () => {
+const SettingsButton: FC = () => {
   const router = useRouter()
 
   const color = useColorModeValue('brand.500', 'whiteAlpha.900')
