@@ -1,16 +1,4 @@
 export default {
-  // brand: {
-  //   50: '#ecefff',
-  //   100: '#cbceeb',
-  //   200: '#a9aed6',
-  //   300: '#888ec5',
-  //   400: '#666db3',
-  //   500: '#4d5499',
-  //   600: '#3c4178',
-  //   700: '#2a2f57',
-  //   800: '#181c37',
-  //   900: '#080819',
-  // },
   brand: {
     50: '#eeebff',
     100: '#cec5ee',
@@ -70,49 +58,5 @@ export default {
     700: '#26465c',
     800: '#142938',
     900: '#021017',
-  },
-  haze: {
-    50: '#eeebff',
-    100: '#cec5ee',
-    200: '#aea1df',
-    300: '#917bd0',
-    400: '#6a55c2',
-    500: '#4a3ca9',
-    600: '#332f84',
-    700: '#21215f',
-    800: '#13173b',
-    900: '#060819',
-  },
-  bgColor: {
-    light: 'gold.50',
-    dark: 'brand.500',
-  },
-  secondaryBgColor: {
-    light: 'whiteAlpha.700',
-    dark: 'brand.500',
-  },
-  primaryTextColor: {
-    light: 'brand.500',
-    dark: 'whiteAlpha.900',
-  },
-  secondaryTextColor: {
-    light: 'brand.500',
-    dark: 'whiteAlpha.700',
-  },
-  tertiaryTextColor: {
-    light: 'brand.600',
-    dark: 'whiteAlpha.900',
-  },
-  borderColor: {
-    light: 'haze.200',
-    dark: 'haze.600',
-  },
-  accentColor: {
-    light: 'deep.700',
-    dark: 'spark.200',
-  },
-  secondaryAccentColor: {
-    light: 'deep.500',
-    dark: 'spark.300',
   },
 }

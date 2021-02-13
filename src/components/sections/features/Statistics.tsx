@@ -1,12 +1,10 @@
-import { Stack, Container, Box, Flex, Text, Heading, SimpleGrid } from '@chakra-ui/react'
-
-import { useColors } from '@hooks/styles/useColors'
+import { useColorModeValue, Stack, Container, Box, Flex, Text, Heading, SimpleGrid } from '@chakra-ui/react'
 
 const StatsText = ({ children }) => {
-  const { primaryTextColor } = useColors()
+  const color = useColorModeValue('brand.500', 'whiteAlpha.900')
 
   return (
-    <Text as="span" fontWeight="700" color={primaryTextColor}>
+    <Text as="span" fontWeight="700" color={color}>
       {children}
     </Text>
   )

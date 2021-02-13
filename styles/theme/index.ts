@@ -1,6 +1,6 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, ThemeOverride } from '@chakra-ui/react'
 
-import config from './config'
+// import config from './config'
 import styles from './styles'
 import colors from './colors'
 import fonts from './fonts'
@@ -13,8 +13,11 @@ import fonts from './fonts'
 // import Menu from './components/menu'
 // import Badge from './components/badge'
 
-const overrides = {
-  config,
+const overrides: ThemeOverride = {
+  config: {
+    initialColorMode: 'light',
+    useSystemColorMode: false,
+  },
   styles,
   fonts,
   colors,
