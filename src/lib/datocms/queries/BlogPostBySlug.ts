@@ -1,21 +1,23 @@
-import ResponsiveImageFragment from '@lib/datocms/fragments/ResponsiveImage'
+import ResponsiveImage from '@lib/datocms/fragments/ResponsiveImage'
 
-const BlogPostBySlugQuery = `
+const BlogPostBySlug = `
   query BlogPostBySlugQuery($slug: String) {
     blogPost(filter: { slug: { eq: $slug } }) {
       id
       title
       author {
         name
-        picture {
-          responsiveImage {
-            ...ResponsiveImageFragment
-          }
+        hometown
+        jobTitle
+        photo {
+            responsiveImage(imgixParams: {crop: faces, h: "50", w: "50"}) {
+                ...ResponsiveImageFragment
+            }
         }
       }
       date
       slug
-      content(markdown: true)
+      content
       coverImage {
         responsiveImage(imgixParams: { fit: crop, auto: format }) {
           ...ResponsiveImageFragment
@@ -24,7 +26,7 @@ const BlogPostBySlugQuery = `
     }
   }
 
-  ${ResponsiveImageFragment}
+  ${ResponsiveImage}
 `
 
-export default BlogPostBySlugQuery
+export default BlogPostBySlug

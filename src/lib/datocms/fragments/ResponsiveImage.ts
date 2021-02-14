@@ -1,4 +1,4 @@
-const ResponsiveImageFragment = `
+const ResponsiveImage = `
     fragment ResponsiveImageFragment on ResponsiveImage {
         srcSet
         webpSrcSet
@@ -13,4 +13,4 @@ const ResponsiveImageFragment = `
     }
 `
 
-export default ResponsiveImageFragment
+export default ResponsiveImage

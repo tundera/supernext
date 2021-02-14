@@ -2,83 +2,92 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 import type { CustomNextPage as NextPage } from 'types'
 
 import renderToString from 'next-mdx-remote/render-to-string'
-import Image from 'next/image'
 import hydrate from 'next-mdx-remote/hydrate'
+import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import { Flex, Box, Heading, Text } from '@chakra-ui/react'
+import { useQuerySubscription, Image } from 'react-datocms'
+import { getBlogPosts, getBlogPostBySlug } from '@lib/datocms/blog'
+import BlogPostBySlugQuery from '@lib/datocms/queries/BlogPostBySlug'
 
-import sanity from '@lib/sanity/client'
-import { getPostBySlug } from '@lib/content/posts'
 import CodeBlock from '@components/ui/snippets/CodeBlock'
 import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
-import { createImageUrl } from 'src/utils/sanity'
-import PreviewBanner from '@components/sections/PreviewBanner'
-import { usePreviewSubscription } from '@lib/sanity'
-import { PostBySlugQuery } from 'services/sanity/posts'
-import { PromiseReturnType } from 'blitz'
+import ConnectionStatus from '@components/ConnectionStatus'
+import ConnectionError from '@components/ConnectionError'
+import { mdxComponents } from '@providers/mdxComponents'
 
 interface Props {
-  post: PromiseReturnType<typeof getPostBySlug>
-  preview: boolean
+  subscription: any
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  sanity.setPreviewMode(preview)
+  // sanity.setPreviewMode(preview)
 
   const pageSlug = params?.slug as string
-  const {
-    content,
-    slug: { current },
-    ...rest
-  } = await getPostBySlug(pageSlug)
 
-  if (current !== pageSlug || !content) {
+  const post = await getBlogPostBySlug(pageSlug, preview)
+  const { blogPost } = post
+
+  if (blogPost.slug !== pageSlug || !blogPost.content) {
     return {
       notFound: true,
     }
   }
+  console.dir(blogPost.content)
 
-  const markup = await renderToString(content ?? '', {
-    components: { CodeBlock },
+  const graphqlRequest = {
+    query: BlogPostBySlugQuery,
+    variables: { slug: pageSlug },
+    preview,
+  }
+
+  const markup = await renderToString(blogPost.content, {
+    components: mdxComponents,
   })
+
+  const subscription = preview
+    ? {
+        ...graphqlRequest,
+        initialData: {
+          ...post,
+          content: markup,
+        },
+        token: process.env.DATOCMS_API_TOKEN,
+      }
+    : {
+        enabled: false,
+        initialData: {
+          ...post,
+          content: markup,
+        },
+      }
 
   return {
     props: {
-      post: {
-        content: markup,
-        slug: current,
-        ...rest,
-      },
-      preview,
+      subscription,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await sanity.getAll('post')
-  const paths = posts.map((post) => `/blog/${post?.slug?.current}`)
+  const { allBlogPosts } = await getBlogPosts()
+  const paths = allBlogPosts.map((post) => `/blog/${post?.slug}`)
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
-const PostPage: NextPage<Props> = ({ post, preview }) => {
+const PostPage: NextPage<Props> = ({ subscription }) => {
   const router = useRouter()
 
-  const { data } = usePreviewSubscription(PostBySlugQuery, {
-    params: { slug: post?.slug.current ?? '' },
-    initialData: post,
-    enabled: preview,
-  })
-
-  const renderedContent = hydrate(data?.content ?? '', {
-    components: {
-      CodeBlock,
-    },
-  })
+  const {
+    data: { blogPost },
+    error,
+    status,
+  } = useQuerySubscription(subscription)
 
   if (router.isFallback) {
     return (
@@ -90,20 +99,31 @@ const PostPage: NextPage<Props> = ({ post, preview }) => {
     )
   }
 
+  if (!router.isFallback && !blogPost.slug) {
+    return <ErrorPage statusCode={404} />
+  }
+
+  const renderedContent = hydrate(subscription.initialData.content, {
+    components: mdxComponents,
+  })
+
   return (
     <>
-      {process.env.NODE_ENV === 'development' && <PreviewBanner preview={preview} />}
-
       <Flex flexDir="column" alignItems="center">
-        <Box padding="4" bg="gray.100" color="brand.500">
-          <Heading>{data?.title}</Heading>
-          <Flex flexDir="column" alignItems="center" position="relative">
-            <Image src={createImageUrl(data?.coverImage?.asset?._ref as string).url() || ''} width={500} height={300} />
-          </Flex>
-          <Text>{data?.author.name}</Text>
-          <Text>{data?.date}</Text>
-          {router.isReady && renderedContent}
-        </Box>
+        <ConnectionStatus status={status} />
+        {error && <ConnectionError error={error} />}
+
+        {blogPost && (
+          <Box padding="4" bg="gray.100" color="brand.500">
+            <Heading>{blogPost.title}</Heading>
+            <Flex flexDir="column" alignItems="center" position="relative">
+              <Image data={blogPost.coverImage.responsiveImage} />
+            </Flex>
+            <Text>{blogPost.author.name}</Text>
+            <Text>{blogPost.date}</Text>
+            {renderedContent}
+          </Box>
+        )}
       </Flex>
     </>
   )
