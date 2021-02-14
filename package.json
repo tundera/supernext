@@ -28,7 +28,7 @@
     "generate:api": "next-codegen api",
     "codegen:graphql": "graphql-codegen",
     "codegen:sanity": "sanity-codegen",
-    "codegen": "yarn codegen:graphql && yarn codegen:sanity",
+    "codegen": "yarn codegen:graphql",
     "build:nexus": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only services/graphql/schema",
     "build:next": "yarn db:migrate:deploy && next build",
     "prebuild": "yarn build:nexus && yarn codegen",

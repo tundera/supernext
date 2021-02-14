@@ -1,7 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import type { CustomNextPage as NextPage } from 'types'
 
-import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
@@ -15,6 +14,7 @@ import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import ConnectionStatus from '@components/ConnectionStatus'
 import ConnectionError from '@components/ConnectionError'
 import { mdxComponents } from '@components/mdxComponents'
+import { mdxToString, stringToMdx } from 'src/utils/mdxSerialization'
 
 interface Props {
   subscription: any
@@ -38,19 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     preview,
   }
 
-  const markup = await renderToString(blogPost.content, {
-    components: mdxComponents,
-    mdxOptions: {
-      remarkPlugins: [
-        require('remark-slug'),
-        require('remark-code-titles'),
-        require('remark-toc'),
-        require('remark-external-links'),
-      ],
-      rehypePlugins: [require('rehype-autolink-headings')],
-      compilers: [],
-    },
-  })
+  const markup = await mdxToString(blogPost.content)
 
   const subscription = preview
     ? {
@@ -109,9 +97,7 @@ const PostPage: NextPage<Props> = ({ subscription }) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const renderedContent = hydrate(subscription.initialData.content, {
-    components: { ...mdxComponents },
-  })
+  const renderedContent = stringToMdx(subscription.initialData.content)
 
   return (
     <>

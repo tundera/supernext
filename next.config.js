@@ -30,7 +30,13 @@ module.exports = withMDX({
   images: {
     domains: ['cdn.sanity.io', 'files.stripe.com'],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+      }
+    }
+
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
