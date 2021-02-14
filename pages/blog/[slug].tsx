@@ -10,20 +10,17 @@ import { useQuerySubscription, Image } from 'react-datocms'
 import { getBlogPosts, getBlogPostBySlug } from '@lib/datocms/blog'
 import BlogPostBySlugQuery from '@lib/datocms/queries/BlogPostBySlug'
 
-import CodeBlock from '@components/ui/snippets/CodeBlock'
 import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import ConnectionStatus from '@components/ConnectionStatus'
 import ConnectionError from '@components/ConnectionError'
-import { mdxComponents } from '@providers/mdxComponents'
+import { mdxComponents } from '@components/mdxComponents'
 
 interface Props {
   subscription: any
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  // sanity.setPreviewMode(preview)
-
   const pageSlug = params?.slug as string
 
   const post = await getBlogPostBySlug(pageSlug, preview)
@@ -34,7 +31,6 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
       notFound: true,
     }
   }
-  console.dir(blogPost.content)
 
   const graphqlRequest = {
     query: BlogPostBySlugQuery,
@@ -44,6 +40,16 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
   const markup = await renderToString(blogPost.content, {
     components: mdxComponents,
+    mdxOptions: {
+      remarkPlugins: [
+        require('remark-slug'),
+        require('remark-code-titles'),
+        require('remark-toc'),
+        require('remark-external-links'),
+      ],
+      rehypePlugins: [require('rehype-autolink-headings')],
+      compilers: [],
+    },
   })
 
   const subscription = preview
@@ -76,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
 
@@ -104,7 +110,7 @@ const PostPage: NextPage<Props> = ({ subscription }) => {
   }
 
   const renderedContent = hydrate(subscription.initialData.content, {
-    components: mdxComponents,
+    components: { ...mdxComponents },
   })
 
   return (

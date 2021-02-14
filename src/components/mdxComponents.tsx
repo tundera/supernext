@@ -16,7 +16,7 @@ export const mdxComponents = {
     return <pre {...preProps} />
   },
   h1: ({ children }) => (
-    <Heading as="h1" fontSize="2xl" mb={3} color="spark.400">
+    <Heading as="h1" fontSize="2xl" mb={3} color="spark.400" fontWeight="bold">
       {children}
     </Heading>
   ),
@@ -26,14 +26,19 @@ export const mdxComponents = {
     </Heading>
   ),
   h3: ({ children }) => (
-    <Text fontSize="md" my={3}>
+    <Heading as="h3" fontSize="md" my={3}>
       {children}
-    </Text>
+    </Heading>
   ),
   h4: ({ children }) => (
-    <Text fontSize="sm" my={3}>
+    <Heading as="h4" fontSize="sm" my={3}>
       {children}
-    </Text>
+    </Heading>
+  ),
+  h5: ({ children }) => (
+    <Heading as="h4" fontSize="xs" my={3}>
+      {children}
+    </Heading>
   ),
   ul: ({ children }) => <UnorderedList my={2}>{children}</UnorderedList>,
   li: ({ children }) => <ListItem>{children}</ListItem>,
