@@ -1,4 +1,19 @@
-module.exports = {
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      require('remark-slug'),
+      require('remark-code-titles'),
+      require('remark-toc'),
+      require('remark-external-links'),
+    ],
+    rehypePlugins: [require('rehype-autolink-headings')],
+  },
+})
+
+module.exports = withMDX({
   reactStrictMode: true,
   future: {
     webpack5: true,
@@ -7,6 +22,7 @@ module.exports = {
     reactMode: 'concurrent',
   },
   target: 'experimental-serverless-trace',
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],
@@ -31,4 +47,4 @@ module.exports = {
   webpackDevMiddleware: (config) => {
     return config
   },
-}
+})
