@@ -7,14 +7,13 @@ import fs from 'fs'
 import path from 'path'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
-import NextLink from 'next/link'
-import Emoji from 'a11y-react-emoji'
 
 import { useRouter } from 'next/router'
-import { Heading, Text, Box, Flex } from '@chakra-ui/react'
+import { Stack, Text, Flex } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
+import { MDXProvider } from '@mdx-js/react'
 
-import { getMdxLayout } from '@components/layouts/MdxLayout'
+import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { mdxComponents } from '@components/mdx'
 import { getContentItem } from '@lib/content'
@@ -92,17 +91,17 @@ const ArticlePage: NextPage<Props> = ({ article, frontMatter }) => {
       <NextSeo
         openGraph={{
           title: `Tundera Dev | ${frontMatter.title}`,
-          description: frontMatter.description,
+          description: frontMatter.summary,
           url: articleUrl,
           type: 'article',
           article: {
-            publishedTime: frontMatter.date,
-            authors: [...frontMatter.author],
+            publishedTime: frontMatter.publishedAt,
+            authors: [frontMatter.author],
             tags: frontMatter.tags,
           },
           images: [
             {
-              url: frontMatter.coverImage,
+              url: frontMatter.image,
               width: 500,
               height: 300,
               alt: `${frontMatter.title} article cover image`,
@@ -110,24 +109,28 @@ const ArticlePage: NextPage<Props> = ({ article, frontMatter }) => {
           ],
         }}
       />
-      <Heading>
-        <nav>
-          <NextLink href="/">
-            <a>
-              <Emoji label="Home link emoji" symbol="👈" /> Go back home
-            </a>
-          </NextLink>
-        </nav>
-      </Heading>
-      <Box mb={2}>
-        <Heading>{frontMatter.title}</Heading>
-        {frontMatter.description && <Text opacity="0.6">{frontMatter.description}</Text>}
-      </Box>
-      {renderedContent}
+      <Flex color="blackAlpha.800" bg="whiteAlpha.900" alignItems="center" justifyContent="center">
+        <Stack
+          as="article"
+          spacing={8}
+          justifyContent="center"
+          alignItems="start"
+          m="0 auto 4rem auto"
+          w={{ base: '100%', lg: '650px' }}
+        >
+          <Text fontSize="6xl" fontWeight="extrabold">
+            {frontMatter.title}
+          </Text>
+          <Text color="blackAlpha.800" fontWeight="bold">
+            {frontMatter.author} {' • '} {frontMatter.publishedAt}
+          </Text>
+          <MDXProvider components={mdxComponents}>{renderedContent}</MDXProvider>
+        </Stack>
+      </Flex>
     </>
   )
 }
 
-ArticlePage.getLayout = getMdxLayout
+ArticlePage.getLayout = getLayout
 
 export default ArticlePage

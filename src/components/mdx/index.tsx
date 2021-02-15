@@ -2,7 +2,6 @@
 import { preToCodeBlock } from 'mdx-utils'
 import { Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
-import Layout from '@components/layouts/MdxLayout'
 import Header from '@components/sections/headers/SiteHeader'
 import CodeBlock from '@components/ui/snippets/CodeBlock'
 import NextMdxLink from '@components/mdx/NextLink'
@@ -26,14 +25,13 @@ export const mdxComponents = {
   ul: ({ children }) => <UnorderedList my={2}>{children}</UnorderedList>,
   li: ({ children }) => <ListItem>{children}</ListItem>,
   p: ({ children }) => (
-    <Text my={2} color="rebeccapurple" fontWeight="bold">
+    <Text my={2} color="blackAlpha.900" fontWeight="bold">
       {children}
     </Text>
   ),
   a: (props) => {
-    return <NextMdxLink color="whiteAlpha.700" _hover={{ textDecoration: 'underline' }} {...props} />
+    return <NextMdxLink color="blackAlpha.500" _hover={{ textDecoration: 'underline' }} {...props} />
   },
   Header,
-  Layout,
   SocialLinks,
 }

@@ -1,5 +1,11 @@
 export type FrontMatter = {
-  [key: string]: any
+  title: string
+  summary: string
+  author: string
+  publishedAt: string
+  category: string | string[]
+  tags: string[]
+  image: string
 }
 
 export type Article = {

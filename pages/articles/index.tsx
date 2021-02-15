@@ -1,6 +1,6 @@
 import type { GetStaticProps } from 'next'
 import type { CustomNextPage as NextPage } from 'types'
-import type { PromiseReturnType } from 'blitz'
+import type { Article } from 'content/types'
 
 import { Stack, Heading } from '@chakra-ui/react'
 
@@ -9,7 +9,7 @@ import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getContentItems } from '@lib/content'
 
 interface Props {
-  articles: PromiseReturnType<typeof getContentItems>
+  articles: Article[]
 }
 export const getStaticProps: GetStaticProps = async () => {
   const articles = await getContentItems('articles')
