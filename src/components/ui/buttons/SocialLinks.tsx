@@ -1,9 +1,11 @@
+import type { FC } from 'react'
+
 import { HStack, Box } from '@chakra-ui/react'
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
 
 import SocialButton from '@components/SocialButton'
 
-function SampleButtons() {
+const SocialLinks: FC = () => {
   return (
     <Box>
       <HStack>
@@ -18,4 +20,4 @@ function SampleButtons() {
   )
 }
 
-export default SampleButtons
+export default SocialLinks

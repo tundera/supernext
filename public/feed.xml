@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Philip Johnston]]></title>
+        <description><![CDATA[Philip Johnston]]></description>
+        <link>https://tundera.dev</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sun, 14 Feb 2021 16:10:15 GMT</lastBuildDate>
+        <atom:link href="https://tundera.dev/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Example Article]]></title>
+            <description><![CDATA[Frontmatter description for example article]]></description>
+            <link>https://tundera.dev/articles/example-article</link>
+            <guid isPermaLink="true">https://tundera.dev/articles/example-article</guid>
+            <pubDate>Wed, 01 Jul 2020 06:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Hello World]]></title>
+            <description><![CDATA[Frontmatter description for hello world article]]></description>
+            <link>https://tundera.dev/articles/hello-world</link>
+            <guid isPermaLink="true">https://tundera.dev/articles/hello-world</guid>
+            <pubDate>Wed, 01 Jul 2020 06:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

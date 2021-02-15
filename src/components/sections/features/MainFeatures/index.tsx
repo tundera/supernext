@@ -26,7 +26,7 @@ const MainFeatures: FC = () => {
           Opinionated Stack
         </Heading>
         <chakra.p mt={4} maxW="2xl" fontSize="xl" mx={{ lg: 'auto' }} color={useColorModeValue('gray.500', 'gray.400')}>
-          Unopinionated is synonymous with uncool.
+          The best of what's around.
         </chakra.p>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} px={{ base: 4, lg: 16, xl: 24 }} py={10} mx="auto">

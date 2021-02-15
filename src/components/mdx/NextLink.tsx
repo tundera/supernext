@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import type { LinkProps } from 'next/link'
 
 import NextLink from 'next/link'
-import styled from '@emotion/styled'
+import { chakra } from '@chakra-ui/react'
 
 const CustomLink: FC<LinkProps> = ({ as, href, ...props }) => {
   return (
@@ -13,8 +13,6 @@ const CustomLink: FC<LinkProps> = ({ as, href, ...props }) => {
   )
 }
 
-const NextMdxLink = styled(CustomLink)`
-  color: tomato;
-`
+const NextMdxLink = chakra(CustomLink)
 
 export default NextMdxLink

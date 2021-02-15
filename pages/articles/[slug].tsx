@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { FrontMatter } from 'services/content/types'
+import type { FrontMatter } from 'content/types'
 import type { CustomNextPage as NextPage } from 'types'
 
 import fs from 'fs'
@@ -16,8 +16,8 @@ import { NextSeo } from 'next-seo'
 
 import { getMdxLayout } from '@components/layouts/MdxLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
-import mdxComponents from '@components/mdx/article'
-import { getArticle } from '@lib/content/articles'
+import { mdxComponents } from '@components/mdx'
+import { getContentItem } from '@lib/content'
 
 interface Props {
   article: any
@@ -28,7 +28,8 @@ const cwd = process.cwd()
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageSlug = params?.slug as string
-  const { slug, content, frontMatter } = await getArticle(params?.slug as string)
+
+  const { slug, content, frontMatter } = await getContentItem('articles', pageSlug)
 
   if (slug !== pageSlug || !content) {
     return {
@@ -61,7 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: fs.readdirSync(path.join(cwd, 'services/content/articles')).map((p) => ({
+    paths: fs.readdirSync(path.join(cwd, 'content', 'articles')).map((p) => ({
       params: {
         slug: p.replace(/\.mdx?/, ''),
       },

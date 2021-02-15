@@ -13,7 +13,7 @@ import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import ConnectionStatus from '@components/ConnectionStatus'
 import ConnectionError from '@components/ConnectionError'
-import { mdxComponents } from '@components/mdxComponents'
+import { mdxComponents } from '@components/mdx'
 import { mdxToString, stringToMdx } from 'src/utils/mdxSerialization'
 
 interface Props {

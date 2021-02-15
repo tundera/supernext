@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { Article } from 'services/content/types'
+import type { Article } from 'content/types'
 
 import { Box, Text, Heading, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdBookmark } from 'react-icons/md'

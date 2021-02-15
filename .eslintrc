@@ -5,6 +5,7 @@
     "plugin:react/recommended",
     "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
+    "plugin:mdx/recommended",
     "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier/react",
@@ -56,7 +57,7 @@
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".js", ".jsx", ".ts", ".tsx"]
+      "@typescript-eslint/parser": [".js", ".jsx", ".ts", ".tsx", ".mdx"]
     },
     "import/resolver": {
       "babel-module": {},
