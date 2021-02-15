@@ -4,7 +4,7 @@ import type { CustomNextPage as NextPage } from 'types'
 import hydrate from 'next-mdx-remote/hydrate'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import { Flex, Box, Heading, Text } from '@chakra-ui/react'
+import { Stack, Flex, Box, Heading, Text } from '@chakra-ui/react'
 import { useQuerySubscription, Image } from 'react-datocms'
 import { getBlogPosts, getBlogPostBySlug } from '@lib/datocms/blog'
 import BlogPostBySlugQuery from '@lib/datocms/queries/BlogPostBySlug'
@@ -13,7 +13,6 @@ import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import ConnectionStatus from '@components/ConnectionStatus'
 import ConnectionError from '@components/ConnectionError'
-import { mdxComponents } from '@components/mdx'
 import { mdxToString, stringToMdx } from 'src/utils/mdxSerialization'
 
 interface Props {
@@ -101,20 +100,30 @@ const PostPage: NextPage<Props> = ({ subscription }) => {
 
   return (
     <>
-      <Flex flexDir="column" alignItems="center">
+      <Flex color="blackAlpha.800" bg="whiteAlpha.900" alignItems="center" justifyContent="center">
         <ConnectionStatus status={status} />
         {error && <ConnectionError error={error} />}
 
         {blogPost && (
-          <Box padding="4" bg="gray.100" color="brand.500">
-            <Heading>{blogPost.title}</Heading>
+          <Stack
+            as="article"
+            spacing={8}
+            justifyContent="center"
+            alignItems="start"
+            m="0 auto 4rem auto"
+            w={{ base: '100%', lg: '650px' }}
+          >
+            <Text fontSize="6xl" fontWeight="extrabold">
+              {blogPost.title}
+            </Text>
             <Flex flexDir="column" alignItems="center" position="relative">
               <Image data={blogPost.coverImage.responsiveImage} />
             </Flex>
-            <Text>{blogPost.author.name}</Text>
-            <Text>{blogPost.date}</Text>
+            <Text color="blackAlpha.800" fontWeight="bold">
+              {blogPost.author.name} {' • '} {blogPost.date}
+            </Text>
             {renderedContent}
-          </Box>
+          </Stack>
         )}
       </Flex>
     </>
