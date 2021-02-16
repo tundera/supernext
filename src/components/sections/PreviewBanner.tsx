@@ -47,7 +47,7 @@ const PreviewBanner = ({ preview }: Props) => {
             <PreviewButton />
             <Button
               as="a"
-              href="/api/exitPreview"
+              href="/api/exit-preview"
               rightIcon={<BsCircleFill size="12px" color="limegreen" />}
               w="175px"
               py={4}

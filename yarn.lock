@@ -2329,6 +2329,15 @@
     "@chakra-ui/utils" "1.2.0"
     "@chakra-ui/visually-hidden" "1.0.4"
 
+"@chakra-ui/checkbox@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@chakra-ui/checkbox/-/checkbox-1.2.3.tgz#b0574f973515612ce99984c38dde17bc5d603821"
+  integrity sha512-op7o/tt4P9oj/N6X5LZUrdaK+VMWoeZavlPh1WWZJ34e26R8y51eCjTQdQURu95hHuwdm7EMK1wSJsINUgWP7A==
+  dependencies:
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/utils" "1.2.0"
+    "@chakra-ui/visually-hidden" "1.0.4"
+
 "@chakra-ui/clickable@1.0.4":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@chakra-ui/clickable/-/clickable-1.0.4.tgz#aa97871ccfe5ec66168a67b6df6e3309bfd34eb4"
@@ -2348,6 +2357,14 @@
   version "1.0.7"
   resolved "https://registry.npmjs.org/@chakra-ui/color-mode/-/color-mode-1.0.7.tgz#1b7524f667074735b4cde87079d0bb7354294bd8"
   integrity sha512-WJV+aK6GB9nUhMbeYN6cJv+5nQzpWNNyZfxUs+B+gFv/NHMh3/ZwWW+bSSvk57m4v23Icj3ZPyhY4RCiWcBw2Q==
+  dependencies:
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/utils" "1.2.0"
+
+"@chakra-ui/color-mode@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@chakra-ui/color-mode/-/color-mode-1.1.0.tgz#fdb6f44790897754d2c2c444855be5af228ecb43"
+  integrity sha512-c9BdU/B3/WbYOJlAI6z02IzGBzWX1+icqWf9M+5psgTqCv5jqxOsqUKs39Zw6H+rpYqQqR20/i0hyDmN1eptpw==
   dependencies:
     "@chakra-ui/hooks" "1.1.4"
     "@chakra-ui/utils" "1.2.0"
@@ -2394,6 +2411,14 @@
   dependencies:
     "@chakra-ui/utils" "1.2.0"
     react-focus-lock "2.4.1"
+
+"@chakra-ui/focus-lock@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@chakra-ui/focus-lock/-/focus-lock-1.1.0.tgz#5b6e1623216d3ba135828fa508df38890a643059"
+  integrity sha512-yzW/By8DO+9kH4eT5y73POuO3HMDMLdy/1udEy95fcP0RbofIU03ytx439FIFB0JwyF8pUP4PEHB6zI6YxXCbQ==
+  dependencies:
+    "@chakra-ui/utils" "1.2.0"
+    react-focus-lock "2.5.0"
 
 "@chakra-ui/form-control@1.2.1":
   version "1.2.1"
@@ -2478,6 +2503,18 @@
     "@chakra-ui/transition" "1.0.8"
     "@chakra-ui/utils" "1.2.0"
 
+"@chakra-ui/menu@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/@chakra-ui/menu/-/menu-1.1.2.tgz#6357a56c713f180d6fe1e570ecb6f8892e3dd2cc"
+  integrity sha512-nUfzsXb/HyNrDyJrzJM7+ZajZMzKLHNXhqerHowOoMekTYJcX6MF/K6Sv78KemMrrAHHrfUh2p/2aK0VHPx6pw==
+  dependencies:
+    "@chakra-ui/clickable" "1.0.4"
+    "@chakra-ui/descendant" "1.0.7"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/popper" "1.1.4"
+    "@chakra-ui/transition" "1.0.8"
+    "@chakra-ui/utils" "1.2.0"
+
 "@chakra-ui/modal@1.5.1":
   version "1.5.1"
   resolved "https://registry.npmjs.org/@chakra-ui/modal/-/modal-1.5.1.tgz#5d334431e93b37e216174c77f6d48eb1da81101e"
@@ -2491,6 +2528,20 @@
     "@chakra-ui/utils" "1.2.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.4.0"
+
+"@chakra-ui/modal@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/@chakra-ui/modal/-/modal-1.6.0.tgz#58ba52bd6181217a886e10a730514679b9aa8ca0"
+  integrity sha512-mrCQTt+Dyo9enbN3YvBjoxxxjC63vT60EBdM+EKoymcHtC6tJ8gH4uvDVSxvAwtd4TWHrv2x+MhI/W/nb6f9Hg==
+  dependencies:
+    "@chakra-ui/close-button" "1.1.1"
+    "@chakra-ui/focus-lock" "1.1.0"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/portal" "1.1.1"
+    "@chakra-ui/transition" "1.0.8"
+    "@chakra-ui/utils" "1.2.0"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "2.4.1"
 
 "@chakra-ui/number-input@1.1.1":
   version "1.1.1"
@@ -2524,10 +2575,32 @@
     "@chakra-ui/transition" "1.0.8"
     "@chakra-ui/utils" "1.2.0"
 
+"@chakra-ui/popover@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@chakra-ui/popover/-/popover-1.2.2.tgz#cf8f0449dc0ad1c27460c80c2a037aa6f304a077"
+  integrity sha512-J2let+7e1RbLP/SG+waHI7I/7DWq9KMQnh9baiUxn2PatxNHtnCI+raCAalXFuLQ93fwaBgf++a/BmFYfq3LLw==
+  dependencies:
+    "@chakra-ui/close-button" "1.1.1"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/popper" "1.1.4"
+    "@chakra-ui/portal" "1.1.1"
+    "@chakra-ui/transition" "1.0.8"
+    "@chakra-ui/utils" "1.2.0"
+
 "@chakra-ui/popper@1.1.3":
   version "1.1.3"
   resolved "https://registry.npmjs.org/@chakra-ui/popper/-/popper-1.1.3.tgz#352a88102fdcdd16a2c2acd5c889aff9fc06f63c"
   integrity sha512-4Z73UJLki77aJG8RoeKdjIcqk/UbfmvSLMTqEhU/057OcjSugZZs0Qw3OZQZRNKTcdU1do8mo433THHYvnm/EQ==
+  dependencies:
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/utils" "1.2.0"
+    "@popperjs/core" "2.4.4"
+    dequal "2.0.2"
+
+"@chakra-ui/popper@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/@chakra-ui/popper/-/popper-1.1.4.tgz#6b44115dea192e9e23b270c32a77b19fcc10941a"
+  integrity sha512-eAZ6i/+7jd/fjgqWwE4SuhkKFkkWYDw0A/rfV093FtInc0lHDOjzXBgp5GEEbl4pnoPSP2AYJq+5JJFCjW9zIA==
   dependencies:
     "@chakra-ui/hooks" "1.1.4"
     "@chakra-ui/utils" "1.2.0"
@@ -2560,7 +2633,17 @@
     "@chakra-ui/utils" "1.2.0"
     "@chakra-ui/visually-hidden" "1.0.4"
 
-"@chakra-ui/react@^1.1.6", "@chakra-ui/react@^1.3.2":
+"@chakra-ui/radio@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@chakra-ui/radio/-/radio-1.2.3.tgz#87e859c99f35af9d33cff20adbfed2c0f40811f5"
+  integrity sha512-HZDZnoMKJfJ1xlkWy4713Q5mHvF92EJFTY/ZaE6VHSBb1h+JjE1DmEO2Latt5OITx02Liv0dN0je3Hk1ncsgcg==
+  dependencies:
+    "@chakra-ui/form-control" "1.2.1"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/utils" "1.2.0"
+    "@chakra-ui/visually-hidden" "1.0.4"
+
+"@chakra-ui/react@^1.1.6":
   version "1.3.2"
   resolved "https://registry.npmjs.org/@chakra-ui/react/-/react-1.3.2.tgz#6004d9120a6638c86a0c8c364d015f6b5884ecc4"
   integrity sha512-BsqX9x27JpIcU+ywuLiL1MfEAEhsxK6J5QCcsZHtDI/wiRy4p3o2qmTsCLPLvBX7HdukTFSCVm2bbYqLKTL8Zw==
@@ -2611,6 +2694,57 @@
     "@chakra-ui/utils" "1.2.0"
     "@chakra-ui/visually-hidden" "1.0.4"
 
+"@chakra-ui/react@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.npmjs.org/@chakra-ui/react/-/react-1.3.3.tgz#b45559fba32d018a66a7ec8f01ef9d0f33c0b8a5"
+  integrity sha512-61mVM98U5gTzQdCLqvcQRs4q7vsEHp8T5wNhbkPc1hw1tQ1iW9c7H4RyOQgqNqlolTCRbtoRGuh8TEQI9mQdQg==
+  dependencies:
+    "@chakra-ui/accordion" "1.1.2"
+    "@chakra-ui/alert" "1.1.1"
+    "@chakra-ui/avatar" "1.1.2"
+    "@chakra-ui/breadcrumb" "1.1.1"
+    "@chakra-ui/button" "1.1.2"
+    "@chakra-ui/checkbox" "1.2.3"
+    "@chakra-ui/close-button" "1.1.1"
+    "@chakra-ui/control-box" "1.0.4"
+    "@chakra-ui/counter" "1.0.7"
+    "@chakra-ui/css-reset" "1.0.0"
+    "@chakra-ui/editable" "1.1.1"
+    "@chakra-ui/form-control" "1.2.1"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/icon" "1.1.1"
+    "@chakra-ui/image" "1.0.7"
+    "@chakra-ui/input" "1.1.2"
+    "@chakra-ui/layout" "1.3.1"
+    "@chakra-ui/live-region" "1.0.4"
+    "@chakra-ui/media-query" "1.0.5"
+    "@chakra-ui/menu" "1.1.2"
+    "@chakra-ui/modal" "1.6.0"
+    "@chakra-ui/number-input" "1.1.1"
+    "@chakra-ui/pin-input" "1.4.0"
+    "@chakra-ui/popover" "1.2.2"
+    "@chakra-ui/popper" "1.1.4"
+    "@chakra-ui/portal" "1.1.1"
+    "@chakra-ui/progress" "1.1.1"
+    "@chakra-ui/radio" "1.2.3"
+    "@chakra-ui/select" "1.1.1"
+    "@chakra-ui/skeleton" "1.1.3"
+    "@chakra-ui/slider" "1.1.1"
+    "@chakra-ui/spinner" "1.1.1"
+    "@chakra-ui/stat" "1.1.1"
+    "@chakra-ui/switch" "1.1.3"
+    "@chakra-ui/system" "1.3.1"
+    "@chakra-ui/table" "1.1.1"
+    "@chakra-ui/tabs" "1.1.1"
+    "@chakra-ui/tag" "1.1.1"
+    "@chakra-ui/textarea" "1.1.1"
+    "@chakra-ui/theme" "1.6.2"
+    "@chakra-ui/toast" "1.1.11"
+    "@chakra-ui/tooltip" "1.1.2"
+    "@chakra-ui/transition" "1.0.8"
+    "@chakra-ui/utils" "1.2.0"
+    "@chakra-ui/visually-hidden" "1.0.4"
+
 "@chakra-ui/select@1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@chakra-ui/select/-/select-1.1.1.tgz#54becf1c70183968aab45c1fc01b8dc5c0ae1c60"
@@ -2627,6 +2761,16 @@
     "@chakra-ui/hooks" "1.1.4"
     "@chakra-ui/media-query" "1.0.5"
     "@chakra-ui/system" "1.3.0"
+    "@chakra-ui/utils" "1.2.0"
+
+"@chakra-ui/skeleton@1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@chakra-ui/skeleton/-/skeleton-1.1.3.tgz#86905e88fedf3ed844da87fd0ad01c064988d72a"
+  integrity sha512-F2HK0/QAQ/BmkY0FC8Lhhquxl5bSL0OemF6gyPcmK21tQ5czvUBCElVUybFnYkyVLfihB5pvazKZky8xCEgfIQ==
+  dependencies:
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/media-query" "1.0.5"
+    "@chakra-ui/system" "1.3.1"
     "@chakra-ui/utils" "1.2.0"
 
 "@chakra-ui/slider@1.1.1":
@@ -2663,12 +2807,29 @@
     css-get-unit "1.0.1"
     csstype "^3.0.6"
 
+"@chakra-ui/styled-system@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/@chakra-ui/styled-system/-/styled-system-1.7.1.tgz#1483006a8cb123ce1c6f67f2ef4346c8b8fa6a4b"
+  integrity sha512-mhSakTWdh7ZEkqwRdoVW1seumIFq6Yu/Glal4VVcyhxS34V/VPLX0GtRfjC8cSpsYiwGZHX/7WJYWN2cldx+Gg==
+  dependencies:
+    "@chakra-ui/utils" "1.2.0"
+    css-get-unit "1.0.1"
+    csstype "^3.0.6"
+
 "@chakra-ui/switch@1.1.2":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@chakra-ui/switch/-/switch-1.1.2.tgz#b568b39afb2a3fdd0700e1ca97b911a3be997a67"
   integrity sha512-QzkfOgkcSVkejjobp3jl5Oso15Alr5N05NP454IkG487X6y625UD+BMujZX8QywywjgFWaoEj/dPnBilRjP28w==
   dependencies:
     "@chakra-ui/checkbox" "1.2.2"
+    "@chakra-ui/utils" "1.2.0"
+
+"@chakra-ui/switch@1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@chakra-ui/switch/-/switch-1.1.3.tgz#aa72379daf1bce12173e26c6d8541d21088f7712"
+  integrity sha512-64o7GL3yFiLlh4qtdK//Bey4wLn8yqib9Duci9T+FRiFWLLDa9ksmlQGeX7Qe4AIolimXGa96Ys8yYAfzDqaJQ==
+  dependencies:
+    "@chakra-ui/checkbox" "1.2.3"
     "@chakra-ui/utils" "1.2.0"
 
 "@chakra-ui/system@1.3.0":
@@ -2678,6 +2839,16 @@
   dependencies:
     "@chakra-ui/color-mode" "1.0.7"
     "@chakra-ui/styled-system" "1.7.0"
+    "@chakra-ui/utils" "1.2.0"
+    react-fast-compare "3.2.0"
+
+"@chakra-ui/system@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/@chakra-ui/system/-/system-1.3.1.tgz#65d5d6af288d4b04df088cf3e7c94c4c15b40dad"
+  integrity sha512-NMC0ajaCUIYnVxYBS3jRrgRmqK1p39MX1yB9J3BRgfVlKbDizkUOAJaqe+FX//3NVJ++QPJOjUu0azmlR6HYZw==
+  dependencies:
+    "@chakra-ui/color-mode" "1.1.0"
+    "@chakra-ui/styled-system" "1.7.1"
     "@chakra-ui/utils" "1.2.0"
     react-fast-compare "3.2.0"
 
@@ -2731,6 +2902,14 @@
     "@chakra-ui/theme-tools" "1.0.4"
     "@chakra-ui/utils" "1.2.0"
 
+"@chakra-ui/theme@1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@chakra-ui/theme/-/theme-1.6.2.tgz#6d1ff9ca0fb8461615cae9eb785e51c5faad6703"
+  integrity sha512-yM1pacXJfvpwjBUFvFQm/E3sG51/4IReKB6OB1ddr5i7Z/30cPzUQTeUrbfizGWMkrgMRy1ImEmZbo1ACN6gqw==
+  dependencies:
+    "@chakra-ui/theme-tools" "1.0.4"
+    "@chakra-ui/utils" "1.2.0"
+
 "@chakra-ui/toast@1.1.10":
   version "1.1.10"
   resolved "https://registry.npmjs.org/@chakra-ui/toast/-/toast-1.1.10.tgz#123ccbe2a7a60a1fd227706eb21da1411890cedf"
@@ -2744,6 +2923,19 @@
     "@chakra-ui/utils" "1.2.0"
     "@reach/alert" "0.13.0"
 
+"@chakra-ui/toast@1.1.11":
+  version "1.1.11"
+  resolved "https://registry.npmjs.org/@chakra-ui/toast/-/toast-1.1.11.tgz#1576385315fd894a6ae3fe2d56dacdb8072e9e2c"
+  integrity sha512-joeNDETyPIKdwc0YAq/Qjr68SriJU1nTH9KIkuGwmntHE859DtIhwXtAg7k4ZRoSTFEm3/xtFN7yk2aGhueO1w==
+  dependencies:
+    "@chakra-ui/alert" "1.1.1"
+    "@chakra-ui/close-button" "1.1.1"
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/theme" "1.6.2"
+    "@chakra-ui/transition" "1.0.8"
+    "@chakra-ui/utils" "1.2.0"
+    "@reach/alert" "0.13.0"
+
 "@chakra-ui/tooltip@1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@chakra-ui/tooltip/-/tooltip-1.1.1.tgz#50aaffbbd2a24e6d6a49717e314de5c87975466c"
@@ -2751,6 +2943,17 @@
   dependencies:
     "@chakra-ui/hooks" "1.1.4"
     "@chakra-ui/popper" "1.1.3"
+    "@chakra-ui/portal" "1.1.1"
+    "@chakra-ui/utils" "1.2.0"
+    "@chakra-ui/visually-hidden" "1.0.4"
+
+"@chakra-ui/tooltip@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/@chakra-ui/tooltip/-/tooltip-1.1.2.tgz#18372edbd92d8613d6c34c54f6adc8aefe6a501b"
+  integrity sha512-sT7PcgYqa5uvsTpXiCNOZxLhIPFWUtblWnMMyn3QIALsgrSkWCceNyIKs1fTCYVBowb30nYOX3owuoP4CsgWHw==
+  dependencies:
+    "@chakra-ui/hooks" "1.1.4"
+    "@chakra-ui/popper" "1.1.4"
     "@chakra-ui/portal" "1.1.1"
     "@chakra-ui/utils" "1.2.0"
     "@chakra-ui/visually-hidden" "1.0.4"
@@ -20619,7 +20822,7 @@ react-focus-lock@2.4.1:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-focus-lock@^2.1.0:
+react-focus-lock@2.5.0, react-focus-lock@^2.1.0:
   version "2.5.0"
   resolved "https://registry.npmjs.org/react-focus-lock/-/react-focus-lock-2.5.0.tgz#12e3a3940e897c26e2c2a0408cd25ea3c99b3709"
   integrity sha512-XLxj6uTXgz0US8TmqNU2jMfnXwZG0mH2r/afQqvPEaX6nyEll5LHVcEXk2XDUQ34RVeLPkO/xK5x6c/qiuSq/A==
@@ -20809,6 +21012,17 @@ react-remove-scroll@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.4.0.tgz#190c16eb508c5927595935499e8f5dd9ab0e75cf"
   integrity sha512-BZIO3GaEs0Or1OhA5C//n1ibUP1HdjJmqUVUsOCMxwoIpaCocbB9TFKwHOkBa/nyYy3slirqXeiPYGwdSDiseA==
+  dependencies:
+    react-remove-scroll-bar "^2.1.0"
+    react-style-singleton "^2.1.0"
+    tslib "^1.0.0"
+    use-callback-ref "^1.2.3"
+    use-sidecar "^1.0.1"
+
+react-remove-scroll@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.4.1.tgz#e0af6126621083a5064591d367291a81b2d107f5"
+  integrity sha512-K7XZySEzOHMTq7dDwcHsZA6Y7/1uX5RsWhRXVYv8rdh+y9Qz2nMwl9RX/Mwnj/j7JstCGmxyfyC0zbVGXYh3mA==
   dependencies:
     react-remove-scroll-bar "^2.1.0"
     react-style-singleton "^2.1.0"
