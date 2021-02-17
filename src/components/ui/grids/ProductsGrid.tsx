@@ -23,7 +23,7 @@ const ProductsGrid: FC<Props> = ({ prices }) => {
           name={price.product.name}
           description={price.product.description}
           price={price.unit_amount}
-          image={price.product.images[0]}
+          imageUrl={price.product.images[0]}
         />
       ))}
     </SimpleGrid>
