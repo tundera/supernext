@@ -26,8 +26,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const line_items = session.line_items.data as LineItem[]
   const customer = session.customer as Stripe.Customer
 
-  console.log(line_items)
-
   const orderItems = line_items.map((li) => ({
     quantity: li.quantity,
     total: li.amount_total,
@@ -37,8 +35,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
     },
   }))
-
-  console.log(orderItems)
 
   // create order and order items in GraphCMS
   const { order } = await graphCmsMutationClient.request(
@@ -62,8 +58,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
     },
   )
-
-  console.log(order)
 
   res.json({ message: 'success' })
 }

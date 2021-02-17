@@ -92,8 +92,6 @@ const PayBtn = ({ formattedPrice, slug }) => {
       }),
     }).then((resp) => resp.json())
 
-    console.dir(session)
-
     await stripe.redirectToCheckout({
       sessionId: session.id,
     })

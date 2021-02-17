@@ -51,8 +51,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
     res.json(session)
 
-    console.dir(session)
-
     return
   } catch (e) {
     res.json({ error: { message: e } })

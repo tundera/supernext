@@ -36,7 +36,6 @@ export const getStaticProps: GetStaticProps = async () => {
     `,
   )
 
-  console.dir(products, { colors: true, depth: null })
   return {
     props: {
       products: products.map((product) => ({
