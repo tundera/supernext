@@ -43,10 +43,6 @@ yarn-error.log*
 # prisma
 db/data/**
 
-# sanity
-/studio/node_modules
-/studio/dist
-
 # storybook
 /storybook-static
 

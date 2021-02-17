@@ -3,8 +3,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
-    "SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
-    "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
     "DATABASE_URL": "@tunderadev_database_url",
     "FORMSPREE_MAILCHIMP_API_KEY": "@tunderadev_formspree_mailchimp_api_key",
     "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key",
@@ -19,8 +17,6 @@
   },
   "build": {
     "env": {
-      "SANITY_API_TOKEN": "@tunderadev_sanity_api_token",
-      "SANITY_API_PREVIEW_SECRET": "@tunderadev_sanity_preview_secret",
       "DATABASE_URL": "@tunderadev_database_url",
       "STRIPE_SECRET_KEY": "@tunderadev_stripe_secret_key",
       "STRIPE_WEBHOOK_SECRET": "@tunderadev_stripe_webhook_secret",

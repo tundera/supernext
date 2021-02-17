@@ -28,7 +28,7 @@ module.exports = withMDX({
     locales: ['en', 'es'],
   },
   images: {
-    domains: ['cdn.sanity.io', 'media.graphcms.com', 'files.stripe.com', 'upload.wikimedia.org'],
+    domains: ['media.graphcms.com', 'files.stripe.com', 'upload.wikimedia.org'],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
