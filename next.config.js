@@ -34,6 +34,7 @@ module.exports = withMDX({
     if (!isServer) {
       config.resolve.fallback = {
         fs: false,
+        module: false,
       }
     }
 

@@ -20,5 +20,6 @@ module.exports = {
       },
     ],
     'superjson-next',
+    'babel-plugin-macros',
   ],
 }

@@ -10,6 +10,8 @@ import FormProvider from '@providers/FormProvider'
 import ThemeProvider from '@providers/ThemeProvider'
 import RootErrorFallback from '@components/utility/RootErrorFallback'
 
+import '../styles/globals.css'
+
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps, router, cookies }: EnhancedAppProps) {

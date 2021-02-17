@@ -1,15 +1,18 @@
-export default {
+import { merge } from 'merge-anything'
+import tailwindColors from '@styles/theme/colors/tailwind'
+
+const colors = merge(tailwindColors, {
   brand: {
-    50: '#eeebff',
-    100: '#cec5ee',
-    200: '#aea1df',
-    300: '#917bd0',
-    400: '#6a55c2',
-    500: '#4a3ca9',
-    600: '#332f84',
-    700: '#21215f',
-    800: '#13173b',
-    900: '#060819',
+    50: '#eef2ff',
+    100: '#e0e7ff',
+    200: '#c7d2fe',
+    300: '#a5b4fc',
+    400: '#818cf8',
+    500: '#6366f1',
+    600: '#4f46e5',
+    700: '#4338ca',
+    800: '#3730a3',
+    900: '#312e81',
   },
   gold: {
     50: '#faf3e4',
@@ -59,4 +62,6 @@ export default {
     800: '#142938',
     900: '#021017',
   },
-}
+})
+
+export default colors
