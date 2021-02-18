@@ -2,18 +2,7 @@ import type { FC } from 'react'
 
 // import NextLink from 'next/link'
 
-import {
-  useColorModeValue,
-  chakra,
-  Heading,
-  Text,
-  Button,
-  Container,
-  Box,
-  Flex,
-  List,
-  ListItem,
-} from '@chakra-ui/react'
+import { useColorModeValue, chakra, Heading, Text, Button, Box, Flex, List, ListItem } from '@chakra-ui/react'
 
 const FeaturesWithDesc: FC = () => {
   const bg = useColorModeValue('white', 'gray.800')
@@ -23,7 +12,20 @@ const FeaturesWithDesc: FC = () => {
 
   return (
     <section>
-      <Container bg={bg} maxW="7xl" mx="auto" p={{ base: '4', sm: '6', lg: '8' }}>
+      <Box
+        bg={bg}
+        mx="auto"
+        p={{ base: '4', sm: '6', lg: '8' }}
+        w="100%"
+        maxW={{
+          base: '7xl',
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1536px',
+        }}
+      >
         <Flex flexWrap="wrap" mx="-8">
           <Box w={{ base: 'full', lg: '50%' }} px="8">
             <Box mb={{ base: '12', lg: '0' }} pb={{ base: '12', lg: '0' }} borderBottomWidth={{ base: '1px', lg: '0' }}>
@@ -145,7 +147,7 @@ const FeaturesWithDesc: FC = () => {
             </List>
           </Box>
         </Flex>
-      </Container>
+      </Box>
     </section>
   )
 }
