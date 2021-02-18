@@ -1,26 +1,15 @@
-import type { DocumentContext } from 'next/document'
+// import type { DocumentContext } from 'next/document'
 
-import { extractCritical } from '@emotion/server'
 import { ColorModeScript } from '@chakra-ui/react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 import theme from 'styles/theme'
 
 export default class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const styles = extractCritical(initialProps.html)
-
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <style data-emotion-css={styles.ids.join(' ')} dangerouslySetInnerHTML={{ __html: styles.css }} />
-        </>
-      ),
-    }
-  }
+  // static async getInitialProps(ctx: DocumentContext) {
+  //   const initialProps = await Document.getInitialProps(ctx)
+  //   return initialProps
+  // }
 
   render() {
     return (

@@ -1,39 +1,63 @@
 import type { FC } from 'react'
 
+import { useColorModeValue, chakra, Box, Heading, Text, Flex, Button } from '@chakra-ui/react'
+
 type Props = {
   title: string
 }
 
 const Welcome: FC<Props> = ({ title }) => {
+  const bg = useColorModeValue('white', 'gray.800')
+  const color = useColorModeValue('black', 'white')
+
   return (
-    <div className="bg-white dark:bg-gray-800 ">
-      <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-        <h2 className="text-4xl font-extrabold text-black dark:text-white sm:text-6xl">
-          <span className="block">{title}</span>
-          <span className="block text-3xl text-indigo-500 sm:text-4xl">Built with Tailwind-Kit</span>
-        </h2>
-        <p className="text-xl mt-4 max-w-md mx-auto text-gray-400">
+    <Box bg={bg}>
+      <Box
+        textAlign="center"
+        w="full"
+        mx="auto"
+        py={{ base: '12', lg: '16' }}
+        px={{ base: '4', sm: '6', lg: '8' }}
+        zIndex="20"
+      >
+        <Heading as="h2" fontSize={{ base: '4xl', sm: '6xl' }} fontWeight="extrabold" color={color}>
+          <chakra.span display="block">{title}</chakra.span>
+          <chakra.span display="block" fontSize={{ base: '3xl', sm: '4xl' }} color="indigo.500">
+            Built with Tailwind-Kit
+          </chakra.span>
+        </Heading>
+        <Text fontSize="xl" mt="4" maxW="md" mx="auto" color="gray.400">
           Create dynamic, performant apps quickly with the power of Next.js + TailwindCSS combined with Emotion for
           CSS-in-JS styling.
-        </p>
-        <div className="lg:mt-0 lg:flex-shrink-0">
-          <div className="mt-12 inline-flex rounded-md shadow">
-            <button
+        </Text>
+        <Flex justify="center" mt={{ lg: '0' }} flexShrink={{ lg: 0 }}>
+          <Box mt="12" display="inline-flex" rounded="md" shadow="base">
+            <Button
+              as="a"
+              href="https://github.com/tundera/tw-next/blob/with-twin-macro/README.md"
+              target="_blank"
+              rel="noopener noreferrer"
               type="button"
-              className="bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 "
+              color="white"
+              bg="indigo.600"
+              shadow="md"
+              transition="ease-in"
+              transitionDuration="200ms"
+              w="full"
+              textAlign="center"
+              fontSize="md"
+              fontWeight="semibold"
+              py="2"
+              px="4"
+              rounded="lg"
+              _hover={{ bg: 'indigo.700' }}
             >
-              <a
-                href="https://github.com/tundera/tw-next/blob/with-twin-macro/README.md"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get started
-              </a>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+              Get started
+            </Button>
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
   )
 }
 
