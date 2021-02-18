@@ -24,6 +24,7 @@ const FeaturesWithFourImages: FC = () => {
   return (
     <Box
       position="relative"
+      p="4"
       px={{ base: '4', sm: '6', lg: '8' }}
       py="26"
       mt={{ lg: '20' }}
@@ -35,9 +36,9 @@ const FeaturesWithFourImages: FC = () => {
         <Box
           display={{ lg: 'grid' }}
           gridAutoFlow={{ lg: 'row dense' }}
-          gridTemplateColumns={{ lg: '2' }}
-          gridGap={{ lg: '8' }}
+          gridTemplateColumns={{ lg: 'repeat(2, minmax(0, 1fr))' }}
           alignItems={{ lg: 'center' }}
+          gridGap={{ lg: '8' }}
         >
           <Box gridColumnStart={{ lg: '2' }} maxW={{ lg: '2xl' }} ml="auto">
             <Text fontSize="md" fontWeight="semibold" textTransform="uppercase" lineHeight="6" color="indigo.500">
