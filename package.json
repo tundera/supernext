@@ -16,13 +16,14 @@
     "schema": "db/schema.prisma"
   },
   "scripts": {
-    "postinstall": "prisma generate && husky install",
+    "postinstall": "yarn generate:theme-typings && prisma generate && husky install",
     "dev": "docker-compose up -d && NODE_OPTIONS='--inspect' next",
     "start": "docker-compose up -d && next start",
     "test": "jest --passWithNoTests",
     "test:ci": "jest --passWithNoTests --runInBand",
     "test:coverage": "jest --passWithNoTests --coverage",
     "test:generate-output": "jest --passWithNoTests --json --outputFile=.jest-test-results.json || true",
+    "generate:theme-typings": "chakra-cli tokens styles/theme/index.ts",
     "generate:page:ssr": "next-codegen page --ssr",
     "generate:page:ssg": "next-codegen page --ssg",
     "generate:api": "next-codegen api",
@@ -156,6 +157,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/plugin-proposal-decorators": "^7.12.13",
+    "@chakra-ui/cli": "^1.2.1",
     "@cypress/react": "^4.16.4",
     "@graphql-codegen/cli": "^1.20.1",
     "@graphql-codegen/typescript": "^1.21.0",

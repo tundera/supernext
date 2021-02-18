@@ -1,6 +1,6 @@
 import type { CustomNextPage as NextPage } from 'types'
 
-import { Flex, Heading, Divider } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 // import { useQuery } from 'react-query'
 
 import { getLayout } from '@components/layouts/SiteLayout'

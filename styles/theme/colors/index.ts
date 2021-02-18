@@ -1,5 +1,5 @@
 import { merge } from 'merge-anything'
-import tailwindColors from '@styles/theme/colors/tailwind'
+import tailwindColors from './tailwind'
 
 const colors = merge(tailwindColors, {
   brand: {
