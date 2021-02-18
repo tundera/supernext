@@ -32,7 +32,7 @@ const FeaturesWithImages: FC = () => {
 
         <Box position="relative" mt="10" mx={{ base: '-4', md: '-12' }} gridColumnStart={{ lg: '1' }}>
           <Image
-            src="/static/images/tailwind/features-with-images.jpg"
+            src="/static/images/tailwind/object/8.jpg"
             mx="auto"
             w="auto"
             shadow="lg"
