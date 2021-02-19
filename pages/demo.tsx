@@ -6,7 +6,7 @@ import { Flex, Heading } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
 // import { getData } from '@lib/data'
 
-import SimpleFooter from '@components/ui/tailwind/footers/SimpleFooter'
+import SidebarWithIcons from '@components/ui/tailwind/sidebars/SidebarWithIcons'
 
 const TailwindPage: NextPage = () => {
   // const { data, isLoading, isError, error } = useQuery('key', getData)
@@ -17,7 +17,7 @@ const TailwindPage: NextPage = () => {
         <Heading as="h1" py="10">
           Tailwind Page
         </Heading>
-        <SimpleFooter />
+        <SidebarWithIcons />
       </Flex>
     </>
   )

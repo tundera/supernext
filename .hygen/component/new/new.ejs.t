@@ -1,5 +1,5 @@
 ---
-to: src/components/<%=type%>/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>.tsx
+to: src/components/<%=type%>/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>/index.tsx
 ---
 <% formattedPath = h.camelizedPathName(name) -%>
 <% component = h.camelizedBaseName(name) -%>

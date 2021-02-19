@@ -7,14 +7,10 @@ to: pages/<%= name %>.tsx
 import type { CustomNextPage as NextPage } from 'types'
 
 import { Flex, Heading } from '@chakra-ui/react'
-// import { useQuery } from 'react-query'
 
 import { getLayout } from '@components/layouts/SiteLayout'
-// import { getData } from '@lib/data'
 
 const <%= pageName %>: NextPage = () => {
-  // const { data, isLoading, isError, error } = useQuery('key', getData)
-
   return (
     <>
       <Flex flexDir="column" alignItems="center">
