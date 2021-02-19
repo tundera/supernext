@@ -8,7 +8,6 @@ import { getLayout } from '@components/layouts/SiteLayout'
 import ProductCard from '@components/ui/cards/products/ProductCard'
 import { formatCurrencyValue } from '@lib/graphcms/helpers'
 import { graphCmsClient } from '@lib/graphcms/client'
-import Welcome from '@components/ui/tailwind/Welcome'
 
 import { Grid, Flex, GridItem, Text, Heading, Box, LinkBox, LinkOverlay } from '@chakra-ui/react'
 
@@ -50,7 +49,6 @@ const StorePage: NextPage<Props> = ({ products }) => {
   return (
     <>
       <Flex flexDir="column" alignItems="center">
-        <Welcome title="Shop" />
         <Box borderBottom="1px" py="4" my="2">
           <Heading as="h1" fontWeight="semibold" size="3xl">
             Products

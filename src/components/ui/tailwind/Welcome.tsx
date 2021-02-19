@@ -2,11 +2,7 @@ import type { FC } from 'react'
 
 import { useColorModeValue, chakra, Box, Heading, Text, Flex, Button } from '@chakra-ui/react'
 
-type Props = {
-  title: string
-}
-
-const Welcome: FC<Props> = ({ title }) => {
+const CallWithDescription: FC = () => {
   const bg = useColorModeValue('white', 'gray.800')
   const color = useColorModeValue('black', 'white')
 
@@ -21,14 +17,14 @@ const Welcome: FC<Props> = ({ title }) => {
         zIndex="20"
       >
         <Heading as="h2" fontSize={{ base: '4xl', sm: '6xl' }} fontWeight="extrabold" color={color}>
-          <chakra.span display="block">{title}</chakra.span>
+          <chakra.span display="block">Want to be millionaire ?</chakra.span>
           <chakra.span display="block" fontSize={{ base: '3xl', sm: '4xl' }} color="indigo.500">
-            Built with Tailwind-Kit
+            It&apos;s today or never.
           </chakra.span>
         </Heading>
         <Text fontSize="xl" mt="4" maxW="md" mx="auto" color="gray.400">
-          Create dynamic, performant apps quickly with the power of Next.js + TailwindCSS combined with Emotion for
-          CSS-in-JS styling.
+          I had noticed that both in the very poor and very rich extremes of society the mad were often allowed to
+          mingle freely
         </Text>
         <Flex justify="center" mt={{ lg: '0' }} flexShrink={{ lg: 0 }}>
           <Box mt="12" display="inline-flex" rounded="md" shadow="base">
@@ -61,4 +57,4 @@ const Welcome: FC<Props> = ({ title }) => {
   )
 }
 
-export default Welcome
+export default CallWithDescription
