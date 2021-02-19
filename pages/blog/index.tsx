@@ -1,38 +1,38 @@
 import type { GetStaticProps } from 'next'
 import type { CustomNextPage as NextPage } from 'types'
-import type { Article } from 'content/types'
+import type { Post } from 'content/types'
 
-import { Stack, Heading, Flex } from '@chakra-ui/react'
-
+import { Flex, Stack, Heading } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
+import { POSTS_PER_PAGE } from 'src/utils/constants'
+import PostsList from '@components/ui/lists/PostsList'
 import Pagination from '@components/utility/Pagination'
-import ArticlesList from '@components/ui/lists/ArticlesList'
 import { getContentItems } from '@lib/content'
 
 interface Props {
-  articles: Article[]
+  posts: Post[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const articles = await getContentItems('articles')
+  const posts = await getContentItems('posts')
 
   return {
     props: {
-      articles,
+      posts,
     },
     revalidate: 1,
   }
 }
 
-const ArticlesPage: NextPage<Props> = ({ articles }) => {
+const PostsPage: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <Flex alignItems="center" justifyContent="center">
         <Stack spacing={8}>
           <Heading as="h1" size="xl">
-            Articles
+            Posts
           </Heading>
-          <ArticlesList title="Recent Articles" articles={articles} />
+          <PostsList title="Recent Posts" posts={posts} />
           <Pagination />
         </Stack>
       </Flex>
@@ -40,6 +40,6 @@ const ArticlesPage: NextPage<Props> = ({ articles }) => {
   )
 }
 
-ArticlesPage.getLayout = getLayout
+PostsPage.getLayout = getLayout
 
-export default ArticlesPage
+export default PostsPage

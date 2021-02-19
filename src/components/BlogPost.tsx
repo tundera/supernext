@@ -81,9 +81,9 @@ const BlogPost: FC<Props> = ({ slug, author, date, title }) => {
               as={NextLink}
               href="#"
             >
-              {author.name}
+              {author}
             </Link>
-            <Avatar size="sm" src={author.photo.responsiveImage.src} mx="2" />
+            {/* <Avatar size="sm" src={author.avatar} mx="2" /> */}
           </Flex>
         </Flex>
       </Box>

@@ -1,26 +1,34 @@
-import { Flex, useColorModeValue, Text } from '@chakra-ui/react'
-import { format } from 'light-date'
-import BlogPost from '@components/BlogPost'
+import type { FC } from 'react'
+import type { Post } from 'content/types'
 
-const PostsList = ({ posts }) => {
+import { Box, Text, Heading, List, ListItem, ListIcon } from '@chakra-ui/react'
+import { MdBookmark } from 'react-icons/md'
+import NextLink from 'next/link'
+
+interface Props {
+  title: string
+  posts?: Post[]
+}
+
+const PostsList: FC<Props> = ({ title, posts }) => {
   return (
-    <Flex flexDir="column" maxW="1440px" w="100%" mx="auto" paddingX={{ sm: '10', lg: '24' }} boxSizing="border-box">
-      {posts.length === 0 ? (
-        <Text textAlign="center" fontWeight="bold" fontSize="3xl" my="40">
-          No posts found!
-        </Text>
+    <Box bg="purple.100" p={2} borderRadius={8} alignItems="center" justifyContent="center">
+      <Heading p={2} my={1}>
+        {title}
+      </Heading>
+      {posts ? (
+        <List spacing={3}>
+          {posts.map((article) => (
+            <ListItem key={article.slug}>
+              <ListIcon as={MdBookmark} />
+              <NextLink href={`/blog/${article.slug}`}>{article.frontMatter.title}</NextLink>
+            </ListItem>
+          ))}
+        </List>
       ) : (
-        posts.map((post) => (
-          <BlogPost
-            key={post.slug}
-            slug={post.slug}
-            author={post.author}
-            date={format(new Date(post.date), '{MM}/{dd}/{yyyy}')}
-            title={post.title}
-          />
-        ))
+        <Text textAlign="center">No recent posts.</Text>
       )}
-    </Flex>
+    </Box>
   )
 }
 

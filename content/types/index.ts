@@ -13,3 +13,9 @@ export type Article = {
   content: string
   frontMatter: FrontMatter
 }
+
+export type Post = {
+  slug: string
+  content: string
+  frontMatter: FrontMatter
+}
