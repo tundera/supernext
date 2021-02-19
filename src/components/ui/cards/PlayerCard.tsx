@@ -3,7 +3,7 @@ import type { Player } from '@prisma/client'
 
 import { Image } from 'cloudinary-react'
 
-import { Button, Badge, Heading, Flex, Spacer, VStack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Button, Heading, Flex, Spacer, VStack, Text, useColorModeValue } from '@chakra-ui/react'
 
 interface Props {
   player: Player

@@ -1,10 +1,9 @@
 import type { FC } from 'react'
 
-import NextLink from 'next/link'
 import Image from 'next/image'
 
 import { formatCurrencyValue } from '@lib/graphcms/helpers'
-import { useColorModeValue, Box, Flex, Grid, GridItem, Heading, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
 
 type Order = any
 
@@ -14,9 +13,6 @@ interface Props {
 }
 
 const OrderSummary: FC<Props> = ({ order, working }) => {
-  const bg = useColorModeValue('brand.500', 'whiteAlpha.900')
-  const color = useColorModeValue('whiteAlpha.900', 'brand.500')
-
   if (working)
     return (
       <Box py="8" textAlign="center">

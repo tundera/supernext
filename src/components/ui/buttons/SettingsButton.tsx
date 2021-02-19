@@ -5,7 +5,6 @@ import {
   Button,
   IconButton,
   Menu,
-  Avatar,
   MenuButton,
   MenuGroup,
   MenuItem,

@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import NextLink from 'next/link'
-import { chakra, useColorModeValue, Text, Flex, Box, Link, Avatar } from '@chakra-ui/react'
+import { chakra, useColorModeValue, Text, Flex, Box, Link } from '@chakra-ui/react'
 
 interface Props {
   slug: string

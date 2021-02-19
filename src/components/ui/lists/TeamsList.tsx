@@ -1,4 +1,4 @@
-import { SimpleGrid, Spinner, Skeleton } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 
 import TeamCard from '@components/ui/cards/TeamCard'
 

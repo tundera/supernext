@@ -3,22 +3,16 @@ import { Session, signOut } from 'next-auth/client'
 
 import NextLink from 'next/link'
 import { signIn } from 'next-auth/client'
-import { AiOutlineMenu, AiFillBell, AiOutlineSearch } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 import {
-  chakra,
   useColorModeValue,
   useDisclosure,
   HStack,
   Box,
-  Avatar,
   IconButton,
   Button,
   VStack,
-  VisuallyHidden,
   CloseButton,
-  InputGroup,
-  Input,
-  InputLeftElement,
 } from '@chakra-ui/react'
 
 import NavButton from '@components/NavButton'
