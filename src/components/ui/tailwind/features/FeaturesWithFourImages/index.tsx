@@ -1,128 +1,205 @@
 import type { FC } from 'react'
 
-import { useColorModeValue, Box, Image, Heading } from '@chakra-ui/react'
-import FeaturesList from '@components/ui/tailwind/features/FeaturesWithImages/FeaturesList'
+import {
+  useColorModeValue,
+  chakra,
+  Icon,
+  Box,
+  Stack,
+  Flex,
+  Text,
+  Image,
+  Heading,
+  List,
+  ListItem,
+  HStack,
+} from '@chakra-ui/react'
 
-const FeaturesWithImages: FC = () => {
+const CheckIcon = (props) => (
+  <Icon viewBox="0 0 20 20" {...props}>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+      clipRule="evenodd"
+    />
+  </Icon>
+)
+
+const FeaturesWithFourImages: FC = () => {
   const bg = useColorModeValue('white', 'gray.800')
-  const textColor = useColorModeValue('gray.900', 'white')
+  const headingColor = useColorModeValue('gray.900', 'white')
+  const textColor = useColorModeValue('gray.500', 'gray.300')
+  const listItemColor = useColorModeValue('gray.500', 'gray.200')
+  const iconBg = useColorModeValue('green.100', 'transparent')
+  const iconColor = useColorModeValue('green.800', 'green.500')
 
   return (
-    <div className="max-w-screen-xl p-4 bg-white dark:bg-gray-800 mx-auto px-4 sm:px-6 lg:px-8 relative py-26 lg:mt-20">
-      <div className="relative">
-        <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-          <div className="lg:col-start-2 lg:max-w-2xl ml-auto">
-            <p className="text-base leading-6 text-indigo-500 font-semibold uppercase">Interactive</p>
-            <h4 className="mt-2 text-2xl leading-8 font-extrabold text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
+    <Box
+      position="relative"
+      p="4"
+      px={{ base: '4', sm: '6', lg: '8' }}
+      py="26"
+      mt={{ lg: '20' }}
+      mx="auto"
+      bg={bg}
+      maxW="1280px"
+    >
+      <Box position="relative">
+        <Box
+          display={{ lg: 'grid' }}
+          gridAutoFlow={{ lg: 'row dense' }}
+          gridTemplateColumns={{ lg: 'repeat(2, minmax(0, 1fr))' }}
+          alignItems={{ lg: 'center' }}
+          gridGap={{ lg: '8' }}
+        >
+          <Box gridColumnStart={{ lg: '2' }} maxW={{ lg: '2xl' }} ml="auto">
+            <Text fontSize="md" fontWeight="semibold" textTransform="uppercase" lineHeight="6" color="indigo.500">
+              Interactive
+            </Text>
+            <Heading
+              as="h4"
+              mt="2"
+              color={headingColor}
+              fontSize={{ base: '2xl', sm: '3xl' }}
+              fontWeight="extrabold"
+              lineHeight={{ base: '8', sm: '9' }}
+            >
               Interactivity between team members is the key of the success.
-            </h4>
-            <p className="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300">
+            </Heading>
+            <Text mt="4" fontSize="lg" lineHeight="6" color={textColor}>
               Build a simply and powered collaborative space for all your team. Track, share, measure, you have a fully
               control, it&#x27;s never be simply and efficient.
-            </p>
-            <ul className="mt-8 md:grid md:grid-cols-2 gap-6">
-              <li className="mt-6 lg:mt-0">
-                <div className="flex">
-                  <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-800 dark:text-green-500 dark:bg-transparent">
-                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-4 text-base leading-6 font-medium text-gray-500 dark:text-gray-200">
+            </Text>
+            <List mt="8" display={{ md: 'grid' }} gridTemplateColumns={{ md: 'repeat(2, minmax(0, 1fr))' }} gridGap="6">
+              <ListItem mt={{ base: '6', lg: '0' }}>
+                <Flex>
+                  <chakra.span
+                    display="flex"
+                    height="6"
+                    width="6"
+                    flexShrink={0}
+                    alignItems="center"
+                    justifyContent="center"
+                    rounded="full"
+                    bg={iconBg}
+                    color={iconColor}
+                  >
+                    <CheckIcon w="4" h="4" />
+                  </chakra.span>
+                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
                     Live modifications
-                  </span>
-                </div>
-              </li>
-              <li className="mt-6 lg:mt-0">
-                <div className="flex">
-                  <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-800 dark:text-green-500 dark:bg-transparent">
-                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-4 text-base leading-6 font-medium text-gray-500 dark:text-gray-200">
+                  </chakra.span>
+                </Flex>
+              </ListItem>
+              <ListItem mt={{ base: '6', lg: '0' }}>
+                <Flex>
+                  <chakra.span
+                    display="flex"
+                    height="6"
+                    width="6"
+                    flexShrink={0}
+                    alignItems="center"
+                    justifyContent="center"
+                    rounded="full"
+                    bg={iconBg}
+                    color={iconColor}
+                  >
+                    <CheckIcon w="4" h="4" />
+                  </chakra.span>
+                  <chakra.span ml="4" lineHeight="6" fontSize="md" fontWeight="md" color={listItemColor}>
                     Data tracker
-                  </span>
-                </div>
-              </li>
-              <li className="mt-6 lg:mt-0">
-                <div className="flex">
-                  <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-800 dark:text-green-500 dark:bg-transparent">
-                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-4 text-base leading-6 font-medium text-gray-500 dark:text-gray-200">
+                  </chakra.span>
+                </Flex>
+              </ListItem>
+              <ListItem mt={{ base: '6', lg: '0' }}>
+                <Flex>
+                  <chakra.span
+                    display="flex"
+                    height="6"
+                    width="6"
+                    flexShrink={0}
+                    alignItems="center"
+                    justifyContent="center"
+                    rounded="full"
+                    bg={iconBg}
+                    color={iconColor}
+                  >
+                    <CheckIcon w="4" h="4" />
+                  </chakra.span>
+                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
                     24/24 support
-                  </span>
-                </div>
-              </li>
-              <li className="mt-6 lg:mt-0">
-                <div className="flex">
-                  <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-800 dark:text-green-500 dark:bg-transparent">
-                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-4 text-base leading-6 font-medium text-gray-500 dark:text-gray-200">
+                  </chakra.span>
+                </Flex>
+              </ListItem>
+              <ListItem mt={{ base: '6', lg: '0' }}>
+                <Flex>
+                  <chakra.span
+                    display="flex"
+                    height="6"
+                    width="6"
+                    flexShrink={0}
+                    alignItems="center"
+                    justifyContent="center"
+                    rounded="full"
+                    bg={iconBg}
+                    color={iconColor}
+                  >
+                    <CheckIcon w="4" h="4" />
+                  </chakra.span>
+                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
                     Free tips to improve work time
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div className="mt-10 lg:-mx-4 relative relative-20 lg:mt-0 lg:col-start-1">
-            <div className="relative space-y-4">
-              <div className="flex items-end justify-center lg:justify-start space-x-4">
-                <img
-                  className="rounded-lg shadow-lg w-32 md:w-56"
-                  width="200"
+                  </chakra.span>
+                </Flex>
+              </ListItem>
+            </List>
+          </Box>
+          <Box position="relative" mt={{ base: '10', lg: '0' }} gridColumnStart={{ lg: '1' }} mx={{ lg: '-4' }}>
+            <Stack position="relative" spacing="4">
+              <HStack display="flex" alignItems="flex-end" justify={{ base: 'center', lg: 'start' }} spacing="4">
+                <Image
+                  rounded="lg"
+                  shadow="lg"
+                  w={{ base: '32', md: '56' }}
                   src="/static/images/tailwind/object/8.jpg"
                   alt="1"
                 />
-                <img
-                  className="rounded-lg shadow-lg w-40 md:w-64"
-                  width="260"
+                <Image
+                  rounded="lg"
+                  shadow="lg"
+                  w={{ base: '40', md: '64' }}
                   src="/static/images/tailwind/landscape/4.jpg"
                   alt="2"
                 />
-              </div>
-              <div className="flex items-start justify-center lg:justify-start space-x-4 ml-12">
-                <img
-                  className="rounded-lg shadow-lg w-24 md:w-40"
-                  width="170"
+              </HStack>
+              <HStack
+                display="flex"
+                alignItems="flex-start"
+                justifyContent={{ base: 'center', lg: 'start' }}
+                spacing="4"
+              >
+                <Image
+                  ml="12"
+                  rounded="lg"
+                  shadow="lg"
+                  w={{ base: '24', md: '40' }}
                   src="/static/images/tailwind/landscape/3.jpg"
                   alt="3"
                 />
-                <img
-                  className="rounded-lg shadow-lg w-32 md:w-56"
-                  width="200"
+                <Image
+                  rounded="lg"
+                  shadow="lg"
+                  w={{ base: '32', md: '56' }}
                   src="/static/images/tailwind/object/9.jpg"
                   alt="4"
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              </HStack>
+            </Stack>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
-export default FeaturesWithImages
+export default FeaturesWithFourImages

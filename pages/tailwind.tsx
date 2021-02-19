@@ -7,7 +7,6 @@ import { getLayout } from '@components/layouts/SiteLayout'
 // import { getData } from '@lib/data'
 
 import FeaturesWithFourImages from '@components/ui/tailwind/features/FeaturesWithFourImages'
-import AltFeaturesWithFourImages from '@components/ui/tailwind/features/FeaturesWithFourImages/Alt'
 
 const TailwindPage: NextPage = () => {
   // const { data, isLoading, isError, error } = useQuery('key', getData)
@@ -19,7 +18,6 @@ const TailwindPage: NextPage = () => {
           Tailwind Page
         </Heading>
         <FeaturesWithFourImages />
-        <AltFeaturesWithFourImages />
       </Flex>
     </>
   )
