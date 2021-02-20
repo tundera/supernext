@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 
-import { useColorModeValue, chakra, Box, Heading, Text, Flex, Button } from '@chakra-ui/react'
+import { useColorModeValue, chakra, Box, Heading, Flex, Button } from '@chakra-ui/react'
 
-const CallWithDescription: FC = () => {
+const CtaVertical: FC = () => {
   const bg = useColorModeValue('white', 'gray.800')
   const color = useColorModeValue('black', 'white')
 
@@ -22,10 +22,6 @@ const CallWithDescription: FC = () => {
             It&apos;s today or never.
           </chakra.span>
         </Heading>
-        <Text fontSize="xl" mt="4" maxW="md" mx="auto" color="gray.400">
-          I had noticed that both in the very poor and very rich extremes of society the mad were often allowed to
-          mingle freely
-        </Text>
         <Flex justify="center" mt={{ lg: '0' }} flexShrink={{ lg: 0 }}>
           <Box mt="12" display="inline-flex" rounded="md" shadow="base">
             <Button
@@ -57,4 +53,4 @@ const CallWithDescription: FC = () => {
   )
 }
 
-export default CallWithDescription
+export default CtaVertical
