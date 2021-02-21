@@ -20677,14 +20677,14 @@ react-dom-confetti@^0.2.0:
   dependencies:
     dom-confetti "0.2.2"
 
-react-dom@^0.0.0-experimental-696e736be:
-  version "0.0.0-experimental-696e736be"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-experimental-696e736be.tgz#0b245b849a36d8302b7fdf83194029266beda129"
-  integrity sha512-EobLtP5JhaUkerntpTNfF4rXnV7N6jheoWSMWAMVMfLarnl65Sd9aSvpozuff16GFcAXNxJ3qS7gGzNKsurT1A==
+react-dom@^0.0.0-experimental-8af27aeed:
+  version "0.0.0-experimental-8af27aeed"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-experimental-8af27aeed.tgz#42707f6165ad2e8aa628f4fc79982ea4c008ce49"
+  integrity sha512-SEi1V174bXDppRl/F1ZxQpP7rgw94FA2F3z0mEMVmn/Gb9e4QUN6znySMTM8rNpYh7/ogr8JTVxmkkwy9ItjSg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    scheduler "0.0.0-experimental-696e736be"
+    scheduler "0.0.0-experimental-8af27aeed"
 
 react-dom@^16.8.3, react-dom@^16.9.0:
   version "16.14.0"
@@ -21037,10 +21037,10 @@ react@0.0.0-experimental-3310209d0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-react@^0.0.0-experimental-696e736be:
-  version "0.0.0-experimental-696e736be"
-  resolved "https://registry.npmjs.org/react/-/react-0.0.0-experimental-696e736be.tgz#7be34bc532fc92b878b98669d6464c380a714dca"
-  integrity sha512-2kYyz6i/lb63Kyv4tNe+lGWrC2I2suunSdKCpd2RuE3r/V8+avl00W6UbDTRjXMTXcCvw2S5cl5zRqgxjvKpgg==
+react@^0.0.0-experimental-8af27aeed:
+  version "0.0.0-experimental-8af27aeed"
+  resolved "https://registry.npmjs.org/react/-/react-0.0.0-experimental-8af27aeed.tgz#d8814fffd1949d936d1160add24247da2f5a5fe0"
+  integrity sha512-B0zMH8FEmPnMTMra/2kYoe8La4lr8IFGo7bSvNFSJ7ahCuxlirD1gQ/yabXaQ3cR0NgKIQ7Xjwx32rk9S33tdw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -22111,10 +22111,10 @@ saxes@^5.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@0.0.0-experimental-696e736be:
-  version "0.0.0-experimental-696e736be"
-  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.0.0-experimental-696e736be.tgz#b1c5e858e93b4ce88b0b1312027ed1126eab68ee"
-  integrity sha512-QSaoO6VqgQ8DcG00tbmgZU/4uw7tOEH08yL6Xq074T7G3r2PpI68FF5Gk15YXjJXQ+t6hWrYh1lCL86+gzbs5Q==
+scheduler@0.0.0-experimental-8af27aeed:
+  version "0.0.0-experimental-8af27aeed"
+  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.0.0-experimental-8af27aeed.tgz#39e38acd8517e7e35b70c163d6f8fd70ba7601cc"
+  integrity sha512-DSAjFXBOiWLAYdOTWauawPkRI57OTWz5mCI3OleTJJRqPU7hHWp2q4oxL1QPt/eatrNU7gDgdWW5IM3UXYuBSQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

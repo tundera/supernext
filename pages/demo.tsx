@@ -6,7 +6,8 @@ import { Box, Flex, Heading } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
 // import { getData } from '@lib/data'
 
-import CtaWithSubAndImage from '@components/ui/tailwind/ctas/CtaWithSubAndImage'
+import WatchCta from '@components/ui/tailwind/ctas/WatchCta'
+// import Alt from '@components/ui/tailwind/ctas/WatchCta/Alt'
 
 const TailwindPage: NextPage = () => {
   // const { data, isLoading, isError, error } = useQuery('key', getData)
@@ -18,7 +19,8 @@ const TailwindPage: NextPage = () => {
           Tailwind Page
         </Heading>
         <Box w="full">
-          <CtaWithSubAndImage />
+          <WatchCta />
+          {/* <Alt /> */}
         </Box>
       </Flex>
     </>
