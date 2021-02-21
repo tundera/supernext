@@ -7,7 +7,6 @@ import path from 'path'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 
-import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import { Stack, Text, Flex } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
@@ -86,10 +85,6 @@ const PostPage: NextPage<Props> = ({ post, frontMatter }) => {
     )
   }
 
-  if (!router.isFallback && !post.slug) {
-    return <ErrorPage statusCode={404} />
-  }
-
   return (
     <>
       <NextSeo
@@ -114,27 +109,25 @@ const PostPage: NextPage<Props> = ({ post, frontMatter }) => {
         }}
       />
       <Flex color="blackAlpha.800" bg="whiteAlpha.900" alignItems="center" justifyContent="center">
-        {post && (
-          <Stack
-            as="article"
-            spacing={8}
-            justifyContent="center"
-            alignItems="start"
-            m="0 auto 4rem auto"
-            w={{ base: '100%', lg: '650px' }}
-          >
-            <Text fontSize="6xl" fontWeight="extrabold">
-              {post.title}
-            </Text>
-            <Flex flexDir="column" alignItems="center" position="relative">
-              <img src={post.image} alt={post.title} />
-            </Flex>
-            <Text color="blackAlpha.800" fontWeight="bold">
-              {post.author} {' • '} {post.date}
-            </Text>
-            <MDXProvider components={mdxComponents}>{renderedContent}</MDXProvider>
-          </Stack>
-        )}
+        <Stack
+          as="article"
+          spacing={8}
+          justifyContent="center"
+          alignItems="start"
+          m="0 auto 4rem auto"
+          w={{ base: '100%', lg: '650px' }}
+        >
+          <Text fontSize="6xl" fontWeight="extrabold">
+            {frontMatter.title}
+          </Text>
+          <Flex flexDir="column" alignItems="center" position="relative">
+            <img src={frontMatter.image} alt={frontMatter.title} />
+          </Flex>
+          <Text color="blackAlpha.800" fontWeight="bold">
+            {frontMatter.author} {' • '} {frontMatter.publishedAt}
+          </Text>
+          <MDXProvider components={mdxComponents}>{renderedContent}</MDXProvider>
+        </Stack>
       </Flex>
     </>
   )

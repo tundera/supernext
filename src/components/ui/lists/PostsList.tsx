@@ -18,10 +18,10 @@ const PostsList: FC<Props> = ({ title, posts }) => {
       </Heading>
       {posts ? (
         <List spacing={3}>
-          {posts.map((article) => (
-            <ListItem key={article.slug}>
+          {posts.map((post) => (
+            <ListItem key={post.slug}>
               <ListIcon as={MdBookmark} />
-              <NextLink href={`/blog/${article.slug}`}>{article.frontMatter.title}</NextLink>
+              <NextLink href={`/blog/${post.slug}`}>{post.frontMatter.title}</NextLink>
             </ListItem>
           ))}
         </List>

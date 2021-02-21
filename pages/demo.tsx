@@ -1,13 +1,10 @@
 import type { CustomNextPage as NextPage } from 'types'
 
-import { Box, Flex, Heading } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 // import { useQuery } from 'react-query'
 
 import { getLayout } from '@components/layouts/SiteLayout'
 // import { getData } from '@lib/data'
-
-import WatchCta from '@components/ui/tailwind/ctas/WatchCta'
-// import Alt from '@components/ui/tailwind/ctas/WatchCta/Alt'
 
 const TailwindPage: NextPage = () => {
   // const { data, isLoading, isError, error } = useQuery('key', getData)
@@ -19,8 +16,7 @@ const TailwindPage: NextPage = () => {
           Tailwind Page
         </Heading>
         <Box w="full">
-          <WatchCta />
-          {/* <Alt /> */}
+          <Text>Testing tailwind components</Text>
         </Box>
       </Flex>
     </>
