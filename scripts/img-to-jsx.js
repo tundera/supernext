@@ -1,7 +1,8 @@
-import visit from 'unist-util-visit'
-import sizeOf from 'image-size'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const sizeOf = require('image-size')
+const visit = require('unist-util-visit')
 
-const imgToJsx = (options) => (tree) => {
+module.exports = (options) => (tree) => {
   visit(
     tree,
     // only visit p tags that contain an img element
@@ -25,5 +26,3 @@ const imgToJsx = (options) => (tree) => {
     },
   )
 }
-
-export default imgToJsx
