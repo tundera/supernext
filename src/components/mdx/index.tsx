@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import Image from 'next/image'
 import { preToCodeBlock } from 'mdx-utils'
 import { Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
@@ -34,4 +35,5 @@ export const mdxComponents = {
   },
   Header,
   SocialLinks,
+  Image,
 }
