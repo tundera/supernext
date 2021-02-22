@@ -6,23 +6,23 @@ to: src/components/<%=type%>/<%= [h.inflection.camelize(h.dirName(name)), h.came
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import <% component %> from '@components/layouts/<%component %>'
+import <%= component %> from '@components/<%=type%>/<%=formattedPath%>'
 // import * as DependentStories from './Dependent.stories'
 
 export default {
-  title: '<% component %>',
-  component: <<% component %>>,
+  title: '<%= component %>',
+  component: <%= component %>,
 } as Meta
 
-const Template: Story = (args) => <<% component %>> {...args} />
+const Template: Story = (args) => <<%= component %> title="<%= component %> Story" {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-//   ...DependentStories.Default.args,
+  //   ...DependentStories.Default.args,
 }
 
 export const Preview = Template.bind({})
 Preview.args = {
-//   ...DependentStories.Default.args,
+  //   ...DependentStories.Default.args,
   preview: true,
 }

@@ -23,7 +23,6 @@ const CommentFeed: FC = () => {
 
   return (
     <Box as="article" bg={bg} color={color}>
-      <Heading as="h2">{title}</Heading>
       <Text>Add a description for your blog post here.</Text>
       <Box>
         {/* <Text>
