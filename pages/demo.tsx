@@ -6,6 +6,8 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
 // import { getData } from '@lib/data'
 
+import LoginForm from '@components/ui/tailwind/forms/LoginForm'
+
 const TailwindPage: NextPage = () => {
   // const { data, isLoading, isError, error } = useQuery('key', getData)
 
@@ -15,9 +17,7 @@ const TailwindPage: NextPage = () => {
         <Heading as="h1" py="10">
           Tailwind Page
         </Heading>
-        <Box w="full">
-          <Text>Testing tailwind components</Text>
-        </Box>
+        <LoginForm />
       </Flex>
     </>
   )

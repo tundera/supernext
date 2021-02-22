@@ -7,14 +7,14 @@ import { getLayout } from '@components/layouts/SiteLayout'
 import { POSTS_PER_PAGE } from 'src/utils/constants'
 import PostsList from '@components/ui/lists/PostsList'
 import Pagination from '@components/utility/Pagination'
-import { getContentItems } from '@lib/content'
+import { getContentFiles } from '@lib/content'
 
 interface Props {
   posts: Post[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getContentItems('posts')
+  const posts = await getContentFiles('posts')
 
   return {
     props: {

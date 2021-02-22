@@ -21,6 +21,7 @@ export default class CustomDocument extends Document {
             data-website-id="6453036e-7d4b-4ec5-a0b2-768110a25194"
             src="https://metrics.tundera.dev/umami.js"
           />
+          <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
           <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
           <link rel="manifest" href="/static/favicons/manifest.json" />
           <link href="/static/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />

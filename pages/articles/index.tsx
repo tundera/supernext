@@ -7,14 +7,14 @@ import { Stack, Heading, Flex } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
 import Pagination from '@components/utility/Pagination'
 import ArticlesList from '@components/ui/lists/ArticlesList'
-import { getContentItems } from '@lib/content'
+import { getContentFiles } from '@lib/content'
 
 interface Props {
   articles: Article[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const articles = await getContentItems('articles')
+  const articles = await getContentFiles('articles')
 
   return {
     props: {

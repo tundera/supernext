@@ -7,6 +7,9 @@ import db from 'db'
 
 export default (req: NextApiRequest, res: NextApiResponse) =>
   NextAuth(req, res, {
+    pages: {
+      signIn: '/auth/signin',
+    },
     providers: [
       Providers.GitHub({
         clientId: process.env.GITHUB_CLIENT_ID,

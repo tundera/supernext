@@ -2,7 +2,6 @@ import type { FC } from 'react'
 import { Session, signOut } from 'next-auth/client'
 
 import NextLink from 'next/link'
-import { signIn } from 'next-auth/client'
 import { AiOutlineMenu } from 'react-icons/ai'
 import {
   useColorModeValue,
@@ -74,9 +73,11 @@ const Navigation: FC<Props> = ({ session, disclosure }) => {
             Sign Out
           </Button>
         ) : (
-          <Button onClick={() => signIn()} color={color} colorScheme={scheme} size="sm">
-            Sign In
-          </Button>
+          <NextLink href="/auth/signin" passHref>
+            <Button as="a" color={color} colorScheme={scheme} size="sm">
+              Sign In
+            </Button>
+          </NextLink>
         )}
       </HStack>
 

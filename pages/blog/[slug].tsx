@@ -15,7 +15,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { getLayout } from '@components/layouts/SiteLayout'
 import LoadingSpinner from '@components/utility/suspense/LoadingSpinner'
 import { mdxComponents } from '@components/mdx'
-import { getContentItem } from '@lib/content'
+import { getContentFile } from '@lib/content'
 
 interface Props {
   post: any
@@ -27,7 +27,7 @@ const cwd = process.cwd()
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageSlug = params?.slug as string
 
-  const { slug, content, frontMatter } = await getContentItem('posts', pageSlug)
+  const { slug, content, frontMatter } = await getContentFile('posts', pageSlug)
 
   if (slug !== pageSlug || !content) {
     return {

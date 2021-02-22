@@ -1,29 +1,34 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 
 const cwd = process.cwd()
 
 type ContentType = 'articles' | 'posts'
 
-export async function getContentItems(type: ContentType) {
+export async function getContentFiles(type: ContentType) {
   const root = path.join(cwd, 'content', type)
   const files = fs.readdirSync(root).map((file) => {
     const content = fs.readFileSync(path.join(root, file), 'utf8')
+    const { data } = matter(content)
 
     return {
       slug: file.replace(/\.mdx?/, ''),
       content,
-      frontMatter: matter(content).data,
+      frontMatter: {
+        ...data,
+      },
     }
   })
 
   return files
 }
 
-export async function getContentItem(type: ContentType, slug: string) {
-  const root = path.join(cwd, 'content', type)
-  const source = fs.readFileSync(path.join(root, `${slug}.mdx`), 'utf8')
+export async function getContentFile(type: ContentType, slug?: string) {
+  const source = slug
+    ? fs.readFileSync(path.join(cwd, 'content', type, `${slug}.mdx`), 'utf8')
+    : fs.readFileSync(path.join(cwd, 'content', `${type}.mdx`), 'utf8')
 
   const { data: frontMatter, content } = matter(source)
 
@@ -32,4 +37,21 @@ export async function getContentItem(type: ContentType, slug: string) {
     content,
     frontMatter,
   }
+}
+
+export async function getAllContentFrontMatter(type: ContentType) {
+  const files = fs.readdirSync(path.join(cwd, 'content', type))
+
+  return files.reduce((allPosts, postSlug) => {
+    const source = fs.readFileSync(path.join(cwd, 'content', type, postSlug), 'utf8')
+    const { data } = matter(source)
+
+    return [
+      {
+        ...data,
+        slug: postSlug.replace('.mdx', ''),
+      },
+      ...allPosts,
+    ]
+  }, [])
 }

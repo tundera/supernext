@@ -10,11 +10,11 @@ export default {
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
-      background: mode('brand.500', 'whiteAlpha.900')(props),
+      background: mode('blackAlpha.900', 'whiteAlpha.900')(props),
     },
     body: {
       fontFamily: 'body',
-      background: mode('brand.500', 'whiteAlpha.900')(props),
+      background: mode('blackAlpha.900', 'whiteAlpha.900')(props),
       lineHeight: 'base',
     },
   }),

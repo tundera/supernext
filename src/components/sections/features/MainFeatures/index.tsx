@@ -23,7 +23,7 @@ const MainFeatures: FC = () => {
           letterSpacing="tight"
           color={color}
         >
-          Opinionated Stack
+          My Tech Stack
         </Heading>
         <chakra.p mt={4} maxW="2xl" fontSize="xl" mx={{ lg: 'auto' }} color={useColorModeValue('gray.500', 'gray.400')}>
           The best of what&apos;s around.
