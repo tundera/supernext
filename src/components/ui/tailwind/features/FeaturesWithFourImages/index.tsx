@@ -87,7 +87,7 @@ const FeaturesWithFourImages: FC = () => {
                   >
                     <CheckIcon w="4" h="4" />
                   </chakra.span>
-                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
+                  <chakra.span ml="4" fontSize="md" fontWeight="medium" lineHeight="6" color={listItemColor}>
                     Live modifications
                   </chakra.span>
                 </Flex>
@@ -107,7 +107,7 @@ const FeaturesWithFourImages: FC = () => {
                   >
                     <CheckIcon w="4" h="4" />
                   </chakra.span>
-                  <chakra.span ml="4" lineHeight="6" fontSize="md" fontWeight="md" color={listItemColor}>
+                  <chakra.span ml="4" lineHeight="6" fontSize="md" fontWeight="medium" color={listItemColor}>
                     Data tracker
                   </chakra.span>
                 </Flex>
@@ -127,7 +127,7 @@ const FeaturesWithFourImages: FC = () => {
                   >
                     <CheckIcon w="4" h="4" />
                   </chakra.span>
-                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
+                  <chakra.span ml="4" fontSize="md" fontWeight="medium" lineHeight="6" color={listItemColor}>
                     24/24 support
                   </chakra.span>
                 </Flex>
@@ -147,7 +147,7 @@ const FeaturesWithFourImages: FC = () => {
                   >
                     <CheckIcon w="4" h="4" />
                   </chakra.span>
-                  <chakra.span ml="4" fontSize="md" fontWeight="md" lineHeight="6" color={listItemColor}>
+                  <chakra.span ml="4" fontSize="md" fontWeight="medium" lineHeight="6" color={listItemColor}>
                     Free tips to improve work time
                   </chakra.span>
                 </Flex>
