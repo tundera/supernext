@@ -40,18 +40,18 @@ export async function getContentFile(type: ContentType, slug?: string) {
 }
 
 export async function getAllContentFrontMatter(type: ContentType) {
-  const files = fs.readdirSync(path.join(cwd, 'content', type))
+  const contentFiles = fs.readdirSync(path.join(cwd, 'content', type))
 
-  return files.reduce((allPosts, postSlug) => {
-    const source = fs.readFileSync(path.join(cwd, 'content', type, postSlug), 'utf8')
+  return contentFiles.reduce((files, slug) => {
+    const source = fs.readFileSync(path.join(cwd, 'content', type, slug), 'utf8')
     const { data } = matter(source)
 
     return [
       {
         ...data,
-        slug: postSlug.replace('.mdx', ''),
+        slug: slug.replace('.mdx', ''),
       },
-      ...allPosts,
+      ...files,
     ]
   }, [])
 }
