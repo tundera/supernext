@@ -23,11 +23,14 @@ interface Props {
   <%= pageProps %>: any
 }
 
+<% } -%>
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const pageSlug = params?.slug as string
 
+<% if(locals.prop) { -%>
   const { <%= pageProps %> } = await <%= getPageProps %>()
 
+<% } -%>
   //   if (/* some condition */) {
   //     return {
   //       notFound: true,
@@ -35,22 +38,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   //   }
 
   return {
+<% if(locals.prop) { -%>
     props: {
-      <%= pageProps %>
+      <%= pageProps %>,
     },
+<% } else { -%>
+    props: {},
+<% } -%>
   }
 }
 
+<% if(locals.prop) { -%>
 const <%= pageName %>: NextPage<Props> = ({ <%= pageProps %> }) => {
   return (
     <>
       <Flex flexDir="column" alignItems="center">
         <Heading as="h1"><%= formattedPath %> Page</Heading>
         <List spacing="2">
-          {<%= pageProps %>.map(<%= prop %> => (
-            <ListItem key={<%= prop %>.name}>
-              {<%= prop %>.name}
-            </ListItem>
+          {<%= pageProps %>.map((<%= prop %>) => (
+            <ListItem key={<%= prop %>.name}>{<%= prop %>.name}</ListItem>
           ))}
         </List>
       </Flex>
@@ -58,7 +64,7 @@ const <%= pageName %>: NextPage<Props> = ({ <%= pageProps %> }) => {
   )
 }
 
-<% } else  { -%>
+<% } else { -%>
 const <%= pageName %>: NextPage = () => {
   return (
     <>
@@ -68,12 +74,12 @@ const <%= pageName %>: NextPage = () => {
     </>
   )
 }
-<% } -%>
 
+<% } -%>
 <%= pageName %>.getLayout = getLayout
 
 export default <%= pageName %>
+<% if(locals.prop) { -%>
 
-<% if(locals.pageProps) { -%>
 export type { Props as <%= pageName %>Props }
 <% } -%>

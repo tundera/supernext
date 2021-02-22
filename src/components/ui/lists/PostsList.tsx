@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { Post } from 'content/types'
+import type { PostData } from 'content/types'
 
 import { Box, Text, Heading, List, ListItem, ListIcon } from '@chakra-ui/react'
 import { MdBookmark } from 'react-icons/md'
@@ -7,7 +7,7 @@ import NextLink from 'next/link'
 
 interface Props {
   title: string
-  posts?: Post[]
+  posts?: PostData[]
 }
 
 const PostsList: FC<Props> = ({ title, posts }) => {
@@ -21,7 +21,7 @@ const PostsList: FC<Props> = ({ title, posts }) => {
           {posts.map((post) => (
             <ListItem key={post.slug}>
               <ListIcon as={MdBookmark} />
-              <NextLink href={`/blog/${post.slug}`}>{post.frontMatter.title}</NextLink>
+              <NextLink href={`/blog/${post.slug}`}>{post.title}</NextLink>
             </ListItem>
           ))}
         </List>

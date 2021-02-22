@@ -1,4 +1,4 @@
-export type FrontMatter = {
+export interface FrontMatter {
   title: string
   summary: string
   author: string
@@ -8,14 +8,18 @@ export type FrontMatter = {
   image: string
 }
 
-export type Article = {
+export interface Article {
   slug: string
   content: string
   frontMatter: FrontMatter
 }
 
-export type Post = {
+export interface Post {
   slug: string
   content: string
   frontMatter: FrontMatter
+}
+
+export interface PostData extends FrontMatter {
+  slug: string
 }
