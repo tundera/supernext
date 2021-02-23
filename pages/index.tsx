@@ -1,14 +1,16 @@
 import type { CustomNextPage as NextPage } from 'types'
 
-import { Flex } from '@chakra-ui/react'
+import { Flex, Box } from '@chakra-ui/react'
 import { getLayout } from '@components/layouts/SiteLayout'
-import MainFeatures from '@components/sections/features/MainFeatures'
+import LandingCta from '@components/sections/ctas/LandingCta'
 
 const HomePage: NextPage = () => {
   return (
     <>
       <Flex flexDir="column" alignItems="center">
-        <MainFeatures />
+        <Box w="full">
+          <LandingCta />
+        </Box>
       </Flex>
     </>
   )

@@ -17,7 +17,7 @@ function Footer() {
           title="YouTube"
           icon={<FaYoutube />}
         />
-        <MediaIconLink href="mailto:me@blog.tundera.dev" title="Email" icon={<FaEnvelope />} />
+        <MediaIconLink href="mailto:tunderadev@gmail.com" title="Email" icon={<FaEnvelope />} />
       </Box>
       <Text mt={2} mb={4} fontWeight="bold">
         Made with <Emoji symbol="🔥" label="Fire emoji" /> in Colorado
