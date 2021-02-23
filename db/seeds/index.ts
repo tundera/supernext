@@ -1,4 +1,4 @@
-import type { Coach, Player } from '@prisma/client'
+import type { Coach, Player } from 'db'
 
 import db from 'db'
 import NBA from 'nba'

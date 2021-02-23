@@ -1,4 +1,4 @@
-import type { Team } from '@prisma/client'
+import type { Team } from 'db'
 
 import { request } from 'graphql-request'
 

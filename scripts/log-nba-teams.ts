@@ -1,6 +1,7 @@
 #!/usr/bin/env ts-node-script
 
-import type { Team } from '@prisma/client'
+import type { Team } from 'db'
+
 import { paramCase } from 'change-case'
 import db from '../db'
 

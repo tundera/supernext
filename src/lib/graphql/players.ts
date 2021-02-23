@@ -1,4 +1,4 @@
-import type { Player } from '@prisma/client'
+import type { Player } from 'db'
 
 import { request } from 'graphql-request'
 
