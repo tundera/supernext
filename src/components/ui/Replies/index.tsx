@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 // import NextLink from 'next/link'
 
-import { useColorModeValue, chakra, Heading, Text, Box, Flex } from '@chakra-ui/react'
+import { useColorModeValue, Heading, Text, Box } from '@chakra-ui/react'
 
 interface Props {
   replies: any[]

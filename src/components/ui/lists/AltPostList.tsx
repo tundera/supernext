@@ -1,8 +1,7 @@
 import type { FC } from 'react'
 import type { PostData } from 'content/types'
 
-import { HStack, Box, Flex, Text, Button, Grid } from '@chakra-ui/react'
-import NextLink from 'next/link'
+import { Grid } from '@chakra-ui/react'
 import BlogCardWithAuthor from '@components/ui/cards/BlogCardWithAuthor'
 
 interface Props {

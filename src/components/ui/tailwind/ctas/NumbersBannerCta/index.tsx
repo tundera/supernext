@@ -1,11 +1,8 @@
 import type { FC } from 'react'
 
-import { useColorModeValue, chakra, Heading, Flex, Box, Text, Grid, GridItem } from '@chakra-ui/react'
+import { chakra, Heading, Flex, Text, Grid, GridItem } from '@chakra-ui/react'
 
 const NumbersBannerCta: FC = () => {
-  const bg = useColorModeValue('indigo.500', 'gray.800')
-  const eyebrowColor = useColorModeValue('indigo.800', 'gray.100')
-
   return (
     <chakra.section bg="indigo.800">
       <Grid

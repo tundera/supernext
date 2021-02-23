@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 // import NextLink from 'next/link'
-import dynamic from 'next/dynamic'
-import { useInView } from 'react-intersection-observer'
-import { useColorModeValue, chakra, Heading, Text, Box, Flex } from '@chakra-ui/react'
+// import dynamic from 'next/dynamic'
+// import { useInView } from 'react-intersection-observer'
+import { useColorModeValue, Text, Box } from '@chakra-ui/react'
 
 // const Replies = dynamic(() => import('@components/ui/Replies'))
 

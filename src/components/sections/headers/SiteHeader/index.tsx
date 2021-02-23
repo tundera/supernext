@@ -15,7 +15,7 @@ const StickyFlex = styled(chakra.header)`
 `
 
 const SiteHeader: FC = ({ ...props }) => {
-  const [session, loading] = useSession()
+  const [session] = useSession()
   const bg = useColorModeValue('white', 'brand.700')
   const mobileNav = useDisclosure()
   const iconColor = useColorModeValue('brand.500', 'white')

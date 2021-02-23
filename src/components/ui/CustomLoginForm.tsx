@@ -5,12 +5,10 @@ import { useForm } from 'react-hook-form'
 import {
   useColorModeValue,
   chakra,
-  Heading,
   Divider,
   Flex,
   Box,
   Link,
-  Text,
   Button,
   Icon,
   FormControl,

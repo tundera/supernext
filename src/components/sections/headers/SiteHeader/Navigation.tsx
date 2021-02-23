@@ -17,7 +17,6 @@ import {
 import NavButton from '@components/NavButton'
 import DarkModeToggle from '@components/utility/DarkModeToggle'
 import LocaleButton from '@components/utility/LocaleButton'
-import SettingsButton from '@components/ui/buttons/SettingsButton'
 
 interface Props {
   session: Session

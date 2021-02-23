@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { chakra, useColorModeValue, Heading, Text, Box, Flex, List, ListItem } from '@chakra-ui/react'
+import { chakra, useColorModeValue, Heading, Text, Box, Flex } from '@chakra-ui/react'
 
 const HorizontalFaq: FC = () => {
   const bg = useColorModeValue('white', 'gray.800')
