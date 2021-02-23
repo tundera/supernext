@@ -18,7 +18,7 @@ export async function mdxToString(mdx: string, components?: ReactNode[]) {
         require('remark-toc'),
         require('remark-external-links'),
       ],
-      rehypePlugins: [require('rehype-autolink-headings')],
+      rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
       compilers: [],
     },
   })

@@ -33,7 +33,8 @@
   "redirects": [
     {
       "source": "/metrics",
-      "destination": "https://metrics.tundera.dev"
+      "destination": "https://metrics.tundera.dev",
+      "permanent": true
     }
   ]
 }

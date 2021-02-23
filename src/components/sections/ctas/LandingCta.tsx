@@ -23,8 +23,8 @@ const LandingCta: FC = () => {
           </chakra.span>
         </Heading>
         <Text fontSize="xl" mt="4" maxW="md" mx="auto" color="gray.400">
-          I&apos;m building out this site right now, but feel free to checkout out some of the content now. You can also
-          see some of my open-source work on GitHub.
+          I&apos;m building out this site right now, but feel free to check out out some of the content now. You can
+          also see some of my open-source work on GitHub.
         </Text>
         <Flex justify="center" mt={{ lg: '0' }} flexShrink={{ lg: 0 }}>
           <Box mt="12" display="inline-flex" rounded="md" shadow="base">

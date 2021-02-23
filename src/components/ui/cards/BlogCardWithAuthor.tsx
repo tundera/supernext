@@ -38,7 +38,7 @@ const BlogCardWithAuthor: FC<Props> = ({ post }) => {
                     h="10"
                     objectFit="cover"
                     alt="profile"
-                    src="/static/images/tailwind/person/6.jpg"
+                    src="/static/images/avatar.jpg"
                   />
                 </Link>
                 <Flex
