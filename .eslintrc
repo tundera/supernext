@@ -32,6 +32,7 @@
     "no-param-reassign": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "warn",
+    "react/display-name": "off",
     "import/no-cycle": "off",
     "no-multi-assign": "off",
     "no-underscore-dangle": "off",
