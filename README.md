@@ -9,7 +9,7 @@
 - Isomorphic React via Next.js 🏆
 - TypeScript ✅
 - Chakra UI + Framer Motion 🚅
-- React Query v3 + Suspense
+- React Query v3 + GraphQL
 - Prisma v2 + Nexus GraphQL
 - ESLint + Prettier 🎀
 - Jest Testing Framework 👑
