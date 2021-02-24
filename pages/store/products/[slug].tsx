@@ -92,6 +92,7 @@ const PayBtn = ({ formattedPrice, slug }) => {
       }),
     }).then((resp) => resp.json())
 
+    console.log(session)
     await stripe.redirectToCheckout({
       sessionId: session.id,
     })
@@ -102,6 +103,8 @@ const PayBtn = ({ formattedPrice, slug }) => {
   return (
     <Button
       type="button"
+      isLoading={working}
+      loadingText="Working"
       alignItems="center"
       px="4"
       py="2"
@@ -120,7 +123,7 @@ const PayBtn = ({ formattedPrice, slug }) => {
       onClick={handleClick}
       disabled={working}
     >
-      {working ? 'Working' : `Buy for ${formattedPrice}`}
+      Buy for {formattedPrice}
     </Button>
   )
 }

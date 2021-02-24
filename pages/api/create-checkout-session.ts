@@ -6,6 +6,7 @@ import { graphCmsClient } from '@lib/graphcms/client'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
+  typescript: true,
 })
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

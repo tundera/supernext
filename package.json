@@ -152,7 +152,7 @@
     "remark-toc": "^7.1.0",
     "rss": "^1.2.2",
     "rxjs": "^6.6.3",
-    "stripe": "^8.135.0",
+    "stripe": "^8.137.0",
     "superjson": "^1.6.2",
     "swr": "^0.4.2",
     "timeago-react": "^3.0.2",
