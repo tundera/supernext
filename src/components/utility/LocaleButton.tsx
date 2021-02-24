@@ -46,11 +46,11 @@ function LocaleButton() {
             English
           </MenuItem>
           <MenuItem
-            onClick={() => change('es')}
+            onClick={() => change('de')}
             _focus={{ color: hoverColor, bg: hoverBg }}
             _hover={{ color: hoverColor, bg: hoverBg }}
           >
-            Spanish
+            German
           </MenuItem>
         </MenuGroup>
       </MenuList>
