@@ -11,15 +11,26 @@
     {
       "type": "browser-preview",
       "request": "launch",
-      "name": "Debug Frontend",
+      "name": "Debug Frontend (Browser Preview)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Frontend (Chrome)",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
     }
   ],
   "compounds": [
     {
-      "name": "Debug Fullstack",
-      "configurations": ["Debug Backend", "Debug Frontend"]
+      "name": "Debug Fullstack (Browser Preview)",
+      "configurations": ["Debug Backend", "Debug Frontend (Browser Preview)"]
+    },
+    {
+      "name": "Debug Fullstack (Chrome)",
+      "configurations": ["Debug Backend", "Debug Frontend (Chrome)"]
     }
   ]
 }
