@@ -1,12 +1,12 @@
 ---
-to: src/components/<%= [h.inflection.camelize(h.dirName(name), true), h.camelizedBaseName(name)].filter(Boolean).join('/') %>/<%= h.camelizedBaseName(name) %>.stories.tsx
+to: "<%= location ? `src/components/${location}` : 'src/components' %>/<%= h.camelizedBaseName(name) %>/<%= h.camelizedBaseName(name) %>.stories.tsx"
 ---
-<% formattedPath = h.camelizedPathName(name) -%>
+<% formattedPath = location ? `${location}/${h.camelizedBaseName(name)}` : h.camelizedBaseName(name) -%>
 <% component = h.camelizedBaseName(name) -%>
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import <%= component %> from '@components/<%=formattedPath%>'
+import <%= component %> from '@components/<%= formattedPath %>'
 // import * as DependentStories from './Dependent.stories'
 
 export default {

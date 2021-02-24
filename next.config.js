@@ -36,7 +36,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es'],
+    locales: ['en', 'de'],
   },
   images: {
     domains: [

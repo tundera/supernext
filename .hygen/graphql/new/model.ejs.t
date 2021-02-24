@@ -3,8 +3,7 @@ to: services/graphql/resolvers/<%= name %>.ts
 ---
 <% camelized = h.inflection.camelize(name) -%>
 <% plural = h.inflection.pluralize(camelized) -%>
-import { objectType, extendType } from '@nexus/schema';
-import { UserInputError, /*ForbiddenError*/ } from 'apollo-server-micro';
+import { objectType, extendType } from 'nexus';
 
 // import { isAdmin } from '../services/permissions';
 

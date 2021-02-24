@@ -1,13 +1,14 @@
 ---
-to: cells/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>.tsx
+to: src/cells/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(name)].filter(Boolean).join('/') %>.tsx
 ---
 <% formattedPath = h.camelizedPathName(name) -%>
 <% component = h.camelizedBaseName(name) -%>
+<% queryHook = h.camelizedQueryHook(name) -%>
 import React from 'react';
 import gql from 'graphql-tag';
 import { Spinner, Text } from '@chakra-ui/react';
 
-import { useMyProfileQuery, MyProfileQuery } from '../types';
+import { <%= queryHook %>, MyProfileQuery } from '../types';
 
 export const QUERY = gql`
   query myProfile {
@@ -26,7 +27,7 @@ export const Success = ({ me }: MyProfileQuery) => {
 };
 
 export const <%= component %>Cell = () => {
-  const { data, loading, error } = useMyProfileQuery();
+  const { data, loading, error } = <%= queryHook %>();
 
   if (loading) return <Loading />;
   if (error) return <Error />;
