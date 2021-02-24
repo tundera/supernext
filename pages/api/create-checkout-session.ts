@@ -32,12 +32,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/store/success?id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/store/products/${slug}`,
       mode: 'payment',
-      payment_method_types: ['card', 'ideal', 'giropay', 'sepa_debit'],
+      payment_method_types: ['card'],
       line_items: [
         {
           price_data: {
             unit_amount: product.price,
-            currency: 'EUR',
+            currency: 'USD',
             product_data: {
               name: product.name,
               metadata: {
