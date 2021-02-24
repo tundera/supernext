@@ -1,7 +1,7 @@
 import { request } from '@lib/datocms'
 
-import BlogPostsQuery from '@lib/datocms/queries/BlogPosts'
-import BlogPostBySlugQuery from '@lib/datocms/queries/BlogPostBySlug'
+import BlogPostsQuery from '@lib/datocms/operations/BlogPosts'
+import BlogPostBySlugQuery from '@lib/datocms/operations/BlogPostBySlug'
 
 export function getBlogPosts(preview = false) {
   const options = { query: BlogPostsQuery, variables: { limit: 10 }, preview }
