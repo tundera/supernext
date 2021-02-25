@@ -1,16 +1,13 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["prettier", "@typescript-eslint", "cypress", "jest", "react", "import"],
+  "plugins": ["@typescript-eslint", "cypress", "jest", "react", "import"],
   "extends": [
     "plugin:react/recommended",
-    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
-    "plugin:mdx/recommended",
     "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier/react",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "env": {
     "es6": true,
