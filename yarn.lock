@@ -3560,6 +3560,11 @@
   resolved "https://registry.npmjs.org/@next/env/-/env-10.0.7.tgz#7b3e87a9029ca37491e2ec25c27593f0906725f9"
   integrity sha512-/vnz2SL/mk3Tei58WfRtVnvz5xHmAqcBmZL5sTBEy1CZG6OtZGNx0qAFCjtVkeJ5m1Bh4Ut+WFh/RF333wx8Sg==
 
+"@next/env@10.0.8-canary.9":
+  version "10.0.8-canary.9"
+  resolved "https://registry.npmjs.org/@next/env/-/env-10.0.8-canary.9.tgz#25ef619bab4ad3dd48e0d9967b5c7477395b9221"
+  integrity sha512-hcD/lLRSvRyuP5dT1Y3AYJdY7GibkbM9lLitcGaky1mm5L+QLOYJgS+wwtVixCpxwot8JkLAcAYtzvkyWJiXaw==
+
 "@next/mdx@^10.0.7":
   version "10.0.7"
   resolved "https://registry.npmjs.org/@next/mdx/-/mdx-10.0.7.tgz#c4de220ad5e4c38297c2972f2d1f7e2107b88477"
@@ -3569,6 +3574,11 @@
   version "10.0.7"
   resolved "https://registry.npmjs.org/@next/polyfill-module/-/polyfill-module-10.0.7.tgz#ec45ec1f28f47beed15ed67dffc907edd7143094"
   integrity sha512-HxqzRpoSgmZP0kRIWwH+e0SgtAXqJ0VkYtwWcsQFED8+xF4Eqn+7Twyp4uE6hutC8gr8IFSFqH+DEYhRtg1ltQ==
+
+"@next/polyfill-module@10.0.8-canary.9":
+  version "10.0.8-canary.9"
+  resolved "https://registry.npmjs.org/@next/polyfill-module/-/polyfill-module-10.0.8-canary.9.tgz#bfade1519d26eb32a331444c51ca1efaf6feb089"
+  integrity sha512-FLZEupqM6W45R9JVqCXsS6sp7taJu1TKzG3qPKknW7l8NOLMWIxInXnij1oeYvHkMBeffnAWgvnGcDERLJd1qA==
 
 "@next/react-dev-overlay@10.0.7":
   version "10.0.7"
@@ -3587,10 +3597,32 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
+"@next/react-dev-overlay@10.0.8-canary.9":
+  version "10.0.8-canary.9"
+  resolved "https://registry.npmjs.org/@next/react-dev-overlay/-/react-dev-overlay-10.0.8-canary.9.tgz#51efbe68ec926f7ad9333ee410aaad9d80ef8629"
+  integrity sha512-rlHyxpkb32hL/UTyaWXpTkvxvd87SD8/RCPiyupuwFslkkkdYw4dn+ChWBwSzm/mluUUkJ7o5+5LMz7xbswvWg==
+  dependencies:
+    "@babel/code-frame" "7.12.11"
+    anser "1.4.9"
+    chalk "4.0.0"
+    classnames "2.2.6"
+    css.escape "1.5.1"
+    data-uri-to-buffer "3.0.1"
+    platform "1.3.6"
+    shell-quote "1.7.2"
+    source-map "0.8.0-beta.0"
+    stacktrace-parser "0.1.10"
+    strip-ansi "6.0.0"
+
 "@next/react-refresh-utils@10.0.7":
   version "10.0.7"
   resolved "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-10.0.7.tgz#866ce30fe2f321e011255e81ed5d55eeda05894b"
   integrity sha512-d/71vtQglv6m7sh4W1O9drc2hYti7UnAdEXfBLZAS354g2S80lvCRGIhbDrMx4w0rpShoxBIZboE2++LihAESg==
+
+"@next/react-refresh-utils@10.0.8-canary.9":
+  version "10.0.8-canary.9"
+  resolved "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-10.0.8-canary.9.tgz#486d0502153907ede37848a62db6dee6e52353ae"
+  integrity sha512-hcPWueOSNKScvUjIeOHUlwLaZJx9cGCM+sa73lWt1x3FyD7iMdgyWmnGXjYpCe96yvOlEfi0bg94cDMMgd6V8w==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -9893,7 +9925,7 @@ debounce@^1.2.0:
   resolved "https://registry.npmjs.org/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
   integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
 
-debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
+debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -10915,10 +10947,10 @@ eslint-config-blitz@0.30.5:
     eslint-plugin-react "~7.22.0"
     eslint-plugin-react-hooks "~4.2.0"
 
-eslint-config-prettier@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-7.2.0.tgz#f4a4bd2832e810e8cc7c1411ec85b3e85c0c53f9"
-  integrity sha512-rV4Qu0C3nfJKPOAhFujFxB7RMP+URFyQqqOZW9DMRD7ZDTFyjaIlETU3xzHELt++4ugC0+Jm084HQYkkJe+Ivg==
+eslint-config-prettier@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
+  integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
 
 eslint-config-react-app@^6.0.0, eslint-config-react-app@~6.0.0:
   version "6.0.0"
@@ -12208,6 +12240,13 @@ get-nonce@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/get-nonce/-/get-nonce-1.0.1.tgz#fdf3f0278073820d2ce9426c18f07481b1e0cdf3"
   integrity sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==
+
+get-orientation@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/get-orientation/-/get-orientation-1.1.2.tgz#20507928951814f8a91ded0a0e67b29dfab98947"
+  integrity sha512-/pViTfifW+gBbh/RnlFYHINvELT9Znt+SYyDKAUL6uV6By019AK/s+i9XP4jSwq7lwP38Fd8HVeTxym3+hkwmQ==
+  dependencies:
+    stream-parser "^0.3.1"
 
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.2"
@@ -17003,7 +17042,7 @@ next-tick@~1.0.0:
   resolved "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next@10.0.7, next@^10.0.7:
+next@10.0.7:
   version "10.0.7"
   resolved "https://registry.npmjs.org/next/-/next-10.0.7.tgz#442f8e1da7454de33b0bbcc1ce5684b923597ee6"
   integrity sha512-We0utmwwfkvO12eLyUZd3tX9VLDE3FPpOaHpH3kqKdUTxJzUKt8FLBXCTm0mwsTKW5XColWG8mJvz2OLu3+3QA==
@@ -17046,6 +17085,49 @@ next@10.0.7, next@^10.0.7:
     watchpack "2.0.0-beta.13"
   optionalDependencies:
     sharp "0.26.3"
+
+next@10.0.8-canary.9:
+  version "10.0.8-canary.9"
+  resolved "https://registry.npmjs.org/next/-/next-10.0.8-canary.9.tgz#e3619c55442dec67763d89e0e8d398c6b1236d25"
+  integrity sha512-f3J65pxgsV7tPl1/ul8bb2gPDC3BeC9T5kFaGObeMltXlwHUb72r8mlgI/rYUE3tIOxpEBUp6WfOoUBfQ7It1Q==
+  dependencies:
+    "@babel/runtime" "7.12.5"
+    "@hapi/accept" "5.0.1"
+    "@next/env" "10.0.8-canary.9"
+    "@next/polyfill-module" "10.0.8-canary.9"
+    "@next/react-dev-overlay" "10.0.8-canary.9"
+    "@next/react-refresh-utils" "10.0.8-canary.9"
+    "@opentelemetry/api" "0.14.0"
+    ast-types "0.13.2"
+    browserslist "4.16.1"
+    buffer "5.6.0"
+    caniuse-lite "^1.0.30001179"
+    chalk "2.4.2"
+    chokidar "3.5.1"
+    crypto-browserify "3.12.0"
+    cssnano-simple "1.2.2"
+    etag "1.8.1"
+    find-cache-dir "3.3.1"
+    get-orientation "1.1.2"
+    jest-worker "24.9.0"
+    native-url "0.3.4"
+    node-fetch "2.6.1"
+    node-html-parser "1.4.9"
+    node-libs-browser "^2.2.1"
+    p-limit "3.1.0"
+    path-browserify "1.0.1"
+    pnp-webpack-plugin "1.6.4"
+    postcss "8.1.7"
+    process "0.11.10"
+    prop-types "15.7.2"
+    raw-body "2.4.1"
+    react-is "16.13.1"
+    react-refresh "0.8.3"
+    stream-browserify "3.0.0"
+    styled-jsx "3.3.2"
+    use-subscription "1.5.1"
+    vm-browserify "1.1.2"
+    watchpack "2.1.1"
 
 nexus@^1.0.0:
   version "1.0.0"
@@ -18558,10 +18640,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-prisma@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/prettier-plugin-prisma/-/prettier-plugin-prisma-0.3.0.tgz#d216cac5a27ca2bbb0759cd934cfe5f71eea43c3"
-  integrity sha512-mEzWbM5dzOwRoSakAtRz+zNBLA0GM3ky4D/AhRMwsFLKneb11gPCo4Or7f7KWBEvuRfHDlYMxVUZryycIJv2lA==
+prettier-plugin-prisma@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/prettier-plugin-prisma/-/prettier-plugin-prisma-0.4.0.tgz#3ee7d276f2ce15f3b3dfb3e3830e5fe985d5ac62"
+  integrity sha512-TCR+bdcRS01Poe9e7TdI3xtUtpYnpVPBVBvH1i74Z+p+3rp3JLIxLcDxjCCQHCw1cClxFQgzJeOpCQyDapdbSQ==
 
 prettier@^2.0.5, prettier@^2.2.1:
   version "2.2.1"
@@ -19226,15 +19308,14 @@ react-dom-confetti@^0.2.0:
   dependencies:
     dom-confetti "0.2.2"
 
-react-dom@^0.0.0-experimental-8af27aeed:
-  version "0.0.0-fec00a869"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-fec00a869.tgz#f952e11a31e446c00e87603998d7780bc51bdbd9"
-  integrity sha512-atB5i2HgCvbvhtGXq9oaX/BCL2AFZjnccougU8S9eulRFNQbNrfGNwIcj04PRo3XU1ZsBw5syL/5l596UaolKA==
+react-dom@0.0.0-experimental-9209c30ff:
+  version "0.0.0-experimental-9209c30ff"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-experimental-9209c30ff.tgz#aeb623a3a734fc267bf161951bffaaf069c65e76"
+  integrity sha512-Y9lOe1hxqCj9ZuQ5u/str4Sj+bWdrJKbZOsFY2dKO1fxCFUkw679S29qB11cu39xLkbllmDK6H+yucyakdCiHA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "0.0.0-fec00a869"
+    scheduler "0.0.0-experimental-9209c30ff"
 
 react-dom@^16.8.3, react-dom@^16.9.0:
   version "16.14.0"
@@ -19597,15 +19678,13 @@ react@0.0.0-experimental-3310209d0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-react@^0.0.0-experimental-8af27aeed:
-  version "0.0.0-fec00a869"
-  resolved "https://registry.npmjs.org/react/-/react-0.0.0-fec00a869.tgz#1803f4f17cdd5adfdf614de2386c5fb5c84bbe91"
-  integrity sha512-FaS3ViFU4ag7cuhDHQgGK3DAdWaD8YFXzEbO/Qzz33Si7VEzRRdnyoegFwg7VkEKxR6CvCVP6revi9Tm3Gq+WQ==
+react@0.0.0-experimental-9209c30ff:
+  version "0.0.0-experimental-9209c30ff"
+  resolved "https://registry.npmjs.org/react/-/react-0.0.0-experimental-9209c30ff.tgz#394d8427444c145a42be18a9cdf0419be8506b30"
+  integrity sha512-Z0YQESUrHjHPzPEq0nRBr0w3/o48ERJ82asFiRQLXp3z6PxVTsams6F84xGkPSBMwfkAwiOHIKKsv/SJb8Zr6A==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "0.0.0-fec00a869"
 
 react@^16.8.3, react@^16.9.0:
   version "16.14.0"
@@ -20658,10 +20737,10 @@ scheduler@0.0.0-experimental-3310209d0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@0.0.0-fec00a869:
-  version "0.0.0-fec00a869"
-  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.0.0-fec00a869.tgz#e28ff1aa107e1d04d6e8901641b4fb1e3ba98577"
-  integrity sha512-0U25jnyBP6dRPYwaVW4WMYB0jJSYlrIHFmIuXv27X+KIHJr7vyE9gcFTqZ61NQTuxYLYepAHnUs4KgQEUDlI+g==
+scheduler@0.0.0-experimental-9209c30ff:
+  version "0.0.0-experimental-9209c30ff"
+  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.0.0-experimental-9209c30ff.tgz#bc9a5b35885a9cd23ee19097c5d2883ae09f179a"
+  integrity sha512-ncun4hlCWD0KQZMmBA0q1Ns3EIp/iDmrtsyMzOOtloJvT1BAZaacYa9XhM5J7aUpmIrgZWpNWAxxeQx9g9Zfwg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -21475,6 +21554,13 @@ stream-http@^3.0.0:
     inherits "^2.0.4"
     readable-stream "^3.6.0"
     xtend "^4.0.2"
+
+stream-parser@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/stream-parser/-/stream-parser-0.3.1.tgz#1618548694420021a1182ff0af1911c129761773"
+  integrity sha1-FhhUhpRCACGhGC/wrxkRwSl2F3M=
+  dependencies:
+    debug "2"
 
 stream-shift@^1.0.0:
   version "1.0.1"
@@ -23628,6 +23714,14 @@ watchpack@2.0.0-beta.13:
   version "2.0.0-beta.13"
   resolved "https://registry.npmjs.org/watchpack/-/watchpack-2.0.0-beta.13.tgz#9d9b0c094b8402139333e04eb6194643c8384f55"
   integrity sha512-ZEFq2mx/k5qgQwgi6NOm+2ImICb8ngAkA/rZ6oyXZ7SgPn3pncf+nfhYTCrs3lmHwOxnPtGLTOuFLfpSMh1VMA==
+  dependencies:
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.1.2"
+
+watchpack@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/watchpack/-/watchpack-2.1.1.tgz#e99630550fca07df9f90a06056987baa40a689c7"
+  integrity sha512-Oo7LXCmc1eE1AjyuSBmtC3+Wy4HcV8PxWh2kP6fOl8yTlNS7r0K9l1ao2lrrUza7V39Y3D/BbJgY8VeSlc5JKw==
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
