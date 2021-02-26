@@ -14,10 +14,6 @@ export interface CustomAppProps<P = {}> extends AppProps<P> {
   }
 }
 
-export interface EnhancedAppProps extends CustomAppProps {
-  cookies?: Cookies
-}
-
 export declare type CustomNextPage<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (component: JSX.Element) => JSX.Element
 }
