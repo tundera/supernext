@@ -9902,16 +9902,16 @@ datocms-listen@^0.1.3:
   integrity sha512-k1UfXMdPqZgKw/6Q6TXSXLbrwKzXpbsaG/d1/9H7sKMbWD87HU7FT6ilNFjda7ODPLZozC1SmF2GEHXg83MfPQ==
 
 datocms-structured-text-generic-html-renderer@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/datocms-structured-text-generic-html-renderer/-/datocms-structured-text-generic-html-renderer-1.0.12.tgz#df40da697572327fad25f20f5e375d7f40e00731"
-  integrity sha512-Crewr5X0GcZGo2ABz3M7lpqmDMr1HBqdzZF90QtlccX21V4LaH1bjvEjjzM8pwPpeTUVoesLIjrvxxBi68GD9w==
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/datocms-structured-text-generic-html-renderer/-/datocms-structured-text-generic-html-renderer-1.0.13.tgz#949160d3c63f19e1b7730598e80861827c7cf5b6"
+  integrity sha512-mg9tcqE8b48IFjBLSC9DqZbJsCR5g1kF/DwRdR9TDF6vVZVoB538OJpmAaix9j+zSpaiPPYfGGfb77/coGHpLA==
   dependencies:
-    datocms-structured-text-utils "^1.0.12"
+    datocms-structured-text-utils "^1.0.13"
 
-datocms-structured-text-utils@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/datocms-structured-text-utils/-/datocms-structured-text-utils-1.0.12.tgz#64798008ea622f4eab577ecbbbb1cb7302f94b64"
-  integrity sha512-gCqEkiRD6GhY7otAjXR17BOPIdvnX8n62GUhW+W4j2uR6afPQlpttBeXMwqnOoVtYVHFxsbwtOhs0Tu3lhPdaQ==
+datocms-structured-text-utils@^1.0.12, datocms-structured-text-utils@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/datocms-structured-text-utils/-/datocms-structured-text-utils-1.0.13.tgz#452d5f1282f23d9af12c7ee769beafcd9a3ce3ce"
+  integrity sha512-6MPmuj3DYXnbc+npub6pKq9T4OEGiuvmIsRgD3PiI7viqkroT864BZFxtItp6dPnr/nz1iRNdVrZs1T3339jrQ==
   dependencies:
     lodash.flatten "^4.4.0"
 
@@ -10597,9 +10597,9 @@ elegant-spinner@^1.0.1:
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
 element-resize-detector@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/element-resize-detector/-/element-resize-detector-1.2.1.tgz#b0305194447a4863155e58f13323a0aef30851d1"
-  integrity sha512-BdFsPepnQr9fznNPF9nF4vQ457U/ZJXQDSNF1zBe7yaga8v9AdZf3/NElYxFdUh7SitSGt040QygiTo6dtatIw==
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/element-resize-detector/-/element-resize-detector-1.2.2.tgz#bf7c3ff915957e4e62e86241ed2f9c86b078892b"
+  integrity sha512-+LOXRkCJc4I5WhEJxIDjhmE3raF8jtOMBDqSCgZTMz2TX3oXAX5pE2+MDeopJlGdXzP7KzPbBJaUGfNaP9HG4A==
   dependencies:
     batch-processor "1.0.0"
 
@@ -12507,9 +12507,9 @@ good-listener@^1.2.2:
     delegate "^3.1.2"
 
 got@^11.8.1:
-  version "11.8.1"
-  resolved "https://registry.npmjs.org/got/-/got-11.8.1.tgz#df04adfaf2e782babb3daabc79139feec2f7e85d"
-  integrity sha512-9aYdZL+6nHmvJwHALLwKSUZ0hMwGaJGYv3hoPLPgnT8BoBXm1SjnZeky+91tfwJaDzun2s4RsBRy48IEYv2q2Q==
+  version "11.8.2"
+  resolved "https://registry.npmjs.org/got/-/got-11.8.2.tgz#7abb3959ea28c31f3576f1576c1effce23f33599"
+  integrity sha512-D0QywKgIe30ODs+fm8wMZiAcZjypcCodPNuMz5H9Mny7RJ+IjJ10BdmGW7OM7fHXP+O7r6ZwapQ/YQmMSvB0UQ==
   dependencies:
     "@sindresorhus/is" "^4.0.0"
     "@szmarczak/http-timer" "^4.0.5"
@@ -14127,7 +14127,7 @@ is-valid-glob@^1.0.0:
   resolved "https://registry.npmjs.org/is-valid-glob/-/is-valid-glob-1.0.0.tgz#29bf3eff701be2d4d315dbacc39bc39fe8f601aa"
   integrity sha1-Kb8+/3Ab4tTTFdusw5vDn+j2Aao=
 
-is-what@^3.11.3:
+is-what@^3.14.1:
   version "3.14.1"
   resolved "https://registry.npmjs.org/is-what/-/is-what-3.14.1.tgz#e1222f46ddda85dead0fd1c9df131760e77755c1"
   integrity sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==
@@ -16440,12 +16440,12 @@ meow@^3.3.0:
     trim-newlines "^1.0.0"
 
 merge-anything@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/merge-anything/-/merge-anything-4.0.0.tgz#3110e2810ad804cddd37254d3c2e2cdcd3f26860"
-  integrity sha512-mTRT1Zna+vMJZasYCNSYmXGqr0mnIi/8pfiRWQ8QlH08qVBu51q1FwiUGabz7VkVhLSHIOWEPA7s0DM3ykLUQw==
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/merge-anything/-/merge-anything-4.0.1.tgz#5c837cfa7adbb65fa5a4df178b37312493cb3609"
+  integrity sha512-KsFjBYc3juDoHz9Vzd5fte1nqp06H8SQ+yU344Dd0ZunwSgtltnC0kgKds8cbocJGyViLcBQuHkitbDXAqW+LQ==
   dependencies:
-    is-what "^3.11.3"
-    ts-toolbelt "^8.0.7"
+    is-what "^3.14.1"
+    ts-toolbelt "^9.3.12"
 
 merge-class-names@^1.1.1:
   version "1.4.0"
@@ -17273,10 +17273,15 @@ node-releases@^1.1.61, node-releases@^1.1.69, node-releases@^1.1.70:
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
   integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
 
-nodemailer@6.4.18, nodemailer@^6.4.16:
+nodemailer@6.4.18:
   version "6.4.18"
   resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.4.18.tgz#2788c85792844fc17befda019031609017f4b9a1"
   integrity sha512-ht9cXxQ+lTC+t00vkSIpKHIyM4aXIsQ1tcbQCn5IOnxYHi81W2XOaU66EQBFFpbtzLEBTC94gmkbD4mGZQzVpA==
+
+nodemailer@^6.4.16:
+  version "6.5.0"
+  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
+  integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
 
 noop-logger@^0.1.1:
   version "0.1.1"
@@ -19067,9 +19072,9 @@ qs@~6.5.2:
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 query-string@^6.12.1:
-  version "6.14.0"
-  resolved "https://registry.npmjs.org/query-string/-/query-string-6.14.0.tgz#0b7b7ca326f5facf10dd2d45d26645cd287f8c92"
-  integrity sha512-In3o+lUxlgejoVJgwEdYtdxrmlL0cQWJXj0+kkI7RWVo7hg5AhFtybeKlC9Dpgbr8eOC4ydpEh8017WwyfzqVQ==
+  version "6.14.1"
+  resolved "https://registry.npmjs.org/query-string/-/query-string-6.14.1.tgz#7ac2dca46da7f309449ba0f86b1fd28255b0c86a"
+  integrity sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==
   dependencies:
     decode-uri-component "^0.2.0"
     filter-obj "^1.1.0"
@@ -21660,9 +21665,9 @@ string-width@^3.0.0:
     strip-ansi "^5.1.0"
 
 string-width@^4.0.0, string-width@^4.1.0, string-width@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.0.tgz#952182c46cc7b2c313d1596e623992bd163b72b5"
-  integrity sha512-zUz5JD+tgqtuDjMhwIg5uFVV3dtqZ9yQJlZVfq4I01/K5Paj5UHj7VyrQOJvzawSVlKpObApbfD0Ed6yJc+1eg==
+  version "4.2.1"
+  resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.1.tgz#1933ce1f470973d224368009bd1316cad81d5f4f"
+  integrity sha512-LL0OLyN6AnfV9xqGQpDBwedT2Rt63737LxvsRxbcwpa2aIeynBApG2Sm//F3TaLHIR1aJBN52DWklc06b94o5Q==
   dependencies:
     emoji-regex "^8.0.0"
     is-fullwidth-code-point "^3.0.0"
@@ -22731,10 +22736,10 @@ ts-toolbelt@^6.9.4:
   resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
   integrity sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==
 
-ts-toolbelt@^8.0.7:
-  version "8.4.0"
-  resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-8.4.0.tgz#af6e64b87be3e097fac63600ce9556e78542fa27"
-  integrity sha512-hnGJXIgC49ZuF5g5oDthoge8t4cvT0dYg2pYO5C6yV/HmUUy1koooU2U/5K2N+Uw++hcXQpJAToLRa+GRp28Sg==
+ts-toolbelt@^9.3.12:
+  version "9.3.12"
+  resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-9.3.12.tgz#37d364da2f549d2c7d37988831cd0e43cb4f2ae5"
+  integrity sha512-xxvVS/vhnuiBnOplvkKQe4Npp+KvClBCf62v3LqEOMzcOL/6V8eEIqhNHm+dJQq5Obvx6e87eHe56yapW73xSQ==
 
 tsconfig-paths@3.9.0, tsconfig-paths@^3.9.0:
   version "3.9.0"
