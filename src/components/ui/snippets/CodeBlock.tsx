@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Confetti from 'react-dom-confetti'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import palenight from 'prism-react-renderer/themes/palenight'
+import shadesOfPurple from 'prism-react-renderer/themes/shadesOfPurple'
 import { chakra, Flex, Text } from '@chakra-ui/react'
 
 import CopyButton from '@components/ui/buttons/CopyButton'
@@ -35,16 +35,17 @@ const CodeBlock: FC<Props> = ({ codeString, language, ...props }) => {
   }
   return (
     <Wrapper>
-      <Highlight {...defaultProps} code={codeString} language={language} theme={palenight}>
+      <Highlight {...defaultProps} code={codeString} language={language} theme={shadesOfPurple}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <chakra.pre
-            className={className}
             py="12"
             pl="8"
             pr="20"
             my="4"
+            overflowX="scroll"
             sx={{ position: 'relative', borderRadius: '12px' }}
-            style={{ ...style }}
+            className={className}
+            style={style}
           >
             <CopyButton
               onClick={() => {
@@ -56,15 +57,16 @@ const CodeBlock: FC<Props> = ({ codeString, language, ...props }) => {
               {isCopied ? '🎉 Copied!' : 'Copy'}
             </CopyButton>
             {tokens.map((line, i) => (
-              <Flex {...getLineProps({ line, key: i })} style={style} key={i} wrap="wrap">
+              <Flex {...getLineProps({ line, key: i })} style={style} key={i}>
                 {line.map((token, key) => (
-                  <Text {...getTokenProps({ token, key })} key={key} overflowX="scroll" />
+                  <chakra.span {...getTokenProps({ token, key })} key={key} />
                 ))}
               </Flex>
             ))}
           </chakra.pre>
         )}
       </Highlight>
+
       <ConfettiWrapper>
         <Confetti active={isCopied} config={confetti} />
       </ConfettiWrapper>

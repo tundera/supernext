@@ -1,8 +1,10 @@
-import SiteLayout from '@components/layouts/SiteLayout'
+import { MDXProvider } from '@mdx-js/react'
+
+import Layout from '@components/layouts/MDXLayout'
 import MainFeatures from '@components/sections/features/MainFeatures'
 import SocialLinks from '@components/ui/buttons/SocialLinks'
 
-export default ({ items, children }) => <SiteLayout>{children}</SiteLayout>
+export default ({ items, children }) => <Layout>{children}</Layout>
 
 # My Tech Stack
 
@@ -19,8 +21,24 @@ Hit me up on my social outlets 👇
 
 <SocialLinks />
 
-Here is an inline `code block`
+## Code blocks
 
-## Stack Details
+```tsx
+const CountrySelector: FC<Props> = ({ stats, handleChange }) => {
+  const bg = useColorModeValue('gray.800', 'white')
+  const color = useColorModeValue('white', 'gray.800')
 
-<MainFeatures />
+  return (
+    <Flex as="article" bg={bg} color={color} w="full">
+      <Box>
+        <Selector onChange={handleChange}>
+          <option>Select a country</option>
+          {stats.map((stat, index) => (
+            <option key={`${stat.country}-${index}`}>{stat.country} information</option>
+          ))}
+        </Selector>
+      </Box>
+    </Flex>
+  )
+}
+```

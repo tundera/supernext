@@ -9,7 +9,7 @@ const withMDX = require('@next/mdx')({
       require('remark-toc'),
       require('remark-external-links'),
     ],
-    rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
+    rehypePlugins: [require('rehype-autolink-headings')],
   },
 })
 

@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         require('remark-toc'),
         require('remark-external-links'),
       ],
-      rehypePlugins: [require('rehype-autolink-headings'), require('mdx-prism')],
+      rehypePlugins: [require('rehype-autolink-headings')],
       compilers: [],
     },
     scope: {},

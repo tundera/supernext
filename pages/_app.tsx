@@ -1,7 +1,7 @@
 import type { CustomAppProps } from 'types'
 // import type { AppContext } from 'next/app'
 
-import { QueryClient, QueryErrorResetBoundary } from 'react-query'
+import { QueryClient, useQueryErrorResetBoundary } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Provider as AuthProvider } from 'next-auth/client'
 
@@ -15,22 +15,19 @@ import '../styles/globals.css'
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps, router }: CustomAppProps) {
+  const { reset } = useQueryErrorResetBoundary()
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
-    <QueryErrorResetBoundary>
-      {({ reset }) => (
-        <ErrorBoundary FallbackComponent={RootErrorFallback} resetKeys={[router.asPath]} onReset={reset}>
-          <FormProvider>
-            <ThemeProvider cookies={pageProps.cookies}>
-              <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
-                <AuthProvider session={pageProps.session}>{getLayout(<Component {...pageProps} />)}</AuthProvider>
-              </QueryProvider>
-            </ThemeProvider>
-          </FormProvider>
-        </ErrorBoundary>
-      )}
-    </QueryErrorResetBoundary>
+    <ErrorBoundary FallbackComponent={RootErrorFallback} resetKeys={[router.asPath]} onReset={reset}>
+      <FormProvider>
+        <ThemeProvider cookies={pageProps.cookies}>
+          <QueryProvider client={queryClient} state={pageProps.dehydratedState}>
+            <AuthProvider session={pageProps.session}>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+          </QueryProvider>
+        </ThemeProvider>
+      </FormProvider>
+    </ErrorBoundary>
   )
 }
 
