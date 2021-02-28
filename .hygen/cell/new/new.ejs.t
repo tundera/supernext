@@ -4,11 +4,12 @@ to: src/cells/<%= [h.inflection.camelize(h.dirName(name)), h.camelizedBaseName(n
 <% formattedPath = h.camelizedPathName(name) -%>
 <% component = h.camelizedBaseName(name) -%>
 <% queryHook = h.camelizedQueryHook(name) -%>
-import React from 'react';
-import gql from 'graphql-tag';
-import { Spinner, Text } from '@chakra-ui/react';
+import gql from 'graphql-tag'
+import { Spinner, Text } from '@chakra-ui/react'
 
-import { <%= queryHook %>, MyProfileQuery } from '../types';
+import LoadingSpinner from '@components/utility/LoadingSpinner'
+
+import { <%= queryHook %>, MyProfileQuery } from '../types'
 
 export const QUERY = gql`
   query myProfile {
@@ -16,22 +17,22 @@ export const QUERY = gql`
       email
     }
   }
-`;
+`
 
-export const Loading = () => <Spinner />;
-export const Error = () => <Text>Error. See dev tools.</Text>;
-export const Empty = () => <Text>No data.</Text>;
+export const Loading = () => <Spinner />
+export const Error = () => <Text>Error. See dev tools.</Text>
+export const Empty = () => <Text>No data.</Text>
 
 export const Success = ({ me }: MyProfileQuery) => {
-  return <Text>Awesome! {me.email}</Text>;
-};
+  return <Text>Awesome! {me.email}</Text>
+}
 
 export const <%= component %>Cell = () => {
-  const { data, loading, error } = <%= queryHook %>();
+  const { data, loading, error } = <%= queryHook %>()
 
-  if (loading) return <Loading />;
-  if (error) return <Error />;
-  if (data.me) return <Success {...data} />;
+  if (loading) return <Loading />
+  if (error) return <Error />
+  if (data.me) return <Success {...data} />
 
-  return <Empty />;
+  return <Empty />
 };
