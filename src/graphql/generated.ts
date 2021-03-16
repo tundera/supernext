@@ -21,6 +21,7 @@ export type Scalars = {
   Upload: any;
 };
 
+/** NBA coach */
 export type Coach = {
   __typename?: 'Coach';
   createdAt: Scalars['DateTime'];
@@ -47,6 +48,7 @@ export type CoachWhereUniqueInput = {
   id: Scalars['Int'];
 };
 
+/** Team color scheme */
 export type ColorScheme = {
   __typename?: 'ColorScheme';
   createdAt: Scalars['DateTime'];
@@ -72,6 +74,7 @@ export type IntFilter = {
   startsWith: Scalars['Int'];
 };
 
+/** NBA player */
 export type Player = {
   __typename?: 'Player';
   createdAt: Scalars['DateTime'];
@@ -151,6 +154,7 @@ export type StringFilter = {
   startsWith: Scalars['String'];
 };
 
+/** NBA team */
 export type Team = {
   __typename?: 'Team';
   abbreviation: Scalars['String'];
@@ -168,8 +172,6 @@ export type Team = {
   losses?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   players: Array<Player>;
-  primaryColor: Scalars['String'];
-  secondaryColor: Scalars['String'];
   slug: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   winPercentage?: Maybe<Scalars['Float']>;
@@ -177,6 +179,7 @@ export type Team = {
 };
 
 
+/** NBA team */
 export type TeamCoachesArgs = {
   cursor?: Maybe<CoachWhereUniqueInput>;
   orderBy?: Maybe<CoachOrderByInput>;
@@ -186,6 +189,7 @@ export type TeamCoachesArgs = {
 };
 
 
+/** NBA team */
 export type TeamPlayersArgs = {
   cursor?: Maybe<PlayerWhereUniqueInput>;
   orderBy?: Maybe<PlayerOrderByInput>;

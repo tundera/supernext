@@ -1,48 +1,27 @@
 import { objectType, inputObjectType, list, intArg, extendType } from 'nexus'
-// import { Player } from 'nexus-prisma'
+import { Player } from 'nexus-prisma'
 
 /**
  * Player Object Type
  */
-// export const PlayerObject = objectType({
-//   name: Player.$name,
-//   description: Player.$description,
-//   definition(t) {
-//     t.field('id', Player.id)
-//     t.field('createdAt', Player.createdAt)
-//     t.field('updatedAt', Player.updatedAt)
-//     t.field('handle', Player.handle)
-//     t.field('name', Player.name)
-//     t.field('slug', Player.slug)
-//     t.field('teamId', Player.teamId)
-//     t.field('height', Player.height)
-//     t.field('weight', Player.weight)
-//     t.field('number', Player.number)
-//     t.field('position', Player.position)
-//     t.field('team', Player.team)
-//   },
-// })
-
-export const Player = objectType({
-  name: 'Player',
+export const PlayerObject = objectType({
+  name: Player.$name,
+  description: Player.$description,
   definition(t) {
-    t.nonNull.int('id')
-    t.nonNull.field('createdAt', {
-      type: 'DateTime',
-    })
-    t.nonNull.field('updatedAt', {
-      type: 'DateTime',
-    })
-    t.nonNull.string('handle')
-    t.nonNull.string('name')
-    t.nonNull.string('slug')
-    t.int('teamId')
-    t.nonNull.string('height')
-    t.nonNull.string('weight')
-    t.string('number')
-    t.string('position')
+    t.field('id', Player.id)
+    t.field('createdAt', Player.createdAt)
+    t.field('updatedAt', Player.updatedAt)
+    t.field('handle', Player.handle)
+    t.field('name', Player.name)
+    t.field('slug', Player.slug)
+    t.field('teamId', Player.teamId)
+    t.field('height', Player.height)
+    t.field('weight', Player.weight)
+    t.field('number', Player.number)
+    t.field('position', Player.position)
+    // t.field('team', Player.team)
     t.field('team', {
-      type: 'Team',
+      type: Player.team.type,
       resolve: (parent, _args, ctx) => {
         return ctx.db.player
           .findUnique({
@@ -53,6 +32,37 @@ export const Player = objectType({
     })
   },
 })
+
+// export const PlayerObject = objectType({
+//   name: 'Player',
+//   definition(t) {
+//     t.nonNull.int('id')
+//     t.nonNull.field('createdAt', {
+//       type: 'DateTime',
+//     })
+//     t.nonNull.field('updatedAt', {
+//       type: 'DateTime',
+//     })
+//     t.nonNull.string('handle')
+//     t.nonNull.string('name')
+//     t.nonNull.string('slug')
+//     t.int('teamId')
+//     t.nonNull.string('height')
+//     t.nonNull.string('weight')
+//     t.string('number')
+//     t.string('position')
+//     t.field('team', {
+//       type: 'Team',
+//       resolve: (parent, _args, ctx) => {
+//         return ctx.db.player
+//           .findUnique({
+//             where: { id: parent.id },
+//           })
+//           .team()
+//       },
+//     })
+//   },
+// })
 
 /**
  * Player Query Types

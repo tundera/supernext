@@ -1,35 +1,20 @@
 import { objectType, extendType, list, intArg } from 'nexus'
-// import { ColorScheme } from 'nexus-prisma'
+import { ColorScheme } from 'nexus-prisma'
+
 /**
  * ColorScheme Object Type
  */
-// export const ColorSchemeObject = objectType({
-//   name: ColorScheme.$name,
-//   description: ColorScheme.$description,
-//   definition(t) {
-//     t.field('id', ColorScheme.id)
-//     t.field('createdAt', ColorScheme.createdAt)
-//     t.field('updatedAt', ColorScheme.updatedAt)
-//     t.field('primary', ColorScheme.primary)
-//     t.field('secondary', ColorScheme.secondary)
-//     t.field('teamId', ColorScheme.teamId)
-//     t.field('team', ColorScheme.team)
-//   },
-// })
-
-export const ColorScheme = objectType({
-  name: 'ColorScheme',
+export const ColorSchemeObject = objectType({
+  name: ColorScheme.$name,
+  description: ColorScheme.$description,
   definition(t) {
-    t.nonNull.int('id')
-    t.nonNull.field('createdAt', {
-      type: 'DateTime',
-    })
-    t.nonNull.field('updatedAt', {
-      type: 'DateTime',
-    })
-    t.nonNull.string('primary')
-    t.nonNull.string('secondary')
-    t.int('teamId')
+    t.field('id', ColorScheme.id)
+    t.field('createdAt', ColorScheme.createdAt)
+    t.field('updatedAt', ColorScheme.updatedAt)
+    t.field('primary', ColorScheme.primary)
+    t.field('secondary', ColorScheme.secondary)
+    t.field('teamId', ColorScheme.teamId)
+    // t.field('team', ColorScheme.team)
     t.field('team', {
       type: 'Team',
       resolve: (parent, _args, ctx) => {
@@ -42,6 +27,32 @@ export const ColorScheme = objectType({
     })
   },
 })
+
+// export const ColorSchemeObject = objectType({
+//   name: 'ColorScheme',
+//   definition(t) {
+//     t.nonNull.int('id')
+//     t.nonNull.field('createdAt', {
+//       type: 'DateTime',
+//     })
+//     t.nonNull.field('updatedAt', {
+//       type: 'DateTime',
+//     })
+//     t.nonNull.string('primary')
+//     t.nonNull.string('secondary')
+//     t.int('teamId')
+//     t.field('team', {
+//       type: 'Team',
+//       resolve: (parent, _args, ctx) => {
+//         return ctx.db.colorScheme
+//           .findUnique({
+//             where: { id: parent.id },
+//           })
+//           .team()
+//       },
+//     })
+//   },
+// })
 
 /**
  * ColorScheme Query Types
