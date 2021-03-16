@@ -1,8 +1,28 @@
 import { objectType, inputObjectType, list, intArg, extendType } from 'nexus'
+// import { Player } from 'nexus-prisma'
 
 /**
  * Player Object Type
  */
+// export const PlayerObject = objectType({
+//   name: Player.$name,
+//   description: Player.$description,
+//   definition(t) {
+//     t.field('id', Player.id)
+//     t.field('createdAt', Player.createdAt)
+//     t.field('updatedAt', Player.updatedAt)
+//     t.field('handle', Player.handle)
+//     t.field('name', Player.name)
+//     t.field('slug', Player.slug)
+//     t.field('teamId', Player.teamId)
+//     t.field('height', Player.height)
+//     t.field('weight', Player.weight)
+//     t.field('number', Player.number)
+//     t.field('position', Player.position)
+//     t.field('team', Player.team)
+//   },
+// })
+
 export const Player = objectType({
   name: 'Player',
   definition(t) {

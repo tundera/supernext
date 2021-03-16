@@ -4,11 +4,16 @@ generator client {
   binaryTargets   = ["native", "linux-musl"]
 }
 
+generator nexusPrisma {
+  provider = "nexus-prisma"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+/// NBA coach
 model Coach {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
@@ -21,6 +26,7 @@ model Coach {
   team        Team?    @relation(fields: [teamId], references: [id])
 }
 
+/// NBA player
 model Player {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
@@ -36,6 +42,7 @@ model Player {
   team      Team?    @relation(fields: [teamId], references: [id])
 }
 
+/// Team color scheme
 model ColorScheme {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
@@ -46,6 +53,7 @@ model ColorScheme {
   team      Team?    @relation(fields: [teamId], references: [id])
 }
 
+/// NBA team
 model Team {
   id             Int           @id @default(autoincrement())
   createdAt      DateTime      @default(now())

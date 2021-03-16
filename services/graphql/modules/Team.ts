@@ -1,8 +1,34 @@
 import { objectType, inputObjectType, arg, extendType, list, intArg, stringArg } from 'nexus'
-
+// import { Team } from 'nexus-prisma'
 /**
  * Team Object Type
  */
+// export const TeamObject = objectType({
+//   name: Team.$name,
+//   description: Team.$description,
+//   definition(t) {
+//     t.field('id', Team.id)
+//     t.field('createdAt', Team.createdAt)
+//     t.field('updatedAt', Team.updatedAt)
+//     t.field('handle', Team.handle)
+//     t.field('name', Team.name)
+//     t.field('slug', Team.slug)
+//     t.field('logoSlug', Team.logoSlug)
+//     t.field('city', Team.city)
+//     t.field('abbreviation', Team.abbreviation)
+//     t.field('logo', Team.logo)
+//     t.field('wins', Team.wins)
+//     t.field('losses', Team.losses)
+//     t.field('winPercentage', Team.winPercentage)
+//     t.field('conference', Team.conference)
+//     t.field('division', Team.division)
+//     t.field('established', Team.established)
+//     t.field('coaches', Team.coaches)
+//     t.field('players', Team.players)
+//     t.field('colorScheme', Team.colorScheme)
+//   },
+// })
+
 export const Team = objectType({
   name: 'Team',
   definition(t) {

@@ -1,8 +1,22 @@
 import { objectType, extendType, list, intArg } from 'nexus'
-
+// import { ColorScheme } from 'nexus-prisma'
 /**
  * ColorScheme Object Type
  */
+// export const ColorSchemeObject = objectType({
+//   name: ColorScheme.$name,
+//   description: ColorScheme.$description,
+//   definition(t) {
+//     t.field('id', ColorScheme.id)
+//     t.field('createdAt', ColorScheme.createdAt)
+//     t.field('updatedAt', ColorScheme.updatedAt)
+//     t.field('primary', ColorScheme.primary)
+//     t.field('secondary', ColorScheme.secondary)
+//     t.field('teamId', ColorScheme.teamId)
+//     t.field('team', ColorScheme.team)
+//   },
+// })
+
 export const ColorScheme = objectType({
   name: 'ColorScheme',
   definition(t) {

@@ -1,0 +1,242 @@
+[
+  {
+    "id": 29,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.826",
+    "primary": "#002D62",
+    "secondary": "#FDBB30",
+    "teamId": 12
+  },
+  {
+    "id": 30,
+    "createdAt": "2021-01-26 04:05:12.421",
+    "updatedAt": "2021-01-26 04:05:08.819",
+    "primary": "#0C2340",
+    "secondary": "#236192",
+    "teamId": 18
+  },
+  {
+    "id": 32,
+    "createdAt": "2021-01-26 04:32:32.495",
+    "updatedAt": "2021-01-26 04:32:32.492",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "teamId": 5
+  },
+  {
+    "id": 33,
+    "createdAt": "2021-01-26 04:38:17.75",
+    "updatedAt": "2021-01-26 04:38:17.747",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "teamId": 28
+  },
+  {
+    "id": 1,
+    "createdAt": "2021-01-26 04:05:08.844",
+    "updatedAt": "2021-01-26 04:05:08.819",
+    "primary": "# 002B5C",
+    "secondary": "#E31837",
+    "teamId": 30
+  },
+  {
+    "id": 2,
+    "createdAt": "2021-01-26 04:05:09.289",
+    "updatedAt": "2021-01-26 04:05:08.82",
+    "primary": "#C4CED4",
+    "secondary": "#000000",
+    "teamId": 27
+  },
+  {
+    "id": 3,
+    "createdAt": "2021-01-26 04:05:09.731",
+    "updatedAt": "2021-01-26 04:05:08.82",
+    "primary": "#5A2D81",
+    "secondary": "#63727A",
+    "teamId": 26
+  },
+  {
+    "id": 4,
+    "createdAt": "2021-01-26 04:05:09.731",
+    "updatedAt": "2021-01-26 04:05:08.82",
+    "primary": "#002B5C",
+    "secondary": "#F9A01B",
+    "teamId": 29
+  },
+  {
+    "id": 5,
+    "createdAt": "2021-01-26 04:05:10.175",
+    "updatedAt": "2021-01-26 04:05:08.821",
+    "primary": "#98002E",
+    "secondary": "#000000",
+    "teamId": 16
+  },
+  {
+    "id": 6,
+    "createdAt": "2021-01-26 04:05:10.175",
+    "updatedAt": "2021-01-26 04:05:08.821",
+    "primary": "#E03A3E",
+    "secondary": "#000000",
+    "teamId": 25
+  },
+  {
+    "id": 7,
+    "createdAt": "2021-01-26 04:05:10.175",
+    "updatedAt": "2021-01-26 04:05:08.821",
+    "primary": "#1D1160",
+    "secondary": "#E56020",
+    "teamId": 24
+  },
+  {
+    "id": 8,
+    "createdAt": "2021-01-26 04:05:10.631",
+    "updatedAt": "2021-01-26 04:05:08.822",
+    "primary": "#5D76A9",
+    "secondary": "#12173F",
+    "teamId": 15
+  },
+  {
+    "id": 10,
+    "createdAt": "2021-01-26 04:05:10.631",
+    "updatedAt": "2021-01-26 04:05:08.823",
+    "primary": "#00471B",
+    "secondary": "#EEE1C6",
+    "teamId": 17
+  },
+  {
+    "id": 9,
+    "createdAt": "2021-01-26 04:05:10.631",
+    "updatedAt": "2021-01-26 04:05:08.822",
+    "primary": "#007AC1",
+    "secondary": "#EF3B24",
+    "teamId": 21
+  },
+  {
+    "id": 11,
+    "createdAt": "2021-01-26 04:05:10.631",
+    "updatedAt": "2021-01-26 04:05:08.822",
+    "primary": "#006BB6",
+    "secondary": "#D50032",
+    "teamId": 23
+  },
+  {
+    "id": 15,
+    "createdAt": "2021-01-26 04:05:11.081",
+    "updatedAt": "2021-01-26 04:05:08.823",
+    "primary": "#006BB6",
+    "secondary": "#F58426",
+    "teamId": 20
+  },
+  {
+    "id": 13,
+    "createdAt": "2021-01-26 04:05:11.081",
+    "updatedAt": "2021-01-26 04:05:08.823",
+    "primary": "#0C2340",
+    "secondary": "#C8102E",
+    "teamId": 19
+  },
+  {
+    "id": 12,
+    "createdAt": "2021-01-26 04:05:11.081",
+    "updatedAt": "2021-01-26 04:05:08.824",
+    "primary": "#C8102E",
+    "secondary": "#1D428A",
+    "teamId": 13
+  },
+  {
+    "id": 14,
+    "createdAt": "2021-01-26 04:05:11.081",
+    "updatedAt": "2021-01-26 04:05:08.824",
+    "primary": "#552583",
+    "secondary": "#FDB927",
+    "teamId": 14
+  },
+  {
+    "id": 16,
+    "createdAt": "2021-01-26 04:05:11.081",
+    "updatedAt": "2021-01-26 04:05:08.823",
+    "primary": "#0077C0",
+    "secondary": "#C4CED4",
+    "teamId": 22
+  },
+  {
+    "id": 18,
+    "createdAt": "2021-01-26 04:05:11.521",
+    "updatedAt": "2021-01-26 04:05:08.825",
+    "primary": "#1D428A",
+    "secondary": "#FFC72C",
+    "teamId": 10
+  },
+  {
+    "id": 19,
+    "createdAt": "2021-01-26 04:05:11.521",
+    "updatedAt": "2021-01-26 04:05:08.825",
+    "primary": "#0E2240",
+    "secondary": "#FEC524",
+    "teamId": 8
+  },
+  {
+    "id": 21,
+    "createdAt": "2021-01-26 04:05:11.521",
+    "updatedAt": "2021-01-26 04:05:08.826",
+    "primary": "#C8102E",
+    "secondary": "#1D42BA",
+    "teamId": 9
+  },
+  {
+    "id": 17,
+    "createdAt": "2021-01-26 04:05:11.521",
+    "updatedAt": "2021-01-26 04:05:08.825",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "teamId": 11
+  },
+  {
+    "id": 22,
+    "createdAt": "2021-01-26 04:05:11.521",
+    "updatedAt": "2021-01-26 04:05:08.824",
+    "primary": "#00538C",
+    "secondary": "#B8C4CA",
+    "teamId": 7
+  },
+  {
+    "id": 28,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.827",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "teamId": 3
+  },
+  {
+    "id": 26,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.828",
+    "primary": "#E03A3E",
+    "secondary": "#C1D32F",
+    "teamId": 1
+  },
+  {
+    "id": 24,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.827",
+    "primary": "#007A33",
+    "secondary": "#BA9653",
+    "teamId": 2
+  },
+  {
+    "id": 23,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.827",
+    "primary": "#860038",
+    "secondary": "#041E42",
+    "teamId": 6
+  },
+  {
+    "id": 25,
+    "createdAt": "2021-01-26 04:05:11.968",
+    "updatedAt": "2021-01-26 04:05:08.826",
+    "primary": "#1D1160",
+    "secondary": "#00788C",
+    "teamId": 4
+  }
+]
