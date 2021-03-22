@@ -1,5 +1,4 @@
 import { makeSchema } from 'nexus'
-// import NexusPrismaScalars from 'nexus-prisma/scalars'
 import { join } from 'path'
 
 import * as moduleTypes from './modules'
@@ -12,7 +11,6 @@ const cwd = process.cwd()
 
 export const schema = makeSchema({
   types: [moduleTypes, scalarTypes, inputTypes],
-  // types: [moduleTypes, NexusPrismaScalars],
   plugins: [],
   outputs: {
     typegen: join(cwd, 'services/graphql/generated/index.d.ts'),

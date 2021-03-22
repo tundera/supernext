@@ -4749,10 +4749,10 @@
     "@supabase/postgrest-js" "^0.26.1"
     "@supabase/realtime-js" "^1.0.6"
 
-"@supabase/ui@^0.21.2":
-  version "0.21.2"
-  resolved "https://registry.npmjs.org/@supabase/ui/-/ui-0.21.2.tgz#1185a568aec755e912a4ba5b2e73a3ad5f6892c2"
-  integrity sha512-TGbLtx3d7fgNUA3DwvB6YHjv/dLya8gEFZuohWUTDMGcKQj1U2U0gzCNk4NX+2wdS64fD7RJH8Il4+kw6Eh0yg==
+"@supabase/ui@^0.21.3":
+  version "0.21.3"
+  resolved "https://registry.npmjs.org/@supabase/ui/-/ui-0.21.3.tgz#615f676c02463dbb8327f78d1db9e6eacc84e8f6"
+  integrity sha512-RXQQ6V6lFmQc6qsJ4ZD1NHGMgwbcmwx+7HM1J5xewXIPK9Pa7sFc8SqI4gPno2nDU7WD3NREYCP9CZDWFx/DSA==
   dependencies:
     lodash "^4.17.20"
     prop-types "^15.7.2"
@@ -5108,12 +5108,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/graphql-iso-date@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.npmjs.org/@types/graphql-iso-date/-/graphql-iso-date-3.4.0.tgz#b6710b21e3b0bfdb1a0529b285148d98eac18b1f"
-  integrity sha512-V3jITHTsoI2E8TGt9+/HPDz6LWt3z9/HYnPJYWI6WwiLRexsngg7KzaQlCgQkA4jkEbGPROUD0hJFc9F02W9WA==
+"@types/graphql-upload@8.0.4":
+  version "8.0.4"
+  resolved "https://registry.npmjs.org/@types/graphql-upload/-/graphql-upload-8.0.4.tgz#23a8ffb3d2fe6e0ee07e6f16ee9d9d5e995a2f4f"
+  integrity sha512-0TRyJD2o8vbkmJF8InppFcPVcXKk+Rvlg/xvpHBIndSJYpmDWfmtx/ZAtl4f3jR2vfarpTqYgj8MZuJssSoU7Q==
   dependencies:
-    graphql "^15.1.0"
+    "@types/express" "*"
+    "@types/fs-capacitor" "*"
+    "@types/koa" "*"
+    graphql "^15.3.0"
 
 "@types/hast@^2.0.0":
   version "2.3.1"
@@ -5185,6 +5188,14 @@
   version "26.0.20"
   resolved "https://registry.npmjs.org/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
   integrity sha512-9zi2Y+5USJRxd0FsahERhBwlcvFh6D2GLQnY2FH2BzK8J9s9omvNHIbvABwIluXa0fD8XVKMLTO0aOEuUfACAA==
+  dependencies:
+    jest-diff "^26.0.0"
+    pretty-format "^26.0.0"
+
+"@types/jest@^26.0.21":
+  version "26.0.21"
+  resolved "https://registry.npmjs.org/@types/jest/-/jest-26.0.21.tgz#3a73c2731e7e4f0fbaea56ce7ff8c79cf812bd24"
+  integrity sha512-ab9TyM/69yg7eew9eOwKMUmvIZAKEGZYlq/dhe5/0IMUd/QLJv5ldRMdddSn+u22N13FP3s5jYyktxuBwY0kDA==
   dependencies:
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
@@ -12081,11 +12092,6 @@ graphql-extensions@^0.12.8:
     apollo-server-env "^3.0.0"
     apollo-server-types "^0.6.3"
 
-graphql-iso-date@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.npmjs.org/graphql-iso-date/-/graphql-iso-date-3.6.1.tgz#bd2d0dc886e0f954cbbbc496bbf1d480b57ffa96"
-  integrity sha512-AwFGIuYMJQXOEAgRlJlFL4H1ncFM8n8XmoVDTNypNOZyQ8LFDG2ppMFlsS862BSTCDcSUfHp8PD3/uJhv7t59Q==
-
 graphql-middleware@^6.0.4:
   version "6.0.4"
   resolved "https://registry.npmjs.org/graphql-middleware/-/graphql-middleware-6.0.4.tgz#dcce31fad0a666e1f8eecdfe57f8019e627545ab"
@@ -12151,7 +12157,7 @@ graphql-ws@4.1.5:
   resolved "https://registry.npmjs.org/graphql-ws/-/graphql-ws-4.1.5.tgz#03526b29acb54a424a9fbe300a4bd69ff65a50b3"
   integrity sha512-yUQ1AjegD1Y9jDS699kyw7Mw+9H+rILm2HoS8N5a5B5YTH93xy3yifFhAJpKGc2wb/8yGdlVy8gTcud0TPqi6Q==
 
-graphql@15.5.0, graphql@^15.1.0:
+graphql@15.5.0, graphql@^15.3.0:
   version "15.5.0"
   resolved "https://registry.npmjs.org/graphql/-/graphql-15.5.0.tgz#39d19494dbe69d1ea719915b578bf920344a69d5"
   integrity sha512-OmaM7y0kaK31NKG31q4YbD2beNYa6jBBKtMFT6gLYJljHLJr42IqJ8KX08u3Li/0ifzTU5HjmoOOrwa5BRLeDA==
@@ -21164,10 +21170,17 @@ subscriptions-transport-ws@^0.9.11:
     symbol-observable "^1.0.4"
     ws "^5.2.0"
 
-superjson@1.7.2, superjson@^1.7.2:
+superjson@1.7.2:
   version "1.7.2"
   resolved "https://registry.npmjs.org/superjson/-/superjson-1.7.2.tgz#81f531829fee8bdab5593f57c145be25d2ed54c4"
   integrity sha512-KwMBfX2c5Mq4EcvGivXH3JBYqYFoZQbA3aMhwXIdpkyVInEkxIGaoSDk+E8y/gMe5RH3mjBU3xRpvKsjZktphw==
+  dependencies:
+    debug "^4.3.1"
+
+superjson@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.npmjs.org/superjson/-/superjson-1.7.3.tgz#2544f7fab70f4251b02bb646c5c519b7131e9db9"
+  integrity sha512-9BmEeJubbs9dUxWxn1I7+VLgdFv895q7BlCGh948IdD/5/RpDjQ6M0tNJJn88Sp/wswJGGuMrG5ii+ZQhoKzwQ==
   dependencies:
     debug "^4.3.1"
 
@@ -21861,10 +21874,10 @@ ts-jest@26.5.0:
     semver "7.x"
     yargs-parser "20.x"
 
-ts-jest@^26.5.2:
-  version "26.5.3"
-  resolved "https://registry.npmjs.org/ts-jest/-/ts-jest-26.5.3.tgz#a6ee00ba547be3b09877550df40a1465d0295554"
-  integrity sha512-nBiiFGNvtujdLryU7MiMQh1iPmnZ/QvOskBbD2kURiI1MwqvxlxNnaAB/z9TbslMqCsSbu5BXvSSQPc5tvHGeA==
+ts-jest@^26.5.4:
+  version "26.5.4"
+  resolved "https://registry.npmjs.org/ts-jest/-/ts-jest-26.5.4.tgz#207f4c114812a9c6d5746dd4d1cdf899eafc9686"
+  integrity sha512-I5Qsddo+VTm94SukBJ4cPimOoFZsYTeElR2xy6H2TOVs+NsvgYglW8KuQgKoApOKuaU/Ix/vrF9ebFZlb5D2Pg==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"

@@ -55,16 +55,16 @@ model ColorScheme {
 
 /// NBA team
 model Team {
-  id             Int           @id @default(autoincrement())
-  createdAt      DateTime      @default(now())
+  id             Int          @id @default(autoincrement())
+  createdAt      DateTime     @default(now())
   updatedAt      DateTime
-  handle         String        @unique
-  name           String        @unique
-  slug           String        @unique
+  handle         String       @unique
+  name           String       @unique
+  slug           String       @unique
   city           String
-  abbreviation   String        @unique
-  logo           String        @unique
-  logoSlug       String        @unique
+  abbreviation   String       @unique
+  logo           String       @unique
+  logoSlug       String       @unique
   wins           Int?
   losses         Int?
   winPercentage  Float?
@@ -74,7 +74,7 @@ model Team {
   primaryColor   String
   secondaryColor String
   coaches        Coach[]
-  colorScheme    ColorScheme[]
+  colorScheme    ColorScheme?
   players        Player[]
 }
 

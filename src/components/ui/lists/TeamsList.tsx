@@ -9,8 +9,8 @@ function TeamsGrid({ teams }) {
     <CloudinaryContext cloudName="dbc3x3s7c">
       <SimpleGrid minChildWidth="250px" spacing="40px">
         {teams.map((team) => {
-          const [colors] = team.colorScheme
-          const bg = `linear-gradient(108deg, ${colors?.secondary ?? ''} 0%, ${colors?.primary ?? ''} 65%)`
+          const { primary, secondary } = team.colorScheme
+          const bg = `linear-gradient(108deg, ${secondary ?? ''} 0%, ${primary ?? ''} 65%)`
           return (
             <TeamCard
               key={team.slug}

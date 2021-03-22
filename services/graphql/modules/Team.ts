@@ -78,7 +78,7 @@ export const TeamObject = objectType({
           })
       },
     })
-    t.nonNull.list.nonNull.field('colorScheme', {
+    t.field('colorScheme', {
       type: 'ColorScheme',
       resolve: (parent, _args, ctx) => {
         return ctx.db.team

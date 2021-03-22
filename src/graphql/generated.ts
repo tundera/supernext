@@ -17,6 +17,8 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
+  /** The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  Json: any;
   /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
@@ -73,6 +75,7 @@ export type IntFilter = {
   notIn: Array<Scalars['Int']>;
   startsWith: Scalars['Int'];
 };
+
 
 /** NBA player */
 export type Player = {
@@ -160,7 +163,7 @@ export type Team = {
   abbreviation: Scalars['String'];
   city: Scalars['String'];
   coaches: Array<Coach>;
-  colorScheme: Array<ColorScheme>;
+  colorScheme?: Maybe<ColorScheme>;
   conference: Scalars['String'];
   createdAt: Scalars['DateTime'];
   division: Scalars['String'];
@@ -302,7 +305,7 @@ export type TeamBySlugQuery = (
   & { team?: Maybe<(
     { __typename?: 'Team' }
     & Pick<Team, 'id' | 'name' | 'city' | 'established' | 'logo' | 'logoSlug'>
-    & { colorScheme: Array<(
+    & { colorScheme?: Maybe<(
       { __typename?: 'ColorScheme' }
       & Pick<ColorScheme, 'primary' | 'secondary'>
     )>, players: Array<(
@@ -320,7 +323,7 @@ export type TeamsQuery = (
   & { teams?: Maybe<Array<Maybe<(
     { __typename?: 'Team' }
     & Pick<Team, 'id' | 'name' | 'slug' | 'city' | 'logo' | 'logoSlug'>
-    & { colorScheme: Array<(
+    & { colorScheme?: Maybe<(
       { __typename?: 'ColorScheme' }
       & Pick<ColorScheme, 'primary' | 'secondary'>
     )> }

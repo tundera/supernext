@@ -8,6 +8,7 @@ const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? ''
 
 export async function getAllTeams(): Promise<Team[]> {
   const { teams: data } = await request(endpoint, TeamsDocument)
+  console.dir(data, { depth: null })
 
   return data
 }

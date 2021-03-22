@@ -27,6 +27,8 @@ export const getStaticProps: GetStaticProps = async () => {
 const TeamsPage: NextPage = () => {
   const { data } = useTeamsQuery(client)
 
+  console.dir(data)
+
   return (
     <>
       <Flex flexDir="column" alignItems="center">
