@@ -163,6 +163,7 @@
     "zod": "^1.11.11"
   },
   "devDependencies": {
+    "@architect/sandbox": "3.4.1",
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "@chakra-ui/cli": "^1.2.1",
     "@cypress/react": "^5.1.1",
