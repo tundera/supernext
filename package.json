@@ -124,7 +124,7 @@
     "next-stripe": "^1.0.0-beta.1",
     "nexus": "^1.0.0",
     "nexus-prisma": "0.24.0",
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.10",
     "prettier": "^2.2.1",
     "preview-email": "^3.0.3",
     "prism-react-renderer": "^1.2.0",
