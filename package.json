@@ -92,7 +92,7 @@
     "apollo-server-micro": "^2.21.1",
     "autoprefixer": "^10.2.5",
     "babel-plugin-superjson-next": "^0.2.3",
-    "blitz": "^0.32.1",
+    "blitz": "^0.45.3",
     "change-case": "^4.1.2",
     "cloudinary-react": "^1.6.8",
     "date-fns": "^2.19.0",
