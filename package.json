@@ -154,7 +154,7 @@
     "rss": "^1.2.2",
     "rxjs": "^6.6.6",
     "stripe": "^8.138.0",
-    "superjson": "^1.7.3",
+    "superjson": "^1.8.1",
     "swr": "^0.5.3",
     "timeago-react": "^3.0.2",
     "unified": "^9.2.0",
