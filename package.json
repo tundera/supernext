@@ -115,7 +115,7 @@
     "merge-anything": "^4.0.0",
     "nba": "^4.15.0",
     "next": "10.0.9",
-    "next-auth": "^3.13.0",
+    "next-auth": "^3.29.8",
     "next-compose-plugins": "^2.2.1",
     "next-mdx": "0.2.4",
     "next-mdx-remote": "^2.1.3",
